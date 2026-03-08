@@ -29,13 +29,20 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const checkRouteEnabled = () => {
         if (!pathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        // Normalize locale-prefixed paths (e.g. /uz/blog -> /blog, /uz -> /).
+        const locales = new Set(["uz", "en", "ru"]);
+        const segments = pathname.split("/").filter(Boolean);
+        const hasValidLocalePrefix = segments.length > 0 && locales.has(segments[0]);
+        const normalizedPath = hasValidLocalePrefix ? `/${segments.slice(1).join("/")}` : pathname;
+        const normalizedPathWithFallback = normalizedPath === "" ? "/" : normalizedPath;
+
+        if (normalizedPathWithFallback in routes) {
+          return routes[normalizedPathWithFallback as keyof typeof routes];
         }
 
-        const dynamicRoutes = ["/blog", "/work"] as const;
+        const dynamicRoutes = ["/blog", "/work", "/admin"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (normalizedPathWithFallback.startsWith(route) && routes[route]) {
             return true;
           }
         }
@@ -46,7 +53,13 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const routeEnabled = checkRouteEnabled();
       setIsRouteEnabled(routeEnabled);
 
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
+      const locales = new Set(["uz", "en", "ru"]);
+      const segments = (pathname ?? "").split("/").filter(Boolean);
+      const hasValidLocalePrefix = segments.length > 0 && locales.has(segments[0]);
+      const normalizedPath = hasValidLocalePrefix ? `/${segments.slice(1).join("/")}` : pathname ?? "/";
+      const normalizedPathWithFallback = normalizedPath === "" ? "/" : normalizedPath;
+
+      if (protectedRoutes[normalizedPathWithFallback as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
         const response = await fetch("/api/check-auth");

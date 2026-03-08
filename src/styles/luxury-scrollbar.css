@@ -1,0 +1,35 @@
+:root {
+  --lux-scroll-track: rgba(10, 14, 22, 0.94);
+  --lux-scroll-thumb: linear-gradient(180deg, rgba(56, 189, 248, 0.72), rgba(125, 211, 252, 0.5));
+  --lux-scroll-thumb-hover: linear-gradient(180deg, rgba(125, 211, 252, 0.86), rgba(167, 139, 250, 0.62));
+}
+
+html {
+  scrollbar-color: rgba(125, 211, 252, 0.62) var(--lux-scroll-track);
+  scrollbar-width: thin;
+}
+
+/* Chromium + Edge + Safari */
+*::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--lux-scroll-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--lux-scroll-thumb);
+  border: 2px solid var(--lux-scroll-track);
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.22);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--lux-scroll-thumb-hover);
+}
+
+*::-webkit-scrollbar-corner {
+  background: var(--lux-scroll-track);
+}

@@ -1,5 +1,4 @@
-import { getPosts } from "@/utils/utils";
-import { Grid } from "@once-ui-system/core";
+import { getPublishedArticles, type Article } from "@/lib/firestore-server";
 import Post from "./Post";
 
 interface PostsProps {
@@ -10,16 +9,48 @@ interface PostsProps {
   exclude?: string[];
 }
 
-export function Posts({
+function toPostShape(article: Article) {
+  return {
+    id: article.id,
+    slug: article.slug,
+    content: article.content,
+    metadata: {
+      title: article.title,
+      publishedAt: (article.publishedAt instanceof Date
+        ? article.publishedAt
+        : article.createdAt instanceof Date
+          ? article.createdAt
+          : new Date()
+      ).toISOString(),
+      summary: article.summary,
+      image: article.image || article.imageUrl || "",
+      tag: article.category || "",
+    },
+  };
+}
+
+const gridClasses: Record<string, string> = {
+  "1": "grid-cols-1",
+  "2": "grid-cols-1 md:grid-cols-2",
+  "3": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+};
+
+export async function Posts({
   range,
   columns = "1",
   thumbnail = false,
   exclude = [],
   direction,
 }: PostsProps) {
-  let allBlogs = getPosts(["src", "app", "blog", "posts"]);
+  let allArticlesRaw: Article[] = [];
+  try {
+    allArticlesRaw = await getPublishedArticles();
+  } catch {
+    return null;
+  }
 
-  // Exclude by slug (exact match)
+  let allBlogs = allArticlesRaw.map(toPostShape);
+
   if (exclude.length) {
     allBlogs = allBlogs.filter((post) => !exclude.includes(post.slug));
   }
@@ -32,15 +63,13 @@ export function Posts({
     ? sortedBlogs.slice(range[0] - 1, range.length === 2 ? range[1] : sortedBlogs.length)
     : sortedBlogs;
 
+  if (displayedBlogs.length === 0) return null;
+
   return (
-    <>
-      {displayedBlogs.length > 0 && (
-        <Grid columns={columns} s={{ columns: 1 }} fillWidth marginBottom="40" gap="16">
-          {displayedBlogs.map((post) => (
-            <Post key={post.slug} post={post} thumbnail={thumbnail} direction={direction} />
-          ))}
-        </Grid>
-      )}
-    </>
+    <div className={`grid w-full gap-5 ${gridClasses[columns] ?? gridClasses["1"]}`}>
+      {displayedBlogs.map((post) => (
+        <Post key={post.id} post={post} thumbnail={thumbnail} direction={direction} />
+      ))}
+    </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import { mailchimp, newsletter } from "@/resources";
+import { mailchimp } from "@/resources";
+import { useI18n } from "@/components/I18nProvider";
 import { Button, Heading, Input, Text, Background, Column, Row } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
@@ -17,6 +18,8 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const { content } = useI18n();
+  const { newsletter } = content;
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {

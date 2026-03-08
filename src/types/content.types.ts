@@ -228,13 +228,34 @@ export interface Work extends BasePageConfig {}
  * @description Configuration for the Gallery page, including metadata, navigation label, and image list.
  */
 export interface Gallery extends BasePageConfig {
-  /** List of images in the gallery */
-  images: Array<{
-    /** Image source path */
+  /** Gallery section heading shown above the grid */
+  headline?: string;
+  /** Gallery section supporting text */
+  intro?: string;
+  /** List of curated visual assets */
+  assets: Array<{
+    /** Stable id for keying and analytics */
+    id: string;
+    /** Asset image source path */
     src: string;
-    /** Image alt text */
+    /** Accessible alt text */
     alt: string;
-    /** Image orientation (horizontal/vertical) */
-    orientation: string;
+    /** Asset title shown on card */
+    title: string;
+    /** Short professional description */
+    description: string;
+    /** Time marker, year, or date */
+    date: string;
+    /** Content category used for labels and filtering */
+    category:
+      | "certificate"
+      | "portrait"
+      | "legal-work"
+      | "legal-tech-event"
+      | "award";
+    /** Preferred card ratio for editorial layout */
+    ratio: "landscape" | "portrait" | "square";
+    /** Gives selected cards visual emphasis */
+    featured?: boolean;
   }>;
 }

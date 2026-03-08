@@ -19,9 +19,11 @@ import {
 } from "@once-ui-system/core";
 import { style, dataStyle } from "../resources";
 import { iconLibrary } from "../resources/icons";
+import { I18nProvider } from "./I18nProvider";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
+    <I18nProvider>
     <LayoutProvider>
       <ThemeProvider
         brand={style.brand as Schemes}
@@ -53,5 +55,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
         </DataThemeProvider>
       </ThemeProvider>
     </LayoutProvider>
+    </I18nProvider>
   );
 }

@@ -1,0 +1,179 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "work": "Work",
+    "blog": "Blog",
+    "gallery": "Gallery",
+    "admin": "Admin",
+    "notFound": "Page Not Found",
+    "notFoundDescription": "The page you are looking for does not exist.",
+    "latestFromBlog": "Latest from the blog",
+    "subscribe": "Subscribe",
+    "introduction": "Introduction",
+    "workExperience": "Work Experience",
+    "studies": "Studies",
+    "technicalSkills": "Technical skills",
+    "featuredWork": "Featured work",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Mansurxon Rustamov – Law, AI & Analysis",
+    "description": "Law Student, AI Developer & Independent Analyst",
+    "headline": "Bridging Jurisprudence, Artificial Intelligence, and Society",
+    "subline": "I'm Mansurxon, a first-year Law Student at TSUL, AI Developer, and Independent Analyst bridging the gap between Jurisprudence, Artificial Intelligence, and Society."
+  },
+  "about": {
+    "title": "About – Mansurxon Rustamov",
+    "description": "Meet Mansurxon Rustamov — Law Student, AI Developer & Independent Analyst",
+    "intro": "Mansurxon is a Tashkent-based first-year Law student at Tashkent State University of Law (TSUL), AI Developer, and Independent Analyst. His work lies at the intersection of Jurisprudence, Artificial Intelligence, and societal impact."
+  },
+  "blog": {
+    "title": "Writing about Law, AI & Society...",
+    "description": "Read what Mansurxon Rustamov has been analyzing recently"
+  },
+  "work": {
+    "title": "Projects – Mansurxon Rustamov",
+    "description": "Projects and analyses by Mansurxon Rustamov"
+  },
+  "gallery": {
+    "title": "Professional Gallery – Mansurxon Rustamov",
+    "description": "A capability-first visual dossier by Mansurxon Rustamov",
+    "headline": "Documented trajectory in law and legal technology",
+    "intro": "A curated visual dossier of legal education, analytical work, certifications, and professional development milestones.",
+    "categories": {
+      "certificate": "Certificate",
+      "portrait": "Portrait",
+      "legal-work": "Legal Practice",
+      "legal-tech-event": "Legal-Tech Event",
+      "award": "Award"
+    },
+    "assets": [
+      {
+        "id": "degree-llb",
+        "title": "Degree: Bachelor of Laws (LL.B.)",
+        "description": "Tashkent State University of Law, Graduating 2029",
+        "date": "2025 - 2029",
+        "category": "certificate"
+      },
+      {
+        "id": "certificate-aiml",
+        "title": "Certificate: Applied AI and ML Foundations",
+        "description": "Professional coursework in machine learning, automation, and legal analytics",
+        "date": "Issued 2025",
+        "category": "certificate"
+      },
+      {
+        "id": "portrait-main",
+        "title": "Professional Portrait",
+        "description": "Official portrait for legal-tech speaking profiles and conference bios",
+        "date": "Updated 2026",
+        "category": "portrait"
+      },
+      {
+        "id": "courthouse-study",
+        "title": "Courthouse Study Visit",
+        "description": "Field observation of judicial institutions and legal process environments",
+        "date": "Spring 2026",
+        "category": "legal-work"
+      },
+      {
+        "id": "negotiation-simulation",
+        "title": "Negotiation and Mediation Simulation",
+        "description": "Practical legal communication and argument-structuring exercises",
+        "date": "2026",
+        "category": "legal-work"
+      },
+      {
+        "id": "office-research",
+        "title": "Legal Research Workspace",
+        "description": "Case analysis, policy review, and drafting practice in professional settings",
+        "date": "Ongoing",
+        "category": "legal-work"
+      },
+      {
+        "id": "event-legaltech",
+        "title": "Legal-Tech Conference Session",
+        "description": "Participation in discussions on AI compliance, governance, and digital law",
+        "date": "Conference 2026",
+        "category": "legal-tech-event"
+      },
+      {
+        "id": "event-hackathon",
+        "title": "Legal AI Product Sprint",
+        "description": "Collaborative ideation and prototype testing for legal workflow automation",
+        "date": "Hackathon 2026",
+        "category": "legal-tech-event"
+      },
+      {
+        "id": "award-academic",
+        "title": "Academic Recognition Award",
+        "description": "Merit-based achievement for analytical excellence and disciplined study",
+        "date": "Awarded 2026",
+        "category": "award"
+      },
+      {
+        "id": "portrait-speaking",
+        "title": "Public Speaking and Presentation",
+        "description": "Panel and workshop communication for law, AI, and social impact topics",
+        "date": "2026",
+        "category": "portrait"
+      }
+    ]
+  },
+  "hero": {
+    "badge": "Law x AI",
+    "title": "Mansurxon Rustamov",
+    "subtitle": "Law. Artificial Intelligence. Society.",
+    "description": "A student at Tashkent State University of Law and a developer. I build solutions for complex social challenges through code and legal logic.",
+    "cta_primary": "View Projects",
+    "cta_secondary": "Read Analysis"
+  },
+  "timeline": {
+    "badge": "Journey",
+    "title": "Animated Journey Timeline",
+    "description": "A continuous path where legal studies, AI development, and independent analysis converge.",
+    "student_period": "Present",
+    "student_title": "First-year Law Student at TSUL",
+    "student_desc": "Deep diving into Jurisprudence, State Theory, and analytical problem-solving.",
+    "founder_period": "Present",
+    "founder_title": "AI Developer & Founder",
+    "founder_desc": "Architecting Alloma AI by blending legal algorithms with artificial intelligence.",
+    "focus_period": "Focus",
+    "focus_title": "Bridging Law, AI, and Society",
+    "focus_desc": "A strategy focused on connecting technological execution with social and legal realities."
+  },
+  "projects": {
+    "badge": "Projects",
+    "title": "Premium Bento Grid",
+    "description": "Technical depth, human dynamics, and legal thinking in one modern asymmetric composition.",
+    "tech_label": "Large Card / Left",
+    "tech_title": "Technical Arsenal",
+    "tech_desc": "Core technologies I use to build production-grade systems across full-stack architecture and AI integrations.",
+    "soft_label": "Middle Card",
+    "soft_title": "Human Dynamics",
+    "soft_philosophy": "Communication, team leadership, and the art of explaining complex processes in simple language.",
+    "soft_point_1": "Strategic communication",
+    "soft_point_2": "Team coordination",
+    "soft_point_3": "Complexity simplification",
+    "legal_label": "Long Card / Bottom",
+    "legal_title": "Legal and Analytical Thinking",
+    "legal_desc": "Legislative analysis, risk-aware judgment, and concise legal evaluation for strategic project decisions.",
+    "legal_point_1": "Regulatory analysis",
+    "legal_point_2": "Legal risk audit",
+    "legal_point_3": "Compliance strategy",
+    "legal_point_4": "Evidence-based decisions"
+  },
+  "featuredWorks": {
+    "featured_endeavors": "Featured Endeavors",
+    "featured_heading": "Startup execution meets analytical depth",
+    "startup_spotlight": "Startup Spotlight",
+    "alloma_title": "Alloma AI",
+    "alloma_desc": "Alloma A is a personalized AI mentor built for students in Uzbekistan. It bridges EdTech, custom algorithms, and Legal AI into one focused learning engine, helping students move from passive reading to practical mastery.",
+    "view_project_btn": "View Project",
+    "channel_spotlight": "Analytical Channel Spotlight",
+    "tahlil_title": "Tahlil",
+    "tahlil_desc": "A premier Telegram hub for deep legal analysis, state theory, and personal development for ambitious learners and future leaders.",
+    "join_channel": "Join Channel / Read Latest"
+  }
+}

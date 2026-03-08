@@ -1,50 +1,47 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import type { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "Mansurxon",
+  lastName: "Rustamov",
+  name: "Mansurxon Rustamov",
+  role: "Law Student, AI Developer & Independent Analyst",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "r.mansurxon01@gmail.com",
+  location: "Asia/Tashkent",
+  languages: ["Uzbek", "English", "Russian"],
 };
 
 const newsletter: Newsletter = {
   display: true,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>Weekly insights on Law, AI, and Societal Analysis</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/mansurxon-rustamov",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/mansurxon-rustamov/",
+    essential: true,
+  },
+  {
+    name: "Telegram",
+    icon: "telegram",
+    link: "https://t.me/rustamovmansurxon",
     essential: true,
   },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
+    link: "https://www.instagram.com/rustamovmansurxon/",
     essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: true,
   },
   {
     name: "Email",
@@ -58,14 +55,14 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name}`,
+  description: `${person.role}`,
+  headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">TSUL & AI</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
@@ -76,7 +73,7 @@ const home: Home = {
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+    I'm Mansurxon, a first-year Law Student at <Text as="span" size="xl" weight="strong">TSUL</Text>, AI Developer, and Independent Analyst <br /> bridging the gap between Jurisprudence, Artificial Intelligence, and Society.
 </>
   ),
 };
@@ -95,114 +92,83 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://cal.com",
+    link: "https://t.me/rustamovmansurxon",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Mansurxon is a Tashkent-based first-year Law student at Tashkent State University of Law (TSUL),
+        AI Developer, and Independent Analyst. His work lies at the intersection of Jurisprudence,
+        Artificial Intelligence, and societal impact — analyzing political, economic, and technological
+        trends to bridge the gap between law and innovation.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Independent AI Development",
+        timeframe: "2024 - Present",
+        role: "AI Developer & Analyst",
         achievements: [
-          <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
-          </>,
-          <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
+          "Building AI-powered tools and analytical platforms that combine legal research with machine learning for automated document analysis and insights.",
+          "Publishing independent analyses on political, economic, and technological topics, reaching a growing audience across Central Asia.",
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Freelance Projects",
+        timeframe: "2023 - 2024",
+        role: "Full-Stack Developer",
         achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
+          "Developed web applications and automation tools for clients using Next.js, Python, and modern AI frameworks.",
+          "Created data visualization dashboards for analytical reporting on socioeconomic trends.",
         ],
         images: [],
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Tashkent State University of Law (TSUL)",
+        description: <>First-year Law student, focusing on the intersection of jurisprudence and technology.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Self-directed AI & CS Education",
+        description: <>Deep study of artificial intelligence, machine learning, and computer science fundamentals.</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "AI & Machine Learning",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Building intelligent systems with Python, TensorFlow, and modern LLM frameworks.</>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Python",
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "AI/ML",
           },
         ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Next.js & Full-Stack Development",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Creating modern web applications with Next.js, TypeScript, and Firebase.</>
         ),
         tags: [
           {
@@ -213,20 +179,16 @@ const about: About = {
             name: "Next.js",
             icon: "nextjs",
           },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
+      },
+      {
+        title: "Legal Research & Analysis",
+        description: (
+          <>Independent analytical writing on law, politics, economics, and their intersection with technology.</>
+        ),
+        tags: [],
+        images: [],
       },
     ],
   },
@@ -235,17 +197,15 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Writing about Law, AI & Society...",
+  description: `Read what ${person.name} has been analyzing recently`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `Projects and analyses by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
@@ -253,50 +213,113 @@ const work: Work = {
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
+  title: `Professional Gallery – ${person.name}`,
+  description: `A capability-first visual dossier by ${person.name}`,
+  headline: "Documented trajectory in law and legal technology",
+  intro:
+    "A curated visual dossier of legal education, analytical work, certifications, and professional development milestones.",
+  assets: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
+      id: "degree-llb",
+      src: "/images/gallery/professional/certificate-tsul.svg",
+      alt: "TSUL degree certificate placeholder",
+      title: "Degree: Bachelor of Laws (LL.B.)",
+      description: "Tashkent State University of Law, Graduating 2029",
+      date: "2025 - 2029",
+      category: "certificate",
+      ratio: "landscape",
+      featured: true,
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
+      id: "certificate-aiml",
+      src: "/images/gallery/professional/certificate-ai-ml.svg",
+      alt: "AI and machine learning certificate placeholder",
+      title: "Certificate: Applied AI and ML Foundations",
+      description: "Professional coursework in machine learning, automation, and legal analytics",
+      date: "Issued 2025",
+      category: "certificate",
+      ratio: "landscape",
     },
     {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
+      id: "portrait-main",
+      src: "/images/gallery/professional/portrait-formal.svg",
+      alt: "Formal professional portrait placeholder",
+      title: "Professional Portrait",
+      description: "Official portrait for legal-tech speaking profiles and conference bios",
+      date: "Updated 2026",
+      category: "portrait",
+      ratio: "portrait",
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
+      id: "courthouse-study",
+      src: "/images/gallery/professional/courthouse-exterior.svg",
+      alt: "Courthouse exterior placeholder",
+      title: "Courthouse Study Visit",
+      description: "Field observation of judicial institutions and legal process environments",
+      date: "Spring 2026",
+      category: "legal-work",
+      ratio: "landscape",
     },
     {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
+      id: "negotiation-simulation",
+      src: "/images/gallery/professional/negotiation-room.svg",
+      alt: "Negotiation room placeholder",
+      title: "Negotiation and Mediation Simulation",
+      description: "Practical legal communication and argument-structuring exercises",
+      date: "2026",
+      category: "legal-work",
+      ratio: "landscape",
     },
     {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
+      id: "office-research",
+      src: "/images/gallery/professional/office-research.svg",
+      alt: "Legal office research placeholder",
+      title: "Legal Research Workspace",
+      description: "Case analysis, policy review, and drafting practice in professional settings",
+      date: "Ongoing",
+      category: "legal-work",
+      ratio: "landscape",
     },
     {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
+      id: "event-legaltech",
+      src: "/images/gallery/professional/legal-tech-event.svg",
+      alt: "Legal-tech event placeholder",
+      title: "Legal-Tech Conference Session",
+      description: "Participation in discussions on AI compliance, governance, and digital law",
+      date: "Conference 2026",
+      category: "legal-tech-event",
+      ratio: "landscape",
+      featured: true,
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
+      id: "event-hackathon",
+      src: "/images/gallery/professional/legal-hackathon.svg",
+      alt: "Legal hackathon placeholder",
+      title: "Legal AI Product Sprint",
+      description: "Collaborative ideation and prototype testing for legal workflow automation",
+      date: "Hackathon 2026",
+      category: "legal-tech-event",
+      ratio: "landscape",
+    },
+    {
+      id: "award-academic",
+      src: "/images/gallery/professional/award-academic.svg",
+      alt: "Academic award placeholder",
+      title: "Academic Recognition Award",
+      description: "Merit-based achievement for analytical excellence and disciplined study",
+      date: "Awarded 2026",
+      category: "award",
+      ratio: "portrait",
+    },
+    {
+      id: "portrait-speaking",
+      src: "/images/gallery/professional/portrait-speaking.svg",
+      alt: "Public speaking portrait placeholder",
+      title: "Public Speaking and Presentation",
+      description: "Panel and workshop communication for law, AI, and social impact topics",
+      date: "2026",
+      category: "portrait",
+      ratio: "portrait",
     },
   ],
 };

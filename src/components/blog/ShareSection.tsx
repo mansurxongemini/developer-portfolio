@@ -2,6 +2,7 @@
 
 import { Row, Text, Button, useToast } from "@once-ui-system/core";
 import { socialSharing } from "@/resources";
+import { useI18n } from "@/components/I18nProvider";
 
 interface ShareSectionProps {
   title: string;
@@ -30,34 +31,6 @@ const socialPlatforms: Record<string, SocialPlatform> = {
     generateUrl: (title, url) => 
       `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
   },
-  facebook: {
-    name: "facebook",
-    icon: "facebook",
-    label: "Facebook",
-    generateUrl: (title, url) => 
-      `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-  },
-  pinterest: {
-    name: "pinterest",
-    icon: "pinterest",
-    label: "Pinterest",
-    generateUrl: (title, url) => 
-      `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(title)}`,
-  },
-  whatsapp: {
-    name: "whatsapp",
-    icon: "whatsapp",
-    label: "WhatsApp",
-    generateUrl: (title, url) => 
-      `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`,
-  },
-  reddit: {
-    name: "reddit",
-    icon: "reddit",
-    label: "Reddit",
-    generateUrl: (title, url) => 
-      `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`,
-  },
   telegram: {
     name: "telegram",
     icon: "telegram",
@@ -76,6 +49,7 @@ const socialPlatforms: Record<string, SocialPlatform> = {
 
 export function ShareSection({ title, url }: ShareSectionProps) {
   const { addToast } = useToast();
+  const { content } = useI18n();
   // Don't render if sharing is disabled
   if (!socialSharing.display) {
     return null;
@@ -86,13 +60,13 @@ export function ShareSection({ title, url }: ShareSectionProps) {
       await navigator.clipboard.writeText(url);
       addToast({
         variant: "success",
-        message: "Link copied to clipboard",
+        message: content.ui.link_copied,
       });
     } catch (err) {
       console.error('Failed to copy: ', err);
       addToast({
         variant: "danger",
-        message: "Failed to copy link",
+        message: content.ui.copy_failed,
       });
     }
   };
@@ -106,11 +80,11 @@ export function ShareSection({ title, url }: ShareSectionProps) {
   return (
     <Row fillWidth center gap="16" marginTop="32" marginBottom="16">
       <Text variant="label-default-m" onBackground="neutral-weak">
-        Share this post:
+        {content.ui.share_post}
       </Text>
       <Row data-border="rounded" gap="16" horizontal="center" wrap>
-        {enabledPlatforms.map((platform, index) => (
-          <Button key={index} variant="secondary" size="s" href={platform.generateUrl(title, url)} prefixIcon={platform.icon} />
+        {enabledPlatforms.map((platform) => (
+          <Button key={platform.key} variant="secondary" size="s" href={platform.generateUrl(title, url)} prefixIcon={platform.icon} />
         ))}
         
         {socialSharing.platforms.copyLink && (

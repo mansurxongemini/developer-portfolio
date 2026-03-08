@@ -1,0 +1,21 @@
+{
+  "name": "Mansurxon Portfolio",
+  "short_name": "Mansurxon",
+  "description": "Official portfolio website of Mansurxon.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/images/avatar.jpg?v=20260308",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "/trademarks/wordmark-dark.svg",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

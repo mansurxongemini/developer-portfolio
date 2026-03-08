@@ -1,0 +1,179 @@
+{
+  "common": {
+    "home": "Bosh sahifa",
+    "about": "Men haqimda",
+    "work": "Loyihalar",
+    "blog": "Blog",
+    "gallery": "Galereya",
+    "admin": "Admin",
+    "notFound": "Sahifa topilmadi",
+    "notFoundDescription": "Siz qidirayotgan sahifa mavjud emas.",
+    "latestFromBlog": "Blogdan so'nggi maqolalar",
+    "subscribe": "Obuna bo'ling",
+    "introduction": "Kirish",
+    "workExperience": "Ish tajribasi",
+    "studies": "Ta'lim",
+    "technicalSkills": "Texnik ko'nikmalar",
+    "featuredWork": "Tanlangan ish",
+    "language": "Til"
+  },
+  "home": {
+    "title": "Mansurxon Rustamov – Huquq, AI va Tahlil",
+    "description": "Mansurxon Rustamov – Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasidagi ko'prik",
+    "headline": "Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida ko'prik",
+    "subline": "Men Mansurxon, TDYU talabasi, AI dasturchisi va mustaqil tahlilchiman — Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasidagi bo'shliqni to'ldiraman."
+  },
+  "about": {
+    "title": "Men haqimda – Mansurxon Rustamov",
+    "description": "Mansurxon Rustamov bilan tanishing – Huquq talabasi, AI dasturchi va mustaqil tahlilchi",
+    "intro": "Mansurxon Toshkent Davlat Yuridik Universiteti (TDYU) birinchi kurs talabasi, AI dasturchi va mustaqil tahlilchi. Uning ishi Huquqshunoslik, Sun'iy Intellekt va ijtimoiy ta'sir kesishmasida joylashgan."
+  },
+  "blog": {
+    "title": "Huquq, AI va Jamiyat haqida yozuvlar...",
+    "description": "Mansurxon Rustamov yaqinda nima tahlil qilganini o'qing"
+  },
+  "work": {
+    "title": "Loyihalar – Mansurxon Rustamov",
+    "description": "Mansurxon Rustamov tomonidan loyihalar va tahlillar"
+  },
+  "gallery": {
+    "title": "Professional galereya – Mansurxon Rustamov",
+    "description": "Mansurxon Rustamovning huquqiy va analitik faoliyatiga oid vizual hujjatlar",
+    "headline": "Huquq va LegalTech yo'nalishidagi hujjatlashtirilgan rivojlanish",
+    "intro": "Yuridik ta'lim, tahliliy faoliyat, sertifikatlar va professional rivojlanish bosqichlarini ko'rsatuvchi tanlangan vizual to'plam.",
+    "categories": {
+      "certificate": "Sertifikat",
+      "portrait": "Portret",
+      "legal-work": "Yuridik amaliyot",
+      "legal-tech-event": "LegalTech tadbiri",
+      "award": "Mukofot"
+    },
+    "assets": [
+      {
+        "id": "degree-llb",
+        "title": "Daraja: Huquq bakalavri (LL.B.)",
+        "description": "Toshkent Davlat Yuridik Universiteti, bitirish sanasi 2029",
+        "date": "2025 - 2029",
+        "category": "certificate"
+      },
+      {
+        "id": "certificate-aiml",
+        "title": "Sertifikat: AI va ML asoslari",
+        "description": "Machine learning, avtomatlashtirish va legal analytics bo'yicha professional kurs",
+        "date": "Berilgan: 2025",
+        "category": "certificate"
+      },
+      {
+        "id": "portrait-main",
+        "title": "Professional portret",
+        "description": "LegalTech tadbirlari va konferensiya profillari uchun rasmiy foto",
+        "date": "Yangilangan: 2026",
+        "category": "portrait"
+      },
+      {
+        "id": "courthouse-study",
+        "title": "Sud muassasasiga tashrif",
+        "description": "Sud amaliyoti muhiti va yuridik jarayonlarni joyida kuzatish",
+        "date": "Bahor 2026",
+        "category": "legal-work"
+      },
+      {
+        "id": "negotiation-simulation",
+        "title": "Muzokara va mediatsiya simulyatsiyasi",
+        "description": "Huquqiy muloqot va argument qurish bo'yicha amaliy mashg'ulot",
+        "date": "2026",
+        "category": "legal-work"
+      },
+      {
+        "id": "office-research",
+        "title": "Yuridik tadqiqot ish maydoni",
+        "description": "Case analysis, policy review va hujjat loyihalash amaliyoti",
+        "date": "Davom etmoqda",
+        "category": "legal-work"
+      },
+      {
+        "id": "event-legaltech",
+        "title": "LegalTech konferensiya sessiyasi",
+        "description": "AI compliance, governance va digital law mavzularidagi professional muhokamalar",
+        "date": "Konferensiya 2026",
+        "category": "legal-tech-event"
+      },
+      {
+        "id": "event-hackathon",
+        "title": "Legal AI product sprint",
+        "description": "Yuridik jarayonlarni avtomatlashtirish uchun prototip va g'oya sinovi",
+        "date": "Hackathon 2026",
+        "category": "legal-tech-event"
+      },
+      {
+        "id": "award-academic",
+        "title": "Akademik e'tirof mukofoti",
+        "description": "Tahliliy yondashuv va intizomli o'qish uchun merit asosidagi yutuq",
+        "date": "Taqdirlangan: 2026",
+        "category": "award"
+      },
+      {
+        "id": "portrait-speaking",
+        "title": "Ommaviy chiqish va taqdimot",
+        "description": "Huquq, AI va ijtimoiy ta'sir yo'nalishidagi panel va workshop chiqishlari",
+        "date": "2026",
+        "category": "portrait"
+      }
+    ]
+  },
+  "hero": {
+    "badge": "Huquq x AI",
+    "title": "Mansurxon Rustamov",
+    "subtitle": "Huquq. Sun'iy Intellekt. Jamiyat.",
+    "description": "Toshkent Davlat Yuridik Universiteti talabasi va dasturchi. Men kod va qonuniyatlar orqali jamiyatdagi murakkab muammolarga yechim yarataman.",
+    "cta_primary": "Loyihalarni ko'rish",
+    "cta_secondary": "Tahlillarni o'qish"
+  },
+  "timeline": {
+    "badge": "Yo'l xaritasi",
+    "title": "Animatsiyali Rivojlanish Yo'li",
+    "description": "Huquqiy ta'lim, AI dasturlash va mustaqil tahlil birlashgan uzluksiz yo'nalish.",
+    "student_period": "Hozir",
+    "student_title": "TDYU birinchi kurs talabasi",
+    "student_desc": "Yurisprudensiya, Davlat nazariyasi va analitik fikrlashni chuqur o'rganish.",
+    "founder_period": "Hozir",
+    "founder_title": "AI Dasturchi va Founder",
+    "founder_desc": "Alloma AI loyihasini qurish: huquqiy algoritmlar va sun'iy intellekt integratsiyasi.",
+    "focus_period": "Fokus",
+    "focus_title": "Huquq, AI va Jamiyat ko'prigi",
+    "focus_desc": "Texnologik yechimlarni ijtimoiy va huquqiy ehtiyojlar bilan bog'lashga yo'naltirilgan strategiya."
+  },
+  "projects": {
+    "badge": "Loyihalar",
+    "title": "Premium Bento Grid",
+    "description": "Texnik salohiyat, insoniy dinamika va yuridik tafakkur bitta zamonaviy assimetrik kompozitsiyada.",
+    "tech_label": "TEXNOLOGIYALAR VA AI",
+    "tech_title":"Dasturlash",
+    "tech_desc": "Men ishlaydigan asosiy texnologiyalar: ishonchli veb-arxitektura, sun'iy intellekt modellarini integratsiya qilish va xavfsiz tizimlar yaratish",
+    "soft_label": "SHAXSIY KO'NIKMALAR (SOFT SKILLS)",
+    "soft_title": "Liderlik va Kommunikatsiya",
+    "soft_philosophy": "Murakkab yuridik va texnik jarayonlarni oddiy tilda tushuntirish, jamoani to'g'ri yo'naltirish hamda samarali muzokaralar olib borish qobiliyati",
+    "soft_point_1": "Strategik muloqot",
+    "soft_point_2": "Jamoaviy boshqaruv",
+    "soft_point_3": "Fikrlarni aniq yetkazish",
+    "legal_label": "YURISPRUDENSIYA VA TAHLIL",
+    "legal_title": "Yuridik va Analitik Tafakkur",
+    "legal_desc": "Qonun hujjatlarini tizimli tahlil qilish, ehtimoliy huquqiy xatarlarni (risklarni) oldindan baholash va aniq dalillarga asoslangan strategik xulosalar berish.",
+    "legal_point_1": "Normativ tahlil",
+    "legal_point_2": "Huquqiy xatarlarni baholash",
+    "legal_point_3": "Muvofiqlik nazorati",
+    "legal_point_4": "Dalillarga asoslanib qaror qabul qilish"
+  },
+  "featuredWorks": {
+    "featured_endeavors": "Tanlangan yutuqlar",
+    "featured_heading": "Startuplar bizning kelajagimiz. ",
+    "startup_spotlight": "Startup spotlight",
+    "alloma_title": "Alloma AI",
+    "alloma_desc": "Alloma AI O'zbekistondagi talabalar uchun yaratilgan shaxsiy AI mentoridir. U EdTech, maxsus algoritmlar va yuridik AI yo'nalishini bitta maqsadli o'quv tizimida birlashtiradi.",
+    "view_project_btn": "Loyihani ko'rish",
+    "channel_spotlight": "Analitik kanal spotlight",
+    "tahlil_title": "Tahlil",
+    "tahlil_desc": "Huquqiy tahlil, voqealarning mohiyatini va shaxsiy rivojlanish uchun chuqur kontent beruvchi premium Telegram kanal",
+    "join_channel": "Kanalga qo'shilish"
+  }
+}

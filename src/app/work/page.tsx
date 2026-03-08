@@ -1,6 +1,41 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { Meta, Schema } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
+import { WorkContent } from "@/components/WorkContent";
 import { Projects } from "@/components/work/Projects";
+import Script from "next/script";
+
+const projectsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      name: "Alloma AI",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
+      creator: {
+        "@type": "Person",
+        name: "Mansurxon Rustamov",
+        url: `${baseURL}/about`,
+      },
+      url: `${baseURL}/work`,
+      description:
+        "Alloma AI is a personalized AI mentor project focused on education, legal reasoning support, and practical learning workflows.",
+    },
+    {
+      "@type": "CreativeWork",
+      name: "Tahlil",
+      creator: {
+        "@type": "Person",
+        name: "Mansurxon Rustamov",
+        url: `${baseURL}/about`,
+      },
+      url: "https://t.me/tahlil",
+      inLanguage: ["uz", "en", "ru"],
+      description:
+        "Tahlil is an analytical content initiative focused on law, policy, economics, and social impact.",
+    },
+  ],
+};
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -14,7 +49,10 @@ export async function generateMetadata() {
 
 export default function Work() {
   return (
-    <Column maxWidth="m" paddingTop="24">
+    <>
+      <Script id="work-projects-jsonld" type="application/ld+json">
+        {JSON.stringify(projectsJsonLd)}
+      </Script>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -28,10 +66,7 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-        {work.title}
-      </Heading>
-      <Projects />
-    </Column>
+      <WorkContent projects={<Projects />} />
+    </>
   );
 }

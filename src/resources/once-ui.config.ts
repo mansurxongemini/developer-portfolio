@@ -1,4 +1,4 @@
-import {
+import type {
   DataStyleConfig,
   DisplayConfig,
   EffectsConfig,
@@ -14,7 +14,7 @@ import {
 import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://demo.magic-portfolio.com";
+const baseURL: string = "https://mansurxon.dev";
 
 const routes: RoutesConfig = {
   "/": true,
@@ -22,12 +22,14 @@ const routes: RoutesConfig = {
   "/work": true,
   "/blog": true,
   "/gallery": true,
+  "/mansurxon-rustamov-kim": true,
+  "/admin": true,
 };
 
 const display: DisplayConfig = {
   location: true,
   time: true,
-  themeSwitcher: true,
+  themeSwitcher: false,
 };
 
 // Enable password protection on selected routes
@@ -73,7 +75,7 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "system", // dark | light | system
+  theme: "dark", // dark | light | system
   neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
   brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
@@ -187,17 +189,17 @@ const mailchimp: MailchimpConfig = {
 // default schema data
 const schema: SchemaConfig = {
   logo: "",
-  type: "Organization",
-  name: "Once UI",
+  type: "Person",
+  name: "Mansurxon Rustamov",
   description: home.description,
-  email: "lorant@once-ui.com",
+  email: "r.mansurxon01@gmail.com",
 };
 
 // social links
 const sameAs: SameAsConfig = {
-  threads: "https://www.threads.com/@once_ui",
-  linkedin: "https://www.linkedin.com/company/once-ui/",
-  discord: "https://discord.com/invite/5EyAQ4eNdS",
+  threads: "",
+  linkedin: "https://www.linkedin.com/in/mansurxon-rustamov/",
+  discord: "",
 };
 
 // social sharing configuration for blog posts

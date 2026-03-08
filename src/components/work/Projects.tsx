@@ -1,43 +1,36 @@
-import { getPosts } from "@/utils/utils";
-import { Column } from "@once-ui-system/core";
-import { ProjectCard } from "@/components";
+import { getPublishedProjects, type Project } from "@/lib/firestore-server";
+import { ProjectBentoGrid } from "./ProjectBentoGrid";
 
 interface ProjectsProps {
   range?: [number, number?];
   exclude?: string[];
 }
 
-export function Projects({ range, exclude }: ProjectsProps) {
-  let allProjects = getPosts(["src", "app", "work", "projects"]);
+export async function Projects({ range, exclude }: ProjectsProps) {
+  let allProjectsRaw: Project[] = [];
+  try {
+    allProjectsRaw = await getPublishedProjects();
+  } catch {
+    return null;
+  }
 
-  // Exclude by slug (exact match)
+  let allProjects = allProjectsRaw.filter((p) => p.id);
+
   if (exclude && exclude.length > 0) {
-    allProjects = allProjects.filter((post) => !exclude.includes(post.slug));
+    allProjects = allProjects.filter((p) => !exclude.includes(p.slug));
   }
 
   const sortedProjects = allProjects.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
+    const dateA = a.publishedAt instanceof Date ? a.publishedAt : a.createdAt instanceof Date ? a.createdAt : new Date(0);
+    const dateB = b.publishedAt instanceof Date ? b.publishedAt : b.createdAt instanceof Date ? b.createdAt : new Date(0);
+    return dateB.getTime() - dateA.getTime();
   });
 
   const displayedProjects = range
     ? sortedProjects.slice(range[0] - 1, range[1] ?? sortedProjects.length)
     : sortedProjects;
 
-  return (
-    <Column fillWidth gap="xl" marginBottom="40" paddingX="l">
-      {displayedProjects.map((post, index) => (
-        <ProjectCard
-          priority={index < 2}
-          key={post.slug}
-          href={`/work/${post.slug}`}
-          images={post.metadata.images}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          content={post.content}
-          avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={post.metadata.link || ""}
-        />
-      ))}
-    </Column>
-  );
+  if (displayedProjects.length === 0) return null;
+
+  return <ProjectBentoGrid projects={displayedProjects} />;
 }

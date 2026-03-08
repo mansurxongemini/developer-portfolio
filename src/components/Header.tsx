@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import { routes, display, person } from "@/resources";
+import { useI18n } from "./I18nProvider";
 import { ThemeToggle } from "./ThemeToggle";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -44,6 +46,8 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const { content } = useI18n();
+  const { about, blog, work, gallery } = content;
 
   return (
     <>
@@ -183,6 +187,9 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
+            <Flex s={{ hide: true }}>
+              <LanguageSwitcher />
+            </Flex>
             <Flex s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>

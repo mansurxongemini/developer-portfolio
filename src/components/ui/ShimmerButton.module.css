@@ -1,0 +1,82 @@
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  border-radius: 999px;
+  padding: 0.72rem 1.15rem;
+  color: rgba(236, 245, 255, 0.95);
+  background:
+    linear-gradient(180deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 26px rgba(2, 6, 23, 0.4);
+  overflow: hidden;
+  isolation: isolate;
+  text-decoration: none;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(125, 211, 252, 0.72),
+    rgba(167, 139, 250, 0.4),
+    rgba(16, 185, 129, 0.56)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: -110%;
+  left: -38%;
+  width: 32%;
+  height: 320%;
+  transform: rotate(24deg);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0),
+    rgba(186, 230, 253, 0.62),
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer-sweep 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-220%) rotate(24deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.92;
+  }
+  45% {
+    transform: translateX(490%) rotate(24deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(490%) rotate(24deg);
+    opacity: 0;
+  }
+}

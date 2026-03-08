@@ -1,14 +1,25 @@
-import { getPosts } from "@/utils/utils";
+import { getPublishedArticles } from "@/lib/firestore-server";
 import { baseURL, blog, person } from "@/resources";
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const posts = getPosts(["src", "app", "blog", "posts"]);
+  let sortedPosts: { slug: string; title: string; summary: string; publishedAt: string; image?: string; category?: string }[] = [];
 
-  // Sort posts by date (newest first)
-  const sortedPosts = posts.sort((a, b) => {
-    return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
-  });
+  try {
+    const articles = await getPublishedArticles();
+    sortedPosts = articles
+      .map((a) => ({
+        slug: a.slug,
+        title: a.title,
+        summary: a.summary,
+        publishedAt: (a.publishedAt instanceof Date ? a.publishedAt : a.createdAt instanceof Date ? a.createdAt : new Date()).toISOString(),
+        image: a.image,
+        category: a.category,
+      }))
+      .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  } catch {
+    // Firestore unavailable — return empty feed
+  }
 
   // Generate RSS XML
   const rssXml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -31,13 +42,13 @@ export async function GET() {
       .map(
         (post) => `
     <item>
-      <title>${post.metadata.title}</title>
+      <title>${post.title}</title>
       <link>${baseURL}/blog/${post.slug}</link>
       <guid>${baseURL}/blog/${post.slug}</guid>
-      <pubDate>${new Date(post.metadata.publishedAt).toUTCString()}</pubDate>
-      <description><![CDATA[${post.metadata.summary}]]></description>
-      ${post.metadata.image ? `<enclosure url="${baseURL}${post.metadata.image}" type="image/jpeg" />` : ""}
-      ${post.metadata.tag ? `<category>${post.metadata.tag}</category>` : ""}
+      <pubDate>${new Date(post.publishedAt).toUTCString()}</pubDate>
+      <description><![CDATA[${post.summary}]]></description>
+      ${post.image ? `<enclosure url="${baseURL}${post.image}" type="image/jpeg" />` : ""}
+      ${post.category ? `<category>${post.category}</category>` : ""}
       <author>${person.email || "noreply@example.com"} (${person.name})</author>
     </item>`,
       )
