@@ -3,6 +3,7 @@ import "@once-ui-system/core/css/tokens.css";
 import "@/resources/custom.css";
 
 import type { SpacingToken, opacity } from "@once-ui-system/core";
+import { Analytics } from "@vercel/analytics/next";
 import classNames from "classnames";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
@@ -24,14 +25,7 @@ const personJsonLd = {
     "@type": "CollegeOrUniversity",
     name: "Tashkent State University of Law (TSUL)",
   },
-  knowsAbout: [
-    "Law",
-    "Artificial Intelligence",
-    "Next.js",
-    "Python",
-    "Cybersecurity",
-    "Mnemonics",
-  ],
+  knowsAbout: ["Law", "Artificial Intelligence", "Next.js", "Python", "Cybersecurity", "Mnemonics"],
   url: baseURL,
   image: `${baseURL}/images/avatar.jpg`,
   sameAs: [
@@ -233,6 +227,7 @@ export default async function RootLayout({
             </Flex>
           </Flex>
           <Footer />
+          <Analytics />
         </Column>
       </Providers>
     </Flex>
