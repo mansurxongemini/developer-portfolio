@@ -189,7 +189,7 @@ export const Header = () => {
             <Row
               hide
               s={{ hide: false }}
-              gap="10"
+              gap="8"
               vertical="center"
               textVariant="body-default-s"
               suppressHydrationWarning
