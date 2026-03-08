@@ -53,10 +53,10 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/og-image.jpg",
   label: "Home",
-  title: `${person.name}`,
-  description: `${person.role}`,
+  title: "Mansurxon Rustamov | Portfolio",
+  description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat mavzusiga oid tahlillar va loyihalar.",
   headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
   featured: {
     display: true,

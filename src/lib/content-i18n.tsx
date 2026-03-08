@@ -93,10 +93,10 @@ const newsletterByLocale: Record<Locale, Newsletter> = {
 const homeByLocale: Record<Locale, Home> = {
   uz: {
     path: "/",
-    image: "/images/og/home.jpg",
+    image: "/og-image.jpg",
     label: "Bosh sahifa",
-    title: `${personBase.name}`,
-    description: `Huquqshunoslik, Sun'iy Intellekt va Jamiyat mavzusiga oid bo'lgan tahlillar va maqolalar.`,
+    title: "Mansurxon Rustamov | Portfolio",
+    description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat mavzusiga oid tahlillar va loyihalar.",
     headline: <>Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida ko'prik</>,
     featured: {
       display: true,
@@ -121,10 +121,10 @@ const homeByLocale: Record<Locale, Home> = {
   },
   en: {
     path: "/",
-    image: "/images/og/home.jpg",
+    image: "/og-image.jpg",
     label: "Home",
-    title: `${personBase.name} – Law, AI & Analysis`,
-    description: `Law Student, AI Developer & Independent Analyst`,
+    title: "Mansurxon Rustamov | Portfolio",
+    description: "Analyses and projects on Jurisprudence, Artificial Intelligence, and Society.",
     headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
     featured: {
       display: true,
@@ -149,9 +149,9 @@ const homeByLocale: Record<Locale, Home> = {
   },
   ru: {
     path: "/",
-    image: "/images/og/home.jpg",
+    image: "/og-image.jpg",
     label: "Главная",
-    title: `${personBase.name}`,
+    title: "Mansurxon Rustamov | Portfolio",
     description: `Юриспруденция, Искусственный Интеллект и Общество`,
     headline: <>Связывая Юриспруденцию, Искусственный Интеллект и Общество</>,
     featured: {

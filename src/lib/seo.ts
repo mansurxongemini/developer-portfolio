@@ -20,7 +20,7 @@ type BuildOgImageUrlInput = {
   section?: string;
 };
 
-const DEFAULT_OG_IMAGE = "/images/og/default-og.png";
+const DEFAULT_OG_IMAGE = "/og-image.jpg";
 
 function toAbsoluteUrl(pathOrUrl: string): string {
   if (/^https?:\/\//i.test(pathOrUrl)) {
