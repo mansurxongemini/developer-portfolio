@@ -74,6 +74,7 @@ export const Header = () => {
         data-border="rounded"
         s={{
           position: "fixed",
+          padding: "12",
         }}
       >
         <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
@@ -88,8 +89,15 @@ export const Header = () => {
             padding="4"
             horizontal="center"
             zIndex={1}
+            s={{ padding: "8" }}
           >
-            <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
+            <Row
+              s={{ hide: true }}
+              gap="4"
+              vertical="center"
+              textVariant="body-default-s"
+              suppressHydrationWarning
+            >
               {routes["/"] && (
                 <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
               )}
@@ -175,6 +183,55 @@ export const Header = () => {
                   <Line background="neutral-alpha-medium" vert maxHeight="24" />
                   <ThemeToggle />
                 </>
+              )}
+            </Row>
+
+            <Row
+              hide
+              s={{ hide: false }}
+              gap="10"
+              vertical="center"
+              textVariant="body-default-s"
+              suppressHydrationWarning
+            >
+              {routes["/"] && (
+                <ToggleButton size="l" prefixIcon="home" href="/" selected={pathname === "/"} />
+              )}
+
+              {routes["/about"] && (
+                <ToggleButton
+                  size="l"
+                  prefixIcon="person"
+                  href="/about"
+                  selected={pathname === "/about"}
+                />
+              )}
+
+              {routes["/work"] && (
+                <ToggleButton
+                  size="l"
+                  prefixIcon="grid"
+                  href="/work"
+                  selected={pathname.startsWith("/work")}
+                />
+              )}
+
+              {routes["/blog"] && (
+                <ToggleButton
+                  size="l"
+                  prefixIcon="book"
+                  href="/blog"
+                  selected={pathname.startsWith("/blog")}
+                />
+              )}
+
+              {routes["/gallery"] && (
+                <ToggleButton
+                  size="l"
+                  prefixIcon="gallery"
+                  href="/gallery"
+                  selected={pathname.startsWith("/gallery")}
+                />
               )}
             </Row>
           </Row>

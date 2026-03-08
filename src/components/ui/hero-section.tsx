@@ -65,15 +65,15 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
   }, [resolvedCopy.subtitle]);
 
   return (
-    <section className="relative w-full overflow-hidden py-4 md:py-6">
+    <section className="relative w-full overflow-hidden py-1 sm:py-2 md:py-6">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <DynamicAtmosphere />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(125,211,252,0.16),transparent_42%),radial-gradient(circle_at_84%_78%,rgba(45,212,191,0.12),transparent_40%)]" />
       </div>
 
-      <div className="mx-auto grid min-h-[88vh] w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 py-10 md:px-10 md:py-12 lg:grid-cols-12 lg:gap-8 lg:px-14">
+      <div className="mx-auto grid min-h-[66vh] w-full max-w-7xl grid-cols-1 items-start gap-5 px-4 py-4 sm:min-h-[72vh] sm:gap-6 sm:px-5 sm:py-8 md:min-h-[88vh] md:items-center md:gap-10 md:px-10 md:py-12 lg:grid-cols-12 lg:gap-8 lg:px-14">
         <motion.div
-          className="lg:col-span-7"
+          className="max-w-[40rem] lg:col-span-7"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -89,7 +89,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
           <motion.h1
             variants={containerVariants}
-            className="mb-3 text-5xl font-black leading-[0.95] md:text-7xl"
+            className="mb-2 text-[2.05rem] font-black leading-[0.93] sm:text-5xl md:mb-3 md:text-7xl"
             style={{ willChange: "transform, opacity" }}
           >
             {headlineLines.map((line, index) => (
@@ -106,7 +106,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
           <motion.h2
             variants={containerVariants}
-            className="mb-6 text-xl font-medium text-white/90 md:text-2xl"
+            className="mb-3 text-[0.95rem] font-medium leading-snug text-white/90 sm:text-lg md:mb-6 md:text-2xl"
             style={{ willChange: "transform, opacity" }}
           >
             {subtitleLines.map((line, index) => (
@@ -121,9 +121,17 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
             ))}
           </motion.h2>
 
+          <motion.p
+            variants={itemVariants}
+            className="max-w-2xl text-[0.92rem] leading-relaxed text-white/70 sm:text-base md:text-lg md:leading-relaxed"
+            style={{ willChange: "transform, opacity" }}
+          >
+            {resolvedCopy.description}
+          </motion.p>
+
           <motion.div
             variants={itemVariants}
-            className="mt-9 flex flex-wrap items-center gap-3"
+            className="mt-5 flex flex-wrap items-center gap-3 md:mt-9"
             style={{ willChange: "transform, opacity" }}
           >
             <ShimmerButton href="#projects">{resolvedCopy.ctaPrimary}</ShimmerButton>
@@ -136,6 +144,33 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
               {resolvedCopy.ctaSecondary}
             </Link>
           </motion.div>
+
+          <div className="relative mt-4 w-full lg:hidden">
+            <div className="relative overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_16px_36px_rgba(0,0,0,0.45)]">
+              <div className="relative h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-[#070c16] sm:h-56">
+                <Image
+                  src="/images/avatar.jpg"
+                  alt={content.person.name}
+                  fill
+                  loading="eager"
+                  priority
+                  sizes="100vw"
+                  className="object-cover object-top"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(95%_70%_at_76%_0%,rgba(125,211,252,0.34),transparent_55%),linear-gradient(180deg,rgba(3,8,16,0.04)_28%,rgba(3,8,16,0.76)_84%)]"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-cyan-200/85">
+                    Featured Profile
+                  </p>
+                  <h3 className="text-sm font-semibold text-white sm:text-base">{content.person.name}</h3>
+                  <p className="mt-1 text-[11px] text-white/70 sm:text-xs">{content.person.role}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         <div className="relative hidden items-center justify-end lg:col-span-5 lg:flex">
