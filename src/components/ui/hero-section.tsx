@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useMemo } from "react";
 
 import { useI18n } from "@/components/I18nProvider";
@@ -15,7 +16,7 @@ export type HeroCopy = {
   badge: string;
   title: string;
   subtitle: string;
-  description: string;
+  description: ReactNode;
   ctaPrimary: string;
   ctaSecondary: string;
 };
@@ -47,7 +48,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
     badge: content.person.role,
     title: content.home.title,
     subtitle: content.home.description,
-    description: content.home.description,
+    description: content.home.subline,
     ctaPrimary: content.ui.view_project ?? "View Projects",
     ctaSecondary: content.ui.blog ?? "Blog",
   };
@@ -147,7 +148,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
           <div className="relative mt-4 w-full lg:hidden">
             <div className="relative overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_16px_36px_rgba(0,0,0,0.45)]">
-              <div className="relative h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-[#070c16] sm:h-56">
+              <div className="relative h-[280px] w-full overflow-hidden rounded-xl border border-white/10 bg-[#070c16] sm:h-[360px]">
                 <Image
                   src="/images/avatar.jpg"
                   alt={content.person.name}
@@ -165,7 +166,9 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
                   <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-cyan-200/85">
                     Featured Profile
                   </p>
-                  <h3 className="text-sm font-semibold text-white sm:text-base">{content.person.name}</h3>
+                  <h3 className="text-sm font-semibold text-white sm:text-base">
+                    {content.person.name}
+                  </h3>
                   <p className="mt-1 text-[11px] text-white/70 sm:text-xs">{content.person.role}</p>
                 </div>
               </div>
