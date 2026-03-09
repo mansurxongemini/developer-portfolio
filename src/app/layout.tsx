@@ -4,6 +4,7 @@ import "@/resources/custom.css";
 
 import type { SpacingToken, opacity } from "@once-ui-system/core";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import classNames from "classnames";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
@@ -228,6 +229,7 @@ export default async function RootLayout({
           </Flex>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </Column>
       </Providers>
     </Flex>
