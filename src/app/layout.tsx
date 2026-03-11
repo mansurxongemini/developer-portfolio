@@ -80,6 +80,9 @@ export async function generateMetadata() {
       description: home.description,
       images: [`${baseURL}${home.image}`],
     },
+    verification: {
+      google: "_3QI2AMbeGC9VTJy_GWQxaYgVDi9xJp35_zCAbWzHMc",
+    },
     manifest: "/manifest.json",
     icons: {
       icon: "/images/avatar.jpg?v=20260308",
