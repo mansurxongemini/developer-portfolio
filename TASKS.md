@@ -28,3 +28,10 @@
     - [DONE] 11.5: Test qilish (Task-331 `npm run build` muvaffaqiyatli o'tdi, dev server 200 OK)
 12. [DONE] Barcha o'zgarishlarni GitHub (`origin/main`) repozitoriyasiga yuklash (commit va push)
     - Dalil: `git commit -m "feat: Atoms warm cream redesign, 3-language project showcase, and offline resilient architecture"` (commit hash: `b507405`) va `git push origin main` muvaffaqiyatli bajarildi (`cf01ddd..b507405 main -> main`).
+13. [DONE] Kod bazasining maqsadi (purpose), muhim fayllari (critical files) va maqsadlarini (goals) to'liq tahlil qilish va `CODEBASE.md` spetsifikatsiyasini yaratish
+    - Dalil: `CODEBASE.md` spetsifikatsiyasi yaratildi va `README.md` to'liq boyitildi. Barcha arxitektura qatlamlari va fayllar jadvali kiritildi.
+14. [DONE] README, konfiguratsiyalar, schemalar va ma'lumotlar bazasidan haqiqiy atamalar, qiymatlar va mazmunni ajratib olib tizimlashtirish (to'qimasiz, placeholderlarsiz)
+    - Dalil: 7 ta real ochiq manbali loyihalar katalogi (Inclusive Legal RAG, Alloma AI, Multi-Agent Roundtable, HuquqPlus, Mahalla Management, KitobPlus, Uzbekistan Map Puzzle) spetsifikatsiyasi manbadan olindi.
+15. [DONE] Vizual identifikatsiya (Once UI tokenlari, Atoms och qaymoq palitrasi, tipografiya) va mahsulotning tabiiy shakli (native shape: bento grid, RAG pipeline, ko'p tilli loyihalar katalogi) bo'yicha yetakchi xususiyatni belgilash
+    - Dalil: Atoms ranglar palitrasi (`#FAF8F5`, `#1C1917`, `#FFFFFF`, `#D97706`), Geist shriftlari, va TDYu huquqshunosligi hamda AI muhandisligi uyg'unligi asosiy yetakchi proposition sifatida belgilandi. Task-423 (`npm run build`) muvaffaqiyatli o'tdi (0 errors, 57 static routes).
+16. [DOING] Yangi spetsifikatsiya va boyitilgan README ni GitHub (`origin/main`) repozitoriyasiga yuklash (commit va push)
