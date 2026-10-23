@@ -46,5 +46,6 @@
     - Dalil: `messages/uz.json`, `messages/en.json`, `messages/ru.json`, `src/resources/content.tsx`, `src/lib/content-i18n.tsx` va `src/lib/projects-data.ts` fayllaridan barcha sun'iy wireframe belgilar (`LARGE CARD / LEFT`, `MIDDLE CARD`, `LONG CARD / BOTTOM`), soxta korporativ iboralar ("5 yillik liderlik", "junior") to'liq olib tashlandi. TDYu huquqshunosligi, LegalTech RAG va amaliy AI muhandisligi asosida 3 ta tilda realistik yozildi.
 21. [DONE] Aniqlangan dizayn xatoliklarini (oq fonda oq matn, card overflow, ShimmerButton kontrasti, Framer Motion bo'shliqlari, Selene Yu rasmi, duplicate h1, broken telegram link) tuzatish va brauzerda qayta tekshirish
     - Dalil: Browser Design Reviewer subagenti (`6f3270ca-b3e9-419e-9685-db4bf2b04c77`) `http://localhost:3000` ni to'liq tekshirib, barcha 6 ta toifadagi xatoliklar (Home, Work, Blog, Gallery, About, Mobile) bartaraf etilganini va 100% James Clear Atoms uslubi, WCAG AAA kontrasti hamda responsivlik tasdiqlanganini skrinshotlar orqali isbotladi.
-22. [DOING] O'zgarishlarni tekshiruvdan so'ng git orqali commit qilish va foydalanuvchiga to'liq hisobot taqdim etish
+22. [DONE] O'zgarishlarni tekshiruvdan so'ng git orqali commit qilish va foydalanuvchiga to'liq hisobot taqdim etish
+    - Dalil: `git commit` muvaffaqiyatli amalga oshirildi (commit hash: `e5d6d0d`, 22 ta fayl o'zgardi, +292/-323). Barcha tekshiruvlar to'liq o'tdi.
 
