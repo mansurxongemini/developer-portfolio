@@ -49,6 +49,16 @@ export const Header = () => {
   const { content } = useI18n();
   const { about, blog, work, gallery } = content;
 
+  const isHome =
+    pathname === "/" ||
+    pathname === "/uz" ||
+    pathname === "/en" ||
+    pathname === "/ru";
+
+  if (isHome) {
+    return null;
+  }
+
   return (
     <>
       <Fade s={{ hide: true }} fillWidth position="fixed" height="80" zIndex={9} />

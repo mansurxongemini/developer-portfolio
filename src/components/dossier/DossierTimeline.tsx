@@ -2,106 +2,90 @@
 
 import { useI18n } from "@/components/I18nProvider";
 
-interface TimelineYearBlock {
+interface TimelineBlock {
   year: string;
-  leftWork: {
-    role: Record<"uz" | "en" | "ru", string>;
-    project: string;
-    desc: Record<"uz" | "en" | "ru", string>;
-  };
-  rightLaw: {
-    role: Record<"uz" | "en" | "ru", string>;
-    institution: string;
-    desc: Record<"uz" | "en" | "ru", string>;
-  };
+  leftRole: Record<"uz" | "en" | "ru", string>;
+  leftProject: string;
+  leftDesc: Record<"uz" | "en" | "ru", string>;
+  rightRole: Record<"uz" | "en" | "ru", string>;
+  rightInst: string;
+  rightDesc: Record<"uz" | "en" | "ru", string>;
 }
 
-const timelineData: TimelineYearBlock[] = [
+const timelineData: TimelineBlock[] = [
   {
     year: "2026",
-    leftWork: {
-      role: {
-        uz: "AI TIZIMLARI MUHANDISI & ASOSCHI",
-        en: "AI SYSTEMS ENGINEER & FOUNDER",
-        ru: "AI-ИНЖЕНЕР И ОСНОВАТЕЛЬ СИСТЕМ",
-      },
-      project: "Inclusive Legal RAG & Alloma AI",
-      desc: {
-        uz: "LanceDB va gibrid RRF asosidagi ixtisoslashgan statutory RAG hamda doimiy vektor xotirali kognitiv mentor tizimlarini ishlab chiqish.",
-        en: "Production engineering of statutory hybrid RAG architectures (LanceDB + RRF) and persistent vector memory cognitive engines.",
-        ru: "Разработка специализированных statutory RAG платформ (LanceDB + RRF) и когнитивных движков с долговременной памятью.",
-      },
+    leftRole: {
+      uz: "AI TIZIMLARI MUHANDISI & ASOSCHI",
+      en: "AI SYSTEMS ENGINEER & FOUNDER",
+      ru: "AI-ИНЖЕНЕР И ОСНОВАТЕЛЬ",
     },
-    rightLaw: {
-      role: {
-        uz: "YURISPRUDENSIYA TALABASI (LL.B.)",
-        en: "TSUL LAW STUDENT (LL.B.)",
-        ru: "СТУДЕНТ-ЮРИСТ ТГЮУ (LL.B.)",
-      },
-      institution: "Toshkent Davlat Yuridik Universiteti",
-      desc: {
-        uz: "Yurisprudensiya, davlat nazariyasi, konstitutsiyaviy huquq va normativ aktlarni talqin qilish bo'yicha chuqur akademik ta'lim.",
-        en: "Comprehensive curriculum in jurisprudence, theory of state, constitutional law, and statutory interpretation.",
-        ru: "Фундаментальное академическое обучение теории государства и права, конституционному праву и толкованию норм.",
-      },
+    leftProject: "Inclusive Legal RAG & Alloma AI",
+    leftDesc: {
+      uz: "LanceDB va gibrid RRF asosidagi statutory RAG hamda doimiy vektor xotirali kognitiv mentor tizimlarini ishlab chiqish.",
+      en: "Production engineering of statutory hybrid RAG architectures (LanceDB + RRF) and persistent vector memory cognitive engines.",
+      ru: "Разработка специализированных statutory RAG платформ (LanceDB + RRF) и когнитивных движков с долговременной памятью.",
+    },
+    rightRole: {
+      uz: "TDYU HUQUQSHUNOSLIK (LL.B.)",
+      en: "TSUL JURISPRUDENCE (LL.B.)",
+      ru: "ЮРИСПРУДЕНЦИЯ ТГЮУ (LL.B.)",
+    },
+    rightInst: "Toshkent Davlat Yuridik Universiteti",
+    rightDesc: {
+      uz: "Yurisprudensiya, davlat nazariyasi, konstitutsiyaviy huquq va normativ aktlarni talqin qilish bo'yicha chuqur akademik ta'lim.",
+      en: "Comprehensive curriculum in jurisprudence, theory of state, constitutional law, and statutory interpretation.",
+      ru: "Фундаментальное академическое обучение теории государства и права, конституционному праву и толкованию норм.",
     },
   },
   {
     year: "2025",
-    leftWork: {
-      role: {
-        uz: "KO'P AGENTLI TIZIMLAR DASTURCHISI",
-        en: "MULTI-AGENT SYSTEMS DEVELOPER",
-        ru: "РАЗРАБОТЧИК МНОГОАГЕНТНЫХ СИСТЕМ",
-      },
-      project: "Multi-Agent Roundtable & HuquqPlus",
-      desc: {
-        uz: "Karpathy LLM Council asosidagi anonim peer-review va konsensus tizimi hamda fuqarolar uchun ochiq yuridik portalni yaratish.",
-        en: "Collaborative multi-agent debate and anonymous peer-review framework alongside citizen legal information portals.",
-        ru: "Архитектура консенсуса LLM Council с анонимным peer-review и открытый портал правовой помощи гражданам.",
-      },
+    leftRole: {
+      uz: "KO'P AGENTLI TIZIMLAR DASTURCHISI",
+      en: "MULTI-AGENT SYSTEMS DEVELOPER",
+      ru: "РАЗРАБОТЧИК МНОГОАГЕНТНЫХ СИСТЕМ",
     },
-    rightLaw: {
-      role: {
-        uz: "HUQUQIY TAHLIL VA SERTIFIKATLAR",
-        en: "STATUTORY RESEARCH & CERTIFICATIONS",
-        ru: "ПРАВОВАЯ АНАЛИТИКА И СЕРТИФИКАЦИЯ",
-      },
-      institution: "BMT Konvensiyasi (UN CRPD) & LegalTech",
-      desc: {
-        uz: "Nogironlar huquqlari bo'yicha BMT xalqaro konvensiyasi normalarini milliy qonunchilik bilan muvofiqlashtirish tahlillari.",
-        en: "Comparative legal analysis evaluating national legislation against the UN Convention on the Rights of Persons with Disabilities.",
-        ru: "Сравнительно-правовой анализ национального законодательства и норм Конвенции ООН о правах инвалидов.",
-      },
+    leftProject: "Multi-Agent Roundtable & HuquqPlus",
+    leftDesc: {
+      uz: "Karpathy LLM Council asosidagi anonim peer-review va konsensus tizimi hamda fuqarolar uchun ochiq yuridik portalni yaratish.",
+      en: "Collaborative multi-agent debate and anonymous peer-review framework alongside citizen legal information portals.",
+      ru: "Архитектура консенсуса LLM Council с анонимным peer-review и открытый портал правовой помощи гражданам.",
+    },
+    rightRole: {
+      uz: "HUQUQIY TAHLIL VA SERTIFIKATLAR",
+      en: "STATUTORY RESEARCH & CERTIFICATIONS",
+      ru: "ПРАВОВАЯ АНАЛИТИКА И СЕРТИФИКАЦИЯ",
+    },
+    rightInst: "BMT Konvensiyasi (UN CRPD) & LegalTech",
+    rightDesc: {
+      uz: "Nogironlar huquqlari bo'yicha BMT xalqaro konvensiyasi normalarini milliy qonunchilik bilan muvofiqlashtirish tahlillari.",
+      en: "Comparative legal analysis evaluating national legislation against the UN Convention on the Rights of Persons with Disabilities.",
+      ru: "Сравнительно-правовой анализ национального законодательства и норм Конвенции ООН о правах инвалидов.",
     },
   },
   {
     year: "2024",
-    leftWork: {
-      role: {
-        uz: "FULL-STACK DASTURCHI",
-        en: "FULL-STACK ENGINEER",
-        ru: "FULL-STACK РАЗРАБОТЧИК",
-      },
-      project: "Mahalla Management & KitobPlus",
-      desc: {
-        uz: "Mahalla fuqarolar yig'inlari uchun avtomatlashtirilgan reyestrlar va to'liq matnli elektron kutubxona platformasi.",
-        en: "Automated municipal record workflows for local community councils and accessible full-text digital library platforms.",
-        ru: "Цифровизация работы махаллинских комитетов и платформа электронной библиотеки с полнотекстовым поиском.",
-      },
+    leftRole: {
+      uz: "FULL-STACK DASTURCHI",
+      en: "FULL-STACK ENGINEER",
+      ru: "FULL-STACK РАЗРАБОТЧИК",
     },
-    rightLaw: {
-      role: {
-        uz: "AKADEMIK VA YURIDIK TAYYORGARLIK",
-        en: "ACADEMIC & CIVIC FOUNDATIONS",
-        ru: "АКАДЕМИЧЕСКАЯ И ПРАВОВАЯ БАЗА",
-      },
-      institution: "Akademik mukammallik va huquqiy intilish",
-      desc: {
-        uz: "TDYU ga kirish, huquq falsafasi, davlat boshqaruvi va mantiqiy tahlil asoslarini chuqur o'rganish.",
-        en: "Admission to TSUL with academic honors, rigorous study of analytical philosophy, governance, and legal logic.",
-        ru: "Поступление в ТГЮУ с отличием, углублённое изучение философии права, логики и основ государственного управления.",
-      },
+    leftProject: "Mahalla Management & KitobPlus",
+    leftDesc: {
+      uz: "Mahalla fuqarolar yig'inlari uchun avtomatlashtirilgan reyestrlar va to'liq matnli elektron kutubxona platformasi.",
+      en: "Automated municipal record workflows for local community councils and accessible full-text digital library platforms.",
+      ru: "Цифровизация работы махаллинских комитетов и платформа электронной библиотеки с полнотекстовым поиском.",
+    },
+    rightRole: {
+      uz: "AKADEMIK VA YURIDIK TAYYORGARLIK",
+      en: "ACADEMIC & CIVIC FOUNDATIONS",
+      ru: "АКАДЕМИЧЕСКАЯ И ПРАВОВАЯ БАЗА",
+    },
+    rightInst: "Yuridik Fanlar va Dasturlash Asoslari",
+    rightDesc: {
+      uz: "Huquqiy mantiq, algoritmik fikrlash va ijtimoiy jarayonlarni tizimli tahlil qilish asoslarini egallash.",
+      en: "Formative grounding in legal logic, algorithmic problem-solving, and systematic analysis of civic institutions.",
+      ru: "Формирование фундамента в области правовой логики, алгоритмического мышления и системного анализа.",
     },
   },
 ];
@@ -109,117 +93,130 @@ const timelineData: TimelineYearBlock[] = [
 const timelineCopy = {
   uz: {
     stamp: "№ 04",
-    title: "RECORD",
-    subtitle: "The Timeline",
-    metaRight: "XRONOLOGIYA · 2024—2026",
-    leftStreamHeader: "AI MUHANDISLIGI & ISHLANMALAR",
-    rightStreamHeader: "YURISPRUDENSIYA & AKADEMIK TA'LIM",
+    title: "Yozuv",
+    subtitle: "The Record",
+    field: "Xronologiya · 2024—2026",
+    leftLegend: "AI Tizimlari Muhandisligi",
+    rightLegend: "TDYU Yurisprudensiya",
+    marginalia: "Har bir bosqich huquqiy bilim va amaliy kodning sinxron o'sishini aks ettiradi.",
   },
   en: {
     stamp: "№ 04",
-    title: "RECORD",
-    subtitle: "The Timeline",
-    metaRight: "ON FILE · 2024—2026",
-    leftStreamHeader: "AI ENGINEERING & PLATFORMS",
-    rightStreamHeader: "JURISPRUDENCE & STATUTORY STUDY",
+    title: "Record",
+    subtitle: "The Record",
+    field: "Chronology · 2024—2026",
+    leftLegend: "AI Systems Engineering",
+    rightLegend: "TSUL Jurisprudence",
+    marginalia: "Each chapter reflects simultaneous mastery of statutory law and software systems.",
   },
   ru: {
     stamp: "№ 04",
-    title: "RECORD",
-    subtitle: "The Timeline",
-    metaRight: "УЧЁТ · 2024—2026",
-    leftStreamHeader: "AI-ИНЖЕНЕРИЯ И СИСТЕМЫ",
-    rightStreamHeader: "ЮРИСПРУДЕНЦИЯ И ТА'ЛИМ ТГЮУ",
+    title: "Запись",
+    subtitle: "The Record",
+    field: "Хронология · 2024—2026",
+    leftLegend: "Инженерия Систем ИИ",
+    rightLegend: "Юриспруденция ТГЮУ",
+    marginalia: "Каждый этап демонстрирует синхронное развитие юридической экспертизы и программного кода.",
   },
 };
 
 export function DossierTimeline() {
   const { locale } = useI18n();
-  const copy = timelineCopy[locale] || timelineCopy.uz;
+  const t = timelineCopy[locale] || timelineCopy.en;
 
   return (
     <section
+      className="sec record"
       id="timeline"
-      className="relative w-full border-t border-[#f2eee3]/10 bg-[#0b0a06] px-5 py-20 text-[#f2eee3] sm:px-10 lg:px-16"
+      data-theme-trigger="ink"
+      data-tab-target="timeline"
     >
-      {/* Top Header Strip */}
-      <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-[#f2eee3]/15 pb-6">
-        <div className="flex items-center gap-3">
-          <span className="dossier-stamp">{copy.stamp}</span>
-          <h2 className="font-sans text-2xl font-black uppercase tracking-tight text-[#f2eee3] sm:text-3xl">
-            {copy.title}
-          </h2>
-          <span className="font-serif text-lg italic text-[#a8a29e] sm:text-xl">
-            {copy.subtitle}
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            {t.stamp}
           </span>
+          <h2 className="sec-head__title">
+            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+          </h2>
         </div>
+        <p className="sec-head__field font-mono">{t.field}</p>
+      </header>
 
-        <div className="font-mono text-xs uppercase tracking-widest text-[#78716c]">
-          {copy.metaRight}
+      {/* Left Rail Field Card */}
+      <dl className="field record__rail" data-clip>
+        <div>
+          <dt>Institut</dt>
+          <dd>Toshkent Davlat Yuridik Universiteti</dd>
         </div>
-      </div>
-
-      {/* Stream Column Headers */}
-      <div className="mt-12 hidden grid-cols-2 gap-16 border-b border-[#f2eee3]/10 pb-4 font-mono text-xs font-bold uppercase tracking-wider md:grid">
-        <div className="text-right text-[#ff5100]">
-          {copy.leftStreamHeader}
+        <div>
+          <dt>Kurs</dt>
+          <dd>1-kurs talabasi (2025—2029)</dd>
         </div>
-        <div className="text-left text-[#f2eee3]">
-          {copy.rightStreamHeader}
+        <div>
+          <dt>Yo'nalish</dt>
+          <dd>Statut Huquqi & AI Muhandisligi</dd>
         </div>
-      </div>
+        <div>
+          <dt>Fokus</dt>
+          <dd>RAG · Multi-Agent · Vektor Xotira</dd>
+        </div>
+      </dl>
 
-      {/* Central Thread Timeline Container */}
-      <div className="relative mt-12 space-y-20">
-        {/* Central Red Glowing Thread Line (desktop) */}
-        <div
-          aria-hidden
-          className="absolute bottom-4 left-1/2 top-4 hidden w-[1px] -translate-x-1/2 bg-[#ff5100]/60 md:block"
-        />
+      {/* Center Animated Scrub Line & Year Columns */}
+      <div className="record__body">
+        <div className="alibi" data-alibi>
+          <div className="alibi__line" data-alibi-line aria-hidden="true" />
 
-        {timelineData.map((block) => (
-          <div key={block.year} className="relative">
-            {/* Giant Wireframe Outline Year in Center */}
-            <div className="relative z-10 flex justify-center pb-6">
-              <div className="flex items-center gap-3 rounded-full border border-[#f2eee3]/15 bg-[#0b0a06] px-6 py-2 shadow-xl">
-                <span className="h-2 w-2 rounded-full bg-[#ff5100] pulse-orange-dot" />
-                <span className="dossier-wireframe-text font-sans text-4xl font-black tracking-tight sm:text-5xl">
-                  {block.year}
-                </span>
-                <span className="h-2 w-2 rounded-full bg-[#ff5100] pulse-orange-dot" />
-              </div>
-            </div>
-
-            {/* Two Branching Cards (Left & Right) */}
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-16">
-              {/* Left Branch (AI & Systems) */}
-              <div className="group rounded-[2px] border border-[#f2eee3]/10 bg-[#131108] p-6 text-left transition-all duration-300 hover:border-[#ff5100] hover:shadow-[0_0_24px_rgba(255,81,0,0.1)] md:text-right">
-                <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#ff5100]">
-                  {block.leftWork.role[locale]}
-                </div>
-                <h4 className="mt-1 font-sans text-lg font-bold text-[#f2eee3]">
-                  {block.leftWork.project}
-                </h4>
-                <p className="mt-2 text-xs leading-relaxed text-[#a8a29e]">
-                  {block.leftWork.desc[locale]}
-                </p>
-              </div>
-
-              {/* Right Branch (Law & Jurisprudence) */}
-              <div className="group rounded-[2px] border border-[#f2eee3]/10 bg-[#131108] p-6 text-left transition-all duration-300 hover:border-[#f2eee3]/40">
-                <div className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#d6d3d1]">
-                  {block.rightLaw.role[locale]}
-                </div>
-                <h4 className="mt-1 font-sans text-lg font-bold text-[#f2eee3]">
-                  {block.rightLaw.institution}
-                </h4>
-                <p className="mt-2 text-xs leading-relaxed text-[#a8a29e]">
-                  {block.rightLaw.desc[locale]}
-                </p>
-              </div>
-            </div>
+          <div className="alibi__legend font-mono">
+            <span>{t.leftLegend}</span>
+            <span>{t.rightLegend}</span>
           </div>
-        ))}
+
+          {timelineData.map((block) => (
+            <div key={block.year} className="alibi__year" data-alibi-year>
+              <div className="alibi__y">
+                <span className="alibi__drop" aria-hidden="true" />
+                <span className="alibi__yn font-display">{block.year}</span>
+              </div>
+
+              {/* Left Column (AI Engineering) */}
+              <div className="alibi__col pr-4">
+                <article className="entry" data-clip>
+                  <span className="entry__tag font-mono">{block.leftRole[locale]}</span>
+                  <h4 className="entry__who font-display text-lg font-bold text-[#f2eee3]">
+                    {block.leftProject}
+                  </h4>
+                  <p className="entry__what mt-1 font-body text-sm leading-relaxed">
+                    {block.leftDesc[locale]}
+                  </p>
+                  <span className="entry__when font-mono">{block.year}</span>
+                </article>
+              </div>
+
+              {/* Right Column (TSUL Jurisprudence) */}
+              <div className="alibi__col pl-4">
+                <article className="entry" data-clip>
+                  <span className="entry__tag font-mono text-[#f2eee3]/70">
+                    {block.rightRole[locale]}
+                  </span>
+                  <h4 className="entry__who font-display text-lg font-bold text-[#f2eee3]">
+                    {block.rightInst}
+                  </h4>
+                  <p className="entry__what mt-1 font-body text-sm leading-relaxed">
+                    {block.rightDesc[locale]}
+                  </p>
+                  <span className="entry__when font-mono">{block.year}</span>
+                </article>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="marginalia record__margin font-serif">
+          <span className="marginalia__ast mr-1">*</span>
+          {t.marginalia}
+        </p>
       </div>
     </section>
   );

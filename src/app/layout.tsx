@@ -121,6 +121,22 @@ export default async function RootLayout({
       )}
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add("has-js");`,
+          }}
+        />
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=satoshi@300,400,500,700,900,301,401,501,701,901&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" href="/images/avatar.jpg?v=20260308b" type="image/jpeg" />
         <link rel="shortcut icon" href="/images/avatar.jpg?v=20260308b" type="image/jpeg" />
         <link rel="apple-touch-icon" href="/images/avatar.jpg?v=20260308b" />

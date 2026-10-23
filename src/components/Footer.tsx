@@ -1,9 +1,23 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Row, IconButton, SmartLink, Text } from "@once-ui-system/core";
 import { person, social } from "@/resources";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
+  const pathname = usePathname() ?? "";
   const currentYear = new Date().getFullYear();
+
+  const isHome =
+    pathname === "/" ||
+    pathname === "/uz" ||
+    pathname === "/en" ||
+    pathname === "/ru";
+
+  if (isHome) {
+    return null;
+  }
 
   return (
     <Row as="footer" fillWidth padding="8" horizontal="center" s={{ direction: "column" }}>

@@ -1,190 +1,283 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { useI18n } from "@/components/I18nProvider";
-import { ArrowDown, Send, ArrowUpRight } from "lucide-react";
 
 const heroContent = {
   uz: {
-    subjectLabel: "SUBJECT",
+    subjectLabel: "Predmet",
     subjectName: "Mansurxon Rustamov",
-    fieldLabel: "FIELD",
-    fieldVal: "Statutory Law & AI",
-    statusLabel: "STATUS",
-    statusVal: "Open for select initiatives",
-    registryLabel: "RECORD",
-    registryVal: "TSUL · 2025-2029",
-    headlineSolid: "BRIDGING LAW",
-    headlineWireframe: "AND INTELLIGENCE",
+    roleLabel: "Yo'nalish",
+    roleVal: "TDYU Huquqshunosi & AI Tizimlari Muhandisi",
+    locationLabel: "Manzil",
+    locationVal: "Toshkent, UZ",
+    statusLabel: "Holat",
+    statusVal: "Loyiha va tadqiqotlar uchun ochiq",
+    recordLabel: "Yozuv",
+    recordVal: "TDYU (TSUL) · 2025—2029",
+    codeLabel: "Arxiv",
+    codeVal: "7 ta ochiq manbali tizim",
+    headlineLine1: "HUQUQ VA",
+    headlineLine2: "NEYRON KOD",
+    footnoteAst: "*",
     footnote:
-      "*Legally speaking. First-year law student at Tashkent State University of Law and AI systems engineer. Building production RAG pipelines, cognitive vector memory, and multi-agent consensus frameworks.",
-    viewWorkBtn: "№ 04 · The Evidence",
-    telegramBtn: "Tahlil Channel ↗",
-    badgeText: "• MANSURXON RUSTAMOV • TDYU VA SUN'IY INTELLEKT • 2026 • ",
+      "Toshkent davlat yuridik universiteti 1-kurs talabasi va AI muhandisi. Normativ qonun hujjatlarini aniq, gallyutsinatsiyasiz va ijtimoiy himoyaga yo'naltirilgan statutory RAG hamda kognitiv xotira tizimlariga aylantiraman.",
+    badgeText: "TDYU HUQUQSHUNOSLIK • AI TIZIMLARI MUHANDISI • 2026 • ",
+    badgeLabel: "Ishni ko'rish",
+    noteTitle: "Yurisprudensiya va Kod Arxitekturasi",
+    noteClose: "Yopish",
   },
   en: {
-    subjectLabel: "SUBJECT",
+    subjectLabel: "Subject",
     subjectName: "Mansurxon Rustamov",
-    fieldLabel: "FIELD",
-    fieldVal: "Statutory Law & AI",
-    statusLabel: "STATUS",
+    roleLabel: "Field",
+    roleVal: "TSUL Jurisprudence & AI Systems Engineer",
+    locationLabel: "Location",
+    locationVal: "Tashkent, UZ",
+    statusLabel: "Status",
     statusVal: "Open for select initiatives",
-    registryLabel: "RECORD",
-    registryVal: "TSUL · 2025-2029",
-    headlineSolid: "BRIDGING LAW",
-    headlineWireframe: "AND INTELLIGENCE",
+    recordLabel: "Record",
+    recordVal: "TSUL · 2025—2029",
+    codeLabel: "Archive",
+    codeVal: "7 Open-Source Systems",
+    headlineLine1: "BRIDGING LAW",
+    headlineLine2: "NEURAL CODE",
+    footnoteAst: "*",
     footnote:
-      "*Legally speaking. First-year law student at Tashkent State University of Law and AI systems engineer. Building production RAG pipelines, cognitive vector memory, and multi-agent consensus frameworks.",
-    viewWorkBtn: "№ 04 · The Evidence",
-    telegramBtn: "Tahlil Channel ↗",
-    badgeText: "• MANSURXON RUSTAMOV • TSUL LAW & AI SYSTEMS • 2026 • ",
+      "First-year law student at Tashkent State University of Law and AI systems engineer. Bridging statutory legislation with production RAG architectures, cognitive memory, and multi-agent consensus protocols.",
+    badgeText: "TSUL STATUTORY LAB • AI SYSTEMS ARCHITECTURE • 2026 • ",
+    badgeLabel: "Explore file",
+    noteTitle: "Statutory Law & Neural Code Architecture",
+    noteClose: "Close",
   },
   ru: {
-    subjectLabel: "SUBJECT",
+    subjectLabel: "Предмет",
     subjectName: "Мансурхон Рустамов",
-    fieldLabel: "FIELD",
-    fieldVal: "Право и Архитектуры ИИ",
-    statusLabel: "STATUS",
+    roleLabel: "Профиль",
+    roleVal: "Юриспруденция ТГЮУ и Инженерия ИИ",
+    locationLabel: "Локация",
+    locationVal: "Ташкент, UZ",
+    statusLabel: "Статус",
     statusVal: "Открыт к сотрудничеству",
-    registryLabel: "RECORD",
-    registryVal: "ТГЮУ · 2025-2029",
-    headlineSolid: "BRIDGING LAW",
-    headlineWireframe: "AND INTELLIGENCE",
+    recordLabel: "Запись",
+    recordVal: "ТГЮУ · 2025—2029",
+    codeLabel: "Архив",
+    codeVal: "7 открытых систем ИИ",
+    headlineLine1: "ПРАВО И",
+    headlineLine2: "НЕЙРОННЫЙ КОД",
+    footnoteAst: "*",
     footnote:
-      "*Юридически безупречно. Студент ТГЮУ и инженер систем ИИ. Разработка гибридных statutory RAG, когнитивной памяти и многоагентного консенсуса.",
-    viewWorkBtn: "№ 04 · The Evidence",
-    telegramBtn: "Канал «Тахлил» ↗",
-    badgeText: "• МАНСУРХОН РУСТАМОВ • ТГЮУ И АРХИТЕКТУРЫ ИИ • 2026 • ",
+      "Студент 1-го курса ТГЮУ и инженер систем ИИ. Соединяю нормативно-правовые акты с проверяемой когнитивной векторной памятью, гибридным RRF и многоагентным консенсусом.",
+    badgeText: "ТГЮУ ПРАВОВОЙ ЛАБ • АРХИТЕКТУРЫ ИИ • 2026 • ",
+    badgeLabel: "Открыть дело",
+    noteTitle: "Правовая Норма и Код Архитектуры",
+    noteClose: "Закрыть",
   },
 };
 
 export function DossierHero() {
   const { locale } = useI18n();
   const t = heroContent[locale] || heroContent.en;
-
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const [noteOpen, setNoteOpen] = useState(false);
 
   return (
     <section
+      className="hero sec"
       id="hero"
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[#0b0a06] px-6 py-8 text-[#f2eee3] sm:px-12 lg:px-20"
+      data-theme="ink-deep"
+      data-theme-trigger="ink-deep"
+      data-tab-target="hero"
     >
-      {/* Background Universal Classical Plaster Bust with Orange Translucent Wrap */}
-      <div className="hero__bust">
-        <Image
-          src="/images/jopecuro_bag-1400.jpg"
-          alt="Boredom, apprehended"
-          fill
-          priority
-          className="object-cover object-right"
-          unoptimized
-        />
-      </div>
+      <h1 className="sr-only">
+        {t.subjectName} — {t.roleVal}. {t.headlineLine1} {t.headlineLine2}.
+      </h1>
 
-      {/* Ambient flashlight beam */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-1/4 top-1/3 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,81,0,0.18)_0%,transparent_65%)] blur-2xl"
-      />
+      {/* Layer 1: The Dark Room (Bust at 12%, headline in outline) */}
+      <div className="hero__layer hero__layer--base" aria-hidden="true">
+        <div className="hero__bust">
+          <Image
+            src="/images/avatar.jpg"
+            alt={t.subjectName}
+            fill
+            priority
+            className="object-cover object-top"
+          />
+        </div>
 
-      {/* Top Dossier Metadata Strip */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-y-3 border-b border-[#f2eee3]/10 pb-6 font-mono text-[11px] tracking-wider text-[#a8a29e]">
-        <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
-          <div className="flex items-center gap-2">
-            <span className="text-[#78716c]">{t.subjectLabel}</span>
-            <span className="font-semibold uppercase text-[#f2eee3]">{t.subjectName}</span>
-          </div>
-          <div className="hidden items-center gap-2 sm:flex">
-            <span className="text-[#78716c]">{t.fieldLabel}</span>
-            <span className="text-[#e7e5e4]">{t.fieldVal}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#78716c]">{t.statusLabel}</span>
-            <span className="flex items-center gap-1.5 font-medium text-[#ff5100]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#ff5100] pulse-orange-dot" />
-              {t.statusVal}
+        <div className="hero__title">
+          <div className="hero__line">
+            <span className="hero__word" data-redact data-redact-mode="hero">
+              {t.headlineLine1}
             </span>
           </div>
-        </div>
-
-        <div className="hidden font-mono text-[10px] uppercase text-[#78716c] md:block">
-          {t.registryLabel} · {t.registryVal}
+          <div className="hero__line hero__line--2">
+            <span
+              className="hero__word hero__word--outline"
+              data-redact
+              data-redact-mode="hero"
+            >
+              {t.headlineLine2}
+            </span>
+            <span className="hero__word hero__word--fill" data-hero-fill>
+              {t.headlineLine2}
+            </span>
+            <button
+              className="hero__star"
+              type="button"
+              onClick={() => setNoteOpen(true)}
+              data-cursor="Izoh"
+              aria-label="Izohni ochish"
+            >
+              *
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Monumental Headline Area */}
-      <div className="relative z-10 my-auto max-w-4xl py-12">
-        <div className="space-y-0.5">
-          <h1 className="text-left font-sans text-5xl font-black uppercase tracking-tight text-[#f2eee3] sm:text-7xl md:text-8xl lg:text-[7.6rem] lg:leading-[0.9]">
-            <span className="block">{t.headlineSolid}</span>
-            <span className="dossier-wireframe-text block">{t.headlineWireframe}</span>
-          </h1>
+      {/* Layer 2: The Torch Spotlight (Reveals lit copy with vibrant orange fill) */}
+      <div className="torch" data-torch aria-hidden="true">
+        <div className="torch__inner" data-torch-inner>
+          <div className="hero__layer hero__layer--lit">
+            <div className="hero__bust">
+              <Image
+                src="/images/avatar.jpg"
+                alt=""
+                fill
+                priority
+                className="object-cover object-top"
+              />
+            </div>
+            <div className="hero__title">
+              <div className="hero__line">
+                <span className="hero__word" data-redact data-redact-mode="hero">
+                  {t.headlineLine1}
+                </span>
+              </div>
+              <div className="hero__line hero__line--2">
+                <span
+                  className="hero__word hero__word--lit"
+                  data-redact
+                  data-redact-mode="hero"
+                >
+                  {t.headlineLine2}
+                </span>
+                <span className="hero__star">*</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Lead Footnote Quote */}
-        <div className="mt-8 max-w-xl font-serif text-sm italic leading-relaxed text-[#d6d3d1] sm:text-base">
-          <p>
-            <span className="text-[#ff5100] font-sans font-bold not-italic mr-1">*</span>
+      {/* Layer 3: Foreground UI Paperwork */}
+      <div className="hero__ui">
+        <dl className="field hero__field" data-clip>
+          <div>
+            <dt>{t.subjectLabel}</dt>
+            <dd>{t.subjectName}</dd>
+          </div>
+          <div>
+            <dt>{t.roleLabel}</dt>
+            <dd>{t.roleVal}</dd>
+          </div>
+          <div>
+            <dt>{t.locationLabel}</dt>
+            <dd>{t.locationVal}</dd>
+          </div>
+          <div>
+            <dt>{t.statusLabel}</dt>
+            <dd>
+              <span className="field__dot" aria-hidden="true" />
+              {t.statusVal}
+            </dd>
+          </div>
+          <div>
+            <dt>{t.recordLabel}</dt>
+            <dd>{t.recordVal}</dd>
+          </div>
+          <div>
+            <dt>{t.codeLabel}</dt>
+            <dd>
+              <a href="#work">{t.codeVal}</a>
+            </dd>
+          </div>
+        </dl>
+
+        <div className="hero__aside">
+          <p className="marginalia hero__margin" data-clip>
+            <button
+              type="button"
+              onClick={() => setNoteOpen(true)}
+              className="marginalia__ast-btn mr-1 font-mono text-[#ff5100]"
+              aria-label="Izoh"
+            >
+              {t.footnoteAst}
+            </button>
             {t.footnote}
           </p>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="mt-10 flex flex-wrap items-center gap-4">
-          <button
-            onClick={() => scrollToSection("work")}
-            className="group flex items-center gap-2.5 rounded-[2px] bg-[#f2eee3] px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-[#0b0a06] transition-all duration-200 hover:bg-[#ff5100] hover:text-white hover:shadow-[0_0_24px_rgba(255,81,0,0.5)]"
-          >
-            <span>{t.viewWorkBtn}</span>
-            <ArrowDown size={14} className="transition-transform group-hover:translate-y-0.5" />
-          </button>
 
           <a
-            href="https://t.me/+OWASsFa4TGg2MWYy"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-2 rounded-[2px] border border-[#f2eee3]/20 bg-[#131108] px-5 py-3.5 font-mono text-xs font-semibold uppercase tracking-wider text-[#e7e5e4] transition-all duration-200 hover:border-[#ff5100] hover:text-[#ff5100]"
+            href="#about"
+            className="hero__badge"
+            data-clip
+            data-magnetic
+            aria-label={t.badgeLabel}
           >
-            <Send size={13} className="text-[#ff5100]" />
-            <span>{t.telegramBtn}</span>
+            <svg viewBox="0 0 120 120" className="badge-spin" aria-hidden="true">
+              <defs>
+                <path
+                  id="circlePathHero"
+                  d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
+                />
+              </defs>
+              <text>
+                <textPath href="#circlePathHero">{t.badgeText}</textPath>
+              </text>
+            </svg>
+            <span className="badge-spin__center" aria-hidden="true">
+              ↓
+            </span>
+            <span className="hero__badge-label">{t.badgeLabel}</span>
           </a>
         </div>
       </div>
 
-      {/* Bottom Bar: Circular Spinning Badge & Footer Tag */}
-      <div className="relative z-10 flex items-end justify-between border-t border-[#f2eee3]/10 pt-6">
-        <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-[#78716c]">
-          <span className="h-1.5 w-1.5 bg-[#ff5100]" />
-          <span>STATUTORY GROUNDING & CODE EXHIBITS · 2026</span>
-        </div>
+      <div className="vignette" aria-hidden="true" />
 
-        {/* Rotating Circular Badge (Jopecuro signature) */}
+      {/* Explanatory Modal on clicking asterisk '*' */}
+      {noteOpen && (
         <div
-          onClick={() => scrollToSection("about")}
-          className="group relative h-28 w-28 cursor-pointer text-[#d6d3d1] transition hover:text-[#ff5100]"
-          title="Scroll to Dossier"
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[300] flex items-center justify-center bg-black/75 p-6 backdrop-blur-sm"
+          onClick={() => setNoteOpen(false)}
         >
-          <svg className="badge-spin h-full w-full" viewBox="0 0 120 120">
-            <defs>
-              <path
-                id="heroCirclePath"
-                d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
-              />
-            </defs>
-            <text className="fill-current font-mono text-[9.5px] uppercase tracking-[0.16em]">
-              <textPath href="#heroCirclePath">
-                {t.badgeText}
-              </textPath>
-            </text>
-          </svg>
-          <div className="absolute inset-0 flex items-center justify-center font-mono text-xs font-bold transition-transform group-hover:translate-y-1">
-            ↓
+          <div
+            className="relative max-w-lg rounded-sm border border-[#ff5100]/40 bg-[#e9e3d2] p-8 text-[#131108] shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between border-b border-[#131108]/15 pb-3">
+              <span className="stamp font-mono text-xs">HUQUQ + KOD</span>
+              <button
+                type="button"
+                onClick={() => setNoteOpen(false)}
+                className="font-mono text-xs uppercase tracking-wider text-[#c53a00] hover:underline"
+              >
+                [{t.noteClose} ✕]
+              </button>
+            </div>
+            <h3 className="font-display text-xl font-bold uppercase tracking-tight text-[#131108]">
+              {t.noteTitle}
+            </h3>
+            <p className="mt-4 font-serif text-base italic leading-relaxed text-[#131108]/90">
+              {t.footnote}
+            </p>
+            <div className="mt-6 border-t border-[#131108]/15 pt-4 text-xs font-mono text-[#131108]/70">
+              MANSURXON RUSTAMOV · TDYU HUQUQSHUNOSLIK VA AI TIZIMLARI
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

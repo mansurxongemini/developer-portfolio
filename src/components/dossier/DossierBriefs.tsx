@@ -3,133 +3,123 @@
 import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
 import { getArticles } from "@/lib/mock-articles";
-import { ArrowRight, Clock, Calendar, ArrowUpRight } from "lucide-react";
 
 const briefsCopy = {
   uz: {
     stamp: "№ 05",
-    title: "BRIEFS",
-    subtitle: "The Analyses",
-    metaRight: "RASMIY TAHLILLAR · 2024—2026",
-    dispatchPrefix: "TAHLILNOMA",
+    title: "Xulosalar",
+    subtitle: "The Briefs",
+    field: "Rasmiy Tahlillar · 2024—2026",
+    dispatchPrefix: "TAHLIL",
     readAction: "Xulosani o'qish",
     allBriefsBtn: "Barcha tahliliy maqolalar blogini ochish",
-    minRead: "daqiqa o'qish",
+    minRead: "daqiqa",
+    marginalia: "Har bir maqola yuridik normalar va sun'iy intellekt arxitekturalarining amaliy tahliliga bag'ishlangan.",
   },
   en: {
     stamp: "№ 05",
-    title: "BRIEFS",
-    subtitle: "The Analyses",
-    metaRight: "PUBLIC DISPATCHES · 2024—2026",
+    title: "Briefs",
+    subtitle: "The Briefs",
+    field: "Public Dispatches · 2024—2026",
     dispatchPrefix: "BRIEF",
     readAction: "Read Analysis",
     allBriefsBtn: "Explore All Analytical Briefs",
-    minRead: "min read",
+    minRead: "min",
+    marginalia: "Each dispatch evaluates statutory jurisprudence and neural systems architecture.",
   },
   ru: {
     stamp: "№ 05",
-    title: "BRIEFS",
-    subtitle: "The Analyses",
-    metaRight: "АНАЛИТИКА · 2024—2026",
+    title: "Выводы",
+    subtitle: "The Briefs",
+    field: "Аналитика · 2024—2026",
     dispatchPrefix: "ОБЗОР",
     readAction: "Читать заключение",
     allBriefsBtn: "Открыть полный каталог аналитики",
-    minRead: "мин чтения",
+    minRead: "мин",
+    marginalia: "Каждый обзор посвящен практическому анализу правовых норм и архитектур ИИ.",
   },
 };
 
 export function DossierBriefs() {
   const { locale } = useI18n();
-  const copy = briefsCopy[locale] || briefsCopy.uz;
+  const t = briefsCopy[locale] || briefsCopy.en;
   const articles = getArticles(locale).slice(0, 3);
 
   return (
     <section
+      className="sec briefs"
       id="briefs"
-      className="relative w-full border-t border-[#131108]/10 bg-[#e9e3d2] px-5 py-20 text-[#131108] sm:px-10 lg:px-16"
+      data-theme-trigger="bone"
+      data-tab-target="briefs"
     >
-      {/* Top Header Strip */}
-      <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-[#131108]/15 pb-6">
-        <div className="flex items-center gap-3">
-          <span className="dossier-stamp">{copy.stamp}</span>
-          <h2 className="font-sans text-2xl font-black uppercase tracking-tight text-[#131108] sm:text-3xl">
-            {copy.title}
-          </h2>
-          <span className="font-serif text-lg italic text-[#57534e] sm:text-xl">
-            {copy.subtitle}
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            {t.stamp}
           </span>
+          <h2 className="sec-head__title">
+            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+          </h2>
         </div>
+        <p className="sec-head__field font-mono">{t.field}</p>
+      </header>
 
-        <div className="font-mono text-xs uppercase tracking-widest text-[#78716c]">
-          {copy.metaRight}
-        </div>
-      </div>
-
-      {/* 3 Briefs Grid */}
-      <div className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3">
-        {articles.map((item, idx) => {
-          const dispatchCode = `№ 0${idx + 1}`;
-          return (
-            <Link
-              key={item.slug}
-              href={`/blog/${item.slug}`}
-              className="group flex flex-col justify-between border border-[#131108]/15 bg-[#FAF8F5] p-6 shadow-sm transition-all duration-300 hover:border-[#ff5100] hover:bg-white hover:shadow-xl hover:-translate-y-1"
-            >
-              <div className="space-y-4">
-                {/* Header row */}
-                <div className="flex items-center justify-between border-b border-[#131108]/10 pb-3">
-                  <span className="font-mono text-xs font-bold text-[#ff5100]">
-                    {copy.dispatchPrefix} {dispatchCode}
-                  </span>
-                  <span className="flex items-center gap-1 font-mono text-[10px] text-[#78716c]">
-                    <Clock size={11} className="text-[#ff5100]" />
-                    <span>
-                      {item.readingTime} {copy.minRead}
-                    </span>
-                  </span>
-                </div>
-
-                {/* Category */}
-                <div className="font-mono text-[10px] font-bold uppercase tracking-wider text-[#57534e]">
-                  {item.category}
-                </div>
-
-                {/* Title */}
-                <h3 className="font-sans text-lg font-bold leading-snug tracking-tight text-[#131108] transition-colors group-hover:text-[#ff5100]">
-                  {item.title}
-                </h3>
-
-                {/* Excerpt */}
-                <p className="font-serif text-xs italic leading-relaxed text-[#57534e] line-clamp-3">
-                  {item.excerpt}
-                </p>
-              </div>
-
-              {/* Footer */}
-              <div className="mt-6 flex items-center justify-between border-t border-[#131108]/10 pt-4 font-mono text-xs">
-                <span className="flex items-center gap-1 text-[11px] text-[#78716c]">
-                  <Calendar size={11} />
-                  <span>{item.publishedAt}</span>
+      {/* Grid of 3 Analytical Briefs */}
+      <div className="briefs__grid">
+        {articles.map((item, idx) => (
+          <Link
+            key={item.slug}
+            href={`/blog/${item.slug}`}
+            className="brief-card group"
+            data-clip
+            data-cursor="O'qish"
+          >
+            <div>
+              <div className="mb-4 flex items-center justify-between border-b border-[#131108]/15 pb-3 font-mono text-xs text-[#131108]/70">
+                <span className="font-bold text-[#c53a00]">
+                  {t.dispatchPrefix} № 0{idx + 1}
                 </span>
-
-                <span className="flex items-center gap-1 font-bold uppercase text-[#131108] transition-colors group-hover:text-[#ff5100]">
-                  <span>{copy.readAction}</span>
-                  <ArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
+                <span>
+                  {item.readingTime} {t.minRead}
                 </span>
               </div>
-            </Link>
-          );
-        })}
+
+              <div className="mb-2 font-mono text-[11px] font-bold uppercase tracking-wider text-[#131108]/60">
+                {item.category}
+              </div>
+
+              <h3 className="font-display text-xl font-bold uppercase leading-snug tracking-tight text-[#131108] transition-colors group-hover:text-[#c53a00]">
+                {item.title}
+              </h3>
+
+              <p className="mt-3 font-serif text-sm italic leading-relaxed text-[#131108]/80 line-clamp-3">
+                {item.excerpt}
+              </p>
+            </div>
+
+            <div className="mt-6 flex items-center justify-between border-t border-[#131108]/15 pt-4 font-mono text-xs font-bold uppercase tracking-wider text-[#131108]">
+              <span>{t.readAction}</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">
+                →
+              </span>
+            </div>
+          </Link>
+        ))}
       </div>
 
-      {/* Bottom Action */}
-      <div className="mt-12 flex justify-end">
+      <div className="col-span-12 mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-[#131108]/15 pt-8">
+        <p className="marginalia font-serif">
+          <span className="marginalia__ast mr-1">*</span>
+          {t.marginalia}
+        </p>
+
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 border-b border-[#131108] pb-1 font-mono text-xs font-bold uppercase tracking-wider text-[#131108] transition hover:border-[#ff5100] hover:text-[#ff5100]"
+          className="btn btn--solid font-mono text-xs uppercase"
+          data-magnetic
         >
-          <span>{copy.allBriefsBtn}</span>
-          <ArrowRight size={14} />
+          <span>{t.allBriefsBtn}</span>
+          <span className="icon-arrow ml-1">↗</span>
         </Link>
       </div>
     </section>

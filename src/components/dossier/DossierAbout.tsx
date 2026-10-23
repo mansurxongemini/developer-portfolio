@@ -1,72 +1,59 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import { useI18n } from "@/components/I18nProvider";
 
 const aboutContent = {
   uz: {
     stamp: "№ 01",
-    title: "ABOUT",
-    subtitle: "The Suspect",
-    metaRight: "FACTS ON FILE · RECORD 2026",
-    stats: [
-      { num: "07+", label: "Open-Source AI Systems" },
-      { num: "04", label: "Statutory Legal Briefs" },
-      { num: "01", label: "Statutory RAG (UN CRPD)" },
-      { num: "2029", label: "TSUL Law Graduation (LL.B.)" },
+    title: "Dosye",
+    subtitle: "Shaxsiyat va Faktlar",
+    field: "Arxiv hujjati",
+    facts: [
+      { odo: "7", pad: 2, suffix: "+", label: "Ochiq manbali tizimlar" },
+      { odo: "4", pad: 2, suffix: "", label: "Huquqiy tahlilnomalar" },
+      { odo: "1", pad: 2, suffix: "", label: "Statutory RAG (UN CRPD)" },
+      { odo: "2029", pad: 4, suffix: "", label: "TDYU tamomlash (LL.B.)" },
     ],
-    p1: "I am Mansurxon Rustamov — a law student at Tashkent State University of Law and an AI systems developer. My mission is bridging formal jurisprudence with neural computation to engineer ",
-    redacted1: "zero-hallucination, statutory citation-grounded legal technologies",
-    p1_end: " for civic access and justice.",
-    p2: "Law is not merely static parchment; it is an executable civic framework. Armed with jurisprudence and modern RAG engineering, I am building specialized systems that translate statutory guarantees into ",
-    redacted2: "verifiable production code, localized vector search, and hybrid RRF algorithms",
-    p2_end: ".",
-    exhibitStamp: "EXHIBIT A",
-    exhibitCaption: "Boredom, apprehended. Tashkent, UZ.",
-    clickRevealHint: "Hover or click to reveal confidential record",
+    manifesto:
+      "Huquq shunchaki qog'ozdagi statik matn emas — u xalqqa xizmat qiladigan ijro mexanizmidir. Toshkent davlat yuridik universitetida huquqshunoslikni o'rganish barobarida, qonun normalarini leksik va semantik qidiruv (LanceDB, SQLite FTS5) orqali gallyutsinatsiyasiz ishlaydigan sun'iy intellekt tizimlariga aylantirmoqdaman. Yurisprudensiya va neyron kod bir-biriga qarama-qarshi emas, balki adolat va shaffoflikni ta'minlovchi yagona poydevordir.",
+    exhibitStamp: "Hujjat A",
+    caption: "Mansurxon Rustamov. Toshkent, UZ.",
+    marginalia: "Faqat real natijalar va ochiq manbali kod. Har bir yechim jamiyat manfaati uchun.",
   },
   en: {
     stamp: "№ 01",
-    title: "ABOUT",
-    subtitle: "The Suspect",
-    metaRight: "FACTS ON FILE · RECORD 2026",
-    stats: [
-      { num: "07+", label: "Open-Source AI Systems" },
-      { num: "04", label: "Statutory Legal Briefs" },
-      { num: "01", label: "Statutory RAG (UN CRPD)" },
-      { num: "2029", label: "TSUL Law Graduation (LL.B.)" },
+    title: "Dossier",
+    subtitle: "Identity & Facts",
+    field: "Record on file",
+    facts: [
+      { odo: "7", pad: 2, suffix: "+", label: "Open-source systems" },
+      { odo: "4", pad: 2, suffix: "", label: "Statutory legal briefs" },
+      { odo: "1", pad: 2, suffix: "", label: "Statutory RAG (UN CRPD)" },
+      { odo: "2029", pad: 4, suffix: "", label: "TSUL Law graduation (LL.B.)" },
     ],
-    p1: "I am Mansurxon Rustamov — a law student at Tashkent State University of Law and an AI systems developer. My mission is bridging formal jurisprudence with neural computation to engineer ",
-    redacted1: "zero-hallucination, statutory citation-grounded legal technologies",
-    p1_end: " for civic access and justice.",
-    p2: "Law is not merely static parchment; it is an executable civic framework. Armed with jurisprudence and modern RAG engineering, I am building specialized systems that translate statutory guarantees into ",
-    redacted2: "verifiable production code, localized vector search, and hybrid RRF algorithms",
-    p2_end: ".",
-    exhibitStamp: "EXHIBIT A",
-    exhibitCaption: "Boredom, apprehended. Tashkent, UZ.",
-    clickRevealHint: "Hover or click to reveal confidential record",
+    manifesto:
+      "Law is not merely static parchment; it is an executable civic framework. While mastering jurisprudence at Tashkent State University of Law, I engineer specialized hybrid RAG pipelines (LanceDB, SQLite FTS5, RRF) that ground language models in statutory guarantees with zero hallucination. Formal jurisprudence and neural computation are not adversaries — together they form an immutable foundation for verifiable justice.",
+    exhibitStamp: "Exhibit A",
+    caption: "Mansurxon Rustamov. Tashkent, UZ.",
+    marginalia: "Verifiable engineering and open-source architectures. Built for civic access.",
   },
   ru: {
     stamp: "№ 01",
-    title: "ABOUT",
-    subtitle: "The Suspect",
-    metaRight: "АРХИВНЫЕ ДАННЫЕ · 2026",
-    stats: [
-      { num: "07+", label: "Открытых систем ИИ" },
-      { num: "04", label: "Правовых аналитических обзора" },
-      { num: "01", label: "Statutory RAG (ООН CRPD)" },
-      { num: "2029", label: "Степень бакалавра ТГЮУ" },
+    title: "Досье",
+    subtitle: "Личность и Факты",
+    field: "Архивные данные",
+    facts: [
+      { odo: "7", pad: 2, suffix: "+", label: "Открытых систем ИИ" },
+      { odo: "4", pad: 2, suffix: "", label: "Правовых аналитических обзора" },
+      { odo: "1", pad: 2, suffix: "", label: "Statutory RAG (ООН CRPD)" },
+      { odo: "2029", pad: 4, suffix: "", label: "Выпуск из ТГЮУ (LL.B.)" },
     ],
-    p1: "Я — Мансурхон Рустамов, студент Ташкентского государственного юридического университета и инженер систем ИИ. Моя цель — соединить строгость права и мощь нейросетей для создания ",
-    redacted1: "точных, свободных от галлюцинаций правовых технологий",
-    p1_end: " во благо общества.",
-    p2: "Законодательство не должно оставаться лишь текстом на бумаге. Соединяя национальные законы с ",
-    redacted2: "векторной базой LanceDB и гибридным поиском RRF",
-    p2_end: ", мы превращаем правовые гарантии в работающий открытый код.",
-    exhibitStamp: "EXHIBIT A",
-    exhibitCaption: "Boredom, apprehended. Tashkent, UZ.",
-    clickRevealHint: "Нажмите или наведите, чтобы прочесть",
+    manifesto:
+      "Право — это не просто текст на пергаменте, а работающий общественный механизм. Обучаясь в Ташкентском государственном юридическом университете, я разрабатываю гибридные системы RAG (LanceDB, SQLite FTS5, RRF), гарантирующие точную привязку ответов к статьям законодательства без галлюцинаций. Строгость права и гибкость нейросетей взаимно обогащают друг друга.",
+    exhibitStamp: "Экспонат А",
+    caption: "Мансурхон Рустамов. Ташкент, UZ.",
+    marginalia: "Проверяемый открытый код и практическая инженерия на службе общества.",
   },
 };
 
@@ -74,120 +61,89 @@ export function DossierAbout() {
   const { locale } = useI18n();
   const t = aboutContent[locale] || aboutContent.en;
 
-  const [rev1, setRev1] = useState(false);
-  const [rev2, setRev2] = useState(false);
-
   return (
     <section
+      className="sec about"
       id="about"
-      className="relative w-full border-t border-[#131108]/15 bg-[#e9e3d2] px-6 py-24 text-[#131108] sm:px-12 lg:px-20"
+      data-theme-trigger="bone"
+      data-tab-target="about"
     >
-      {/* Top Header Strip */}
-      <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-[#131108]/15 pb-6">
-        <div className="flex items-center gap-3.5">
-          <span className="dossier-stamp">{t.stamp}</span>
-          <h2 className="font-sans text-3xl font-black uppercase tracking-tight text-[#131108] sm:text-4xl">
-            {t.title}
-          </h2>
-          <span className="font-serif text-xl italic text-[#57534e] sm:text-2xl">
-            {t.subtitle}
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            {t.stamp}
           </span>
+          <h2 className="sec-head__title">
+            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+          </h2>
         </div>
+        <p className="sec-head__field font-mono">{t.field}</p>
+      </header>
 
-        <div className="font-mono text-xs uppercase tracking-widest text-[#78716c]">
-          {t.metaRight}
-        </div>
-      </div>
-
-      {/* Main Grid: Left Stats, Right Editorial + Photo */}
-      <div className="mt-16 grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Left Column: Big Numbers with Hairlines */}
-        <div className="space-y-10 lg:col-span-4">
-          {t.stats.map((stat, idx) => (
-            <div
-              key={idx}
-              className="group border-b border-[#131108]/15 pb-6 transition-colors hover:border-[#ff5100]"
-            >
-              <div className="font-sans text-5xl font-black tracking-tight text-[#131108] transition-transform duration-300 group-hover:translate-x-1 sm:text-6xl">
-                {stat.num}
-              </div>
-              <div className="mt-2 font-mono text-xs font-semibold uppercase tracking-wider text-[#57534e]">
-                {stat.label}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Right Column: Editorial Paragraph with Redaction & Pinned Photo */}
-        <div className="space-y-12 lg:col-span-8">
-          <div className="space-y-8 font-sans text-2xl font-medium leading-relaxed text-[#131108] sm:text-3xl lg:text-[2.1rem] lg:leading-[1.38]">
-            <p>
-              {t.p1}
-              <span
-                onClick={() => setRev1(!rev1)}
-                className={`dossier-redacted ${rev1 ? "revealed" : ""}`}
-                title={t.clickRevealHint}
-              >
-                {t.redacted1}
-              </span>
-              {t.p1_end}
-            </p>
-
-            <p className="text-xl leading-relaxed text-[#44403c] sm:text-2xl">
-              {t.p2}
-              <span
-                onClick={() => setRev2(!rev2)}
-                className={`dossier-redacted ${rev2 ? "revealed" : ""}`}
-                title={t.clickRevealHint}
-              >
-                {t.redacted2}
-              </span>
-              {t.p2_end}
-            </p>
-          </div>
-
-          {/* Exhibit Polaroid Frame with Metal Paperclip & Stamp */}
-          <div className="relative max-w-lg pt-6">
-            <div className="dossier-exhibit-frame overflow-hidden p-4 shadow-2xl transition-transform duration-300 hover:rotate-[-0.5deg]">
-              {/* Metallic Paperclip SVG (exact jopecuro match) */}
-              <div className="absolute -top-3 left-6 z-20">
-                <svg
-                  width="18"
-                  height="36"
-                  viewBox="0 0 18 34"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="text-[#57534e] drop-shadow"
+      {/* Rail with 4 Facts & Odometers */}
+      <div className="about__rail">
+        <ul className="facts" role="list">
+          {t.facts.map((fact, idx) => (
+            <li key={idx} className="fact">
+              <span className="fact__num font-display">
+                <span
+                  className="odo"
+                  data-odo={fact.odo}
+                  data-odo-pad={String(fact.pad)}
                 >
-                  <path d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"></path>
-                </svg>
-              </div>
+                  {fact.odo}
+                </span>
+                {fact.suffix}
+              </span>
+              <span className="fact__label font-mono">{fact.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-              {/* Red Stamp EXHIBIT A */}
-              <div className="stamp--exhibit dossier-stamp-dark border-[#dc2626] bg-[#dc2626]/10 text-[#dc2626]">
-                {t.exhibitStamp}
-              </div>
+      {/* Scrub Redacted Manifesto */}
+      <p className="manifesto about__body" data-redact data-redact-mode="scrub">
+        {t.manifesto}
+      </p>
 
-              {/* Photo */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0b0a06]">
-                <Image
-                  src="/images/jopecuro_bag-1400.jpg"
-                  alt="Boredom, apprehended"
-                  fill
-                  className="object-cover object-center filter transition duration-500 hover:scale-[1.02]"
-                  unoptimized
-                />
-              </div>
-
-              {/* Caption */}
-              <div className="mt-3.5 font-serif text-xs italic text-[#57534e]">
-                {t.exhibitCaption}
-              </div>
-            </div>
+      {/* Hung Frame Photo with Clip */}
+      <figure
+        className="about__media frame frame--hung frame--id"
+        data-frame
+        data-tilt="-0.8"
+        data-cursor="Exhibit"
+      >
+        <span className="frame__clip" aria-hidden="true">
+          <svg viewBox="0 0 18 34" width="18" height="34" focusable="false">
+            <path
+              d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </span>
+        <span className="stamp stamp--exhibit font-mono" data-stamp-exhibit aria-hidden="true">
+          {t.exhibitStamp}
+        </span>
+        <div className="frame__mat" data-img-reveal>
+          <div className="relative aspect-[4/5] w-full overflow-hidden shot">
+            <Image
+              src="/images/avatar.jpg"
+              alt="Mansurxon Rustamov — Exhibit A"
+              fill
+              sizes="(max-width: 899px) 92vw, 32vw"
+              className="object-cover object-top"
+            />
           </div>
         </div>
-      </div>
+        <figcaption className="marginalia">{t.caption}</figcaption>
+      </figure>
+
+      <p className="marginalia about__margin">
+        <span className="marginalia__ast mr-1">*</span>
+        {t.marginalia}
+      </p>
     </section>
   );
 }

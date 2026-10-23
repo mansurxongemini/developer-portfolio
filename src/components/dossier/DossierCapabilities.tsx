@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import { useI18n } from "@/components/I18nProvider";
-import { Plus, Minus, CheckCircle2 } from "lucide-react";
 
 interface CapabilityItem {
   num: string;
@@ -99,229 +97,192 @@ const capabilities: CapabilityItem[] = [
         "TypeScript and Next.js frontend with modular agent backends",
       ],
       ru: [
-        "Векторная память Pinecone с семантическим кэшированием",
-        "Динамическая маршрутизация через OpenRouter",
-        "Современный фронтенд на TypeScript и Next.js",
+        "Векторная база Pinecone и высокопроизводительный семантический кэш",
+        "Маршрутизация моделей через OpenRouter с оптимизацией затрат",
+        "Фронтенд на Next.js и TypeScript с модульными бэкендами",
       ],
     },
-    tags: ["Pinecone", "OpenRouter", "TypeScript", "Next.js", "EdTech"],
+    tags: ["Pinecone", "OpenRouter", "TypeScript", "Next.js"],
   },
   {
     num: "04",
     titles: {
-      uz: "NORMATIV HUQUQIY TAHLIL VA YURISPRUDENSIYA",
-      en: "STATUTORY RISK AUDIT & JURISPRUDENCE",
-      ru: "НОРМАТИВНО-ПРАВОВОЙ АНАЛИЗ И АУДИТ",
+      uz: "FUQAROLAR HUQUQIY PORTALLARI",
+      en: "CIVIC LEGAL EMPOWERMENT PLATFORMS",
+      ru: "ОТКРЫТЫЕ ПРАВОВЫЕ ПОРТАЛЫ ГРАЖДАН",
     },
     descs: {
-      uz: "Qonunchilik normalarini tizimli tahlil qilish, normativ ziddiyatlarni aniqlash va qat'iy yuridik xulosalar tayyorlash (TDYU bazasi).",
-      en: "Systematic statutory analysis, compliance auditing, legislative conflict detection, and evidence-grounded legal evaluation (TSUL foundation).",
-      ru: "Системный анализ законодательства, выявление нормативных коллизий и подготовка строгих юридических заключений (база ТГЮУ).",
+      uz: "Fuqarolarning kundalik hayotdagi huquqiy muammolarini hal etish, normativ hujjatlarni oddiy tilda tushuntirish va advokatlar bilan bog'lanish tizimi.",
+      en: "Accessible portals breaking down complex statutory rights for citizens, providing automated legal intake and attorney connection.",
+      ru: "Платформы для правового просвещения, автоматического разъяснения законов простым языком и быстрой связи с адвокатами.",
     },
     points: {
       uz: [
-        "Qonun hujjatlarining ijtimoiy va texnologik sohalarga ta'sirini baholash",
-        "Inson huquqlari va raqamli maxfiylik standartlari nazorati",
-        "Qonunchilik loyihalari bo'yicha mustaqil tahliliy ekspertiza",
+        "Normativ-huquqiy aktlarni semantik qidirish va tezkor xulosa chiqarish",
+        "Telegram bot va veb-portalning yagona sinxron bazasi",
+        "Huquqiy atamalarni soddalashtirilgan interaktiv tushuntirish",
       ],
       en: [
-        "Assessing regulatory impacts on technology, data privacy, and digital rights",
-        "Compliance monitoring against constitutional and international treaties",
-        "Independent analytical briefings on emerging tech legislation",
+        "Semantic indexing of civic codes and rapid statutory summary generation",
+        "Unified real-time synchronization across Web portals and Telegram bots",
+        "Interactive plain-language explanations of complex legal provisions",
       ],
       ru: [
-        "Оценка регуляторного воздействия на технологии и защиту персональных данных",
-        "Контроль соответствия конституционным и международным нормам",
-        "Независимая юридическая экспертиза законопроектов в сфере IT",
+        "Семантический поиск по кодексам и мгновенная генерация правовых справок",
+        "Единая синхронизированная база данных между веб-порталом и Telegram-ботом",
+        "Интерактивное разъяснение юридических терминов понятным языком",
       ],
     },
-    tags: ["TSUL Law", "Compliance", "Statutory Audit", "LegalTech", "Civil Code"],
+    tags: ["FastAPI", "PostgreSQL", "Next.js", "Civic-Tech"],
   },
   {
     num: "05",
     titles: {
-      uz: "ASINXRON BACKEND VA ISHONCHLI PIPELINELAR",
-      en: "ASYNCHRONOUS BACKEND & DATA PIPELINES",
-      ru: "АСИНХРОННЫЙ БЭКЕНД И ИНЖЕНЕРИЯ ДАННЫХ",
+      uz: "SUVEREN AI VA ALGORITMIK XAVFSIZLIK",
+      en: "SOVEREIGN AI & ALGORITHMIC VERIFICATION",
+      ru: "СУВЕРЕННЫЙ ИИ И АЛГОРИТМИЧЕСКИЙ АУДИТ",
     },
     descs: {
-      uz: "Yuqori yuklamalarga chidamli asinxron API servislari, navbatlar (queues) va ma'lumotlar bazasi arxitekturasi.",
-      en: "Resilient asynchronous microservice APIs, background task queues, and zero-downtime data architectures.",
-      ru: "Отказоустойчивые асинхронные API-сервисы, очереди фоновых задач и надёжные структуры данных.",
+      uz: "Lokal serverlarda to'liq maxfiy ishlovchi, tashqi tarmoqqa ma'lumot sizdirmaydigan va yuridik jihatdan tekshiriladigan avtonom AI tizimlari.",
+      en: "Air-gapped on-premise AI deployments guaranteeing sovereign privacy, zero data exfiltration, and verifiable algorithmic auditability.",
+      ru: "Локально развертываемые автономные системы ИИ с гарантией суверенной конфиденциальности и защитой от утечек данных.",
     },
     points: {
       uz: [
-        "FastAPI va Python 3.11+ asinxron runtime",
-        "Redis va Celery orqali og'ir vazifalarni fonda qayta ishlash",
-        "SQLModel, PostgreSQL va xavfsiz autentifikatsiya protokollari",
+        "Lokal Ollama va vLLM inferens infratuzilmasi",
+        "Yuridik ma'lumotlar maxfiyligi va GDPR / milliy qonunchilik talablari",
+        "Avtomatlashtirilgan audit va qarorlar shaffofligi protokoli",
       ],
       en: [
-        "FastAPI runtime with native Python 3.11+ asynchronous concurrency",
-        "Redis and Celery background workers for compute-intensive pipelines",
-        "SQLModel, PostgreSQL, and hardened cryptographic authentication",
+        "Local inference using Ollama and vLLM optimized runtime",
+        "Strict adherence to legal confidentiality and national data sovereignty",
+        "Automated auditing pipeline ensuring complete algorithmic transparency",
       ],
       ru: [
-        "Асинхронный FastAPI бэкенд на Python 3.11+",
-        "Фоновые очереди задач на базе Redis и Celery",
-        "SQLModel, PostgreSQL и строгие протоколы аутентификации",
+        "Локальная инфраструктура на базе Ollama и vLLM",
+        "Полное соответствие требованиям конфиденциальности и суверенитета данных",
+        "Автоматизированный аудит и прозрачность принимаемых решений",
       ],
     },
-    tags: ["FastAPI", "Redis", "Celery", "PostgreSQL", "Docker"],
+    tags: ["Ollama", "vLLM", "Data Sovereignty", "Docker"],
   },
 ];
 
-const capabilitiesCopy = {
+const capCopy = {
   uz: {
     stamp: "№ 02",
-    title: "CAPABILITIES",
-    subtitle: "Modus Operandi",
-    metaRight: "USULLAR 05 · AMALIYOT",
-    summaryTitle: "Amaliy Komponentlar",
-    summaryText:
-      "Huquqshunoslik bilimlari va ilg'or AI muhandisligi sintezi. Har bir uslub amalda sinovdan o'tgan ochiq manbali kod va aniq ilmiy asoslarga tayanadi.",
+    title: "Usullar",
+    subtitle: "Methods",
+    field: "05 Metodologiya",
+    stackTitle: "Stack & Texnologiyalar",
+    marginalia: "Har bir tizim TDYU huquqiy mezonlari va qat'iy dasturiy arxitektura asosida qurilgan.",
   },
   en: {
     stamp: "№ 02",
-    title: "CAPABILITIES",
-    subtitle: "Modus Operandi",
-    metaRight: "METHODS 05 · PRACTICE",
-    summaryTitle: "Core Disciplines",
-    summaryText:
-      "Synthesis of statutory law and frontier AI engineering. Every method is verified through open-source production code and empirical research.",
+    title: "Capabilities",
+    subtitle: "Methods",
+    field: "05 Methods",
+    stackTitle: "Stack & Architecture",
+    marginalia: "Every system is grounded in TSUL statutory rigor and production-grade software engineering.",
   },
   ru: {
     stamp: "№ 02",
-    title: "CAPABILITIES",
-    subtitle: "Modus Operandi",
-    metaRight: "МЕТОДЫ 05 · ПРАКТИКА",
-    summaryTitle: "Ключевые Компетенции",
-    summaryText:
-      "Синтез строгого правового анализа и передовой инженерии ИИ. Каждый метод подтверждён работающим открытым кодом и практикой.",
+    title: "Методы",
+    subtitle: "Methods",
+    field: "05 Методологий",
+    stackTitle: "Стек и Архитектура",
+    marginalia: "Каждая архитектура базируется на юридической строгости ТГЮУ и надежном открытом коде.",
   },
 };
 
 export function DossierCapabilities() {
   const { locale } = useI18n();
-  const copy = capabilitiesCopy[locale] || capabilitiesCopy.uz;
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const t = capCopy[locale] || capCopy.en;
 
   return (
     <section
+      className="sec caps"
       id="capabilities"
-      className="relative w-full border-t border-[#f2eee3]/10 bg-[#0b0a06] px-5 py-20 text-[#f2eee3] sm:px-10 lg:px-16"
+      data-theme-trigger="ink"
+      data-tab-target="capabilities"
     >
-      {/* Top Header Strip */}
-      <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-[#f2eee3]/15 pb-6">
-        <div className="flex items-center gap-3">
-          <span className="dossier-stamp">{copy.stamp}</span>
-          <h2 className="font-sans text-2xl font-black uppercase tracking-tight text-[#f2eee3] sm:text-3xl">
-            {copy.title}
-          </h2>
-          <span className="font-serif text-lg italic text-[#a8a29e] sm:text-xl">
-            {copy.subtitle}
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            {t.stamp}
           </span>
+          <h2 className="sec-head__title">
+            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+          </h2>
         </div>
+        <p className="sec-head__field font-mono">{t.field}</p>
+      </header>
 
-        <div className="font-mono text-xs uppercase tracking-widest text-[#78716c]">
-          {copy.metaRight}
+      {/* Left Rail Field Card */}
+      <dl className="field caps__rail" data-clip>
+        <div>
+          <dt>Arxitektura</dt>
+          <dd>Statutory RAG · Multi-Agent Consensus</dd>
         </div>
-      </div>
-
-      {/* Main Grid: Left Taxonomy, Right Interactive Accordion */}
-      <div className="mt-14 grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Left Column (4 cols) */}
-        <div className="space-y-6 lg:col-span-4">
-          <div className="font-mono text-xs font-semibold uppercase tracking-widest text-[#ff5100]">
-            {copy.summaryTitle}
-          </div>
-          <p className="font-serif text-base italic leading-relaxed text-[#d6d3d1]">
-            {copy.summaryText}
-          </p>
-
-          <div className="space-y-2 border-t border-[#f2eee3]/10 pt-6 font-mono text-xs text-[#a8a29e]">
-            <div>• STATUTORY RAG & CITATIONS</div>
-            <div>• MULTI-AGENT ROUNDTABLE</div>
-            <div>• VECTOR MEMORY & EDTECH</div>
-            <div>• NORMATIVE LEGAL COMPLIANCE</div>
-            <div>• ASYNC BACKEND PIPELINES</div>
-          </div>
+        <div>
+          <dt>Vektor bazasi</dt>
+          <dd>LanceDB · Pinecone · SQLite FTS5</dd>
         </div>
+        <div>
+          <dt>Boshqaruv</dt>
+          <dd>FastAPI · Python 3.11+ · Next.js 16</dd>
+        </div>
+        <div>
+          <dt>Standart</dt>
+          <dd>UN CRPD · O'zbekiston Qonunchiligi</dd>
+        </div>
+      </dl>
 
-        {/* Right Column: Accordion Rows (8 cols) */}
-        <div className="space-y-4 lg:col-span-8">
-          {capabilities.map((item, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div
-                key={item.num}
-                className={`overflow-hidden rounded-[2px] border transition-all duration-300 ${
-                  isOpen
-                    ? "border-[#ff5100] bg-[#131108] shadow-[0_0_24px_rgba(255,81,0,0.12)]"
-                    : "border-[#f2eee3]/15 bg-[#131108]/60 hover:border-[#f2eee3]/40"
-                }`}
-              >
-                {/* Accordion Trigger */}
-                <button
-                  onClick={() => toggle(idx)}
-                  className="flex w-full items-center justify-between bg-transparent p-5 text-left sm:p-6"
-                >
-                  <div className="flex items-center gap-4 sm:gap-6">
-                    <span
-                      className={`font-sans text-2xl font-black transition-colors sm:text-3xl ${
-                        isOpen ? "text-[#ff5100]" : "dossier-wireframe-text"
-                      }`}
-                    >
-                      {item.num}
-                    </span>
-                    <h3 className="font-sans text-sm font-bold uppercase tracking-wider text-[#f2eee3] sm:text-base">
-                      {item.titles[locale]}
-                    </h3>
-                  </div>
+      {/* Accordion Body with Weight Lens */}
+      <div className="caps__body" data-lens>
+        {capabilities.map((cap) => (
+          <div key={cap.num} className="cap" data-cap>
+            <button
+              className="cap__head"
+              type="button"
+              aria-expanded="false"
+              data-cursor="Ochish"
+            >
+              <span className="cap__num font-mono">{cap.num}</span>
+              <span className="cap__name font-display" data-lens-item>
+                {cap.titles[locale]}
+              </span>
+              <span className="cap__plus" aria-hidden="true" />
+            </button>
 
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-[#f2eee3]/20 text-[#f2eee3] transition hover:border-[#ff5100] hover:text-[#ff5100]">
-                    {isOpen ? <Minus size={14} /> : <Plus size={14} />}
-                  </span>
-                </button>
-
-                {/* Accordion Expandable Content */}
-                {isOpen && (
-                  <div className="space-y-4 border-t border-[#f2eee3]/10 p-5 pt-4 sm:p-6 sm:pt-4">
-                    <p className="text-sm leading-relaxed text-[#d6d3d1]">
-                      {item.descs[locale]}
-                    </p>
-
-                    {/* Bullet Points */}
-                    <div className="space-y-2 rounded-[2px] border border-[#f2eee3]/10 bg-[#0b0a06]/60 p-4">
-                      {item.points[locale].map((pt, i) => (
-                        <div key={i} className="flex items-start gap-2.5 text-xs text-[#e7e5e4]">
-                          <CheckCircle2 size={13} className="mt-0.5 shrink-0 text-[#ff5100]" />
-                          <span>{pt}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Stack Badges */}
-                    <div className="flex flex-wrap gap-1.5 pt-2">
-                      {item.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-[2px] border border-[#f2eee3]/15 bg-[#0b0a06] px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-[#a8a29e]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+            <div className="cap__body">
+              <div className="cap__inner">
+                <p className="cap__text font-body text-base leading-relaxed">
+                  {cap.descs[locale]}
+                </p>
+                <ul className="mb-4 space-y-1.5 font-mono text-xs text-[#f2eee3]/80">
+                  {cap.points[locale].map((pt, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-2">
+                      <span className="text-[#ff5100]">▹</span>
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+                <ul className="tags" role="list">
+                  {cap.tags.map((tag, tIdx) => (
+                    <li key={tIdx} className="font-mono">{tag}</li>
+                  ))}
+                </ul>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
+
+      <p className="marginalia caps__margin font-serif">
+        <span className="marginalia__ast mr-1">*</span>
+        {t.marginalia}
+      </p>
     </section>
   );
 }

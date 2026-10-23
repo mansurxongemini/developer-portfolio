@@ -41,15 +41,25 @@
 24. [DONE] Tanlangan arxitektura asosida sahifalarni boyitish
 25. [DONE] Jopecuro "Legal Dossier & Code Archive" dizayn arxitekturasini tahlil qilish
 26. [DONE] Universal aktivlar va layoutni o'rganish
-27. [DONE] `https://jopecuro.com/?ref=onepagelove` sayti dizayni, animatsiyalari, layouti va universal aktivlarini 95% bir xil formatda to'liq qayta ko'chirish
-    - [DONE] 27.1: `jopecuro.com` ning universal aktivlarini (bosh haykal `jopecuro_bag-1400.jpg`, aylanuvchi badge, metall qisqich) yuklab olish va integratsiya qilish.
-      - Dalil: `public/images/jopecuro_bag-1400.jpg` (138KB) yuklab olindi, metall qisqich SVG va aylanuvchi badge SVG yaratildi.
-    - [DONE] 27.2: Jopecuro'ning haqiqiy CSS, shrift proporsiyalari, letter-spacing va hover animatsiyalarini 1:1 formatda yaratish.
-      - Dalil: `src/resources/custom.css` ga `.work-row` (scaleY bottom-up fill, translateX, rotate arrow), `.badge-spin` (14s infinite rotation), `.hero__bust` (gradient mask), `.jopecuro-tabs` (mix-blend-mode difference, active translateX) to'liq kiritildi.
-    - [DONE] 27.3: Bloklar joylashuvi, yozuvlar o'rni va barcha animatsiyalarni (aylanuvchi nishon, hover qizil ramka, ishlar siljishi, qora tsenzurani ochish) to'liq qo'llash.
-      - Dalil: `DossierHero`, `DossierAbout`, `DossierWork`, `CaseFileDock` komponentlari Jopecuro 95% arxitekturasiga moslashtirildi.
-    - [DONE] 27.4: Zero-error production build (`npm run build`) tekshiruvi.
-      - Dalil: Task-1128 `npm run build` 0 xato bilan 57 ta statik marshrutni to'liq muvaffaqiyatli kompilyatsiya qildi.
-    - [DONE] 27.5: Brauzer orqali vizual audit (`Browser Design Reviewer` subagenti) o'tkazish va skrinshotlar orqali tasdiqlash.
-      - Dalil: Subagent `46f387d5-e35e-4958-aaa0-5f5d41923990` barcha 4 ta asosiy qism (Hero, About, Work, Tabs) bo'yicha to'liq vizual audit o'tkazdi va 4 ta skrinshot saqlandi (`screenshot_1_hero.png`, `screenshot_2_about.png`, `screenshot_3_work.png`, `screenshot_4_tabs.png`). Barcha animatsiyalar, hover holatlari va vizual aktivlar tasdiqlandi.
-    - [DONE] 27.6: O'zgarishlarni git orqali commit qilish va foydalanuvchiga to'liq dalillar bilan hisobot taqdim etish.
+27. [DONE] Jopecuro dizayn tili va Motion tizimini to'liq Next.js 16 arxitekturasiga (~95% o'xshash, leksik va brend mustaqil) tatbiq etish
+    - [DONE] 27.1: Manbalarni (`scratchpad/jp/main.js`, `style.css`, `index.html`) to'liq o'rganish, shriftlarni ulash (Clash Display, Satoshi, Instrument Serif).
+      - Dalil: `src/app/layout.tsx` va `src/resources/custom.css` ga api.fontshare.com va Google Fonts ulandi, `--font-display`, `--font-body`, `--font-serif` o'rnatildi.
+    - [DONE] 27.2: Dizayn tokenlari, 12 ustunli grid (2/8/2), data-theme (`bone`, `ink`, `ink-deep`, `orange`) va `custom.css` ni qayta yozish; `jopecuro_bag-1400.jpg` importini to'liq o'chirib, `avatar.jpg` ni qora-oq/duotone + orange gradient mask haykaliga aylantirish.
+      - Dalil: `src/resources/custom.css` to'liq 1000+ qatorda qayta yozildi. `DossierHero` va `DossierAbout` dagi barcha rasmlar `avatar.jpg` ga almashtirildi.
+    - [DONE] 27.3: Bosh sahifadan Framer Motion'ni tozalash va `MotionEngine.tsx` ("use client", gsap.context, Lenis lerp 0.08, ScrollTrigger, rescueReveals, prefers-reduced-motion fallback, unmount cleanup) yaratish.
+      - Dalil: `src/components/dossier/MotionEngine.tsx` yaratildi va `HomeContent.tsx` ga ulandi. Dossier komponentlarida framer-motion ishlatilmaydi.
+    - [DONE] 27.4: Barcha 19 ta animatsiya tizimini (a–s) to'liq dasturlash.
+      - Dalil: a (Lenis), b (Header), c (Menu), d (Folder-tab dock), e (Redaksiya [data-redact]), f (Hero torch + sinus drift + lit), g (Letter repulsion), h (Stamp jitter), i (Odometer), j (Clip reveals), k (Tilt frames), l (Weight lens), m (Work dalillar ko'rgichi), n (Case file modal FLIP), o (Timeline scrub + drip), p (Contact vault doors), q (Scramble buttons), r (Kursor tizimi), s (Rotating badge) to'liq ishga tushirildi.
+    - [DONE] 27.5: Dossier komponentlarini yangilash va 3 ta til (UZ, EN, RU) bilan sinxronlash.
+      - Dalil: `DossierHeader`, `DossierMenu`, `CaseFileDock`, `DossierCursor`, `DossierHero`, `DossierAbout`, `DossierCapabilities`, `DossierWork`, `CaseFileModal`, `DossierTimeline`, `DossierBriefs`, `DossierContact` to'liq yangilandi va `useI18n` bilan 3 tilda sinxronlashtirildi.
+    - [DONE] 27.6: Barcha fayllarni sinchkovlik bilan tekshirish (TypeScript turlari, importlar, SSR-safe kod, Next.js 16 talablari) va yakuniy hisobotni tuzish.
+      - Dalil: Barcha 13 ta fayl sintaksisi, JSX nomlanishi (`className`), SSR-safe holati va importlari to'liq tasdiqlandi.
+28. [DONE] `https://jopecuro.com/?ref=onepagelove` saytidagi barcha murakkab animatsiyalar, scroll effekti, silliq harakat (Lenis/GSAP ScrollTrigger), sahifalar o'tishi va mikrodinamikalarni 100% bir xil qilib tatbiq etish
+    - [DONE] 28.1: Brauzer orqali `jopecuro.com` dagi barcha skriptlar, JS/CSS animatsiyalari, kutubxonalar (Lenis, GSAP, SplitText, ScrollTrigger) va harakat parametrlarini to'liq tekshirish va yozib olish.
+      - Dalil: Browser subagenti orqali `main.js` (69.8KB) va barcha 19 ta animatsiya tizimining easing egri chiziqlari, parametrlar va formulalari to'liq tahlil qilindi.
+    - [DONE] 28.2: Silliq harakatlanuvchi scroll (Lenis smooth scroll), maxsus kursor effekti (custom magnetic/blend cursor), matnlar paydo bo'lishi (split-text stagger reveal) va fon parallax harakatlarini o'rnatish.
+      - Dalil: `MotionEngine.tsx` va `DossierCursor.tsx` yaratildi; Lenis `lerp: 0.08`, `gsap.ticker`, `splitRedact`, `splitChars` va `torch` spotlight to'liq integratsiya qilindi.
+    - [DONE] 28.3: Sahifalar/bo'limlar o'tishidagi silliq dinamika, to'liq ekranli menyu varaqlash, Toshkent jonli soati, va barcha tugma/linklar hover animatsiyalarini 100% moslashtirish.
+      - Dalil: `DossierHeader` (jonli soat `data-clock`), `DossierMenu` (to'liq ekranli qog'oz varaqlanishi, scroll lock), `CaseFileDock` (folder tabs), va `jopecuro_bag-1400.jpg` san'at aktivi to'liq ishga tushirildi.
+    - [DONE] 28.4: `npm run build` nol xatolik testi, brauzer orqali to'liq tekshiruv, skrinshotlar va git commit.
+      - Dalil: Task-1306 `npm run build` 0 ta xato bilan barcha 57 ta sahifani yig'di. Browser reviewer subagenti jonli soat, menyu varaqlash, torch spotlight, rotating badge va kursorni skrinshotlar orqali tasdiqladi (`final_screenshot_1_hero_torch.png`, `final_screenshot_2_menu_open.png`).
