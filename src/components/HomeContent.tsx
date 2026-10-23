@@ -2,6 +2,7 @@
 
 import { Mailchimp } from "@/components";
 import { FeaturedWorks } from "@/components/FeaturedWorks";
+import { LatestArticles } from "@/components/LatestArticles";
 import { useI18n } from "@/components/I18nProvider";
 import { BentoGrid } from "@/components/ui/bento-grid";
 import { HeroSection } from "@/components/ui/hero-section";
@@ -49,33 +50,32 @@ export function HomeContent() {
     <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
       <HeroSection />
       <FeaturedWorks />
-      {routes["/blog"] && (
-        <Column fillWidth marginBottom="l">
-          <BentoGrid
-            copy={{
-              badge: skills.badge,
-              title: skills.title,
-              description: skills.description,
-              techLabel: skills.tech_label,
-              techTitle: skills.tech_title,
-              techDescription: skills.tech_desc,
-              softLabel: skills.soft_label,
-              softTitle: skills.soft_title,
-              softPhilosophy: skills.soft_philosophy,
-              softPoint1: skills.soft_point_1,
-              softPoint2: skills.soft_point_2,
-              softPoint3: skills.soft_point_3,
-              legalLabel: skills.legal_label,
-              legalTitle: skills.legal_title,
-              legalDescription: skills.legal_desc,
-              legalPoint1: skills.legal_point_1,
-              legalPoint2: skills.legal_point_2,
-              legalPoint3: skills.legal_point_3,
-              legalPoint4: skills.legal_point_4,
-            }}
-          />
-        </Column>
-      )}
+      {routes["/blog"] && <LatestArticles />}
+      <Column fillWidth marginBottom="l">
+        <BentoGrid
+          copy={{
+            badge: skills.badge,
+            title: skills.title,
+            description: skills.description,
+            techLabel: skills.tech_label,
+            techTitle: skills.tech_title,
+            techDescription: skills.tech_desc,
+            softLabel: skills.soft_label,
+            softTitle: skills.soft_title,
+            softPhilosophy: skills.soft_philosophy,
+            softPoint1: skills.soft_point_1,
+            softPoint2: skills.soft_point_2,
+            softPoint3: skills.soft_point_3,
+            legalLabel: skills.legal_label,
+            legalTitle: skills.legal_title,
+            legalDescription: skills.legal_desc,
+            legalPoint1: skills.legal_point_1,
+            legalPoint2: skills.legal_point_2,
+            legalPoint3: skills.legal_point_3,
+            legalPoint4: skills.legal_point_4,
+          }}
+        />
+      </Column>
       <Mailchimp />
     </Column>
   );

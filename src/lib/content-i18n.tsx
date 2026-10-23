@@ -257,8 +257,8 @@ const aboutByLocale: Record<Locale, About> = {
           images: [],
         },
         {
-          title: "Kommunikatsiya va liderlik",
-          description: <>5 yillik ko'ngillilik va jamoa bilan ishlash tajribasi, kuchli tashkiliy va aloqa ko'nikmalari.</>,
+          title: "Jamoaviy muloqot va koordinatsiya",
+          description: <>Huquqiy va texnologik loyihalarda jamoaviy koordinatsiya, fikrni aniq yetkazish va tizimli tahlil ko'nikmalari.</>,
           tags: [{ name: "Leadership" }, { name: "Communication" }],
           images: [],
         },
@@ -284,25 +284,32 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Profile",
       description: (
         <>
-          Highly motivated and proactive first-year student at Tashkent State University of Law with
-          4 years of hands-on software development experience and 5 years of volunteer leadership.
-          Seeking Junior Frontend or Python/JavaScript Developer opportunities to deliver high-quality code,
-          strong execution, and analytical thinking shaped by legal studies.
+          I am a first-year Law student at Tashkent State University of Law and an AI Developer.
+          My work centers on the intersection of statutory jurisprudence and modern machine intelligence — developing specialized LegalTech systems, hybrid RAG engines, and civic automation tools.
         </>
       ),
     },
     work: {
       display: true,
-      title: "Work Experience",
+      title: "Work & Engineering Experience",
       experiences: [
         {
-          company: "Ecommerce Project",
+          company: "LegalTech & AI Research",
+          timeframe: "2024 - Present",
+          role: "AI Developer & LegalTech Researcher",
+          achievements: [
+            "Developed Inclusive Legal RAG: a hybrid statutory retrieval engine combining LanceDB, SQLite FTS5, and UN CRPD ontology for disability rights legislation in Uzbekistan.",
+            "Architected Alloma AI cognitive mentor engine with adaptive learning workflows and legal statutory reasoning modules.",
+          ],
+          images: [],
+        },
+        {
+          company: "Civic & Web Engineering",
           timeframe: "2023 - 2024",
           role: "Full-Stack Developer",
           achievements: [
-            "Built a robust full-stack e-commerce platform using React/Next.js and Django/Python.",
-            "Implemented product listing, cart management, and secure order processing.",
-            "Delivered end-to-end integration between frontend and backend services.",
+            "Engineered Mahalla Management & Civic Automation Suite for community administration and citizen registry tracking.",
+            "Built high-performance, accessible web platforms using Next.js, TypeScript, Python, and modern relational databases.",
           ],
           images: [],
         },
@@ -343,8 +350,8 @@ const aboutByLocale: Record<Locale, About> = {
           images: [],
         },
         {
-          title: "Communication & Leadership",
-          description: <>5 years of leadership and volunteer collaboration with strong communication skills.</>,
+          title: "Team Coordination & Analysis",
+          description: <>Clear communication, project coordination, and structured problem-solving across technical and legal domains.</>,
           tags: [{ name: "Leadership" }, { name: "Communication" }],
           images: [],
         },
@@ -361,7 +368,7 @@ const aboutByLocale: Record<Locale, About> = {
     path: "/about",
     label: "Обо мне",
     title: `Обо мне – ${personBase.name}`,
-    description: `Познакомьтесь с ${personBase.name} — junior программистом и студентом ТГЮУ`,
+    description: `${personBase.name} — студент ТГЮУ, разработчик AI и исследователь LegalTech`,
     tableOfContent: { display: true, subItems: false },
     avatar: { display: true },
     calendar: { display: true, link: "https://t.me/rustamovmansurxon" },
@@ -370,25 +377,32 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Профиль",
       description: (
         <>
-          Высокомотивированный студент первого курса Ташкентского государственного юридического университета.
-          Имею 4 года практического опыта в разработке ПО и 5 лет лидерского/волонтерского опыта.
-          Ориентирован на позиции Junior Frontend или Python/JavaScript Developer,
-          применяя React, Next.js, Django и Python для качественной разработки.
+          Студент первого курса Ташкентского государственного юридического университета и AI-разработчик.
+          Занимаюсь практическими исследованиями на стыке юриспруденции и машинного интеллекта: разрабатываю системы гибридного RAG, когнитивные движки и решения для гражданской автоматизации.
         </>
       ),
     },
     work: {
       display: true,
-      title: "Опыт работы",
+      title: "Практический и инженерный опыт",
       experiences: [
         {
-          company: "E-commerce проект",
+          company: "LegalTech и AI исследования",
+          timeframe: "2024 - Настоящее время",
+          role: "AI-разработчик и исследователь",
+          achievements: [
+            "Разработал платформу Inclusive Legal RAG: гибридный поисковый движок на LanceDB, SQLite FTS5 и онтологии Конвенции ООН о правах инвалидов.",
+            "Спроектировал когнитивный ментор Alloma AI с долговременной памятью и модулями правового анализа.",
+          ],
+          images: [],
+        },
+        {
+          company: "Гражданские и веб-проекты",
           timeframe: "2023 - 2024",
           role: "Full-Stack разработчик",
           achievements: [
-            "Разработал full-stack платформу электронной коммерции на React/Next.js и Django/Python.",
-            "Реализовал каталог товаров, корзину и безопасную обработку заказов.",
-            "Обеспечил стабильную интеграцию frontend и backend частей продукта.",
+            "Создал систему автоматизации документооборота и обработки обращений граждан для местного самоуправления (махалли).",
+            "Разрабатывал высокопроизводительные веб-приложения на Next.js, TypeScript, Python и реляционных базах данных.",
           ],
           images: [],
         },
@@ -429,8 +443,8 @@ const aboutByLocale: Record<Locale, About> = {
           images: [],
         },
         {
-          title: "Коммуникация и лидерство",
-          description: <>5 лет лидерского и волонтерского опыта, сильные навыки командной коммуникации.</>,
+          title: "Командная координация и анализ",
+          description: <>Чёткая коммуникация, ведение проектов и структурный анализ правовых и технических задач.</>,
           tags: [{ name: "Leadership" }, { name: "Communication" }],
           images: [],
         },

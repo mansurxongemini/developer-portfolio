@@ -43,7 +43,7 @@ export async function generateMetadata({
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
 
   try {
-    const article = await getArticleBySlug(slug);
+    const article = await getArticleBySlug(slug, locale);
     if (!article || article.status !== "published" || article.locale !== locale) {
       return {
         robots: { index: false, follow: true, "max-image-preview": "large" },
@@ -106,7 +106,7 @@ export default async function ArticlePage({
   let related: PublicArticle[] = [];
 
   try {
-    const fsArticle = await getArticleBySlug(slug);
+    const fsArticle = await getArticleBySlug(slug, locale);
     if (fsArticle && fsArticle.status === "published" && fsArticle.locale === locale) {
       article = toPublicArticle(fsArticle);
     }

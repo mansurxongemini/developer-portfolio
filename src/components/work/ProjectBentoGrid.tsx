@@ -1,20 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/lib/firestore-server";
 
 const layoutPatterns = [
-  "md:col-span-7 md:row-span-2",
-  "md:col-span-5",
-  "md:col-span-5",
-  "md:col-span-7",
-  "md:col-span-6",
-  "md:col-span-6",
   "md:col-span-12",
-  "md:col-span-4",
-  "md:col-span-4",
-  "md:col-span-4",
+  "md:col-span-6",
+  "md:col-span-6",
+  "md:col-span-6",
+  "md:col-span-6",
+  "md:col-span-6",
+  "md:col-span-6",
 ];
 
 interface ProjectBentoGridProps {
@@ -76,16 +74,30 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
                   </span>
                 </div>
 
+                {/* Visual Architecture Preview */}
+                {projectImage && (
+                  <div className="relative my-2 aspect-[16/9] w-full overflow-hidden rounded-xl border border-[#E7E5E4] bg-[#070d18] shadow-sm">
+                    <Image
+                      src={projectImage}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                      priority={index === 0}
+                    />
+                  </div>
+                )}
+
                 {/* Content */}
                 <div className="space-y-3">
                   <h3
-                    className={`max-w-[22ch] font-bold leading-[1.12] tracking-tight text-[#1C1917] ${
-                      isPrimary ? "text-3xl md:text-[2.05rem]" : "text-2xl md:text-[1.8rem]"
+                    className={`max-w-[32ch] font-bold leading-[1.15] tracking-tight text-[#1C1917] ${
+                      isPrimary ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
                     }`}
                   >
                     {project.title}
                   </h3>
-                  <p className="max-w-[46ch] text-[15px] leading-relaxed text-[#57534E] md:text-base">
+                  <p className="max-w-[55ch] text-[14px] leading-relaxed text-[#57534E] md:text-[15px]">
                     {description}
                   </p>
                 </div>

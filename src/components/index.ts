@@ -10,3 +10,5 @@ export { ThemeToggle } from "@/components/ThemeToggle";
 export { CustomMDX } from "@/components/mdx";
 export { LanguageSwitcher } from "@/components/LanguageSwitcher";
 export { I18nProvider, useI18n } from "@/components/I18nProvider";
+export { FeaturedWorks } from "@/components/FeaturedWorks";
+export { LatestArticles } from "@/components/LatestArticles";
