@@ -10,6 +10,7 @@ import { DossierHeader } from "@/components/dossier/DossierHeader";
 import { DossierMenu } from "@/components/dossier/DossierMenu";
 import { DossierFooter } from "@/components/dossier/DossierFooter";
 import { RowPreview } from "@/components/dossier/RowPreview";
+import { HomeDataProvider, useHomeData } from "@/components/HomeData";
 
 const HOME_RE = /^\/(uz|en|ru)?\/?$/;
 
@@ -22,9 +23,11 @@ const PENDING_SEL =
  * the DOM yet when the shell first mounts. The home engine waits for the hero before it starts.
  */
 function MotionEngineHost() {
+  const { ready: contentReady } = useHomeData();
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
+    if (!contentReady) return;
     let tries = 0;
     let t: ReturnType<typeof setTimeout> | undefined;
     const check = () => {
@@ -38,7 +41,7 @@ function MotionEngineHost() {
     return () => {
       if (t) clearTimeout(t);
     };
-  }, []);
+  }, [contentReady]);
 
   return ready ? <MotionEngine /> : null;
 }
@@ -49,10 +52,12 @@ function MotionEngineHost() {
  * appear. Without this the targets stay hidden until the CSS safety net fires.
  */
 function PageMotionHost({ pathname }: { pathname: string }) {
+  const { ready: contentReady } = useHomeData();
   const [rev, setRev] = useState<number | null>(null);
 
   useEffect(() => {
     setRev(null);
+    if (!contentReady) return;
     let tries = 0;
     let t: ReturnType<typeof setTimeout> | undefined;
     const waitForContent = () => {
@@ -66,7 +71,7 @@ function PageMotionHost({ pathname }: { pathname: string }) {
     return () => {
       if (t) clearTimeout(t);
     };
-  }, [pathname]);
+  }, [pathname, contentReady]);
 
   useEffect(() => {
     if (rev === null) return;
@@ -124,6 +129,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   if (isAdmin) return <>{children}</>;
 
   return (
+    <HomeDataProvider>
     <div id="top" className={isHome ? "shell shell--home" : "shell shell--page"}>
       {isHome ? <MotionEngineHost key={"m-" + locale} /> : <PageMotionHost key={"p-" + locale} pathname={pathname} />}
       <DossierCursor />
@@ -140,5 +146,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       {/* Home renders its own closed-stamp .site-foot inside DossierContact. */}
       {isHome ? null : <DossierFooter />}
     </div>
+    </HomeDataProvider>
   );
 }

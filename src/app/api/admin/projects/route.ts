@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { verifyAdminRequest } from "@/lib/admin-auth";
-import { getProjects, createProject, getProjectBySlug } from "@/lib/firestore-server";
+import { listAllProjects, createProject, getProjectBySlug, isFirestoreConfigured } from "@/lib/firestore-server";
 
 // GET - List all projects
 export async function GET(request: NextRequest) {
@@ -10,7 +10,13 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const projects = await getProjects();
+    if (!isFirestoreConfigured()) {
+      return NextResponse.json(
+        { error: "Firestore is not configured on this server (FIREBASE_SERVICE_ACCOUNT_KEY is missing)." },
+        { status: 503 },
+      );
+    }
+    const projects = await listAllProjects();
     return NextResponse.json({ projects });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to fetch projects";
@@ -30,7 +36,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { title, slug, description, content, tags, image, imageUrl, link, status } = body;
+    const { title, shortTitle, slug, description, content, tags, image, imageUrl, link, status } = body;
 
     if (!title || !slug || !description) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -47,6 +53,7 @@ export async function POST(request: NextRequest) {
 
     const id = await createProject({
       title,
+      shortTitle: typeof shortTitle === "string" && shortTitle.trim() ? shortTitle.trim() : undefined,
       slug,
       description,
       content: content || "",

@@ -171,7 +171,7 @@ export default function EditArticlePage() {
         style={{ width: "100%" }}
       >
         <Row fillWidth vertical="center" gap="8" paddingBottom="l">
-          <Button variant="tertiary" size="s" href="/admin/articles" prefixIcon="arrowRight" style={{ transform: "rotate(180deg)" }}>
+          <Button variant="tertiary" size="s" href="/admin/articles" prefixIcon="arrowLeft">
             Back
           </Button>
           <Heading variant="display-strong-m">Edit Article</Heading>

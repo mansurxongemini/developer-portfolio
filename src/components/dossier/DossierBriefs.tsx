@@ -2,33 +2,35 @@
 
 import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
-import { getArticles } from "@/lib/mock-articles";
+import { useHomeData } from "@/components/HomeData";
 
 const briefsCopy = {
   uz: {
     stamp: "№ 05",
     title: "Maqolalar",
-    field: "01",
+    field: "",
     allBriefs: "Barcha maqolalar →",
   },
   en: {
     stamp: "№ 05",
     title: "Articles",
-    field: "01",
+    field: "",
     allBriefs: "All articles →",
   },
   ru: {
     stamp: "№ 05",
     title: "Статьи",
-    field: "01",
+    field: "",
     allBriefs: "Все статьи →",
   },
 };
 
 export function DossierBriefs() {
   const { locale } = useI18n();
-  const t = briefsCopy[locale] || briefsCopy.en;
-  const articles = getArticles(locale).slice(0, 3);
+  const base = briefsCopy[locale] || briefsCopy.en;
+  const { articles: all } = useHomeData();
+  const articles = all.slice(0, 3);
+  const t = { ...base, field: String(articles.length).padStart(2, "0") };
 
   return (
     <section
@@ -57,13 +59,13 @@ export function DossierBriefs() {
               <Link
                 href={`/blog/${item.slug}`}
                 className="brief-row"
-                data-preview={(item as { image?: string }).image || undefined}
+                data-preview={item.image || undefined}
                 data-cursor="Read"
-                aria-label={`${item.title} — ${item.publishedAt}`}
+                aria-label={`${item.title} — ${item.date}`}
               >
                 <span className="brief-row__index">[0{idx + 1}]</span>
                 <span className="brief-row__title">{item.title}</span>
-                <span className="brief-row__date">{item.publishedAt}</span>
+                <span className="brief-row__date">{item.date}</span>
                 <span className="brief-row__arrow" aria-hidden="true">
                   →
                 </span>

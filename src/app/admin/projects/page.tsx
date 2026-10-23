@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { FolderKanban, Pencil, Plus, Trash2, X } from "lucide-react";
 import Link from "next/link";
+import { ImportStarter } from "@/components/admin/ImportStarter";
 import styles from "@/app/admin/projects/page.module.scss";
 
 type ProjectStatus = "published" | "draft";
@@ -137,6 +138,7 @@ export default function ProjectsManagePage() {
   }
 
   async function handleDelete(id: string) {
+    if (!window.confirm("Delete this project? This cannot be undone.")) return;
     setDeletingId(id);
 
     try {
@@ -222,7 +224,9 @@ export default function ProjectsManagePage() {
 
               {!loading && projects.length === 0 && (
                 <tr>
-                  <td colSpan={5}>No projects found.</td>
+                  <td colSpan={5}>
+                    <ImportStarter onDone={fetchProjects} onError={setError} />
+                  </td>
                 </tr>
               )}
 

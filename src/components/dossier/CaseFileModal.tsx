@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
-import { staticProjectsData, LocalizedProjectData } from "@/lib/projects-data";
+import { useHomeData } from "@/components/HomeData";
+import type { HomeProject } from "@/lib/home-types";
 
 const modalLabels = {
   uz: {
@@ -42,38 +43,40 @@ const modalLabels = {
   },
 };
 
-export function CaseFileModal({
-  shortTitles,
-}: {
-  shortTitles: Record<string, string>;
-}) {
+export function CaseFileModal() {
   const { locale } = useI18n();
   const labels = modalLabels[locale] || modalLabels.en;
-  const [currentProject, setCurrentProject] = useState<LocalizedProjectData>(
-    staticProjectsData[0],
-  );
+  const { projects } = useHomeData();
+  const [slug, setSlug] = useState<string | null>(null);
 
   useEffect(() => {
     const handleOpen = (e: any) => {
-      const slug = e.detail?.slug;
-      if (slug) {
-        const found = staticProjectsData.find((p) => p.slug === slug);
-        if (found) setCurrentProject(found);
-      }
+      const next = e.detail?.slug;
+      if (typeof next === "string") setSlug(next);
     };
     window.addEventListener("open-case-modal", handleOpen);
     return () => window.removeEventListener("open-case-modal", handleOpen);
   }, []);
 
-  const t = currentProject.translations[locale] || currentProject.translations.en;
-  const short = shortTitles[currentProject.slug] || currentProject.slug;
-  const currentIndex = staticProjectsData.findIndex((p) => p.slug === currentProject.slug);
-  const nextProject = staticProjectsData[(currentIndex + 1) % staticProjectsData.length];
-  const nextShort = shortTitles[nextProject.slug] || nextProject.slug;
-  const year = currentProject.publishedAt.getFullYear();
+  if (projects.length === 0) return null;
+
+  const currentIndex = Math.max(0, projects.findIndex((p) => p.slug === slug));
+  const currentProject: HomeProject = projects[currentIndex];
+  const nextProject = projects[(currentIndex + 1) % projects.length];
+  const short = currentProject.shortTitle;
+  const nextShort = nextProject.shortTitle;
+  const year = currentProject.year;
+  const linkHost = (() => {
+    try {
+      return currentProject.link ? new URL(currentProject.link).hostname.replace(/^www\./, "") : "";
+    } catch {
+      return "";
+    }
+  })();
+  const isGithub = /github\.com/i.test(currentProject.link);
 
   const handleNext = () => {
-    setCurrentProject(nextProject);
+    setSlug(nextProject.slug);
     const panel = document.querySelector("[data-case-panel]");
     if (panel) panel.scrollTop = 0;
   };
@@ -121,11 +124,11 @@ export function CaseFileModal({
           <dl className="case__meta">
             <div>
               <dt>{labels.field}</dt>
-              <dd>{currentProject.tags[0]}</dd>
+              <dd>{currentProject.category || "—"}</dd>
             </div>
             <div>
               <dt>{labels.stack}</dt>
-              <dd>{currentProject.tags.slice(1, 4).join(" · ")}</dd>
+              <dd>{currentProject.stack.join(" · ") || "—"}</dd>
             </div>
             <div>
               <dt>{labels.year}</dt>
@@ -133,7 +136,7 @@ export function CaseFileModal({
             </div>
             <div>
               <dt>{labels.link}</dt>
-              <dd>{labels.openCode}</dd>
+              <dd>{linkHost || "—"}</dd>
             </div>
           </dl>
 
@@ -144,22 +147,25 @@ export function CaseFileModal({
               alt={short}
               fill
               className="object-contain p-6 bg-[#FAF8F5]"
+              unoptimized={/^https?:/i.test(currentProject.image)}
             />
           </div>
 
-          <p className="case__lede">{t.description}</p>
+          <p className="case__lede">{currentProject.description}</p>
 
           {/* Action CTAs */}
           <div className="case__cta">
-            <a
-              href={currentProject.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn--solid"
-              data-magnetic
-            >
-              <span>GitHub ↗</span>
-            </a>
+            {currentProject.link ? (
+              <a
+                href={currentProject.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn--solid"
+                data-magnetic
+              >
+                <span>{isGithub ? "GitHub ↗" : `${linkHost || "Link"} ↗`}</span>
+              </a>
+            ) : null}
             <Link
               href={`/work/${currentProject.slug}`}
               className="btn btn--ghost"
@@ -178,7 +184,7 @@ export function CaseFileModal({
             onClick={handleNext}
             className="btn btn--ghost"
           >
-            <span>№ 0{((currentIndex + 1) % staticProjectsData.length) + 1} — {nextShort}</span>
+            <span>№ {String(((currentIndex + 1) % projects.length) + 1).padStart(2, "0")} — {nextShort}</span>
             <span aria-hidden="true">→</span>
           </button>
         </div>

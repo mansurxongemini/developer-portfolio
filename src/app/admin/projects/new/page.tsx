@@ -22,6 +22,7 @@ export default function NewProjectPage() {
   const [success, setSuccess] = useState(false);
   const [form, setForm] = useState({
     title: "",
+    shortTitle: "",
     slug: "",
     description: "",
     content: "",
@@ -117,7 +118,7 @@ export default function NewProjectPage() {
         style={{ width: "100%" }}
       >
         <Row fillWidth vertical="center" gap="8" paddingBottom="l">
-          <Button variant="tertiary" size="s" href="/admin" prefixIcon="arrowRight" style={{ transform: "rotate(180deg)" }}>
+          <Button variant="tertiary" size="s" href="/admin/projects" prefixIcon="arrowLeft">
             Back
           </Button>
           <Heading variant="display-strong-m">New Project</Heading>
@@ -149,6 +150,12 @@ export default function NewProjectPage() {
                 value={form.title}
                 onChange={handleTitleChange}
                 required
+              />
+              <Input
+                id="project-short-title"
+                label="Short name for the home list (1–3 words, optional)"
+                value={form.shortTitle}
+                onChange={(e) => setForm((prev) => ({ ...prev, shortTitle: e.target.value }))}
               />
               <Input
                 id="project-slug"

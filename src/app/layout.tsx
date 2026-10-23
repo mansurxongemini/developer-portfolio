@@ -183,7 +183,7 @@ export default async function RootLayout({
           */}
           <script
             dangerouslySetInnerHTML={{
-              __html: `(function(){try{var p=window.location.pathname;var home=/^\\/(uz|en|ru)?\\/?$/.test(p);document.body.setAttribute('data-theme',home?'ink-deep':'bone');}catch(e){}})();`,
+              __html: `(function(){try{var p=window.location.pathname;var home=/^\\/(uz|en|ru)?\\/?$/.test(p);var admin=/^\\/admin(\\/|$)/.test(p);document.body.setAttribute('data-theme',admin?'admin':(home?'ink-deep':'bone'));}catch(e){}})();`,
             }}
           />
           <AnalyticsTracker />

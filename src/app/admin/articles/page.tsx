@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { FilePenLine, Pencil, Plus, Trash2, X } from "lucide-react";
 import Link from "next/link";
+import { ImportStarter } from "@/components/admin/ImportStarter";
 import styles from "@/app/admin/articles/page.module.scss";
 
 interface Article {
@@ -130,6 +131,7 @@ export default function ArticlesPage() {
   }
 
   async function handleDelete(id: string) {
+    if (!window.confirm("Delete this article? This cannot be undone.")) return;
     setDeletingId(id);
 
     try {
@@ -215,7 +217,9 @@ export default function ArticlesPage() {
 
               {!loading && articles.length === 0 && (
                 <tr>
-                  <td colSpan={5}>No articles found.</td>
+                  <td colSpan={5}>
+                    <ImportStarter onDone={fetchArticles} onError={setError} />
+                  </td>
                 </tr>
               )}
 

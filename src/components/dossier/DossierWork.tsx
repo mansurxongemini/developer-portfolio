@@ -1,46 +1,37 @@
 "use client";
 
 import { useI18n } from "@/components/I18nProvider";
-import { staticProjectsData } from "@/lib/projects-data";
+import { useHomeData } from "@/components/HomeData";
 import { CaseFileModal } from "./CaseFileModal";
-
-/** Short 1–3 word exhibit names shown in the row list. */
-const shortTitles: Record<string, string> = {
-  "inclusive-legal-rag": "Inclusive Legal RAG",
-  "alloma-cognitive-engine": "Alloma AI",
-  "multi-agent-roundtable-system": "Roundtable",
-  "huquqplus-uz": "HuquqPlus",
-  "mahalla-management-system": "Mahalla",
-  "kitobplus-app": "KitobPlus",
-  "uzbekistan-map-puzzle": "Map Puzzle",
-};
 
 const workCopy = {
   uz: {
     stamp: "№ 03",
     title: "Loyihalar",
-    field: "07",
+    field: "",
   },
   en: {
     stamp: "№ 03",
     title: "Projects",
-    field: "07",
+    field: "",
   },
   ru: {
     stamp: "№ 03",
     title: "Проекты",
-    field: "07",
+    field: "",
   },
 };
 
 export function DossierWork() {
   const { locale } = useI18n();
-  const t = workCopy[locale] || workCopy.en;
+  const base = workCopy[locale] || workCopy.en;
+  const { projects } = useHomeData();
+  const t = { ...base, field: String(projects.length).padStart(2, "0") };
 
   const tilts = ["-1.4", "1.2", "-0.8", "1.5", "-1.1", "0.9", "-1.3"];
-  const first = staticProjectsData[0];
-  const firstTitle = shortTitles[first.slug] || first.slug;
-  const firstYear = first.publishedAt.getFullYear();
+  const first = projects[0];
+  const firstTitle = first?.shortTitle ?? "";
+  const firstYear = first?.year ?? "";
 
   return (
     <section
@@ -64,10 +55,10 @@ export function DossierWork() {
       {/* Left List of Exhibits */}
       <div className="work__list-wrap">
         <div className="work-list">
-          {staticProjectsData.map((project, idx) => {
+          {projects.map((project, idx) => {
             const tilt = tilts[idx % tilts.length];
-            const short = shortTitles[project.slug] || project.slug;
-            const year = project.publishedAt.getFullYear();
+            const short = project.shortTitle;
+            const year = project.year;
 
             return (
               <button
@@ -91,7 +82,7 @@ export function DossierWork() {
 
                 <span className="ex-row__title">{short}</span>
 
-                <span className="ex-row__cat">{project.tags[0]}</span>
+                <span className="ex-row__cat">{project.category}</span>
 
                 <span className="ex-row__year">{year}</span>
 
@@ -127,12 +118,14 @@ export function DossierWork() {
 
           <div className="frame__mat">
             <div className="viewer__stage" data-viewer-stage>
-              <img
-                src={first.image}
-                alt=""
-                className="is-current"
-                decoding="async"
-              />
+              {first ? (
+                <img
+                  src={first.image}
+                  alt=""
+                  className="is-current"
+                  decoding="async"
+                />
+              ) : null}
             </div>
             <div className="exposure" data-exposure aria-hidden="true" />
           </div>
@@ -144,7 +137,7 @@ export function DossierWork() {
       </aside>
 
       {/* Case File Slide-Up Sheet Modal */}
-      <CaseFileModal shortTitles={shortTitles} />
+      <CaseFileModal />
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { verifyAdminRequest } from "@/lib/admin-auth";
-import { getArticles, createArticle, getArticleBySlug } from "@/lib/firestore-server";
+import { listAllArticles, createArticle, getArticleBySlug, isFirestoreConfigured } from "@/lib/firestore-server";
 
 // GET - List all articles
 export async function GET(request: NextRequest) {
@@ -10,7 +10,13 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const articles = await getArticles();
+    if (!isFirestoreConfigured()) {
+      return NextResponse.json(
+        { error: "Firestore is not configured on this server (FIREBASE_SERVICE_ACCOUNT_KEY is missing)." },
+        { status: 503 },
+      );
+    }
+    const articles = await listAllArticles();
     return NextResponse.json({ articles }, { status: 200 });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Failed to fetch articles";

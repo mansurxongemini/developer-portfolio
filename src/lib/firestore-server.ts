@@ -49,6 +49,8 @@ export interface Article {
 export interface Project {
   id?: string;
   title: string;
+  /** Optional 1–3 word name for the compact project list on the home page. */
+  shortTitle?: string;
   slug: string;
   description: string;
   content: string;
@@ -428,6 +430,86 @@ export async function updateProject(id: string, data: Partial<Project>): Promise
 
 export async function deleteProject(id: string): Promise<void> {
   await getDb().collection(PROJECTS).doc(id).delete();
+}
+
+// ==================== ADMIN LISTINGS (real documents only) ====================
+// The public pages fall back to the starter content when Firestore is empty. The admin
+// panel must NOT: those fallback rows have no document, so they could never be edited.
+
+export function isFirestoreConfigured(): boolean {
+  return safeGetDb() !== null;
+}
+
+async function listCollection<T>(name: string): Promise<T[]> {
+  const snapshot = await getDb().collection(name).get();
+  const items = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...convertTimestamps(doc.data()),
+  })) as unknown as (T & { createdAt?: Date })[];
+  items.sort((a, b) => {
+    const da = a.createdAt instanceof Date ? a.createdAt.getTime() : 0;
+    const db = b.createdAt instanceof Date ? b.createdAt.getTime() : 0;
+    return db - da;
+  });
+  return items;
+}
+
+export async function listAllProjects(): Promise<Project[]> {
+  return listCollection<Project>(PROJECTS);
+}
+
+export async function listAllArticles(): Promise<Article[]> {
+  return listCollection<Article>(ARTICLES);
+}
+
+/**
+ * Copy the starter projects and the real article into Firestore so they can be edited in the
+ * admin panel. Idempotent: anything whose slug already exists is skipped.
+ */
+export async function seedStarterContent(): Promise<{ projects: number; articles: number }> {
+  const db = getDb();
+  let projects = 0;
+  let articles = 0;
+
+  // Lists are ordered newest-first by creation time, so write the last one first: the project
+  // that heads the shipped list ends up heading the saved list as well.
+  for (const p of [...getStaticProjects("uz")].reverse()) {
+    const exists = await db.collection(PROJECTS).where("slug", "==", p.slug).limit(1).get();
+    if (!exists.empty) continue;
+    await createProject({
+      title: p.title,
+      slug: p.slug,
+      description: p.description,
+      content: p.content,
+      tags: p.tags,
+      image: p.image,
+      imageUrl: p.imageUrl,
+      link: p.link,
+      status: "published",
+      publishedAt: p.publishedAt ?? null,
+    });
+    projects++;
+  }
+
+  for (const a of getMockArticles("uz")) {
+    const exists = await db.collection(ARTICLES).where("slug", "==", a.slug).limit(1).get();
+    if (!exists.empty) continue;
+    await createArticle({
+      title: a.title,
+      slug: a.slug,
+      content: a.content,
+      summary: a.excerpt,
+      tags: [a.category],
+      category: a.category,
+      status: "published",
+      image: a.image,
+      imageUrl: a.image,
+      locale: "uz",
+    });
+    articles++;
+  }
+
+  return { projects, articles };
 }
 
 // ==================== PUBLIC CONTENT FETCHERS ====================

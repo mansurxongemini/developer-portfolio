@@ -19,6 +19,7 @@ type ProjectStatus = "draft" | "published";
 type ProjectResponse = {
   id: string;
   title: string;
+  shortTitle?: string;
   slug: string;
   description: string;
   content: string;
@@ -41,6 +42,7 @@ export default function EditProjectPage() {
   const [success, setSuccess] = useState(false);
   const [form, setForm] = useState({
     title: "",
+    shortTitle: "",
     slug: "",
     description: "",
     content: "",
@@ -74,6 +76,7 @@ export default function EditProjectPage() {
         const project: ProjectResponse = data.project;
         setForm({
           title: project.title || "",
+          shortTitle: project.shortTitle || "",
           slug: project.slug || "",
           description: project.description || "",
           content: project.content || "",
@@ -167,7 +170,7 @@ export default function EditProjectPage() {
         style={{ width: "100%" }}
       >
         <Row fillWidth vertical="center" gap="8" paddingBottom="l">
-          <Button variant="tertiary" size="s" href="/admin/projects" prefixIcon="arrowRight" style={{ transform: "rotate(180deg)" }}>
+          <Button variant="tertiary" size="s" href="/admin/projects" prefixIcon="arrowLeft">
             Back
           </Button>
           <Heading variant="display-strong-m">Edit Project</Heading>
@@ -194,6 +197,7 @@ export default function EditProjectPage() {
           <Column fillWidth gap="l" padding="xl" background="surface" border="neutral-alpha-weak" radius="l">
             <Column gap="m" fillWidth>
               <Input id="project-title" label="Project Title" value={form.title} onChange={(e) => setForm((prev) => ({ ...prev, title: e.target.value }))} required />
+              <Input id="project-short-title" label="Short name for the home list (1–3 words, optional)" value={form.shortTitle} onChange={(e) => setForm((prev) => ({ ...prev, shortTitle: e.target.value }))} />
               <Input id="project-slug" label="URL Slug" value={form.slug} onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))} required />
               <Input id="project-description" label="Short Description" value={form.description} onChange={(e) => setForm((prev) => ({ ...prev, description: e.target.value }))} required />
               <Textarea id="project-content" label="Content (Markdown)" value={form.content} onChange={(e) => setForm((prev) => ({ ...prev, content: e.target.value }))} lines={12} required />

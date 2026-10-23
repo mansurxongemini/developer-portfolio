@@ -135,7 +135,7 @@ html.lenis body {
   overflow: hidden;
 }
 
-html body[data-theme] {
+html body:is([data-theme="bone"], [data-theme="ink"], [data-theme="ink-deep"], [data-theme="orange"]) {
   background: var(--bg) !important;
   color: var(--fg);
 }
@@ -2841,7 +2841,7 @@ a:hover > .icon-arrow,
 /* ============================================================
    GLOBAL LINK / FIXED-UI COLOUR (links inherit, never framework accent)
    ============================================================ */
-html body[data-theme] a {
+html body:is([data-theme="bone"], [data-theme="ink"], [data-theme="ink-deep"], [data-theme="orange"]) a {
   color: inherit;
 }
 
@@ -3819,4 +3819,26 @@ html:has(body[data-theme="orange"]) {
   display: none;
   width: 0;
   height: 0;
+}
+
+
+/* ============================================================
+   ADMIN — its own deep ground; the public dossier colours never reach it
+   ============================================================ */
+html:has(body[data-theme="admin"]) {
+  background-color: #0a0d12;
+}
+
+body[data-theme="admin"] {
+  --bg: #0a0d12;
+  --fg: #e5ebf3;
+  background: radial-gradient(1200px 700px at 12% -8%, rgba(79, 195, 179, 0.1), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(255, 81, 0, 0.07), transparent 55%), #0a0d12 !important;
+  color: #e5ebf3;
+  transition: none;
+}
+
+body[data-theme="admin"] .grain,
+body[data-theme="admin"] .fibre {
+  display: none;
 }
