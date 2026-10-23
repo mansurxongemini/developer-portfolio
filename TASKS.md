@@ -61,5 +61,32 @@
       - Dalil: `src/components/work/ProjectBentoGrid.tsx` da Next.js `Image` orqali 7 ta loyihaning vektor SVG chizmalari aks ettirildi.
     - [DONE] 24.5: Build va brauzer vizual tekshiruvini o'tkazish, git orqali commit qilish.
       - Dalil: `npm run build` task-954 da 0 xato bilan 57 ta statik sahifani to'liq generatsiya qildi. Browser reviewer subagenti (`6f3270ca-b3e9-419e-9685-db4bf2b04c77`) brauzer orqali to'liq audit o'tkazib, barcha 5 ta mezon (Home, Header, Work, Blog, Mobile) bo'yicha PASSED xulosasini berdi va skrinshotlar orqali tasdiqladi.
+25. [DONE] `https://jopecuro.com/?ref=onepagelove` saytining to'liq "Legal Dossier & Code Archive" dizayn arxitekturasi va animatsiyalarini 1:1 formatda tadbiq etish
+    - [DONE] 25.1: Brauzer orqali `https://jopecuro.com/?ref=onepagelove` ni ochish, skrinshotlar olish va vizual xususiyatlarini (header, hero, typography, layout, project cards, experience, contact) to'liq tahlil qilish.
+      - Dalil: Browser Design Reviewer 7 ta to'liq skrinshot oldi, ranglar palitrasi, shriftlar va arxitektura jadvali olindi.
+    - [DONE] 25.2: Tahlil natijalarini foydalanuvchi bilan muhokama qilish va tasdiqlash.
+      - Dalil: Foydalanuvchi Jopecuro konseptini va uning barcha boy animatsiyalarini 1:1 tadbiq etishni ma'qulladi.
+    - [DONE] 25.3: Saytni "Legal Dossier / Huquq va Kod Arxivlari" uslubida to'liq rekonstruksiya qilish:
+      - [DONE] 25.3.1: CSS tokenlari va Jopecuro ranglar palitrasi (`--ink-deep`, `--paper`, `--bone`, `--orange`, `--carbon`), simli shriftlar va qizil shtamplar uslubini kiritish.
+        - Dalil: `src/resources/custom.css` ga barcha tokenlar, `dossier-wireframe-text`, `dossier-stamp`, `dossier-redacted`, `dossier-exhibit-frame` sinflari kiritildi.
+      - [DONE] 25.3.2: O'ng qirradagi doimiy qotirilgan "Case File Index" doki (`[01]`-`[07]` scrollspy animatsiyasi) va yuqori boshqaruv panelini yaratish.
+        - Dalil: `src/components/dossier/CaseFileDock.tsx` yaratildi va barcha 7 ta bo'lim uchun silliq scrollspy bilan ulandi.
+      - [DONE] 25.3.3: Monumental Hero bo'limi (dual-style wireframe matn, dossier status va tahliliy metadata lentasi).
+        - Dalil: `src/components/dossier/DossierHero.tsx` yaratildi: "QONUN VA KOD / SUN'IY INTELLEKT*" simli matni va metama'lumotlar bilan boyitildi.
+      - [DONE] 25.3.4: About ("№ 01 THE DOSSIER") — arxiv qog'ozi, raqamli hisoblagichlar, interaktiv qora tsenzurani ochish effekti va qisqichli `EXHIBIT A` surati.
+        - Dalil: `src/components/dossier/DossierAbout.tsx` da 4 ta hisoblagich, interaktiv qora tsenzura satrlari va metall qisqichli EXHIBIT A foto ramkasi ishga tushirildi.
+      - [DONE] 25.3.5: Capabilities ("№ 02 MODUS OPERANDI") — qora obsidian, 5 ta interaktiv silliq akkordeon qatori va simli raqamlar.
+        - Dalil: `src/components/dossier/DossierCapabilities.tsx` da 5 ta ochiluvchi metodologik akkordeon qatori yaratildi.
+      - [DONE] 25.3.6: Work ("№ 03 THE EVIDENCE") — interaktiv 7 ta eksponat ro'yxati, `[🔴 OCHIQ]` miltillovchi indikator, o'ng tomonda qisqichli ramkada SVG vizuallarining jonli almashinuvi.
+        - Dalil: `src/components/dossier/DossierWork.tsx` da sichqoncha borganda faol qator qorayishi, miltillovchi qizil nishon va o'ng ramkada loyiha SVG rasmining bir zumda almashishi brauzerda tasdiqlandi.
+      - [DONE] 25.3.7: Timeline ("№ 04 THE RECORD") — markaziy qizil ip, ulkan simli yillar (`2026`, `2025`, `2024`), TDYU huquq ta'limi va AI startaplarining ikki parallel oqimi.
+        - Dalil: `src/components/dossier/DossierTimeline.tsx` yaratildi: markaziy qizil ip va ulkan simli yillar atrofida AI muhandisligi va yurisprudensiya tarmoqlari o'rnatildi.
+      - [DONE] 25.3.8: Briefs / Blog ("№ 05 THE BRIEFS") — rasmiy tahlilnomalar ko'rinishidagi 3 ta maqola kartasi va `/blog` ga to'liq ulanish.
+        - Dalil: `src/components/dossier/DossierBriefs.tsx` da rasmiy tergov xulosalari formatida 3 ta maqola va to'liq blog havolasi joylandi.
+      - [DONE] 25.3.9: Contact ("№ 06 SUBPOENA") — monumental sarlavha, to'g'ridan-to'g'ri Telegram, GitHub va Email aloqa mexanizmlari.
+        - Dalil: `src/components/dossier/DossierContact.tsx` yaratildi: monumental sarlavha va 3 ta interaktiv aloqa kartasi o'rnatildi.
+      - [DONE] 25.3.10: Zero-error build (`npm run build`), brauzerda vizual tekshiruv va git commit.
+        - Dalil: `npm run build` task-1069 da 0 xato bilan 57 ta sahifani yig'di. Browser reviewer subagenti barcha 10 ta mezon bo'yicha "EXEMPLARY / PASSED" xulosasini berdi va skrinshotlar saqlandi.
+
 
 
