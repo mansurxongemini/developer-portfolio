@@ -26,4 +26,5 @@
     - [DONE] 11.3: Bosh sahifa (`HeroSection.tsx`, `FeaturedWorks.tsx`, `bento-grid.tsx`) kiberpankdan James Clear Atoms uslubiga aylantirish
     - [DONE] 11.4: Header, Footer va navigatsiya dizaynini uyg'unlashtirish (`ShimmerButton.module.css`, `DynamicAtmosphere.tsx`)
     - [DONE] 11.5: Test qilish (Task-331 `npm run build` muvaffaqiyatli o'tdi, dev server 200 OK)
-12. [DOING] Barcha o'zgarishlarni GitHub (`origin/main`) repozitoriyasiga yuklash (commit va push)
+12. [DONE] Barcha o'zgarishlarni GitHub (`origin/main`) repozitoriyasiga yuklash (commit va push)
+    - Dalil: `git commit -m "feat: Atoms warm cream redesign, 3-language project showcase, and offline resilient architecture"` (commit hash: `b507405`) va `git push origin main` muvaffaqiyatli bajarildi (`cf01ddd..b507405 main -> main`).
