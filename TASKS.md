@@ -36,3 +36,5 @@
     - Dalil: Atoms ranglar palitrasi (`#FAF8F5`, `#1C1917`, `#FFFFFF`, `#D97706`), Geist shriftlari, va TDYu huquqshunosligi hamda AI muhandisligi uyg'unligi asosiy yetakchi proposition sifatida belgilandi. Task-423 (`npm run build`) muvaffaqiyatli o'tdi (0 errors, 57 static routes).
 16. [BLOCKED] Yangi spetsifikatsiya va boyitilgan README ni GitHub (`origin/main`) repozitoriyasiga yuklash (commit va push)
     - Dalil: Mahalliy commit `9604d02` (`docs: add codebase purpose, critical files architecture, and real content ground truth`) muvaffaqiyatli amalga oshirildi. Biroq GitHub tokeni eskirganligi sababli (`gh auth login`) push to'xtatildi.
+17. [DONE] `npx skills add google-labs-code/stitch-skills` skillni o'rnatish va uning imkoniyatlarini tahlil qilish
+    - Dalil: `npx skills add google-labs-code/stitch-skills -g -y` orqali 16 ta skill `~/.agents/skills/` ga o'rnatildi va `~/.gemini/config/skills/` ga to'liq ulandi.
