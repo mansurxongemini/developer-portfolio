@@ -14,11 +14,11 @@ export function WorkContent({ projects }: WorkContentProps) {
   return (
     <Column maxWidth="m" paddingTop="24">
       <div className="mb-10 px-1">
-        <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <h1 className="text-3xl font-bold tracking-tight text-[#1C1917] md:text-4xl">
           {work.title}
         </h1>
         {work.description && (
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/45">
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#57534E]">
             {work.description}
           </p>
         )}

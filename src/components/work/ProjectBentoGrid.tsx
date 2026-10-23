@@ -26,7 +26,7 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
 
   return (
     <section className="w-full py-8">
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-12 md:auto-rows-[13rem]">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
         {projects.map((project, index) => {
           const isPrimary = index === 0;
           const spanClass = layoutPatterns[index % layoutPatterns.length];
@@ -41,16 +41,16 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
           return (
             <motion.article
               key={project.id}
-              className={`group relative isolate min-h-[16rem] overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white p-6 shadow-[0_4px_24px_-2px_rgba(44,38,30,0.04)] transition-all duration-500 hover:border-amber-400/50 hover:shadow-[0_12px_36px_-4px_rgba(44,38,30,0.08)] md:min-h-0 ${spanClass}`}
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 32 }}
+              className={`group relative isolate flex flex-col justify-between min-h-[19rem] rounded-2xl border border-[#E7E5E4] bg-white p-6 md:p-7 shadow-[0_4px_20px_-2px_rgba(44,38,30,0.04)] transition-all duration-300 hover:border-amber-500/40 hover:shadow-[0_12px_32px_-4px_rgba(44,38,30,0.08)] ${spanClass}`}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
               whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={{ once: true, amount: 0.05, margin: "60px" }}
               transition={{
-                duration: 0.6,
+                duration: 0.5,
                 ease: [0.22, 1, 0.36, 1],
-                delay: prefersReducedMotion ? 0 : index * 0.1,
+                delay: prefersReducedMotion ? 0 : Math.min(index * 0.06, 0.3),
               }}
-              whileHover={prefersReducedMotion ? {} : { y: -4, scale: 1.01 }}
+              whileHover={prefersReducedMotion ? {} : { y: -4, scale: 1.008 }}
             >
               {/* Subtle warm ambient background */}
               <div
@@ -64,14 +64,6 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
                 className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-amber-400/[0.04] to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 style={{ backgroundSize: "200% 100%" }}
               />
-
-              {/* Background image preview */}
-              {projectImage && (
-                <div
-                  className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.06] transition-opacity duration-700 group-hover:opacity-[0.12]"
-                  style={{ backgroundImage: `url(${projectImage})` }}
-                />
-              )}
 
               <div className="relative z-10 flex h-full flex-col justify-between gap-4">
                 {/* Header */}

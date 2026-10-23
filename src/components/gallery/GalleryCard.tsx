@@ -29,31 +29,31 @@ const categoryIcon: Record<GalleryAsset["category"], React.ElementType> = {
 
 const categoryGradient: Record<GalleryAsset["category"], string> = {
   certificate:
-    "radial-gradient(600px circle at 30% 20%, rgba(34,211,238,0.18), transparent 55%), radial-gradient(400px circle at 75% 80%, rgba(99,102,241,0.14), transparent 50%)",
+    "radial-gradient(600px circle at 30% 20%, rgba(217,119,6,0.12), transparent 55%), radial-gradient(400px circle at 75% 80%, rgba(245,158,11,0.08), transparent 50%)",
   portrait:
-    "radial-gradient(600px circle at 25% 30%, rgba(168,85,247,0.16), transparent 55%), radial-gradient(400px circle at 80% 70%, rgba(236,72,153,0.12), transparent 50%)",
+    "radial-gradient(600px circle at 25% 30%, rgba(180,83,9,0.12), transparent 55%), radial-gradient(400px circle at 80% 70%, rgba(217,119,6,0.08), transparent 50%)",
   "legal-work":
-    "radial-gradient(600px circle at 35% 15%, rgba(59,130,246,0.16), transparent 55%), radial-gradient(400px circle at 70% 85%, rgba(100,116,139,0.14), transparent 50%)",
+    "radial-gradient(600px circle at 35% 15%, rgba(120,53,15,0.10), transparent 55%), radial-gradient(400px circle at 70% 85%, rgba(217,119,6,0.08), transparent 50%)",
   "legal-tech-event":
-    "radial-gradient(600px circle at 20% 25%, rgba(34,211,238,0.16), transparent 55%), radial-gradient(400px circle at 85% 75%, rgba(16,185,129,0.14), transparent 50%)",
+    "radial-gradient(600px circle at 20% 25%, rgba(217,119,6,0.14), transparent 55%), radial-gradient(400px circle at 85% 75%, rgba(180,83,9,0.08), transparent 50%)",
   award:
-    "radial-gradient(600px circle at 40% 20%, rgba(245,158,11,0.16), transparent 55%), radial-gradient(400px circle at 65% 80%, rgba(251,191,36,0.10), transparent 50%)",
+    "radial-gradient(600px circle at 40% 20%, rgba(245,158,11,0.14), transparent 55%), radial-gradient(400px circle at 65% 80%, rgba(217,119,6,0.10), transparent 50%)",
 };
 
 const categoryAccent: Record<GalleryAsset["category"], string> = {
-  certificate: "text-cyan-400/70",
-  portrait: "text-purple-400/70",
-  "legal-work": "text-blue-400/70",
-  "legal-tech-event": "text-emerald-400/70",
-  award: "text-amber-400/70",
+  certificate: "text-[#D97706]",
+  portrait: "text-[#B45309]",
+  "legal-work": "text-[#78350F]",
+  "legal-tech-event": "text-[#D97706]",
+  award: "text-[#B45309]",
 };
 
 const categoryPill: Record<GalleryAsset["category"], string> = {
-  certificate: "border-cyan-400/20 text-cyan-300/80",
-  portrait: "border-purple-400/20 text-purple-300/80",
-  "legal-work": "border-blue-400/20 text-blue-300/80",
-  "legal-tech-event": "border-emerald-400/20 text-emerald-300/80",
-  award: "border-amber-400/20 text-amber-300/80",
+  certificate: "border-[#FDE68A] bg-[#FEF3C7] text-[#92400E]",
+  portrait: "border-[#E7E5E4] bg-[#F5F2EB] text-[#57534E]",
+  "legal-work": "border-[#E7E5E4] bg-[#F5F2EB] text-[#1C1917]",
+  "legal-tech-event": "border-[#FDE68A] bg-[#FEF3C7] text-[#92400E]",
+  award: "border-[#FDE68A] bg-[#FEF3C7] text-[#92400E]",
 };
 
 export default function GalleryCard({ asset, index, categoryLabel }: GalleryCardProps) {
@@ -80,10 +80,9 @@ export default function GalleryCard({ asset, index, categoryLabel }: GalleryCard
       whileHover={{ y: -6, scale: 1.02 }}
       className={[
         "group relative flex flex-col overflow-hidden rounded-2xl",
-        "border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl",
-        "shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]",
-        "transition-shadow duration-500",
-        "hover:border-white/[0.18] hover:shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),0_0_0_1px_rgba(255,255,255,0.08),0_20px_50px_-12px_rgba(0,0,0,0.6)]",
+        "border border-[#E7E5E4] bg-white",
+        "shadow-sm transition-all duration-300",
+        "hover:border-[#D6D3D1] hover:shadow-md",
       ].join(" ")}
     >
       {/* ── Visual area: real image or mesh gradient ── */}
@@ -105,22 +104,22 @@ export default function GalleryCard({ asset, index, categoryLabel }: GalleryCard
           />
         ) : (
           <>
-            {/* Subtle noise texture overlay */}
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjgiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsdGVyPSJ1cmwoI24pIiBvcGFjaXR5PSIuMDMiLz48L3N2Zz4=')] opacity-60" />
+            {/* Subtle warm texture overlay */}
+            <div className="absolute inset-0 bg-[#FAF8F5]/30" />
 
             {/* Centered icon with glow */}
             <div className="relative z-10 flex flex-col items-center gap-3">
               <div className="relative">
                 <div
                   className={[
-                    "absolute inset-0 scale-[2] rounded-full blur-2xl opacity-30",
-                    "transition-opacity duration-500 group-hover:opacity-50",
-                    categoryAccent[asset.category].replace("text-", "bg-").replace("/70", "/30"),
+                    "absolute inset-0 scale-[2] rounded-full blur-2xl opacity-20",
+                    "transition-opacity duration-500 group-hover:opacity-40",
+                    "bg-[#D97706]",
                   ].join(" ")}
                 />
                 <Icon
                   className={[
-                    "relative h-10 w-10 stroke-[1.2]",
+                    "relative h-10 w-10 stroke-[1.4]",
                     categoryAccent[asset.category],
                     "transition-all duration-500 group-hover:scale-110",
                   ].join(" ")}
@@ -130,12 +129,9 @@ export default function GalleryCard({ asset, index, categoryLabel }: GalleryCard
           </>
         )}
 
-        {/* Bottom gradient fade into card body */}
-        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[rgba(9,11,16,0.7)] to-transparent" />
-
         {/* Featured badge */}
         {asset.featured && (
-          <div className="absolute right-3 top-3 rounded-full border border-white/[0.12] bg-white/[0.08] px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-[0.16em] text-white/70 backdrop-blur-md">
+          <div className="absolute right-3 top-3 rounded-full border border-[#FDE68A] bg-[#FEF3C7] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#92400E] shadow-sm">
             Featured
           </div>
         )}
@@ -147,47 +143,28 @@ export default function GalleryCard({ asset, index, categoryLabel }: GalleryCard
         <div className="flex items-center justify-between gap-3">
           <span
             className={[
-              "rounded-full border bg-white/[0.04] px-2.5 py-0.5",
+              "rounded-full border px-2.5 py-0.5",
               "text-[10px] font-semibold uppercase tracking-[0.14em]",
               categoryPill[asset.category],
             ].join(" ")}
           >
             {categoryLabel}
           </span>
-          <span className="text-[11px] tabular-nums tracking-wide text-white/30">
+          <span className="text-[11px] tabular-nums tracking-wide text-[#78716C]">
             {asset.date}
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug tracking-[0.01em] text-white/90">
+        <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug tracking-[0.01em] text-[#1C1917]">
           {asset.title}
         </h3>
 
         {/* Description */}
-        <p className="line-clamp-2 text-[13px] leading-relaxed text-white/40">
+        <p className="line-clamp-2 text-[13px] leading-relaxed text-[#57534E]">
           {asset.description}
         </p>
       </div>
-
-      {/* ── Hover shimmer border effect ── */}
-      <div
-        className={[
-          "pointer-events-none absolute inset-0 rounded-2xl",
-          "opacity-0 transition-opacity duration-500 group-hover:opacity-100",
-          "bg-[length:200%_100%] animate-shimmer",
-        ].join(" ")}
-        style={{
-          background:
-            "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 45%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 55%, transparent 100%)",
-          backgroundSize: "200% 100%",
-          mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-          maskComposite: "exclude",
-          WebkitMaskComposite: "xor",
-          padding: "1px",
-          borderRadius: "1rem",
-        }}
-      />
     </motion.article>
   );
 }

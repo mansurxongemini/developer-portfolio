@@ -135,7 +135,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
             className="mt-5 flex flex-wrap items-center gap-3 md:mt-9"
             style={{ willChange: "transform, opacity" }}
           >
-            <ShimmerButton href="#projects">{resolvedCopy.ctaPrimary}</ShimmerButton>
+            <ShimmerButton href="/work">{resolvedCopy.ctaPrimary}</ShimmerButton>
 
             <Link
               href="/blog"

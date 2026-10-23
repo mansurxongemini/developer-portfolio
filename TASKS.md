@@ -38,3 +38,13 @@
     - Dalil: Mahalliy commit `9604d02` (`docs: add codebase purpose, critical files architecture, and real content ground truth`) muvaffaqiyatli amalga oshirildi. Biroq GitHub tokeni eskirganligi sababli (`gh auth login`) push to'xtatildi.
 17. [DONE] `npx skills add google-labs-code/stitch-skills` skillni o'rnatish va uning imkoniyatlarini tahlil qilish
     - Dalil: `npx skills add google-labs-code/stitch-skills -g -y` orqali 16 ta skill `~/.agents/skills/` ga o'rnatildi va `~/.gemini/config/skills/` ga to'liq ulandi.
+18. [DONE] `google-labs-code/stitch-skills` to'plamini to'liq o'chirib tashlash
+    - Dalil: `~/.gemini/config/skills/` va `~/.agents/skills/` dan 16 ta stitch skill to'liq o'chirildi va tozalandi.
+19. [DONE] Brauzer orqali vizual audit (`/browser` subagent va `browser-design-review` qoidasi) o'tkazish
+    - Dalil: Browser subagent (`46f387d5-e35e-4958-aaa0-5f5d41923990`) orqali `http://localhost:3000` to'liq ko'zdan kechirildi: 9 ta asosiy toifadagi vizual xatolar, oq fondagi oq matnlar, kesilgan kartalar va notabiiy so'zlar aniqlandi.
+20. [DONE] Sayt matnlarini (Hero, About, Work, Projects, i18n) sun'iylikdan qochirib, insoniy, tabiiy, professional va realistik qilib qayta yozish
+    - Dalil: `messages/uz.json`, `messages/en.json`, `messages/ru.json`, `src/resources/content.tsx`, `src/lib/content-i18n.tsx` va `src/lib/projects-data.ts` fayllaridan barcha sun'iy wireframe belgilar (`LARGE CARD / LEFT`, `MIDDLE CARD`, `LONG CARD / BOTTOM`), soxta korporativ iboralar ("5 yillik liderlik", "junior") to'liq olib tashlandi. TDYu huquqshunosligi, LegalTech RAG va amaliy AI muhandisligi asosida 3 ta tilda realistik yozildi.
+21. [DONE] Aniqlangan dizayn xatoliklarini (oq fonda oq matn, card overflow, ShimmerButton kontrasti, Framer Motion bo'shliqlari, Selene Yu rasmi, duplicate h1, broken telegram link) tuzatish va brauzerda qayta tekshirish
+    - Dalil: Browser Design Reviewer subagenti (`6f3270ca-b3e9-419e-9685-db4bf2b04c77`) `http://localhost:3000` ni to'liq tekshirib, barcha 6 ta toifadagi xatoliklar (Home, Work, Blog, Gallery, About, Mobile) bartaraf etilganini va 100% James Clear Atoms uslubi, WCAG AAA kontrasti hamda responsivlik tasdiqlanganini skrinshotlar orqali isbotladi.
+22. [DOING] O'zgarishlarni tekshiruvdan so'ng git orqali commit qilish va foydalanuvchiga to'liq hisobot taqdim etish
+

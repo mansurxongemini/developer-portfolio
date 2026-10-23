@@ -72,7 +72,7 @@ O'zbekiston AI regulyatsiyasini shakllantirish jarayonida jahon tajribasini o'rg
       `,
       publishedAt: "2024-12-15",
       readingTime: 8,
-      image: "/images/og/home.jpg",
+      image: "/images/projects/inclusive-legal-rag.svg",
       author: "Mansurxon Rustamov",
     },
     {
@@ -306,7 +306,7 @@ Uzbekistan should study global experience while developing an approach to AI reg
       `,
       publishedAt: "2024-12-15",
       readingTime: 8,
-      image: "/images/og/home.jpg",
+      image: "/images/projects/inclusive-legal-rag.svg",
       author: "Mansurxon Rustamov",
     },
     {
@@ -540,7 +540,7 @@ Blockchain and smart contracts are technologies of the future. Uzbekistan should
       `,
       publishedAt: "2024-12-15",
       readingTime: 8,
-      image: "/images/og/home.jpg",
+      image: "/images/projects/inclusive-legal-rag.svg",
       author: "Мансурхон Рустамов",
     },
     {

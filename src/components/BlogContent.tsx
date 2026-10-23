@@ -18,11 +18,11 @@ export function BlogContent({ postsFirst, postsMiddle, postsLater }: BlogContent
     <Column maxWidth="m" paddingTop="24">
       {/* Page header */}
       <div className="mb-12 px-1">
-        <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+        <h1 className="text-3xl font-bold tracking-tight text-[#1C1917] md:text-4xl">
           {blog.title}
         </h1>
         {blog.description && (
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/45">
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#57534E]">
             {blog.description}
           </p>
         )}
@@ -38,15 +38,15 @@ export function BlogContent({ postsFirst, postsMiddle, postsLater }: BlogContent
         {postsMiddle}
       </div>
 
-      <Mailchimp marginBottom="l" />
-
       {/* Earlier posts */}
       <div className="mb-16">
-        <h2 className="mb-6 px-1 text-xl font-semibold tracking-tight text-white/80">
+        <h2 className="mb-6 px-1 text-xl font-semibold tracking-tight text-[#1C1917]">
           {content.ui.earlier_posts}
         </h2>
         {postsLater}
       </div>
+
+      <Mailchimp marginBottom="l" />
     </Column>
   );
 }

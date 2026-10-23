@@ -50,21 +50,21 @@ function TimelineNode({
         <motion.span
           aria-hidden
           style={{ opacity: glow }}
-          className="absolute top-1.5 h-5 w-5 rounded-full bg-cyan-300 blur-[9px]"
+          className="absolute top-1.5 h-5 w-5 rounded-full bg-amber-300/40 blur-[8px]"
         />
         <motion.span
           style={{ opacity: glow }}
-          className="relative top-1.5 h-4 w-4 rounded-full border border-cyan-100/70 bg-slate-950"
+          className="relative top-1.5 h-4 w-4 rounded-full border-2 border-[#D97706] bg-white shadow-[0_0_0_3px_#FAF8F5]"
         />
       </div>
 
       <motion.div
         style={{ opacity: glow }}
-        className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-5 backdrop-blur-md"
+        className="rounded-2xl border border-[#E7E5E4] bg-white p-5 shadow-sm transition hover:shadow-md"
       >
-        <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-cyan-200/80">{period}</p>
-        <h3 className="text-xl font-semibold text-white">{title}</h3>
-        <p className="mt-2 leading-relaxed text-gray-300">{description}</p>
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#D97706]">{period}</p>
+        <h3 className="text-xl font-semibold text-[#1C1917]">{title}</h3>
+        <p className="mt-2 leading-relaxed text-[#57534E]">{description}</p>
       </motion.div>
     </motion.article>
   );
@@ -111,20 +111,20 @@ export function Timeline({ copy }: { copy: TimelineCopy }) {
           transition={{ duration: 0.5, ease: EASE_LUXURY }}
           className="mb-10"
         >
-          <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/75">{copy.badge}</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#D97706]">{copy.badge}</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#1C1917] md:text-4xl">
             {copy.title}
           </h2>
-          <p className="mt-3 max-w-2xl text-gray-300">
+          <p className="mt-3 max-w-2xl text-[#57534E]">
             {copy.description}
           </p>
         </motion.div>
 
         <div ref={ref} className="relative pl-1">
-          <div className="absolute left-4 top-0 h-full w-px bg-white/10" />
+          <div className="absolute left-4 top-0 h-full w-px bg-[#E7E5E4]" />
           <motion.div
             style={{ scaleY: lineScale, transformOrigin: "top" }}
-            className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-cyan-300 via-sky-300 to-indigo-300 shadow-[0_0_14px_rgba(125,211,252,0.6)]"
+            className="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-[#D97706] via-[#F59E0B] to-[#D97706]"
           />
 
           <div className="relative">

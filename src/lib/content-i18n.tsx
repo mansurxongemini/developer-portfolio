@@ -21,15 +21,15 @@ const personBase: Person = {
 const personByLocale: Record<Locale, Person> = {
   uz: {
     ...personBase,
-    role: "Junior dasturchi va huquqshunos",
+    role: "TDYU Huquqshunoslik talabasi & AI Dasturchi",
   },
   en: {
     ...personBase,
-    role: "Junior Programmer & Law Student",
+    role: "TSUL Law Student & AI Developer",
   },
   ru: {
     ...personBase,
-    role: "Junior программист и студент-юрист",
+    role: "Студент-юрист ТГЮУ и AI-разработчик",
   },
 };
 
@@ -51,7 +51,7 @@ const socialLinks: Social = [
   {
     name: "Telegram",
     icon: "telegram",
-    link: "https://t.me/rustamovamansurxon",
+    link: "https://t.me/rustamovmansurxon",
     essential: true,
   },
   {
@@ -73,18 +73,18 @@ const socialLinks: Social = [
 const newsletterByLocale: Record<Locale, Newsletter> = {
   uz: {
     display: true,
-    title: <>{personBase.firstName} yangiliklariga obuna bo'ling</>,
-    description: <>Huquq, AI va jamiyat tahlili haqida haftalik yangiliklar</>,
+    title: <>{personBase.firstName} tahliliy xabarnomasi</>,
+    description: <>Huquq, sun'iy intellekt va texnologiyalar rivoji haqida tahliliy qaydlar</>,
   },
   en: {
     display: true,
-    title: <>Subscribe to {personBase.firstName}'s Newsletter</>,
-    description: <>Weekly insights on Law, AI, and Societal Analysis</>,
+    title: <>{personBase.firstName}'s Analytical Newsletter</>,
+    description: <>Analytical notes on law, artificial intelligence, and societal trends</>,
   },
   ru: {
     display: true,
-    title: <>Подпишитесь на рассылку {personBase.firstName}</>,
-    description: <>Еженедельные обзоры по праву, ИИ и анализу общества</>,
+    title: <>Аналитическая рассылка {personBase.firstName}</>,
+    description: <>Аналитические заметки о праве, искусственном интеллекте и технологиях</>,
   },
 };
 
@@ -95,9 +95,9 @@ const homeByLocale: Record<Locale, Home> = {
     path: "/",
     image: "/og-image.jpg",
     label: "Bosh sahifa",
-    title: "Mansurxon Rustamov | Portfolio",
-    description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat mavzusiga oid tahlillar va loyihalar.",
-    headline: <>Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida ko'prik</>,
+    title: "Mansurxon Rustamov",
+    description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasidagi amaliy tahlillar va LegalTech loyihalar.",
+    headline: <>Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida amaliy ko'prik</>,
     featured: {
       display: true,
       title: (
@@ -113,9 +113,8 @@ const homeByLocale: Record<Locale, Home> = {
     },
     subline: (
       <>
-        Men Mansurxon, <Text as="span" size="xl" weight="strong">TDYU</Text> birinchi kurs talabasi,
-        4 yillik dasturlash va 5 yillik liderlik tajribasiga egaman.
-        <br /> React, Next.js, Python va Django asosida amaliy mahsulotlar yarataman.
+        Men Mansurxon, <Text as="span" size="xl" weight="strong">TDYU</Text> birinchi kurs talabasi va dasturchiman.
+        <br /> Qonun ustuvorligi va zamonaviy AI texnologiyalarini birlashtirib, jamiyat uchun ochiq va amaliy yechimlar yarataman.
       </>
     ),
   },
@@ -123,8 +122,8 @@ const homeByLocale: Record<Locale, Home> = {
     path: "/",
     image: "/og-image.jpg",
     label: "Home",
-    title: "Mansurxon Rustamov | Portfolio",
-    description: "Analyses and projects on Jurisprudence, Artificial Intelligence, and Society.",
+    title: "Mansurxon Rustamov",
+    description: "Practical analyses and LegalTech projects bridging Jurisprudence, Artificial Intelligence, and Society.",
     headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
     featured: {
       display: true,
@@ -141,9 +140,8 @@ const homeByLocale: Record<Locale, Home> = {
     },
     subline: (
       <>
-        I'm Mansurxon, a first-year Law student at <Text as="span" size="xl" weight="strong">TSUL</Text>
-        with 4 years of software development and 5 years of leadership experience.
-        <br /> I build practical products with React, Next.js, Python, and Django.
+        I'm Mansurxon, a first-year Law student at <Text as="span" size="xl" weight="strong">TSUL</Text> and software engineer.
+        <br /> Building open, accessible, and grounded software at the intersection of Jurisprudence and Artificial Intelligence.
       </>
     ),
   },
@@ -151,8 +149,8 @@ const homeByLocale: Record<Locale, Home> = {
     path: "/",
     image: "/og-image.jpg",
     label: "Главная",
-    title: "Mansurxon Rustamov | Portfolio",
-    description: `Юриспруденция, Искусственный Интеллект и Общество`,
+    title: "Mansurxon Rustamov",
+    description: "Правовой анализ и прикладные LegalTech-проекты на стыке юриспруденции, искусственного интеллекта и общества.",
     headline: <>Связывая Юриспруденцию, Искусственный Интеллект и Общество</>,
     featured: {
       display: true,
@@ -169,9 +167,8 @@ const homeByLocale: Record<Locale, Home> = {
     },
     subline: (
       <>
-        Я Мансурхон, студент первого курса <Text as="span" size="xl" weight="strong">ТГЮУ</Text>
-        с 4-летним опытом разработки и 5-летним опытом лидерства.
-        <br /> Создаю практичные продукты на React, Next.js, Python и Django.
+        Я Мансурхон, студент первого курса <Text as="span" size="xl" weight="strong">ТГЮУ</Text> и разработчик.
+        <br /> Создаю открытые и прикладные решения, объединяющие правовой анализ и современные технологии ИИ.
       </>
     ),
   },
@@ -184,7 +181,7 @@ const aboutByLocale: Record<Locale, About> = {
     path: "/about",
     label: "Men haqimda",
     title: `Men haqimda – ${personBase.name}`,
-    description: `${personBase.name} bilan tanishing — junior dasturchi, TDYU talabasi va texnik tahlilchi`,
+    description: `${personBase.name} — TDYU talabasi, AI dasturchi va LegalTech tadqiqotchisi`,
     tableOfContent: { display: true, subItems: false },
     avatar: { display: true },
     calendar: { display: true, link: "https://t.me/rustamovmansurxon" },
@@ -193,25 +190,33 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Profil",
       description: (
         <>
-          Men TDYU birinchi kurs talabasiman. 4 yillik amaliy dasturlash tajribasi va
-          5 yillik ko'ngillilik/liderlik tajribasiga egaman. Junior Frontend yoki
-          Python/JavaScript Developer yo'nalishida React, Next.js, Django va Python texnologiyalari
-          bilan yuqori sifatli mahsulotlar yaratishga yo'naltirilganman.
+          Men Toshkent davlat yuridik universiteti birinchi kurs talabasi va dasturchiman.
+          Qonunchilik tahlili va zamonaviy hisoblash arxitekturalari (Hybrid RAG, kognitiv mentor tizimlari, ochiq ma'lumotlar platformalari) ustida amaliy ishlayman.
+          Maqsadim — huquqiy tafakkur va sun'iy intellekt texnologiyalarini birlashtirib, jamiyat uchun ishonchli va adolatli tizimlar yaratishdir.
         </>
       ),
     },
     work: {
       display: true,
-      title: "Ish tajribasi",
+      title: "Amaliy va muhandislik tajribasi",
       experiences: [
         {
-          company: "E-commerce loyihasi",
-          timeframe: "2023 - 2024",
-          role: "Full-Stack dasturchi",
+          company: "LegalTech va AI Tadqiqotlari",
+          timeframe: "2024 - Hozir",
+          role: "AI Dasturchi & Tadqiqotchi",
           achievements: [
-            "React/Next.js va Django/Python asosida to'liq e-commerce platforma ishlab chiqildi.",
-            "Mahsulot katalogi, savatcha oqimi va xavfsiz buyurtma jarayoni yo'lga qo'yildi.",
-            "Frontend va backend integratsiyasi orqali barqaror full-stack arxitektura yaratildi.",
+            "Inclusive Legal RAG platformasi ishlab chiqildi: LanceDB, SQLite FTS5 va BMT Konvensiyasi ontologiyasi orqali inklyuziv qonunchilik tahlil qilindi.",
+            "Alloma AI loyihasi arxitekturasi: talabalar uchun shaxsiy kognitiv mentor va huquqiy tahlil tizimi yo'lga qo'yildi.",
+          ],
+          images: [],
+        },
+        {
+          company: "Fuqarolik va Veb Loyihalari",
+          timeframe: "2023 - 2024",
+          role: "Full-Stack Dasturchi",
+          achievements: [
+            "Mahalla boshqaruvi va fuqarolar murojaatlarini avtomatlashtirish tizimi yaratildi.",
+            "Next.js, TypeScript va Python asosida yuqori tezlikdagi, xavfsiz va qulay veb-ilovalar ishlab chiqildi.",
           ],
           images: [],
         },
@@ -622,14 +627,14 @@ const galleryLocaleText = {
     ],
   },
   uz: {
-    headline: "Huquq hamda Legal Tech sohasidagi",
+    headline: "Huquq hamda LegalTech sohasidagi amaliy faoliyat va tadqiqotlar",
     intro:
-      "Yuridik ta'lim, tahlil jarayonlari, sertifikatlar va professional rivojlanish bosqichlarini ko'rsatuvchi vizual to'plamlar.",
+      "Yuridik ta'lim, tahlil jarayonlari, sertifikatlar va professional rivojlanish bosqichlarini aks ettiruvchi hujjatlar to'plami.",
     assets: [
       {
-        alt: "TDYU daraja sertifikati uchun placeholder",
+        alt: "TDYU bakalavriat sertifikati",
         title: "Daraja: Huquq bakalavri (LL.B.)",
-        description: "Toshkent Davlat Yuridik Universiteti, bitirish sanasi 2029",
+        description: "Toshkent Davlat Yuridik Universiteti, 2025 - 2029",
         date: "2025 - 2029",
       },
       {

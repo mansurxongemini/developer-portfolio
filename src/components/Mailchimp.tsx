@@ -18,8 +18,15 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
   const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
-  const { content } = useI18n();
+  const { content, locale } = useI18n();
   const { newsletter } = content;
+
+  const labels: Record<string, { placeholder: string; button: string }> = {
+    uz: { placeholder: "Elektron pochta manzili", button: "Obuna bo'lish" },
+    en: { placeholder: "Email address", button: "Subscribe" },
+    ru: { placeholder: "Адрес эл. почты", button: "Подписаться" },
+  };
+  const activeLabels = labels[locale] ?? labels.en;
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -138,7 +145,7 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
             id="mce-EMAIL"
             name="EMAIL"
             type="email"
-            placeholder="Email"
+            placeholder={activeLabels.placeholder}
             required
             onChange={(e) => {
               if (error) {
@@ -175,8 +182,8 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
           </div>
           <div className="clear">
             <Row height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-                Subscribe
+              <Button id="mc-embedded-subscribe" value={activeLabels.button} size="m" fillWidth>
+                {activeLabels.button}
               </Button>
             </Row>
           </div>

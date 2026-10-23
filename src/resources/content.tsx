@@ -55,9 +55,9 @@ const home: Home = {
   path: "/",
   image: "/og-image.jpg",
   label: "Home",
-  title: "Mansurxon Rustamov | Portfolio",
-  description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat mavzusiga oid tahlillar va loyihalar.",
-  headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
+  title: "Mansurxon Rustamov",
+  description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasidagi amaliy tahlillar va LegalTech loyihalar.",
+  headline: <>Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida amaliy ko'prik</>,
   featured: {
     display: true,
     title: (
@@ -73,8 +73,8 @@ const home: Home = {
   },
   subline: (
     <>
-    I'm Mansurxon, a first-year Law Student at <Text as="span" size="xl" weight="strong">TSUL</Text>, AI Developer, and Independent Analyst <br /> bridging the gap between Jurisprudence, Artificial Intelligence, and Society.
-</>
+      I'm Mansurxon, a first-year Law Student at <Text as="span" size="xl" weight="strong">TSUL</Text> and AI Developer. <br /> Building open, accessible, and grounded software at the intersection of Jurisprudence and Artificial Intelligence.
+    </>
   ),
 };
 
@@ -99,34 +99,31 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Mansurxon is a Tashkent-based first-year Law student at Tashkent State University of Law (TSUL),
-        AI Developer, and Independent Analyst. His work lies at the intersection of Jurisprudence,
-        Artificial Intelligence, and societal impact — analyzing political, economic, and technological
-        trends to bridge the gap between law and innovation.
+        Mansurxon is a Tashkent-based first-year Law student at Tashkent State University of Law (TSUL) and AI Developer. His work centers on the intersection of statutory jurisprudence and modern machine intelligence — developing specialized LegalTech systems, hybrid RAG engines, and civic automation tools.
       </>
     ),
   },
   work: {
     display: true,
-    title: "Work Experience",
+    title: "Work & Engineering Experience",
     experiences: [
       {
-        company: "Independent AI Development",
+        company: "LegalTech & AI Research",
         timeframe: "2024 - Present",
-        role: "AI Developer & Analyst",
+        role: "AI Developer & LegalTech Researcher",
         achievements: [
-          "Building AI-powered tools and analytical platforms that combine legal research with machine learning for automated document analysis and insights.",
-          "Publishing independent analyses on political, economic, and technological topics, reaching a growing audience across Central Asia.",
+          "Developed Inclusive Legal RAG: a hybrid statutory retrieval engine combining LanceDB, SQLite FTS5, and UN CRPD ontology for disability rights legislation in Uzbekistan.",
+          "Architected Alloma AI cognitive mentor engine with adaptive learning workflows and legal statutory reasoning modules.",
         ],
         images: [],
       },
       {
-        company: "Freelance Projects",
+        company: "Civic & Web Engineering",
         timeframe: "2023 - 2024",
         role: "Full-Stack Developer",
         achievements: [
-          "Developed web applications and automation tools for clients using Next.js, Python, and modern AI frameworks.",
-          "Created data visualization dashboards for analytical reporting on socioeconomic trends.",
+          "Engineered Mahalla Management & Civic Automation Suite for community administration and citizen registry tracking.",
+          "Built high-performance, accessible web platforms using Next.js, TypeScript, Python, and modern relational databases.",
         ],
         images: [],
       },

@@ -105,7 +105,7 @@ export default function GalleryView() {
       </div>
 
       {!loaded && (
-        <p className="text-center text-sm text-white/30">Loading gallery...</p>
+        <p className="text-center text-sm text-[#78716C]">Loading gallery...</p>
       )}
     </section>
   );

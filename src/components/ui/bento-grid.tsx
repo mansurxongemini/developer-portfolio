@@ -93,7 +93,7 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, ease: EASE_LUXURY }}
           className="mb-5 md:mb-6"
         >
@@ -105,11 +105,11 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 gap-5 md:grid-cols-12 md:auto-rows-[12.5rem]"
+          className="grid grid-cols-1 gap-5 md:grid-cols-12 md:auto-rows-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <motion.div variants={itemVariants} className="md:col-span-7 md:row-span-2">
             <TiltCard className="h-full rounded-3xl" maxTilt={6} scale={1.01}>

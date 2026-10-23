@@ -62,6 +62,22 @@ export const Header = () => {
         height="80"
         zIndex={9}
       />
+      {/* Mobile floating language switcher */}
+      <Row
+        hide
+        s={{ hide: false }}
+        position="fixed"
+        top="12"
+        right="12"
+        zIndex={10}
+        background="page"
+        border="neutral-alpha-weak"
+        radius="full"
+        padding="2"
+        shadow="m"
+      >
+        <LanguageSwitcher />
+      </Row>
       <Row
         fitHeight
         className={styles.position}
