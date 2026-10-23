@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="accent4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <radialGradient id="glow4" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg4)"/>
+  <circle cx="600" cy="240" r="300" fill="url(#glow4)"/>
+  
+  <!-- Legal shield & chat consultation icon -->
+  <g transform="translate(600, 220)" stroke="url(#accent4)" stroke-width="3" fill="none">
+    <!-- Shield -->
+    <path d="M 0 -70 L 60 -40 L 60 15 C 60 55 0 85 0 85 C 0 85 -60 55 -60 15 L -60 -40 Z" fill="#38bdf8" fill-opacity="0.15"/>
+    <!-- Plus symbol in center -->
+    <line x1="0" y1="-25" x2="0" y2="25" stroke-width="4" stroke="#ffffff"/>
+    <line x1="-25" y1="0" x2="25" y2="0" stroke-width="4" stroke="#ffffff"/>
+  </g>
+
+  <!-- Badge -->
+  <rect x="440" y="345" width="320" height="36" rx="18" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-opacity="0.3"/>
+  <text x="600" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#38bdf8" text-anchor="middle" letter-spacing="3">CITIZEN LEGAL PORTAL</text>
+
+  <!-- Title -->
+  <text x="600" y="440" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">Huquqplus.uz</text>
+  <text x="600" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#94a3b8" text-anchor="middle">Open-Source Legal Intelligence &amp; Consultation Platform</text>
+
+  <!-- Tech tags -->
+  <g transform="translate(600, 540)" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">
+    <text x="-190" y="0">FastAPI</text>
+    <circle cx="-140" cy="-4" r="3" fill="#38bdf8"/>
+    <text x="-90" y="0">Aiogram 3</text>
+    <circle cx="-35" cy="-4" r="3" fill="#38bdf8"/>
+    <text x="25" y="0">Redis &amp; Celery</text>
+    <circle cx="95" cy="-4" r="3" fill="#38bdf8"/>
+    <text x="170" y="0">SQLModel</text>
+  </g>
+</svg>

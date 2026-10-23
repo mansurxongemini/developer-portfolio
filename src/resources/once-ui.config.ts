@@ -75,13 +75,13 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "dark", // dark | light | system
-  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "cyan", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
-  accent: "red", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  theme: "light", // dark | light | system
+  neutral: "sand", // sand | gray | slate | mint | rose | dusk | custom
+  brand: "orange", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
+  accent: "yellow", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan | custom
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative | sharp
+  border: "rounded", // rounded | playful | conservative | sharp
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
   scaling: "100", // 90 | 95 | 100 | 105 | 110

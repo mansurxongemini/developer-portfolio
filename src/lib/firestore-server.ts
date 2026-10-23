@@ -3,11 +3,25 @@
 
 import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { getAdminDb } from "@/lib/firebase-admin";
+import { getArticles as getMockArticles, getArticleBySlug as getMockArticleBySlug } from "@/lib/mock-articles";
+import { getStaticProjects, getStaticProjectBySlug } from "@/lib/projects-data";
 
 // ==================== LAZY DB ACCESSOR ====================
 
+function safeGetDb(): FirebaseFirestore.Firestore | null {
+  try {
+    return getAdminDb();
+  } catch {
+    return null;
+  }
+}
+
 function getDb(): FirebaseFirestore.Firestore {
-  return getAdminDb();
+  const db = safeGetDb();
+  if (!db) {
+    throw new Error("Firestore Admin SDK is not initialized.");
+  }
+  return db;
 }
 
 // ==================== TYPES ====================
@@ -132,12 +146,43 @@ function stripUndefined(obj: Record<string, unknown>): Record<string, unknown> {
 
 // ==================== ARTICLES CRUD ====================
 
+function getFallbackArticles(category?: string, status?: ArticleStatus, locale?: string): Article[] {
+  const targetLocale = (["uz", "en", "ru"].includes(locale || "") ? locale : "uz") as "uz" | "en" | "ru";
+  const mocks = getMockArticles(targetLocale);
+  let result: Article[] = mocks.map((m, idx) => ({
+    id: `mock-${m.slug}-${idx}`,
+    title: m.title,
+    slug: m.slug,
+    content: m.content,
+    summary: m.excerpt,
+    tags: [m.category],
+    category: m.category,
+    status: "published",
+    image: m.image,
+    imageUrl: m.image,
+    publishedAt: new Date(m.publishedAt),
+    createdAt: new Date(m.publishedAt),
+    updatedAt: new Date(m.publishedAt),
+    views: 180 + idx * 35,
+    locale: targetLocale,
+  }));
+
+  if (category) result = result.filter((a) => a.category === category);
+  if (status && status !== "published") return [];
+  return result;
+}
+
 export async function getArticles(
   category?: string,
   status?: ArticleStatus,
   locale?: string,
 ): Promise<Article[]> {
-  let queryRef: FirebaseFirestore.Query = getDb().collection(ARTICLES);
+  const db = safeGetDb();
+  if (!db) {
+    return getFallbackArticles(category, status, locale);
+  }
+
+  let queryRef: FirebaseFirestore.Query = db.collection(ARTICLES);
   if (category) queryRef = queryRef.where("category", "==", category);
   if (status) queryRef = queryRef.where("status", "==", status);
   if (locale) queryRef = queryRef.where("locale", "==", locale);
@@ -145,42 +190,86 @@ export async function getArticles(
 
   try {
     const snapshot = await queryRef.get();
-    return snapshot.docs.map((doc) => ({
+    const articles = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...convertTimestamps(doc.data()),
     })) as Article[];
-  } catch {
-    // Safe fallback in case composite index is not yet created.
-    const snapshot = await getDb().collection(ARTICLES).get();
-    let articles = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...convertTimestamps(doc.data()),
-    })) as Article[];
-
-    if (category) articles = articles.filter((a) => a.category === category);
-    if (status) articles = articles.filter((a) => a.status === status);
-    if (locale) articles = articles.filter((a) => a.locale === locale);
-
-    articles.sort((a, b) => {
-      const dateA = a.createdAt instanceof Date ? a.createdAt.getTime() : 0;
-      const dateB = b.createdAt instanceof Date ? b.createdAt.getTime() : 0;
-      return dateB - dateA;
-    });
-
+    if (articles.length === 0) {
+      return getFallbackArticles(category, status, locale);
+    }
     return articles;
+  } catch {
+    try {
+      const snapshot = await db.collection(ARTICLES).get();
+      let articles = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...convertTimestamps(doc.data()),
+      })) as Article[];
+
+      if (category) articles = articles.filter((a) => a.category === category);
+      if (status) articles = articles.filter((a) => a.status === status);
+      if (locale) articles = articles.filter((a) => a.locale === locale);
+
+      articles.sort((a, b) => {
+        const dateA = a.createdAt instanceof Date ? a.createdAt.getTime() : 0;
+        const dateB = b.createdAt instanceof Date ? b.createdAt.getTime() : 0;
+        return dateB - dateA;
+      });
+
+      if (articles.length === 0) {
+        return getFallbackArticles(category, status, locale);
+      }
+      return articles;
+    } catch {
+      return getFallbackArticles(category, status, locale);
+    }
   }
 }
 
-export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  const snapshot = await getDb()
-    .collection(ARTICLES)
-    .where("slug", "==", slug)
-    .limit(1)
-    .get();
+export async function getArticleBySlug(slug: string, locale?: string): Promise<Article | null> {
+  const db = safeGetDb();
+  if (db) {
+    try {
+      const snapshot = await db
+        .collection(ARTICLES)
+        .where("slug", "==", slug)
+        .limit(1)
+        .get();
 
-  if (snapshot.empty) return null;
-  const doc = snapshot.docs[0];
-  return { id: doc.id, ...convertTimestamps(doc.data()) } as Article;
+      if (!snapshot.empty) {
+        const doc = snapshot.docs[0];
+        return { id: doc.id, ...convertTimestamps(doc.data()) } as Article;
+      }
+    } catch {
+      // Fall through to fallback
+    }
+  }
+
+  const targetLocale = (["uz", "en", "ru"].includes(locale || "") ? locale : "uz") as "uz" | "en" | "ru";
+  const mock =
+    getMockArticleBySlug(targetLocale, slug) ||
+    getMockArticleBySlug("uz", slug) ||
+    getMockArticleBySlug("en", slug) ||
+    getMockArticleBySlug("ru", slug);
+  if (!mock) return null;
+
+  return {
+    id: `mock-${mock.slug}`,
+    title: mock.title,
+    slug: mock.slug,
+    content: mock.content,
+    summary: mock.excerpt,
+    tags: [mock.category],
+    category: mock.category,
+    status: "published",
+    image: mock.image,
+    imageUrl: mock.image,
+    publishedAt: new Date(mock.publishedAt),
+    createdAt: new Date(mock.publishedAt),
+    updatedAt: new Date(mock.publishedAt),
+    views: 310,
+    locale: targetLocale,
+  };
 }
 
 export async function getArticleById(id: string): Promise<Article | null> {
@@ -226,47 +315,81 @@ export async function deleteArticle(id: string): Promise<void> {
 
 // ==================== PROJECTS CRUD ====================
 
-export async function getProjects(status?: ArticleStatus): Promise<Project[]> {
-  let queryRef: FirebaseFirestore.Query = getDb().collection(PROJECTS);
+function getFallbackProjects(status?: ArticleStatus, locale?: string): Project[] {
+  if (status && status !== "published") return [];
+  return getStaticProjects(locale || "uz");
+}
+
+export async function getProjects(status?: ArticleStatus, locale?: string): Promise<Project[]> {
+  const db = safeGetDb();
+  if (!db) {
+    return getFallbackProjects(status, locale);
+  }
+
+  let queryRef: FirebaseFirestore.Query = db.collection(PROJECTS);
   if (status) queryRef = queryRef.where("status", "==", status);
   queryRef = queryRef.orderBy("createdAt", "desc");
 
   try {
     const snapshot = await queryRef.get();
-    return snapshot.docs.map((doc) => ({
+    const projects = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...convertTimestamps(doc.data()),
     })) as Project[];
-  } catch {
-    // Safe fallback in case index is not yet created.
-    const snapshot = await getDb().collection(PROJECTS).get();
-    let projects = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...convertTimestamps(doc.data()),
-    })) as Project[];
-
-    if (status) projects = projects.filter((p) => p.status === status);
-
-    projects.sort((a, b) => {
-      const dateA = a.createdAt instanceof Date ? a.createdAt.getTime() : 0;
-      const dateB = b.createdAt instanceof Date ? b.createdAt.getTime() : 0;
-      return dateB - dateA;
-    });
-
+    if (projects.length === 0) {
+      return getFallbackProjects(status, locale);
+    }
     return projects;
+  } catch {
+    try {
+      const snapshot = await db.collection(PROJECTS).get();
+      let projects = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...convertTimestamps(doc.data()),
+      })) as Project[];
+
+      if (status) projects = projects.filter((p) => p.status === status);
+
+      projects.sort((a, b) => {
+        const dateA = a.createdAt instanceof Date ? a.createdAt.getTime() : 0;
+        const dateB = b.createdAt instanceof Date ? b.createdAt.getTime() : 0;
+        return dateB - dateA;
+      });
+
+      if (projects.length === 0) {
+        return getFallbackProjects(status, locale);
+      }
+      return projects;
+    } catch {
+      return getFallbackProjects(status, locale);
+    }
   }
 }
 
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  const snapshot = await getDb()
-    .collection(PROJECTS)
-    .where("slug", "==", slug)
-    .limit(1)
-    .get();
+export async function getProjectBySlug(slug: string, locale?: string): Promise<Project | null> {
+  const db = safeGetDb();
+  if (db) {
+    try {
+      const snapshot = await db
+        .collection(PROJECTS)
+        .where("slug", "==", slug)
+        .limit(1)
+        .get();
 
-  if (snapshot.empty) return null;
-  const doc = snapshot.docs[0];
-  return { id: doc.id, ...convertTimestamps(doc.data()) } as Project;
+      if (!snapshot.empty) {
+        const doc = snapshot.docs[0];
+        return { id: doc.id, ...convertTimestamps(doc.data()) } as Project;
+      }
+    } catch {
+      // Fall through to fallback
+    }
+  }
+
+  const staticProj =
+    getStaticProjectBySlug(slug, locale || "uz") ||
+    getStaticProjectBySlug(slug, "en") ||
+    getStaticProjectBySlug(slug, "ru");
+  return staticProj || null;
 }
 
 export async function getProjectById(id: string): Promise<Project | null> {
@@ -473,15 +596,22 @@ export async function getAdminAnalyticsSummary(
 }
 
 export async function createAnalyticsEvent(input: AnalyticsEventInput): Promise<void> {
-  const payload = stripUndefined({
-    type: input.type,
-    path: input.path || "",
-    referrer: input.referrer || "",
-    userAgent: input.userAgent || "",
-    sessionId: input.sessionId,
-    duration: input.duration,
-    timestamp: FieldValue.serverTimestamp(),
-  });
+  const db = safeGetDb();
+  if (!db) return;
 
-  await getDb().collection(ANALYTICS).add(payload);
+  try {
+    const payload = stripUndefined({
+      type: input.type,
+      path: input.path || "",
+      referrer: input.referrer || "",
+      userAgent: input.userAgent || "",
+      sessionId: input.sessionId,
+      duration: input.duration,
+      timestamp: FieldValue.serverTimestamp(),
+    });
+
+    await db.collection(ANALYTICS).add(payload);
+  } catch {
+    // Graceful silent ignore if firestore write fails
+  }
 }

@@ -97,11 +97,11 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
           transition={{ duration: 0.5, ease: EASE_LUXURY }}
           className="mb-5 md:mb-6"
         >
-          <p className="text-xs uppercase tracking-[0.22em] text-cyan-200/75">{copy.badge}</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-900">{copy.badge}</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-[#1C1917] md:text-4xl">
             {copy.title}
           </h2>
-          <p className="mt-3 max-w-2xl text-gray-300">{copy.description}</p>
+          <p className="mt-3 max-w-2xl text-base text-[#57534E]">{copy.description}</p>
         </motion.div>
 
         <motion.div
@@ -112,19 +112,19 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
           viewport={{ once: true, amount: 0.25 }}
         >
           <motion.div variants={itemVariants} className="md:col-span-7 md:row-span-2">
-            <TiltCard className="h-full rounded-3xl" maxTilt={9} scale={1.02}>
-              <article className="relative h-full min-h-[25rem] overflow-hidden rounded-3xl border border-white/20 bg-white/8 p-7 shadow-[0_24px_70px_rgba(5,12,32,0.45)] backdrop-blur-2xl">
+            <TiltCard className="h-full rounded-3xl" maxTilt={6} scale={1.01}>
+              <article className="relative h-full min-h-[25rem] overflow-hidden rounded-3xl border border-[#E7E5E4] bg-white p-7 shadow-[0_4px_24px_rgba(44,38,30,0.04)] transition-all duration-300 hover:border-amber-400/50 hover:shadow-[0_12px_36px_rgba(44,38,30,0.08)]">
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(110%_90%_at_8%_4%,rgba(255,255,255,0.24),transparent_50%)]"
+                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(110%_90%_at_8%_4%,rgba(245,158,11,0.04),transparent_50%)]"
                 />
-                <p className="relative z-10 text-xs uppercase tracking-[0.18em] text-white/65">
+                <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.18em] text-amber-800">
                   {copy.techLabel}
                 </p>
-                <h3 className="relative z-10 mt-2 text-3xl font-semibold text-white md:text-4xl">
+                <h3 className="relative z-10 mt-2 text-3xl font-bold text-[#1C1917] md:text-4xl">
                   {copy.techTitle}
                 </h3>
-                <p className="relative z-10 mt-4 max-w-xl text-base leading-relaxed text-white/82 md:text-lg">
+                <p className="relative z-10 mt-4 max-w-xl text-base leading-relaxed text-[#57534E] md:text-lg">
                   {copy.techDescription}
                 </p>
 
@@ -132,9 +132,9 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
                   {techStack.map(({ name, Icon }) => (
                     <li
                       key={name}
-                      className="flex items-center gap-3 rounded-xl border border-white/16 bg-black/22 px-3 py-2 text-sm text-white/90"
+                      className="flex items-center gap-3 rounded-xl border border-[#E7E5E4] bg-[#F7F5F0] px-3.5 py-2.5 text-sm font-medium text-[#292524] transition hover:bg-[#EFECE6]"
                     >
-                      <Icon className="h-4 w-4 text-white/80" />
+                      <Icon className="h-4 w-4 text-amber-700" />
                       <span className="tracking-wide">{name}</span>
                     </li>
                   ))}
@@ -144,23 +144,23 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
           </motion.div>
 
           <motion.div variants={itemVariants} className="md:col-span-5 md:row-span-1">
-            <TiltCard className="h-full rounded-3xl" maxTilt={8} scale={1.018}>
-              <article className="relative h-full min-h-[14rem] overflow-hidden rounded-3xl border border-white/18 bg-white/10 p-6 shadow-[0_20px_48px_rgba(17,14,45,0.35)] backdrop-blur-2xl">
+            <TiltCard className="h-full rounded-3xl" maxTilt={6} scale={1.01}>
+              <article className="relative h-full min-h-[14rem] overflow-hidden rounded-3xl border border-[#E7E5E4] bg-[#FBF9F5] p-6 shadow-[0_4px_24px_rgba(44,38,30,0.03)] transition-all duration-300 hover:border-amber-400/40 hover:shadow-[0_12px_32px_rgba(44,38,30,0.06)]">
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-cyan-200/24 blur-3xl"
+                  className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-amber-400/10 blur-3xl"
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute right-8 top-8 h-3 w-3 animate-pulse rounded-full bg-cyan-100/90"
+                  className="pointer-events-none absolute right-8 top-8 h-2.5 w-2.5 rounded-full bg-amber-500"
                 />
-                <p className="relative z-10 text-xs uppercase tracking-[0.18em] text-white/65">
+                <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.18em] text-amber-800">
                   {copy.softLabel}
                 </p>
-                <h3 className="relative z-10 mt-2 text-2xl font-semibold text-white md:text-3xl">
+                <h3 className="relative z-10 mt-2 text-2xl font-bold text-[#1C1917] md:text-3xl">
                   {copy.softTitle}
                 </h3>
-                <p className="relative z-10 mt-4 text-base leading-relaxed text-white/84 md:text-lg">
+                <p className="relative z-10 mt-4 text-base leading-relaxed text-[#57534E]">
                   {copy.softPhilosophy}
                 </p>
 
@@ -170,9 +170,9 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
                     return (
                       <li
                         key={`soft-${index}-${point}`}
-                        className="flex items-center gap-2 rounded-xl border border-white/16 bg-black/18 px-3 py-2 text-sm text-white/88"
+                        className="flex items-center gap-2 rounded-xl border border-[#E7E5E4] bg-white px-3 py-2 text-sm font-medium text-[#292524]"
                       >
-                        <Icon className="h-4 w-4 text-cyan-100/80" />
+                        <Icon className="h-4 w-4 text-amber-700" />
                         <span>{point}</span>
                       </li>
                     );
@@ -183,32 +183,32 @@ export function BentoGrid({ copy }: { copy: BentoGridCopy }) {
           </motion.div>
 
           <motion.div variants={itemVariants} className="md:col-span-12 md:row-span-1">
-            <TiltCard className="h-full rounded-3xl" maxTilt={8} scale={1.018}>
-              <article className="relative h-full min-h-[13.5rem] overflow-hidden rounded-3xl border border-white/18 bg-gradient-to-r from-white/12 via-white/8 to-white/12 p-6 shadow-[0_18px_44px_rgba(10,16,32,0.36)] backdrop-blur-xl md:p-8">
+            <TiltCard className="h-full rounded-3xl" maxTilt={6} scale={1.01}>
+              <article className="relative h-full min-h-[13.5rem] overflow-hidden rounded-3xl border border-[#E7E5E4] bg-white p-6 shadow-[0_4px_24px_rgba(44,38,30,0.04)] transition-all duration-300 hover:border-amber-400/50 hover:shadow-[0_12px_36px_rgba(44,38,30,0.08)] md:p-8">
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-[radial-gradient(70%_100%_at_100%_50%,rgba(255,255,255,0.3),transparent_70%)]"
+                  className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-[radial-gradient(70%_100%_at_100%_50%,rgba(245,158,11,0.05),transparent_70%)]"
                 />
-                <p className="relative z-10 text-xs uppercase tracking-[0.18em] text-white/65">
+                <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.18em] text-amber-800">
                   {copy.legalLabel}
                 </p>
-                <h3 className="relative z-10 mt-2 text-2xl font-semibold text-white md:text-3xl">
+                <h3 className="relative z-10 mt-2 text-2xl font-bold text-[#1C1917] md:text-3xl">
                   {copy.legalTitle}
                 </h3>
-                <p className="relative z-10 mt-4 max-w-4xl text-base leading-relaxed text-white/84 md:text-lg">
+                <p className="relative z-10 mt-4 max-w-4xl text-base leading-relaxed text-[#57534E] md:text-lg">
                   {copy.legalDescription}
                 </p>
 
-                <div className="relative z-10 mt-5 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="relative z-10 mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
                   {[copy.legalPoint1, copy.legalPoint2, copy.legalPoint3, copy.legalPoint4].map(
                     (point, index) => {
                       const Icon = legalIcons[index];
                       return (
                         <div
                           key={`legal-${index}-${point}`}
-                          className="flex items-center gap-2 rounded-xl border border-white/16 bg-black/18 px-3 py-2 text-sm text-white/88"
+                          className="flex items-center gap-2 rounded-xl border border-[#E7E5E4] bg-[#F7F5F0] px-3.5 py-2.5 text-sm font-medium text-[#292524]"
                         >
-                          <Icon className="h-4 w-4 text-white/80" />
+                          <Icon className="h-4 w-4 text-amber-700" />
                           <span>{point}</span>
                         </div>
                       );

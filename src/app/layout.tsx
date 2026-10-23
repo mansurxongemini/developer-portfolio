@@ -93,8 +93,8 @@ export async function generateMetadata() {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
-  colorScheme: "dark",
+  themeColor: "#FAF8F5",
+  colorScheme: "light",
 };
 
 export default async function RootLayout({
@@ -107,6 +107,10 @@ export default async function RootLayout({
       suppressHydrationWarning
       as="html"
       lang="en"
+      data-theme="light"
+      data-neutral="sand"
+      data-brand="orange"
+      data-border="rounded"
       data-scroll-behavior="smooth"
       fillWidth
       className={classNames(
@@ -148,9 +152,9 @@ export default async function RootLayout({
                     root.setAttribute('data-' + key, value);
                   });
                   
-                  // Force dark theme
-                  root.setAttribute('data-theme', 'dark');
-                  localStorage.setItem('data-theme', 'dark');
+                  // Default to warm light theme (James Clear Atoms aesthetic)
+                  root.setAttribute('data-theme', 'light');
+                  localStorage.setItem('data-theme', 'light');
                   
                   // Apply any saved style overrides
                   const styleKeys = Object.keys(config);
@@ -162,7 +166,7 @@ export default async function RootLayout({
                   });
                 } catch (e) {
                   console.error('Failed to initialize theme:', e);
-                  document.documentElement.setAttribute('data-theme', 'dark');
+                  document.documentElement.setAttribute('data-theme', 'light');
                 }
               })();
             `}

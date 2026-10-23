@@ -41,7 +41,7 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
           return (
             <motion.article
               key={project.id}
-              className={`group relative isolate min-h-[16rem] overflow-hidden rounded-2xl border border-white/[0.12] bg-[#0b121d]/90 p-6 backdrop-blur-xl transition-all duration-500 hover:border-cyan-200/25 hover:shadow-glow md:min-h-0 ${spanClass}`}
+              className={`group relative isolate min-h-[16rem] overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white p-6 shadow-[0_4px_24px_-2px_rgba(44,38,30,0.04)] transition-all duration-500 hover:border-amber-400/50 hover:shadow-[0_12px_36px_-4px_rgba(44,38,30,0.08)] md:min-h-0 ${spanClass}`}
               initial={prefersReducedMotion ? false : { opacity: 0, y: 32 }}
               whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
@@ -50,54 +50,36 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
                 ease: [0.22, 1, 0.36, 1],
                 delay: prefersReducedMotion ? 0 : index * 0.1,
               }}
-              whileHover={prefersReducedMotion ? {} : { y: -6, scale: 1.015 }}
+              whileHover={prefersReducedMotion ? {} : { y: -4, scale: 1.01 }}
             >
-              {/* Mesh gradient background */}
+              {/* Subtle warm ambient background */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 bg-mesh-card opacity-30"
+                className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(75%_80%_at_15%_10%,rgba(245,158,11,0.04),transparent_52%),radial-gradient(70%_70%_at_85%_80%,rgba(217,119,6,0.03),transparent_55%)]"
               />
 
-              {/* Hover shimmer */}
+              {/* Hover warm shimmer */}
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-cyan-400/[0.06] to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+                className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-amber-400/[0.04] to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100"
                 style={{ backgroundSize: "200% 100%" }}
               />
 
-              {/* Border glow on hover */}
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 rounded-2xl border border-cyan-300/0 transition-all duration-500 group-hover:border-cyan-300/18"
-              />
-
-              {/* Background image */}
+              {/* Background image preview */}
               {projectImage && (
                 <div
-                  className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.14] transition-opacity duration-700 group-hover:opacity-[0.24]"
+                  className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.06] transition-opacity duration-700 group-hover:opacity-[0.12]"
                   style={{ backgroundImage: `url(${projectImage})` }}
                 />
               )}
 
-              {!projectImage && (
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(75%_80%_at_15%_10%,rgba(56,189,248,0.14),transparent_52%),radial-gradient(70%_70%_at_85%_80%,rgba(99,102,241,0.16),transparent_55%)]"
-                />
-              )}
-
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(2,6,12,0.08)_0%,rgba(2,6,12,0.62)_72%,rgba(2,6,12,0.86)_100%)]"
-              />
-
               <div className="relative z-10 flex h-full flex-col justify-between gap-4">
                 {/* Header */}
                 <div className="flex items-start justify-between gap-3">
-                  <p className="inline-flex rounded-full border border-cyan-200/25 bg-cyan-300/[0.08] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200/90">
+                  <p className="inline-flex rounded-full border border-amber-700/15 bg-amber-500/[0.08] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-amber-900">
                     {tags}
                   </p>
-                  <span className="rounded-full border border-white/10 bg-black/20 px-2.5 py-1 text-xs uppercase tracking-[0.14em] text-white/55">
+                  <span className="rounded-full border border-[#E7E5E4] bg-[#F7F5F0] px-2.5 py-1 text-xs font-medium uppercase tracking-[0.14em] text-[#78716C]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
@@ -105,13 +87,13 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
                 {/* Content */}
                 <div className="space-y-3">
                   <h3
-                    className={`max-w-[20ch] font-bold leading-[1.08] tracking-tight text-white ${
+                    className={`max-w-[22ch] font-bold leading-[1.12] tracking-tight text-[#1C1917] ${
                       isPrimary ? "text-3xl md:text-[2.05rem]" : "text-2xl md:text-[1.8rem]"
                     }`}
                   >
                     {project.title}
                   </h3>
-                  <p className="max-w-[44ch] text-[15px] leading-relaxed text-white/75 md:text-base">
+                  <p className="max-w-[46ch] text-[15px] leading-relaxed text-[#57534E] md:text-base">
                     {description}
                   </p>
                 </div>
@@ -122,7 +104,7 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
                     {hasReadMore && (
                       <a
                         href={`/work/${project.slug}`}
-                        className="group/btn inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-400/[0.1] px-4 py-2.5 text-sm font-semibold tracking-[0.01em] text-cyan-50 transition-all duration-300 hover:border-cyan-200/55 hover:bg-cyan-400/[0.16] hover:shadow-[0_0_20px_rgba(34,211,238,0.12)]"
+                        className="group/btn inline-flex items-center gap-2 rounded-full border border-amber-600/30 bg-amber-600/[0.08] px-4 py-2.5 text-sm font-semibold tracking-[0.01em] text-amber-950 transition-all duration-300 hover:border-amber-600/60 hover:bg-amber-600/[0.14] hover:shadow-[0_2px_12px_rgba(217,119,6,0.12)]"
                       >
                         <span>Batafsil</span>
                         <ArrowUpRight
@@ -136,14 +118,14 @@ export function ProjectBentoGrid({ projects }: ProjectBentoGridProps) {
                         href={project.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="group/btn inline-flex items-center gap-2 rounded-full border border-white/[0.16] bg-white/[0.05] px-4 py-2.5 text-sm font-semibold tracking-[0.01em] text-white/85 transition-all duration-300 hover:border-white/30 hover:bg-white/[0.1] hover:text-white"
+                        className="group/btn inline-flex items-center gap-2 rounded-full border border-[#D6D3D1] bg-[#F7F5F0] px-4 py-2.5 text-sm font-semibold tracking-[0.01em] text-[#44403C] transition-all duration-300 hover:border-[#A8A29E] hover:bg-[#E7E5E4] hover:text-[#1C1917]"
                       >
                         <ExternalLink size={13} />
                         <span>Loyihani ko&apos;rish</span>
                       </a>
                     )}
                     {!hasReadMore && !hasExternalLink && (
-                      <span className="inline-flex rounded-full border border-white/15 bg-white/[0.05] px-4 py-2.5 text-sm font-medium tracking-[0.01em] text-white/70">
+                      <span className="inline-flex rounded-full border border-[#E7E5E4] bg-[#F7F5F0] px-4 py-2.5 text-sm font-medium tracking-[0.01em] text-[#78716C]">
                         Yaqinda yangilanadi
                       </span>
                     )}

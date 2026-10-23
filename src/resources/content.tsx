@@ -22,7 +22,7 @@ const social: Social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/mansurxon-rustamov",
+    link: "https://github.com/mansurxongemini",
     essential: true,
   },
   {
@@ -62,14 +62,14 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">TSUL & AI</strong>{" "}
+        <strong className="ml-4">LegalTech &amp; AI</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
-          Featured work
+          Inclusive Legal RAG
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/inclusive-legal-rag",
   },
   subline: (
     <>

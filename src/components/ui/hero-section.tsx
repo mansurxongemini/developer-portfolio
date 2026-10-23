@@ -69,7 +69,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
     <section className="relative w-full overflow-hidden py-1 sm:py-2 md:py-6">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <DynamicAtmosphere />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(125,211,252,0.16),transparent_42%),radial-gradient(circle_at_84%_78%,rgba(45,212,191,0.12),transparent_40%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(245,158,11,0.08),transparent_42%),radial-gradient(circle_at_84%_78%,rgba(217,119,6,0.06),transparent_40%)]" />
       </div>
 
       <div className="mx-auto grid min-h-[66vh] w-full max-w-7xl grid-cols-1 items-start gap-5 px-4 py-4 sm:min-h-[72vh] sm:gap-6 sm:px-5 sm:py-8 md:min-h-[88vh] md:items-center md:gap-10 md:px-10 md:py-12 lg:grid-cols-12 lg:gap-8 lg:px-14">
@@ -82,7 +82,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
         >
           <motion.p
             variants={itemVariants}
-            className="mb-4 text-xs uppercase tracking-[0.24em] text-cyan-200/75"
+            className="mb-4 inline-flex items-center rounded-full border border-amber-700/20 bg-amber-500/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-900"
             style={{ willChange: "transform, opacity" }}
           >
             {resolvedCopy.badge}
@@ -90,14 +90,14 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
           <motion.h1
             variants={containerVariants}
-            className="mb-2 text-[2.05rem] font-black leading-[0.93] sm:text-5xl md:mb-3 md:text-7xl"
+            className="mb-2 text-[2.05rem] font-black leading-[0.96] text-[#1C1917] sm:text-5xl md:mb-3 md:text-7xl"
             style={{ willChange: "transform, opacity" }}
           >
             {headlineLines.map((line, index) => (
               <motion.span
                 key={`${resolvedCopy.title}-${line}`}
                 variants={itemVariants}
-                className="block bg-gradient-to-r from-white via-cyan-100 to-sky-300 bg-clip-text text-transparent"
+                className="block text-[#1C1917]"
                 style={{ willChange: "transform, opacity" }}
               >
                 {line}
@@ -107,7 +107,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
           <motion.h2
             variants={containerVariants}
-            className="mb-3 text-[0.95rem] font-medium leading-snug text-white/90 sm:text-lg md:mb-6 md:text-2xl"
+            className="mb-3 text-[0.95rem] font-medium leading-snug text-[#292524] sm:text-lg md:mb-6 md:text-2xl"
             style={{ willChange: "transform, opacity" }}
           >
             {subtitleLines.map((line, index) => (
@@ -124,7 +124,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
           <motion.p
             variants={itemVariants}
-            className="max-w-2xl text-[0.92rem] leading-relaxed text-white/70 sm:text-base md:text-lg md:leading-relaxed"
+            className="max-w-2xl text-[0.92rem] leading-relaxed text-[#57534E] sm:text-base md:text-lg md:leading-relaxed"
             style={{ willChange: "transform, opacity" }}
           >
             {resolvedCopy.description}
@@ -139,7 +139,7 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
             <Link
               href="/blog"
-              className="inline-flex items-center rounded-xl border border-white/30 px-5 py-2.5 text-sm font-medium text-white/90 transition hover:border-cyan-200/55 hover:bg-cyan-100/10 hover:text-cyan-50"
+              className="inline-flex items-center rounded-xl border border-[#D6D3D1] bg-white px-5 py-2.5 text-sm font-medium text-[#44403C] shadow-sm transition hover:border-amber-600/40 hover:bg-[#F7F5F0] hover:text-[#1C1917]"
               data-cursor="interactive"
             >
               {resolvedCopy.ctaSecondary}
@@ -147,8 +147,8 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
           </motion.div>
 
           <div className="relative mt-4 w-full lg:hidden">
-            <div className="relative overflow-hidden rounded-2xl border border-white/12 bg-gradient-to-b from-white/[0.08] to-white/[0.02] p-2 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_16px_36px_rgba(0,0,0,0.45)]">
-              <div className="relative h-[280px] w-full overflow-hidden rounded-xl border border-white/10 bg-[#070c16] sm:h-[360px]">
+            <div className="relative overflow-hidden rounded-2xl border border-[#E7E5E4] bg-white p-2 shadow-[0_8px_30px_rgba(44,38,30,0.06)]">
+              <div className="relative h-[280px] w-full overflow-hidden rounded-xl border border-[#EFECE6] bg-[#F7F5F0] sm:h-[360px]">
                 <Image
                   src="/images/avatar.jpg"
                   alt={content.person.name}
@@ -160,16 +160,16 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(95%_70%_at_76%_0%,rgba(125,211,252,0.34),transparent_55%),linear-gradient(180deg,rgba(3,8,16,0.04)_28%,rgba(3,8,16,0.76)_84%)]"
+                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,rgba(28,25,23,0.85)_90%)]"
                 />
                 <div className="absolute inset-x-0 bottom-0 p-4">
-                  <p className="mb-1 text-[10px] uppercase tracking-[0.2em] text-cyan-200/85">
+                  <p className="mb-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-amber-300">
                     Featured Profile
                   </p>
-                  <h3 className="text-sm font-semibold text-white sm:text-base">
+                  <h3 className="text-sm font-bold text-white sm:text-base">
                     {content.person.name}
                   </h3>
-                  <p className="mt-1 text-[11px] text-white/70 sm:text-xs">{content.person.role}</p>
+                  <p className="mt-1 text-[11px] text-stone-200 sm:text-xs">{content.person.role}</p>
                 </div>
               </div>
             </div>
@@ -179,12 +179,12 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
         <div className="relative hidden items-center justify-end lg:col-span-5 lg:flex">
           <TiltCard className="w-full max-w-md" maxTilt={10} scale={1.01}>
             <motion.div
-              className="relative rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.09] to-white/[0.02] p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_22px_54px_rgba(0,0,0,0.52)]"
-              animate={{ y: [0, -10, 0] }}
+              className="relative rounded-3xl border border-[#E7E5E4] bg-white p-4 shadow-[0_16px_40px_-8px_rgba(44,38,30,0.08)]"
+              animate={{ y: [0, -8, 0] }}
               transition={{ duration: 7.8, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
               style={{ willChange: "transform, opacity" }}
             >
-              <div className="relative h-[380px] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#070c16]">
+              <div className="relative h-[400px] w-full overflow-hidden rounded-2xl border border-[#EFECE6] bg-[#F7F5F0]">
                 <Image
                   src="/images/avatar.jpg"
                   alt={content.person.name}
@@ -197,20 +197,15 @@ export function HeroSection({ copy }: { copy?: HeroCopy }) {
 
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(95%_70%_at_76%_0%,rgba(125,211,252,0.36),transparent_55%),linear-gradient(180deg,rgba(3,8,16,0.02)_28%,rgba(3,8,16,0.72)_84%)]"
-                />
-
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -left-12 -top-10 h-44 w-44 rounded-full bg-cyan-300/20 blur-3xl"
+                  className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_45%,rgba(28,25,23,0.85)_92%)]"
                 />
 
                 <div className="absolute inset-x-0 bottom-0 p-5">
-                  <p className="mb-1 text-xs uppercase tracking-[0.2em] text-cyan-200/85">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-amber-300">
                     Featured Profile
                   </p>
-                  <h3 className="text-xl font-semibold text-white">{content.person.name}</h3>
-                  <p className="mt-1 text-sm text-white/70">{content.person.role}</p>
+                  <h3 className="text-xl font-bold text-white">{content.person.name}</h3>
+                  <p className="mt-1 text-sm text-stone-200">{content.person.role}</p>
                 </div>
               </div>
             </motion.div>

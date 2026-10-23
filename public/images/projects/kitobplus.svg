@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="50%" stop-color="#312e81"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+    <linearGradient id="accent6" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <radialGradient id="glow6" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg6)"/>
+  <circle cx="600" cy="240" r="300" fill="url(#glow6)"/>
+  
+  <!-- Open Book & Audio wave icon -->
+  <g transform="translate(600, 220)" stroke="url(#accent6)" stroke-width="3" fill="none">
+    <!-- Open Book -->
+    <path d="M 0 35 C -30 20 -70 20 -90 35 L -90 -35 C -70 -45 -30 -45 0 -35 Z" fill="#818cf8" fill-opacity="0.15"/>
+    <path d="M 0 35 C 30 20 70 20 90 35 L 90 -35 C 70 -45 30 -45 0 -35 Z" fill="#c084fc" fill-opacity="0.15"/>
+    <line x1="0" y1="-35" x2="0" y2="35"/>
+    <!-- Audio Wave above book -->
+    <line x1="-30" y1="-55" x2="-30" y2="-45" stroke-width="2"/>
+    <line x1="-15" y1="-65" x2="-15" y2="-45" stroke-width="2"/>
+    <line x1="0" y1="-75" x2="0" y2="-45" stroke-width="3"/>
+    <line x1="15" y1="-65" x2="15" y2="-45" stroke-width="2"/>
+    <line x1="30" y1="-55" x2="30" y2="-45" stroke-width="2"/>
+  </g>
+
+  <!-- Badge -->
+  <rect x="445" y="345" width="310" height="36" rx="18" fill="#818cf8" fill-opacity="0.12" stroke="#818cf8" stroke-opacity="0.3"/>
+  <text x="600" y="368" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#a5b4fc" text-anchor="middle" letter-spacing="3">DIGITAL LIBRARY &amp; AUDIO</text>
+
+  <!-- Title -->
+  <text x="600" y="440" font-family="system-ui, -apple-system, sans-serif" font-size="40" font-weight="700" fill="#ffffff" text-anchor="middle">KitobPlus &amp; Mutolaa</text>
+  <text x="600" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#c7d2fe" text-anchor="middle">Interactive Audiobook &amp; Literary Knowledge Platform</text>
+
+  <!-- Tech tags -->
+  <g transform="translate(600, 540)" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#cbd5e1" text-anchor="middle">
+    <text x="-190" y="0">JavaScript</text>
+    <circle cx="-135" cy="-4" r="3" fill="#818cf8"/>
+    <text x="-80" y="0">Aiogram</text>
+    <circle cx="-30" cy="-4" r="3" fill="#818cf8"/>
+    <text x="40" y="0">Audio Streaming</text>
+    <circle cx="120" cy="-4" r="3" fill="#818cf8"/>
+    <text x="180" y="0">Mobile</text>
+  </g>
+</svg>

@@ -102,14 +102,14 @@ const homeByLocale: Record<Locale, Home> = {
       display: true,
       title: (
         <Row gap="12" vertical="center">
-          <strong className="ml-4">TDYU & AI</strong>{" "}
+          <strong className="ml-4">LegalTech &amp; AI</strong>{" "}
           <Line background="brand-alpha-strong" vert height="20" />
           <Text marginRight="4" onBackground="brand-medium">
-            Tanlangan ish
+            Inclusive Legal RAG
           </Text>
         </Row>
       ),
-      href: "/work/building-once-ui-a-customizable-design-system",
+      href: "/work/inclusive-legal-rag",
     },
     subline: (
       <>
@@ -130,14 +130,14 @@ const homeByLocale: Record<Locale, Home> = {
       display: true,
       title: (
         <Row gap="12" vertical="center">
-          <strong className="ml-4">TSUL & AI</strong>{" "}
+          <strong className="ml-4">LegalTech &amp; AI</strong>{" "}
           <Line background="brand-alpha-strong" vert height="20" />
           <Text marginRight="4" onBackground="brand-medium">
-            Featured work
+            Inclusive Legal RAG
           </Text>
         </Row>
       ),
-      href: "/work/building-once-ui-a-customizable-design-system",
+      href: "/work/inclusive-legal-rag",
     },
     subline: (
       <>
@@ -158,14 +158,14 @@ const homeByLocale: Record<Locale, Home> = {
       display: true,
       title: (
         <Row gap="12" vertical="center">
-          <strong className="ml-4">ТГЮУ & ИИ</strong>{" "}
+          <strong className="ml-4">LegalTech &amp; ИИ</strong>{" "}
           <Line background="brand-alpha-strong" vert height="20" />
           <Text marginRight="4" onBackground="brand-medium">
-            Избранная работа
+            Inclusive Legal RAG
           </Text>
         </Row>
       ),
-      href: "/work/building-once-ui-a-customizable-design-system",
+      href: "/work/inclusive-legal-rag",
     },
     subline: (
       <>
