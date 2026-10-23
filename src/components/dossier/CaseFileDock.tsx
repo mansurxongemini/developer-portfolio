@@ -52,9 +52,9 @@ export function CaseFileDock() {
   };
 
   return (
-    <aside
+    <nav
       aria-label="Case File Navigation"
-      className="fixed right-3 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-1.5 md:flex"
+      className="jopecuro-tabs hidden lg:flex"
     >
       {sections.map((sec) => {
         const isActive = activeSection === sec.id;
@@ -62,22 +62,19 @@ export function CaseFileDock() {
           <button
             key={sec.id}
             onClick={() => scrollTo(sec.id)}
-            className={`group relative flex h-7 w-7 items-center justify-center rounded-[3px] border font-mono text-[10px] font-semibold transition-all duration-200 ${
-              isActive
-                ? "border-[#ff5100] bg-[#ff5100] text-white shadow-[0_0_14px_rgba(255,81,0,0.45)]"
-                : "border-[#d9d2c0]/60 bg-[#fbf9f4]/90 text-[#57534e] hover:border-[#ff5100] hover:text-[#ff5100]"
-            }`}
+            aria-current={isActive ? "true" : undefined}
+            className="jopecuro-tab group"
             title={sec.labels[locale]}
           >
             <span>{sec.num}</span>
 
             {/* Hover Tooltip on Left */}
-            <span className="pointer-events-none absolute right-9 whitespace-nowrap rounded-[2px] border border-[#ff5100]/40 bg-[#131108] px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-[#f2eee3] opacity-0 shadow-lg transition-opacity duration-150 group-hover:opacity-100">
+            <span className="jopecuro-tab-label border border-white/20 bg-[#0b0a06]/95 px-2.5 py-1 text-white shadow-xl">
               № {sec.num} · {sec.labels[locale]}
             </span>
           </button>
         );
       })}
-    </aside>
+    </nav>
   );
 }

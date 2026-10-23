@@ -49,7 +49,7 @@ body {
 }
 
 /* ==========================================================================
-   Jopecuro Legal Dossier & Archival Code Architecture
+   Jopecuro Legal Dossier & Archival Code Architecture (Exact 95% Match)
    ========================================================================== */
 
 :root {
@@ -59,9 +59,17 @@ body {
   --bone: #f2eee3;
   --carbon: #2a2619;
   --orange: #ff5100;
-  --orange-glow: rgba(255, 81, 0, 0.22);
+  --orange-text: #c53a00;
+  --orange-glow: rgba(255, 81, 0, 0.25);
   --hair: rgba(233, 227, 210, 0.18);
   --hair-dark: rgba(19, 17, 8, 0.14);
+}
+
+/* Background grain */
+.grain-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
 }
 
 /* Jopecuro wireframe architectural text */
@@ -78,36 +86,189 @@ body {
   letter-spacing: -0.03em;
 }
 
+/* Hero classical bust mask */
+.hero__bust {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 58%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% 45%;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, rgba(0, 0, 0, 0.55) 14%, #000 35%), linear-gradient(to bottom, #000 0%, #000 60%, rgba(0, 0, 0, 0.55) 85%, transparent 100%);
+  mask-composite: intersect;
+  pointer-events: none;
+  opacity: 0.88;
+}
+
+/* Rotating Jury Badge */
+.badge-spin {
+  animation: spin-clockwise 14s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Exact Jopecuro Work Row with Slide-Up Fill & Translate */
+.work-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2.6rem minmax(0, 1.8fr) minmax(0, 1fr) 4rem 1.6rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.35rem 0.8rem;
+  border-bottom: 1px solid rgba(19, 17, 8, 0.14);
+  text-align: left;
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
+  transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-row > * {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: #0b0a06;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-row:hover::before,
+.work-row.is-active::before {
+  transform: scaleY(1);
+}
+
+.work-row:hover,
+.work-row.is-active {
+  color: #e9e3d2 !important;
+}
+
+.work-row:hover > *,
+.work-row.is-active > * {
+  transform: translateX(0.6rem);
+}
+
+.work-row:hover .work-row__arrow {
+  transform: translateX(0.6rem) rotate(0deg);
+  color: #ff5100;
+}
+
+/* Fixed Folder Tabs (Case File Index) on Right Edge */
+.jopecuro-tabs {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 190;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transform: translateY(-50%);
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+.jopecuro-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-right: 0;
+  border-radius: 3px 0 0 3px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s, border-color 0.3s;
+}
+
+.jopecuro-tab[aria-current="true"] {
+  transform: translateX(-12px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #ff5100;
+  color: #ff5100;
+}
+
+.jopecuro-tab:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.jopecuro-tab-label {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translate(8px, -50%);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.jopecuro-tab:hover .jopecuro-tab-label {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
 /* Dossier technical red/orange stamps */
 .dossier-stamp {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  border: 1px solid #ff5100;
+  border: 1.5px solid #ff5100;
   color: #ff5100;
-  padding: 0.15rem 0.55rem;
+  padding: 0.22em 0.65em 0.2em;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 3px;
+  transform: rotate(-2.5deg);
 }
 
 .dossier-stamp-dark {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  border: 1px solid rgba(255, 81, 0, 0.8);
+  border: 1.5px solid rgba(255, 81, 0, 0.85);
   background: rgba(255, 81, 0, 0.08);
   color: #ff5100;
-  padding: 0.15rem 0.55rem;
+  padding: 0.22em 0.65em 0.2em;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 3px;
+  transform: rotate(-2deg);
+}
+
+.stamp--exhibit {
+  position: absolute;
+  top: -0.9rem;
+  right: -0.6rem;
+  z-index: 10;
+  transform: rotate(-4deg);
 }
 
 /* Redacted classified black bar with interactive reveal */
@@ -123,7 +284,7 @@ body {
 }
 
 .dossier-redacted:hover {
-  background-color: rgba(255, 81, 0, 0.15);
+  background-color: rgba(255, 81, 0, 0.18);
   color: #131108;
 }
 
@@ -131,9 +292,32 @@ body {
 .dossier-exhibit-frame {
   background: #fbf9f4;
   border: 1px solid #d9d2c0;
-  box-shadow: 0 20px 40px -10px rgba(19, 17, 8, 0.22), 0 4px 10px rgba(19, 17, 8, 0.08);
+  box-shadow: 0 24px 48px -12px rgba(19, 17, 8, 0.25), 0 4px 12px rgba(19, 17, 8, 0.08);
   position: relative;
-  border-radius: 4px;
+  border-radius: 3px;
+}
+
+/* Timeline hover underline slide */
+.timeline-entry {
+  position: relative;
+  transition: color 0.3s;
+}
+
+.timeline-entry::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: #ff5100;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-entry:hover::after {
+  transform: scaleX(1);
 }
 
 /* Pulsing red/orange indicator */
@@ -143,7 +327,7 @@ body {
     opacity: 1;
   }
   50% {
-    transform: scale(1.3);
+    transform: scale(1.35);
     opacity: 0.65;
   }
 }
@@ -156,6 +340,7 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
 
 
 /* :root {

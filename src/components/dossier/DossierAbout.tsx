@@ -8,97 +8,88 @@ const aboutContent = {
   uz: {
     stamp: "№ 01",
     title: "ABOUT",
-    subtitle: "The Dossier",
-    metaRight: "ARXIV HUJJATLARI · 2026",
+    subtitle: "The Suspect",
+    metaRight: "FACTS ON FILE · RECORD 2026",
     stats: [
-      { num: "07+", label: "Ochiq Manbali AI Tizimlari" },
-      { num: "04", label: "Tahliliy Maqola va Xulosalar" },
+      { num: "07+", label: "Open-Source AI Systems" },
+      { num: "04", label: "Statutory Legal Briefs" },
       { num: "01", label: "Statutory RAG (UN CRPD)" },
-      { num: "2029", label: "TDYU Yurisprudensiya (LL.B.)" },
+      { num: "2029", label: "TSUL Law Graduation (LL.B.)" },
     ],
-    paragraph1_lead:
-      "Men Mansurxon Rustamov — Toshkent davlat yuridik universiteti talabasi va sun'iy intellekt tizimlari dasturchisiman. Mening maqsadim — davlat qonunchiligi va zamonaviy LLM arxitekturasini birlashtirish orqali ",
-    redacted1: "gallyutsinatsiyalarsiz, 100% dalillarga asoslangan adolatli texnologiyalar",
-    paragraph1_trail: " yaratish.",
-    paragraph2_lead:
-      "Huquq faqat qog'ozda qolib ketmasligi kerak; u amaliyotda ishlaydigan tizimdir. Biz milliy qonunchilik korpusini ",
-    redacted2: "LanceDB vektorli qidiruv va gibrid RRF algoritmlari",
-    paragraph2_trail:
-      " bilan birlashtirib, har bir inson huquqini himoya qiluvchi tahliliy dasturlarni kodga aylantiramiz.",
-    exhibitStamp: "EXHIBIT A · SHAXS",
-    exhibitCaption: "Mansurxon Rustamov · TDYU Huquq Talabasi & AI Muhandisi",
-    clickRevealHint: "Qora chiziq ustiga bosing — matn ochiladi",
+    p1: "I am Mansurxon Rustamov — a law student at Tashkent State University of Law and an AI systems developer. My mission is bridging formal jurisprudence with neural computation to engineer ",
+    redacted1: "zero-hallucination, statutory citation-grounded legal technologies",
+    p1_end: " for civic access and justice.",
+    p2: "Law is not merely static parchment; it is an executable civic framework. Armed with jurisprudence and modern RAG engineering, I am building specialized systems that translate statutory guarantees into ",
+    redacted2: "verifiable production code, localized vector search, and hybrid RRF algorithms",
+    p2_end: ".",
+    exhibitStamp: "EXHIBIT A",
+    exhibitCaption: "Boredom, apprehended. Tashkent, UZ.",
+    clickRevealHint: "Hover or click to reveal confidential record",
   },
   en: {
     stamp: "№ 01",
     title: "ABOUT",
-    subtitle: "The Dossier",
-    metaRight: "FACTS ON FILE · 2026",
+    subtitle: "The Suspect",
+    metaRight: "FACTS ON FILE · RECORD 2026",
     stats: [
-      { num: "07+", label: "Open-Source AI Architectures" },
-      { num: "04", label: "Statutory Analytical Briefs" },
-      { num: "01", label: "Hybrid Legal RAG (UN CRPD)" },
-      { num: "2029", label: "TSUL Law Degree (LL.B.)" },
+      { num: "07+", label: "Open-Source AI Systems" },
+      { num: "04", label: "Statutory Legal Briefs" },
+      { num: "01", label: "Statutory RAG (UN CRPD)" },
+      { num: "2029", label: "TSUL Law Graduation (LL.B.)" },
     ],
-    paragraph1_lead:
-      "I am Mansurxon Rustamov — a law student at Tashkent State University of Law and an AI systems developer. My mission is synthesizing formal statutory jurisprudence with neural computation to engineer ",
-    redacted1: "zero-hallucination, verified citation-grounded legal technologies",
-    paragraph1_trail: ".",
-    paragraph2_lead:
-      "Law is not merely static parchment; it is an executable civic framework. By combining national statutory corpora with ",
-    redacted2: "LanceDB localized vector indexing and hybrid RRF algorithms",
-    paragraph2_trail:
-      ", we translate statutory guarantees into verifiable production code.",
-    exhibitStamp: "EXHIBIT A · SUBJECT",
-    exhibitCaption: "Mansurxon Rustamov · TSUL Law Student & AI Engineer",
-    clickRevealHint: "Hover or click redacted bar to reveal",
+    p1: "I am Mansurxon Rustamov — a law student at Tashkent State University of Law and an AI systems developer. My mission is bridging formal jurisprudence with neural computation to engineer ",
+    redacted1: "zero-hallucination, statutory citation-grounded legal technologies",
+    p1_end: " for civic access and justice.",
+    p2: "Law is not merely static parchment; it is an executable civic framework. Armed with jurisprudence and modern RAG engineering, I am building specialized systems that translate statutory guarantees into ",
+    redacted2: "verifiable production code, localized vector search, and hybrid RRF algorithms",
+    p2_end: ".",
+    exhibitStamp: "EXHIBIT A",
+    exhibitCaption: "Boredom, apprehended. Tashkent, UZ.",
+    clickRevealHint: "Hover or click to reveal confidential record",
   },
   ru: {
     stamp: "№ 01",
     title: "ABOUT",
-    subtitle: "The Dossier",
+    subtitle: "The Suspect",
     metaRight: "АРХИВНЫЕ ДАННЫЕ · 2026",
     stats: [
-      { num: "07+", label: "Открытых архитектур ИИ" },
-      { num: "04", label: "Аналитических обзора права" },
+      { num: "07+", label: "Открытых систем ИИ" },
+      { num: "04", label: "Правовых аналитических обзора" },
       { num: "01", label: "Statutory RAG (ООН CRPD)" },
-      { num: "2029", label: "Диплом юриста ТГЮУ (LL.B.)" },
+      { num: "2029", label: "Степень бакалавра ТГЮУ" },
     ],
-    paragraph1_lead:
-      "Я — Мансурхон Рустамов, студент Ташкентского государственного юридического университета и AI-инженер. Моя цель — объединение строгости законодательства с нейронными архитектурами для создания ",
+    p1: "Я — Мансурхон Рустамов, студент Ташкентского государственного юридического университета и инженер систем ИИ. Моя цель — соединить строгость права и мощь нейросетей для создания ",
     redacted1: "точных, свободных от галлюцинаций правовых технологий",
-    paragraph1_trail: ".",
-    paragraph2_lead:
-      "Правовые нормы должны быть практически применимы. Соединяя национальные законы с ",
+    p1_end: " во благо общества.",
+    p2: "Законодательство не должно оставаться лишь текстом на бумаге. Соединяя национальные законы с ",
     redacted2: "векторной базой LanceDB и гибридным поиском RRF",
-    paragraph2_trail:
-      ", мы превращаем законодательные гарантии в работающий открытый код.",
-    exhibitStamp: "EXHIBIT A · ОБЪЕКТ",
-    exhibitCaption: "Мансурхон Рустамов · Студент ТГЮУ и AI-инженер",
-    clickRevealHint: "Нажмите на чёрную полосу, чтобы прочитать",
+    p2_end: ", мы превращаем правовые гарантии в работающий открытый код.",
+    exhibitStamp: "EXHIBIT A",
+    exhibitCaption: "Boredom, apprehended. Tashkent, UZ.",
+    clickRevealHint: "Нажмите или наведите, чтобы прочесть",
   },
 };
 
 export function DossierAbout() {
   const { locale } = useI18n();
-  const t = aboutContent[locale] || aboutContent.uz;
+  const t = aboutContent[locale] || aboutContent.en;
 
-  const [revealed1, setRevealed1] = useState(false);
-  const [revealed2, setRevealed2] = useState(false);
+  const [rev1, setRev1] = useState(false);
+  const [rev2, setRev2] = useState(false);
 
   return (
     <section
       id="about"
-      className="relative w-full border-t border-[#131108]/10 bg-[#e9e3d2] px-5 py-20 text-[#131108] sm:px-10 lg:px-16"
+      className="relative w-full border-t border-[#131108]/15 bg-[#e9e3d2] px-6 py-24 text-[#131108] sm:px-12 lg:px-20"
     >
       {/* Top Header Strip */}
       <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-[#131108]/15 pb-6">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3.5">
           <span className="dossier-stamp">{t.stamp}</span>
-          <h2 className="font-sans text-2xl font-black uppercase tracking-tight text-[#131108] sm:text-3xl">
+          <h2 className="font-sans text-3xl font-black uppercase tracking-tight text-[#131108] sm:text-4xl">
             {t.title}
           </h2>
-          <span className="font-serif text-lg italic text-[#57534e] sm:text-xl">
+          <span className="font-serif text-xl italic text-[#57534e] sm:text-2xl">
             {t.subtitle}
           </span>
         </div>
@@ -109,75 +100,88 @@ export function DossierAbout() {
       </div>
 
       {/* Main Grid: Left Stats, Right Editorial + Photo */}
-      <div className="mt-14 grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
-        {/* Left Column: Big Numbers (4 cols) */}
-        <div className="space-y-8 lg:col-span-4">
+      <div className="mt-16 grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* Left Column: Big Numbers with Hairlines */}
+        <div className="space-y-10 lg:col-span-4">
           {t.stats.map((stat, idx) => (
             <div
               key={idx}
               className="group border-b border-[#131108]/15 pb-6 transition-colors hover:border-[#ff5100]"
             >
-              <div className="font-sans text-4xl font-black tracking-tight text-[#131108] transition-transform duration-300 group-hover:translate-x-1 sm:text-5xl">
+              <div className="font-sans text-5xl font-black tracking-tight text-[#131108] transition-transform duration-300 group-hover:translate-x-1 sm:text-6xl">
                 {stat.num}
               </div>
-              <div className="mt-1 font-mono text-xs font-semibold uppercase tracking-wider text-[#57534e]">
+              <div className="mt-2 font-mono text-xs font-semibold uppercase tracking-wider text-[#57534e]">
                 {stat.label}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Right Column: Editorial Paragraph with Redaction & Pinned Photo (8 cols) */}
-        <div className="space-y-10 lg:col-span-8">
-          <div className="space-y-6 font-sans text-xl font-medium leading-relaxed text-[#131108] sm:text-2xl md:leading-normal">
+        {/* Right Column: Editorial Paragraph with Redaction & Pinned Photo */}
+        <div className="space-y-12 lg:col-span-8">
+          <div className="space-y-8 font-sans text-2xl font-medium leading-relaxed text-[#131108] sm:text-3xl lg:text-[2.1rem] lg:leading-[1.38]">
             <p>
-              {t.paragraph1_lead}
+              {t.p1}
               <span
-                onClick={() => setRevealed1(!revealed1)}
-                className={`dossier-redacted ${revealed1 ? "revealed" : ""}`}
+                onClick={() => setRev1(!rev1)}
+                className={`dossier-redacted ${rev1 ? "revealed" : ""}`}
                 title={t.clickRevealHint}
               >
                 {t.redacted1}
               </span>
-              {t.paragraph1_trail}
+              {t.p1_end}
             </p>
 
-            <p className="text-lg text-[#44403c] sm:text-xl">
-              {t.paragraph2_lead}
+            <p className="text-xl leading-relaxed text-[#44403c] sm:text-2xl">
+              {t.p2}
               <span
-                onClick={() => setRevealed2(!revealed2)}
-                className={`dossier-redacted ${revealed2 ? "revealed" : ""}`}
+                onClick={() => setRev2(!rev2)}
+                className={`dossier-redacted ${rev2 ? "revealed" : ""}`}
                 title={t.clickRevealHint}
               >
                 {t.redacted2}
               </span>
-              {t.paragraph2_trail}
+              {t.p2_end}
             </p>
           </div>
 
-          {/* Exhibit Polaroid Frame with Metal Paperclip */}
-          <div className="relative max-w-md pt-4">
-            <div className="dossier-exhibit-frame overflow-hidden p-3 transition-transform duration-300 hover:rotate-[-0.5deg]">
-              {/* Paperclip */}
-              <div className="dossier-paperclip" />
+          {/* Exhibit Polaroid Frame with Metal Paperclip & Stamp */}
+          <div className="relative max-w-lg pt-6">
+            <div className="dossier-exhibit-frame overflow-hidden p-4 shadow-2xl transition-transform duration-300 hover:rotate-[-0.5deg]">
+              {/* Metallic Paperclip SVG (exact jopecuro match) */}
+              <div className="absolute -top-3 left-6 z-20">
+                <svg
+                  width="18"
+                  height="36"
+                  viewBox="0 0 18 34"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="text-[#57534e] drop-shadow"
+                >
+                  <path d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"></path>
+                </svg>
+              </div>
 
-              {/* Red Stamp */}
-              <div className="absolute right-4 top-4 z-10 border border-[#dc2626] bg-[#dc2626]/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-[#dc2626] shadow-sm">
+              {/* Red Stamp EXHIBIT A */}
+              <div className="stamp--exhibit dossier-stamp-dark border-[#dc2626] bg-[#dc2626]/10 text-[#dc2626]">
                 {t.exhibitStamp}
               </div>
 
               {/* Photo */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#e9e3d2]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0b0a06]">
                 <Image
-                  src="/images/avatar.jpg"
-                  alt="Mansurxon Rustamov"
+                  src="/images/jopecuro_bag-1400.jpg"
+                  alt="Boredom, apprehended"
                   fill
-                  className="object-cover object-top grayscale filter transition duration-500 hover:grayscale-0"
+                  className="object-cover object-center filter transition duration-500 hover:scale-[1.02]"
+                  unoptimized
                 />
               </div>
 
               {/* Caption */}
-              <div className="mt-3 font-serif text-xs italic text-[#57534e]">
+              <div className="mt-3.5 font-serif text-xs italic text-[#57534e]">
                 {t.exhibitCaption}
               </div>
             </div>

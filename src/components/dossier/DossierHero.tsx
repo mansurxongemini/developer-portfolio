@@ -1,25 +1,26 @@
 "use client";
 
+import Image from "next/image";
 import { useI18n } from "@/components/I18nProvider";
 import { ArrowDown, Send, ArrowUpRight } from "lucide-react";
 
 const heroContent = {
   uz: {
-    subjectLabel: "OB'YEKT",
+    subjectLabel: "SUBJECT",
     subjectName: "Mansurxon Rustamov",
-    fieldLabel: "SOHA",
-    fieldVal: "Yurisprudensiya & AI",
-    statusLabel: "HOLAT",
-    statusVal: "Ochiq muloqot va hamkorlik",
-    registryLabel: "QAYD",
-    registryVal: "TDYU · 2025-2029",
-    headlineSolid: "QONUN VA KOD",
-    headlineWireframe: "SUN'IY INTELLEKT",
+    fieldLabel: "FIELD",
+    fieldVal: "Statutory Law & AI",
+    statusLabel: "STATUS",
+    statusVal: "Open for select initiatives",
+    registryLabel: "RECORD",
+    registryVal: "TSUL · 2025-2029",
+    headlineSolid: "BRIDGING LAW",
+    headlineWireframe: "AND INTELLIGENCE",
     footnote:
-      "*Normativ qat'iyatlik va muhandislik amaliyoti. Toshkent davlat yuridik universiteti talabasi va sun'iy intellekt tizimlari dasturchisi — huquq va texnologiya o'rtasidagi ko'prik.",
-    viewWorkBtn: "Dalillarni ko'rish",
-    telegramBtn: "Tahlil kanali",
-    scrollHint: "PASTGA SURING",
+      "*Legally speaking. First-year law student at Tashkent State University of Law and AI systems engineer. Building production RAG pipelines, cognitive vector memory, and multi-agent consensus frameworks.",
+    viewWorkBtn: "№ 04 · The Evidence",
+    telegramBtn: "Tahlil Channel ↗",
+    badgeText: "• MANSURXON RUSTAMOV • TDYU VA SUN'IY INTELLEKT • 2026 • ",
   },
   en: {
     subjectLabel: "SUBJECT",
@@ -27,39 +28,39 @@ const heroContent = {
     fieldLabel: "FIELD",
     fieldVal: "Statutory Law & AI",
     statusLabel: "STATUS",
-    statusVal: "Open for initiatives",
+    statusVal: "Open for select initiatives",
     registryLabel: "RECORD",
     registryVal: "TSUL · 2025-2029",
     headlineSolid: "BRIDGING LAW",
     headlineWireframe: "AND INTELLIGENCE",
     footnote:
-      "*Strictly grounded in statutory compliance and empirical validation. First-year law student at TSUL and AI systems developer building production RAG & multi-agent architectures.",
-    viewWorkBtn: "Inspect Evidence",
-    telegramBtn: "Tahlil Channel",
-    scrollHint: "SCROLL TO DISCOVER",
+      "*Legally speaking. First-year law student at Tashkent State University of Law and AI systems engineer. Building production RAG pipelines, cognitive vector memory, and multi-agent consensus frameworks.",
+    viewWorkBtn: "№ 04 · The Evidence",
+    telegramBtn: "Tahlil Channel ↗",
+    badgeText: "• MANSURXON RUSTAMOV • TSUL LAW & AI SYSTEMS • 2026 • ",
   },
   ru: {
-    subjectLabel: "ОБЪЕКТ",
+    subjectLabel: "SUBJECT",
     subjectName: "Мансурхон Рустамов",
-    fieldLabel: "СФЕРА",
-    fieldVal: "Юриспруденция и ИИ",
-    statusLabel: "СТАТУС",
+    fieldLabel: "FIELD",
+    fieldVal: "Право и Архитектуры ИИ",
+    statusLabel: "STATUS",
     statusVal: "Открыт к сотрудничеству",
-    registryLabel: "УЧЁТ",
+    registryLabel: "RECORD",
     registryVal: "ТГЮУ · 2025-2029",
-    headlineSolid: "ПРАВО И КОД",
-    headlineWireframe: "ИНТЕЛЛЕКТ",
+    headlineSolid: "BRIDGING LAW",
+    headlineWireframe: "AND INTELLIGENCE",
     footnote:
-      "*На стыке строгого нормативного права и прикладной инженерии. Студент ТГЮУ и разработчик специализированных LegalTech RAG и когнитивных архитектур.",
-    viewWorkBtn: "Смотреть улики",
-    telegramBtn: "Канал «Тахлил»",
-    scrollHint: "ЛИСТАЙТЕ ВНИЗ",
+      "*Юридически безупречно. Студент ТГЮУ и инженер систем ИИ. Разработка гибридных statutory RAG, когнитивной памяти и многоагентного консенсуса.",
+    viewWorkBtn: "№ 04 · The Evidence",
+    telegramBtn: "Канал «Тахлил» ↗",
+    badgeText: "• МАНСУРХОН РУСТАМОВ • ТГЮУ И АРХИТЕКТУРЫ ИИ • 2026 • ",
   },
 };
 
 export function DossierHero() {
   const { locale } = useI18n();
-  const t = heroContent[locale] || heroContent.uz;
+  const t = heroContent[locale] || heroContent.en;
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -69,24 +70,32 @@ export function DossierHero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[92vh] w-full flex-col justify-between overflow-hidden bg-[#0b0a06] px-5 py-8 text-[#f2eee3] sm:px-10 lg:px-16"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[#0b0a06] px-6 py-8 text-[#f2eee3] sm:px-12 lg:px-20"
     >
-      {/* Ambient background spot lighting similar to Jopecuro */}
+      {/* Background Universal Classical Plaster Bust with Orange Translucent Wrap */}
+      <div className="hero__bust">
+        <Image
+          src="/images/jopecuro_bag-1400.jpg"
+          alt="Boredom, apprehended"
+          fill
+          priority
+          className="object-cover object-right"
+          unoptimized
+        />
+      </div>
+
+      {/* Ambient flashlight beam */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 top-1/4 h-[550px] w-[550px] rounded-full bg-[radial-gradient(circle,rgba(255,81,0,0.16)_0%,transparent_65%)] blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-20 bottom-10 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(233,227,210,0.06)_0%,transparent_70%)] blur-2xl"
+        className="pointer-events-none absolute right-1/4 top-1/3 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,81,0,0.18)_0%,transparent_65%)] blur-2xl"
       />
 
       {/* Top Dossier Metadata Strip */}
-      <div className="relative z-10 flex flex-wrap items-center justify-between gap-y-3 border-b border-[#f2eee3]/10 pb-5 font-mono text-[11px] tracking-wider text-[#a8a29e]">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-y-3 border-b border-[#f2eee3]/10 pb-6 font-mono text-[11px] tracking-wider text-[#a8a29e]">
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[#78716c]">{t.subjectLabel}</span>
-            <span className="font-semibold text-[#f2eee3]">{t.subjectName}</span>
+            <span className="font-semibold uppercase text-[#f2eee3]">{t.subjectName}</span>
           </div>
           <div className="hidden items-center gap-2 sm:flex">
             <span className="text-[#78716c]">{t.fieldLabel}</span>
@@ -94,32 +103,33 @@ export function DossierHero() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-[#78716c]">{t.statusLabel}</span>
-            <span className="flex items-center gap-1.5 text-[#ff5100]">
+            <span className="flex items-center gap-1.5 font-medium text-[#ff5100]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#ff5100] pulse-orange-dot" />
               {t.statusVal}
             </span>
           </div>
         </div>
 
-        <div className="hidden font-mono text-[10px] text-[#78716c] md:block">
+        <div className="hidden font-mono text-[10px] uppercase text-[#78716c] md:block">
           {t.registryLabel} · {t.registryVal}
         </div>
       </div>
 
       {/* Monumental Headline Area */}
-      <div className="relative z-10 my-auto py-12">
-        <div className="space-y-1">
-          <h1 className="text-left font-sans text-5xl font-black uppercase tracking-tight text-[#f2eee3] sm:text-7xl md:text-8xl lg:text-[7.25rem] lg:leading-[0.92]">
-            <span>{t.headlineSolid}</span>
-            <br />
-            <span className="dossier-wireframe-text">{t.headlineWireframe}</span>
-            <span className="font-serif italic text-[#ff5100]">*</span>
+      <div className="relative z-10 my-auto max-w-4xl py-12">
+        <div className="space-y-0.5">
+          <h1 className="text-left font-sans text-5xl font-black uppercase tracking-tight text-[#f2eee3] sm:text-7xl md:text-8xl lg:text-[7.6rem] lg:leading-[0.9]">
+            <span className="block">{t.headlineSolid}</span>
+            <span className="dossier-wireframe-text block">{t.headlineWireframe}</span>
           </h1>
         </div>
 
         {/* Lead Footnote Quote */}
-        <div className="mt-8 max-w-2xl font-serif text-sm italic leading-relaxed text-[#d6d3d1] sm:text-base">
-          <p>{t.footnote}</p>
+        <div className="mt-8 max-w-xl font-serif text-sm italic leading-relaxed text-[#d6d3d1] sm:text-base">
+          <p>
+            <span className="text-[#ff5100] font-sans font-bold not-italic mr-1">*</span>
+            {t.footnote}
+          </p>
         </div>
 
         {/* Action Buttons */}
@@ -128,7 +138,7 @@ export function DossierHero() {
             onClick={() => scrollToSection("work")}
             className="group flex items-center gap-2.5 rounded-[2px] bg-[#f2eee3] px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-[#0b0a06] transition-all duration-200 hover:bg-[#ff5100] hover:text-white hover:shadow-[0_0_24px_rgba(255,81,0,0.5)]"
           >
-            <span>№ 04 · {t.viewWorkBtn}</span>
+            <span>{t.viewWorkBtn}</span>
             <ArrowDown size={14} className="transition-transform group-hover:translate-y-0.5" />
           </button>
 
@@ -140,26 +150,40 @@ export function DossierHero() {
           >
             <Send size={13} className="text-[#ff5100]" />
             <span>{t.telegramBtn}</span>
-            <ArrowUpRight size={13} className="text-[#78716c]" />
           </a>
         </div>
       </div>
 
-      {/* Bottom Bar: Circular Seal and Scroll Hint */}
-      <div className="relative z-10 flex items-end justify-between border-t border-[#f2eee3]/10 pt-5">
+      {/* Bottom Bar: Circular Spinning Badge & Footer Tag */}
+      <div className="relative z-10 flex items-end justify-between border-t border-[#f2eee3]/10 pt-6">
         <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-widest text-[#78716c]">
           <span className="h-1.5 w-1.5 bg-[#ff5100]" />
-          <span>TSUL STATUTORY LAB · FORENSIC LEGALTECH ARCHIVE</span>
+          <span>STATUTORY GROUNDING & CODE EXHIBITS · 2026</span>
         </div>
 
-        {/* Scroll indicator */}
-        <button
+        {/* Rotating Circular Badge (Jopecuro signature) */}
+        <div
           onClick={() => scrollToSection("about")}
-          className="group flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-widest text-[#a8a29e] transition hover:text-[#ff5100]"
+          className="group relative h-28 w-28 cursor-pointer text-[#d6d3d1] transition hover:text-[#ff5100]"
+          title="Scroll to Dossier"
         >
-          <span>{t.scrollHint}</span>
-          <ArrowDown size={12} className="transition-transform group-hover:translate-y-1" />
-        </button>
+          <svg className="badge-spin h-full w-full" viewBox="0 0 120 120">
+            <defs>
+              <path
+                id="heroCirclePath"
+                d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"
+              />
+            </defs>
+            <text className="fill-current font-mono text-[9.5px] uppercase tracking-[0.16em]">
+              <textPath href="#heroCirclePath">
+                {t.badgeText}
+              </textPath>
+            </text>
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center font-mono text-xs font-bold transition-transform group-hover:translate-y-1">
+            ↓
+          </div>
+        </div>
       </div>
     </section>
   );
