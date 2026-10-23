@@ -29,19 +29,17 @@ function toPostShape(article: Article) {
   };
 }
 
-const gridClasses: Record<string, string> = {
-  "1": "grid-cols-1",
-  "2": "grid-cols-1 md:grid-cols-2",
-  "3": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
-};
-
 export async function Posts({
   range,
-  columns = "1",
-  thumbnail = false,
   exclude = [],
-  direction,
+  // Kept for call-site compatibility; rows ignore card layout props.
+  columns: _columns,
+  thumbnail: _thumbnail,
+  direction: _direction,
 }: PostsProps) {
+  void _columns;
+  void _thumbnail;
+  void _direction;
   let allArticlesRaw: Article[] = [];
   try {
     allArticlesRaw = await getPublishedArticles();
@@ -66,10 +64,10 @@ export async function Posts({
   if (displayedBlogs.length === 0) return null;
 
   return (
-    <div className={`grid w-full gap-5 ${gridClasses[columns] ?? gridClasses["1"]}`}>
-      {displayedBlogs.map((post) => (
-        <Post key={post.id} post={post} thumbnail={thumbnail} direction={direction} />
+    <>
+      {displayedBlogs.map((post, i) => (
+        <Post key={post.id} post={post} index={i} />
       ))}
-    </div>
+    </>
   );
 }

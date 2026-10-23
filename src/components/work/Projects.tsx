@@ -1,5 +1,5 @@
 import { getPublishedProjects, type Project } from "@/lib/firestore-server";
-import { ProjectBentoGrid } from "./ProjectBentoGrid";
+import { WorkRowList } from "./WorkRowList";
 
 interface ProjectsProps {
   range?: [number, number?];
@@ -32,5 +32,5 @@ export async function Projects({ range, exclude }: ProjectsProps) {
 
   if (displayedProjects.length === 0) return null;
 
-  return <ProjectBentoGrid projects={displayedProjects} />;
+  return <WorkRowList projects={displayedProjects} />;
 }

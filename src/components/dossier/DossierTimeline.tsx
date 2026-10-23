@@ -2,127 +2,174 @@
 
 import { useI18n } from "@/components/I18nProvider";
 
-interface TimelineBlock {
-  year: string;
-  leftRole: Record<"uz" | "en" | "ru", string>;
-  leftProject: string;
-  leftDesc: Record<"uz" | "en" | "ru", string>;
-  rightRole: Record<"uz" | "en" | "ru", string>;
-  rightInst: string;
-  rightDesc: Record<"uz" | "en" | "ru", string>;
+interface RecordEntry {
+  tag: string;
+  name: string;
+  when: string;
 }
 
-const timelineData: TimelineBlock[] = [
-  {
-    year: "2026",
-    leftRole: {
-      uz: "AI TIZIMLARI MUHANDISI & ASOSCHI",
-      en: "AI SYSTEMS ENGINEER & FOUNDER",
-      ru: "AI-ИНЖЕНЕР И ОСНОВАТЕЛЬ",
-    },
-    leftProject: "Inclusive Legal RAG & Alloma AI",
-    leftDesc: {
-      uz: "LanceDB va gibrid RRF asosidagi statutory RAG hamda doimiy vektor xotirali kognitiv mentor tizimlarini ishlab chiqish.",
-      en: "Production engineering of statutory hybrid RAG architectures (LanceDB + RRF) and persistent vector memory cognitive engines.",
-      ru: "Разработка специализированных statutory RAG платформ (LanceDB + RRF) и когнитивных движков с долговременной памятью.",
-    },
-    rightRole: {
-      uz: "TDYU HUQUQSHUNOSLIK (LL.B.)",
-      en: "TSUL JURISPRUDENCE (LL.B.)",
-      ru: "ЮРИСПРУДЕНЦИЯ ТГЮУ (LL.B.)",
-    },
-    rightInst: "Toshkent Davlat Yuridik Universiteti",
-    rightDesc: {
-      uz: "Yurisprudensiya, davlat nazariyasi, konstitutsiyaviy huquq va normativ aktlarni talqin qilish bo'yicha chuqur akademik ta'lim.",
-      en: "Comprehensive curriculum in jurisprudence, theory of state, constitutional law, and statutory interpretation.",
-      ru: "Фундаментальное академическое обучение теории государства и права, конституционному праву и толкованию норм.",
-    },
-  },
-  {
-    year: "2025",
-    leftRole: {
-      uz: "KO'P AGENTLI TIZIMLAR DASTURCHISI",
-      en: "MULTI-AGENT SYSTEMS DEVELOPER",
-      ru: "РАЗРАБОТЧИК МНОГОАГЕНТНЫХ СИСТЕМ",
-    },
-    leftProject: "Multi-Agent Roundtable & HuquqPlus",
-    leftDesc: {
-      uz: "Karpathy LLM Council asosidagi anonim peer-review va konsensus tizimi hamda fuqarolar uchun ochiq yuridik portalni yaratish.",
-      en: "Collaborative multi-agent debate and anonymous peer-review framework alongside citizen legal information portals.",
-      ru: "Архитектура консенсуса LLM Council с анонимным peer-review и открытый портал правовой помощи гражданам.",
-    },
-    rightRole: {
-      uz: "HUQUQIY TAHLIL VA SERTIFIKATLAR",
-      en: "STATUTORY RESEARCH & CERTIFICATIONS",
-      ru: "ПРАВОВАЯ АНАЛИТИКА И СЕРТИФИКАЦИЯ",
-    },
-    rightInst: "BMT Konvensiyasi (UN CRPD) & LegalTech",
-    rightDesc: {
-      uz: "Nogironlar huquqlari bo'yicha BMT xalqaro konvensiyasi normalarini milliy qonunchilik bilan muvofiqlashtirish tahlillari.",
-      en: "Comparative legal analysis evaluating national legislation against the UN Convention on the Rights of Persons with Disabilities.",
-      ru: "Сравнительно-правовой анализ национального законодательства и норм Конвенции ООН о правах инвалидов.",
-    },
-  },
-  {
-    year: "2024",
-    leftRole: {
-      uz: "FULL-STACK DASTURCHI",
-      en: "FULL-STACK ENGINEER",
-      ru: "FULL-STACK РАЗРАБОТЧИК",
-    },
-    leftProject: "Mahalla Management & KitobPlus",
-    leftDesc: {
-      uz: "Mahalla fuqarolar yig'inlari uchun avtomatlashtirilgan reyestrlar va to'liq matnli elektron kutubxona platformasi.",
-      en: "Automated municipal record workflows for local community councils and accessible full-text digital library platforms.",
-      ru: "Цифровизация работы махаллинских комитетов и платформа электронной библиотеки с полнотекстовым поиском.",
-    },
-    rightRole: {
-      uz: "AKADEMIK VA YURIDIK TAYYORGARLIK",
-      en: "ACADEMIC & CIVIC FOUNDATIONS",
-      ru: "АКАДЕМИЧЕСКАЯ И ПРАВОВАЯ БАЗА",
-    },
-    rightInst: "Yuridik Fanlar va Dasturlash Asoslari",
-    rightDesc: {
-      uz: "Huquqiy mantiq, algoritmik fikrlash va ijtimoiy jarayonlarni tizimli tahlil qilish asoslarini egallash.",
-      en: "Formative grounding in legal logic, algorithmic problem-solving, and systematic analysis of civic institutions.",
-      ru: "Формирование фундамента в области правовой логики, алгоритмического мышления и системного анализа.",
-    },
-  },
-];
+interface TimelineBlock {
+  year: string;
+  left: RecordEntry[];
+  right: RecordEntry[];
+}
 
 const timelineCopy = {
   uz: {
     stamp: "№ 04",
-    title: "Yozuv",
-    subtitle: "The Record",
-    field: "Xronologiya · 2024—2026",
-    leftLegend: "AI Tizimlari Muhandisligi",
-    rightLegend: "TDYU Yurisprudensiya",
-    marginalia: "Har bir bosqich huquqiy bilim va amaliy kodning sinxron o'sishini aks ettiradi.",
+    title: "Yo'l",
+    field: "",
+    leftLegend: "Kod",
+    rightLegend: "Huquq",
+    tagWork: "Ish",
+    tagProject: "Loyiha",
+    tagStudy: "O'qish",
+    tagAward: "Sertifikat",
+    tagWin: "Yutuq",
   },
   en: {
     stamp: "№ 04",
-    title: "Record",
-    subtitle: "The Record",
-    field: "Chronology · 2024—2026",
-    leftLegend: "AI Systems Engineering",
-    rightLegend: "TSUL Jurisprudence",
-    marginalia: "Each chapter reflects simultaneous mastery of statutory law and software systems.",
+    title: "Path",
+    field: "",
+    leftLegend: "Code",
+    rightLegend: "Law",
+    tagWork: "Work",
+    tagProject: "Project",
+    tagStudy: "Study",
+    tagAward: "Certificate",
+    tagWin: "Award",
   },
   ru: {
     stamp: "№ 04",
-    title: "Запись",
-    subtitle: "The Record",
-    field: "Хронология · 2024—2026",
-    leftLegend: "Инженерия Систем ИИ",
-    rightLegend: "Юриспруденция ТГЮУ",
-    marginalia: "Каждый этап демонстрирует синхронное развитие юридической экспертизы и программного кода.",
+    title: "Путь",
+    field: "",
+    leftLegend: "Код",
+    rightLegend: "Право",
+    tagWork: "Работа",
+    tagProject: "Проект",
+    tagStudy: "Учёба",
+    tagAward: "Сертификат",
+    tagWin: "Достижение",
   },
 };
+
+const names = {
+  uz: {
+    alloma: "Alloma AI — shaxsiy AI-mentor",
+    rag: "Inclusive Legal RAG",
+    club: "TDYU IT Club — tashkilotchi",
+    huquqplus: "HuquqPlus.uz — huquqshunos volontyor",
+    iymc: "International Youth Math Challenge, saralash bosqichi",
+    tdyu: "TDYU, Jinoiy odil sudlov fakulteti",
+    dev: "Mustaqil Full-Stack dasturchi",
+    itpark: "IT Park — Python va Frontend kurslari",
+    informatics: "Informatika olimpiadasi (IMA tizimi), viloyat bosqichi — 1-o'rin",
+    tatu: "TATU sport dasturlash musobaqasi, respublika bosqichi — 1-o'rin",
+    turin: "Turin politexnika hackathoni, respublika bosqichi — ishtirokchi",
+    robo: "Robo Coding olimpiadasi, viloyat bosqichi — maktab jamoasi bilan 1-o'rin",
+    school: "Oqdaryo tuman ixtisoslashtirilgan maktabi (IMA tizimi)",
+  },
+  en: {
+    alloma: "Alloma AI — personal AI mentor",
+    rag: "Inclusive Legal RAG",
+    club: "TSUL IT Club — organizer",
+    huquqplus: "HuquqPlus.uz — legal volunteer",
+    iymc: "International Youth Math Challenge, qualification round",
+    tdyu: "TSUL, Criminal Justice Faculty",
+    dev: "Independent Full-Stack developer",
+    itpark: "IT Park — Python and Frontend courses",
+    informatics: "Informatics olympiad (IMA system), regional stage — 1st place",
+    tatu: "TUIT competitive programming contest, republic stage — 1st place",
+    turin: "Turin Polytechnic hackathon, republic stage — participant",
+    robo: "Robo Coding olympiad, regional stage — 1st place with the school team",
+    school: "Oqdaryo District Specialized School (IMA system)",
+  },
+  ru: {
+    alloma: "Alloma AI — персональный ИИ-ментор",
+    rag: "Inclusive Legal RAG",
+    club: "IT Club ТГЮУ — организатор",
+    huquqplus: "HuquqPlus.uz — волонтёр-юрист",
+    iymc: "International Youth Math Challenge, отборочный этап",
+    tdyu: "ТГЮУ, факультет уголовного правосудия",
+    dev: "Независимый Full-Stack разработчик",
+    itpark: "IT Park — курсы Python и Frontend",
+    informatics: "Олимпиада по информатике (система АСУЗ), региональный этап — 1 место",
+    tatu: "Соревнование по спортивному программированию ТУИТ, республиканский этап — 1 место",
+    turin: "Хакатон Туринского политехнического, республиканский этап — участник",
+    robo: "Олимпиада Robo Coding, региональный этап — 1 место в составе школьной команды",
+    school: "Окдарьинская районная специализированная школа (система АСУЗ)",
+  },
+};
+
+function EntryList({
+  entries,
+  side,
+}: {
+  entries: RecordEntry[];
+  side: "l" | "r";
+}) {
+  return (
+    <ul className={`alibi__col alibi__col--${side}`} role="list">
+      {entries.map((entry, i) => (
+        <li key={i} className="entry" data-clip>
+          <span className="entry__tag">{entry.tag}</span>
+          <span className="entry__who">{entry.name}</span>
+          <span className="entry__when">{entry.when}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function DossierTimeline() {
   const { locale } = useI18n();
   const t = timelineCopy[locale] || timelineCopy.en;
+  const n = names[locale] || names.en;
+
+  const timelineData: TimelineBlock[] = [
+    {
+      year: "2026",
+      left: [
+        { tag: t.tagProject, name: n.rag, when: "2026" },
+        { tag: t.tagProject, name: n.alloma, when: "2026" },
+        { tag: t.tagWork, name: n.club, when: "2026 —" },
+        { tag: t.tagAward, name: n.iymc, when: "2026" },
+      ],
+      right: [{ tag: t.tagWork, name: n.huquqplus, when: "2026 —" }],
+    },
+    {
+      year: "2025",
+      left: [],
+      right: [{ tag: t.tagStudy, name: n.tdyu, when: "2025—2029" }],
+    },
+    {
+      year: "2024",
+      left: [
+        { tag: t.tagWin, name: n.informatics, when: "2024" },
+        { tag: t.tagWin, name: n.tatu, when: "2023—24" },
+        { tag: t.tagAward, name: n.turin, when: "2024" },
+      ],
+      right: [],
+    },
+    {
+      year: "2023",
+      left: [
+        { tag: t.tagWin, name: n.robo, when: "2023" },
+        { tag: t.tagWork, name: n.dev, when: "2023 —" },
+      ],
+      right: [],
+    },
+    {
+      year: "2022",
+      left: [{ tag: t.tagStudy, name: n.itpark, when: "2022" }],
+      right: [],
+    },
+    {
+      year: "2021",
+      left: [],
+      right: [{ tag: t.tagStudy, name: n.school, when: "2021—2024" }],
+    },
+  ];
 
   return (
     <section
@@ -137,38 +184,18 @@ export function DossierTimeline() {
             {t.stamp}
           </span>
           <h2 className="sec-head__title">
-            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+            <span data-redact>{t.title}</span>
           </h2>
         </div>
-        <p className="sec-head__field font-mono">{t.field}</p>
+        <p className="sec-head__field">{t.field}</p>
       </header>
-
-      {/* Left Rail Field Card */}
-      <dl className="field record__rail" data-clip>
-        <div>
-          <dt>Institut</dt>
-          <dd>Toshkent Davlat Yuridik Universiteti</dd>
-        </div>
-        <div>
-          <dt>Kurs</dt>
-          <dd>1-kurs talabasi (2025—2029)</dd>
-        </div>
-        <div>
-          <dt>Yo'nalish</dt>
-          <dd>Statut Huquqi & AI Muhandisligi</dd>
-        </div>
-        <div>
-          <dt>Fokus</dt>
-          <dd>RAG · Multi-Agent · Vektor Xotira</dd>
-        </div>
-      </dl>
 
       {/* Center Animated Scrub Line & Year Columns */}
       <div className="record__body">
         <div className="alibi" data-alibi>
           <div className="alibi__line" data-alibi-line aria-hidden="true" />
 
-          <div className="alibi__legend font-mono">
+          <div className="alibi__legend">
             <span>{t.leftLegend}</span>
             <span>{t.rightLegend}</span>
           </div>
@@ -177,46 +204,14 @@ export function DossierTimeline() {
             <div key={block.year} className="alibi__year" data-alibi-year>
               <div className="alibi__y">
                 <span className="alibi__drop" aria-hidden="true" />
-                <span className="alibi__yn font-display">{block.year}</span>
+                <span className="alibi__yn">{block.year}</span>
               </div>
 
-              {/* Left Column (AI Engineering) */}
-              <div className="alibi__col pr-4">
-                <article className="entry" data-clip>
-                  <span className="entry__tag font-mono">{block.leftRole[locale]}</span>
-                  <h4 className="entry__who font-display text-lg font-bold text-[#f2eee3]">
-                    {block.leftProject}
-                  </h4>
-                  <p className="entry__what mt-1 font-body text-sm leading-relaxed">
-                    {block.leftDesc[locale]}
-                  </p>
-                  <span className="entry__when font-mono">{block.year}</span>
-                </article>
-              </div>
-
-              {/* Right Column (TSUL Jurisprudence) */}
-              <div className="alibi__col pl-4">
-                <article className="entry" data-clip>
-                  <span className="entry__tag font-mono text-[#f2eee3]/70">
-                    {block.rightRole[locale]}
-                  </span>
-                  <h4 className="entry__who font-display text-lg font-bold text-[#f2eee3]">
-                    {block.rightInst}
-                  </h4>
-                  <p className="entry__what mt-1 font-body text-sm leading-relaxed">
-                    {block.rightDesc[locale]}
-                  </p>
-                  <span className="entry__when font-mono">{block.year}</span>
-                </article>
-              </div>
+              <EntryList entries={block.left} side="l" />
+              <EntryList entries={block.right} side="r" />
             </div>
           ))}
         </div>
-
-        <p className="marginalia record__margin font-serif">
-          <span className="marginalia__ast mr-1">*</span>
-          {t.marginalia}
-        </p>
       </div>
     </section>
   );

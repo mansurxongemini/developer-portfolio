@@ -34,7 +34,7 @@ const social: Social = [
   {
     name: "Telegram",
     icon: "telegram",
-    link: "https://t.me/rustamovmansurxon",
+    link: "https://t.me/mansurxonrustamov",
     essential: true,
   },
   {
@@ -92,7 +92,7 @@ const about: About = {
   },
   calendar: {
     display: true,
-    link: "https://t.me/rustamovmansurxon",
+    link: "https://t.me/mansurxonrustamov",
   },
   intro: {
     display: true,

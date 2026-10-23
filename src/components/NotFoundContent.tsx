@@ -1,20 +1,37 @@
 "use client";
 
-import { Column, Heading, Text } from "@once-ui-system/core";
+import { useEffect } from "react";
 import { useI18n } from "@/components/I18nProvider";
 
+const copy = {
+  uz: { line: "Bunday sahifa yo'q.", back: "Bosh sahifaga →" },
+  en: { line: "This page doesn't exist.", back: "Back home →" },
+  ru: { line: "Такой страницы нет.", back: "На главную →" },
+};
+
 export function NotFoundContent() {
-  const { content } = useI18n();
+  const { locale, content } = useI18n();
+  const t = copy[locale] || copy.en;
+
+  useEffect(() => {
+    document.body.dataset.theme = "ink-deep";
+    return () => {
+      document.body.dataset.theme = "bone";
+    };
+  }, []);
 
   return (
-    <Column as="section" fill center paddingBottom="160">
-      <Text marginBottom="s" variant="display-strong-xl">
+    <section className="sec notfound" data-theme-trigger="ink-deep">
+      <p className="notfound__code font-display" aria-hidden="true" data-clip>
         404
-      </Text>
-      <Heading marginBottom="l" variant="display-default-xs">
-        {content.ui.page_not_found}
-      </Heading>
-      <Text onBackground="neutral-weak">{content.ui.page_not_found_desc}</Text>
-    </Column>
+      </p>
+      <h1 className="notfound__title font-display">
+        <span data-redact>{content.ui.page_not_found}</span>
+      </h1>
+      <p className="marginalia notfound__line">{t.line}</p>
+      <a href="/" className="briefs__all notfound__back" data-cursor="Bosh sahifa">
+        {t.back}
+      </a>
+    </section>
   );
 }

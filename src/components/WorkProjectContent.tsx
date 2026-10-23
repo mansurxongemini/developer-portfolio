@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  AvatarGroup,
-  Column,
-  Heading,
-  Media,
-  Text,
-  SmartLink,
-  Row,
-  Line,
-} from "@once-ui-system/core";
+import Image from "next/image";
 import { useI18n } from "@/components/I18nProvider";
 import { formatDate } from "@/utils/formatDate";
 
@@ -30,61 +21,125 @@ interface WorkProjectContentProps {
   relatedProjects: React.ReactNode;
 }
 
-export function WorkProjectContent({ post, article, relatedProjects }: WorkProjectContentProps) {
-  const { content } = useI18n();
+const copy = {
+  uz: {
+    back: "← Loyihalar",
+    file: "Loyiha",
+    field: "Yo'nalish",
+    stack: "Texnologiya",
+    year: "Yil",
+    link: "Havola",
+    open: "Ochish ↗",
+    related: "Keyingi loyiha",
+  },
+  en: {
+    back: "← Projects",
+    file: "Project",
+    field: "Field",
+    stack: "Stack",
+    year: "Year",
+    link: "Link",
+    open: "Open ↗",
+    related: "Next project",
+  },
+  ru: {
+    back: "← Проекты",
+    file: "Проект",
+    field: "Область",
+    stack: "Стек",
+    year: "Год",
+    link: "Ссылка",
+    open: "Открыть ↗",
+    related: "Следующий проект",
+  },
+};
 
-  const avatars =
-    post.metadata.team?.map((person) => ({
-      src: person.avatar,
-    })) || [];
+function shortLede(summary: string): string {
+  const s = (summary || "").trim();
+  if (s.length <= 160) return s;
+  return `${s.slice(0, 157).trimEnd()}…`;
+}
+
+export function WorkProjectContent({
+  post,
+  article,
+  relatedProjects,
+}: WorkProjectContentProps) {
+  const { locale } = useI18n();
+  const t = copy[locale] || copy.en;
+  const cover = post.metadata.images[0] || "";
+  const year = post.metadata.publishedAt
+    ? new Date(post.metadata.publishedAt).getFullYear()
+    : "—";
 
   return (
-    <Column as="section" maxWidth="m" horizontal="center" gap="l">
-      <Column maxWidth="s" gap="16" horizontal="center" align="center">
-        <SmartLink href="/work">
-          <Text variant="label-strong-m">{content.ui.projects}</Text>
-        </SmartLink>
-        <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-          {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-        </Text>
-        <Heading variant="display-strong-m">{post.metadata.title}</Heading>
-      </Column>
-      <Row marginBottom="32" horizontal="center">
-        <Row gap="16" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
-          <Text variant="label-default-m" onBackground="brand-weak">
-            {post.metadata.team?.map((member, idx) => (
-              <span key={idx}>
-                {idx > 0 && (
-                  <Text as="span" onBackground="neutral-weak">
-                    ,{" "}
-                  </Text>
-                )}
-                <SmartLink href={member.linkedIn}>{member.name}</SmartLink>
-              </span>
-            ))}
-          </Text>
-        </Row>
-      </Row>
-      {post.metadata.images.length > 0 && (
-        <Media
-          priority
-          aspectRatio="16 / 9"
-          radius="m"
-          alt="image"
-          src={post.metadata.images[0]}
-        />
-      )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+    <article className="sec case-page" data-theme-trigger="bone">
+      <div className="case__sheet">
+        <a href="/work" className="case__back font-mono">
+          {t.back}
+        </a>
+
+        <p className="case__file">
+          {t.file}
+          <span className="stamp stamp--opened" data-stamp aria-hidden="true">
+            {year}
+          </span>
+        </p>
+
+        <h1 className="case__title">
+          <span data-redact data-redact-mode="title">
+            {post.metadata.title}
+          </span>
+        </h1>
+
+        <p className="case__lede">{shortLede(post.metadata.summary)}</p>
+
+        {cover ? (
+          <figure className="case__key frame" data-img-reveal data-cursor="Asosiy">
+            <Image
+              src={cover}
+              alt={post.metadata.title}
+              width={1200}
+              height={675}
+              priority
+              sizes="(max-width: 900px) 92vw, 52rem"
+            />
+            <figcaption className="marginalia">
+              {post.metadata.publishedAt
+                ? formatDate(post.metadata.publishedAt)
+                : ""}
+            </figcaption>
+          </figure>
+        ) : null}
+
+        <dl className="case__meta">
+          <div>
+            <dt>{t.field}</dt>
+            <dd>{post.slug}</dd>
+          </div>
+          <div>
+            <dt>{t.year}</dt>
+            <dd>{year}</dd>
+          </div>
+          {post.metadata.link ? (
+            <div>
+              <dt>{t.link}</dt>
+              <dd>
+                <a href={post.metadata.link} target="_blank" rel="noreferrer">
+                  {t.open}
+                </a>
+              </dd>
+            </div>
+          ) : null}
+        </dl>
+
         {article}
-      </Column>
-      <Column fillWidth gap="40" horizontal="center" marginTop="40">
-        <Line maxWidth="40" />
-        <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
-          {content.ui.related_projects}
-        </Heading>
-        {relatedProjects}
-      </Column>
-    </Column>
+
+        <div className="case__next">
+          <p className="case__next-label">{t.related}</p>
+          {relatedProjects}
+        </div>
+      </div>
+    </article>
   );
 }

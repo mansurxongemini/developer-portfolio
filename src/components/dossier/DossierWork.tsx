@@ -1,37 +1,35 @@
 "use client";
 
-import Image from "next/image";
 import { useI18n } from "@/components/I18nProvider";
 import { staticProjectsData } from "@/lib/projects-data";
 import { CaseFileModal } from "./CaseFileModal";
 
+/** Short 1–3 word exhibit names shown in the row list. */
+const shortTitles: Record<string, string> = {
+  "inclusive-legal-rag": "Inclusive Legal RAG",
+  "alloma-cognitive-engine": "Alloma AI",
+  "multi-agent-roundtable-system": "Roundtable",
+  "huquqplus-uz": "HuquqPlus",
+  "mahalla-management-system": "Mahalla",
+  "kitobplus-app": "KitobPlus",
+  "uzbekistan-map-puzzle": "Map Puzzle",
+};
+
 const workCopy = {
   uz: {
     stamp: "№ 03",
-    title: "Dalillar",
-    subtitle: "The Evidence",
-    field: "07 Eksponat · Tekshirilgan Kod",
-    clickHint: "Ishni ochish uchun qatorga bosing",
-    marginalia:
-      "Barcha 7 ta tizim real muammolarni hal qilish uchun ishlab chiqilgan va kodi GitHub'da ochiq.",
+    title: "Loyihalar",
+    field: "07",
   },
   en: {
     stamp: "№ 03",
-    title: "Evidence",
-    subtitle: "The Evidence",
-    field: "07 Exhibits · Verifiable Code",
-    clickHint: "Click any row to open full case file",
-    marginalia:
-      "All 7 systems were engineered for real-world impact and are publicly accessible on GitHub.",
+    title: "Projects",
+    field: "07",
   },
   ru: {
     stamp: "№ 03",
-    title: "Улики",
-    subtitle: "The Evidence",
-    field: "07 Экспонатов · Открытый Код",
-    clickHint: "Нажмите на строку для открытия дела",
-    marginalia:
-      "Все 7 инженерных систем решают практические задачи и открыты для аудита на GitHub.",
+    title: "Проекты",
+    field: "07",
   },
 };
 
@@ -40,6 +38,9 @@ export function DossierWork() {
   const t = workCopy[locale] || workCopy.en;
 
   const tilts = ["-1.4", "1.2", "-0.8", "1.5", "-1.1", "0.9", "-1.3"];
+  const first = staticProjectsData[0];
+  const firstTitle = shortTitles[first.slug] || first.slug;
+  const firstYear = first.publishedAt.getFullYear();
 
   return (
     <section
@@ -54,18 +55,19 @@ export function DossierWork() {
             {t.stamp}
           </span>
           <h2 className="sec-head__title">
-            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+            <span data-redact>{t.title}</span>
           </h2>
         </div>
-        <p className="sec-head__field font-mono">{t.field}</p>
+        <p className="sec-head__field">{t.field}</p>
       </header>
 
       {/* Left List of Exhibits */}
       <div className="work__list-wrap">
         <div className="work-list">
           {staticProjectsData.map((project, idx) => {
-            const projectT = project.translations[locale] || project.translations.en;
             const tilt = tilts[idx % tilts.length];
+            const short = shortTitles[project.slug] || project.slug;
+            const year = project.publishedAt.getFullYear();
 
             return (
               <button
@@ -78,30 +80,22 @@ export function DossierWork() {
                 data-ar="1.4"
                 data-tilt={tilt}
                 data-index={idx}
-                data-cursor="Ochish"
-                aria-label={`№ 0${idx + 1} ${projectT.title}`}
+                data-cursor="Open"
+                aria-label={`№ 0${idx + 1} ${short}`}
               >
-                <span className="ex-row__index font-mono">
-                  [0{idx + 1}]
-                </span>
+                <span className="ex-row__index">[0{idx + 1}]</span>
 
-                <div className="ex-row__thumb">
-                  <img src={project.image} alt="" />
+                <div className="ex-row__thumb" aria-hidden="true">
+                  <img src={project.image} alt="" loading="lazy" />
                 </div>
 
-                <span className="ex-row__title font-display">
-                  {projectT.title}
-                </span>
+                <span className="ex-row__title">{short}</span>
 
-                <span className="ex-row__cat font-mono">
-                  {project.tags[0]}
-                </span>
+                <span className="ex-row__cat">{project.tags[0]}</span>
 
-                <span className="ex-row__year font-mono">
-                  2025
-                </span>
+                <span className="ex-row__year">{year}</span>
 
-                <span className="ex-row__arrow font-mono" aria-hidden="true">
+                <span className="ex-row__arrow" aria-hidden="true">
                   →
                 </span>
               </button>
@@ -109,19 +103,15 @@ export function DossierWork() {
           })}
         </div>
 
-        <p className="marginalia mt-8 font-serif">
-          <span className="marginalia__ast mr-1">*</span>
-          {t.marginalia}
-        </p>
       </div>
 
       {/* Right Sticky Hung Frame Viewer */}
-      <aside className="viewer" data-viewer>
+      <aside className="viewer" data-viewer aria-hidden="true">
         <div
           className="viewer__frame frame"
           data-viewer-frame
           data-tilt="-1.4"
-          data-cursor="Ochish"
+          data-cursor="Open"
         >
           {/* Metal Clip */}
           <span className="frame__clip" aria-hidden="true">
@@ -138,7 +128,7 @@ export function DossierWork() {
           <div className="frame__mat">
             <div className="viewer__stage" data-viewer-stage>
               <img
-                src={staticProjectsData[0].image}
+                src={first.image}
                 alt=""
                 className="is-current"
                 decoding="async"
@@ -147,14 +137,14 @@ export function DossierWork() {
             <div className="exposure" data-exposure aria-hidden="true" />
           </div>
 
-          <p className="viewer__caption font-mono" data-viewer-caption>
-            Exhibit 01 — {staticProjectsData[0].translations[locale]?.title || "Inclusive Legal RAG"} · {staticProjectsData[0].tags[0]}
+          <p className="viewer__caption" data-viewer-caption>
+            {firstTitle} · {firstYear}
           </p>
         </div>
       </aside>
 
       {/* Case File Slide-Up Sheet Modal */}
-      <CaseFileModal />
+      <CaseFileModal shortTitles={shortTitles} />
     </section>
   );
 }

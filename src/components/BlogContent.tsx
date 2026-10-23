@@ -1,8 +1,6 @@
 "use client";
 
-import { Column } from "@once-ui-system/core";
 import { useI18n } from "@/components/I18nProvider";
-import { Mailchimp } from "@/components";
 
 interface BlogContentProps {
   postsFirst: React.ReactNode;
@@ -10,43 +8,56 @@ interface BlogContentProps {
   postsLater: React.ReactNode;
 }
 
+const copy = {
+  uz: {
+    stamp: "№ 05",
+    title: "Maqolalar",
+    field: "",
+    earlier: "Oldingi maqolalar",
+  },
+  en: {
+    stamp: "№ 05",
+    title: "Articles",
+    field: "",
+    earlier: "Earlier articles",
+  },
+  ru: {
+    stamp: "№ 05",
+    title: "Статьи",
+    field: "",
+    earlier: "Ранние статьи",
+  },
+};
+
 export function BlogContent({ postsFirst, postsMiddle, postsLater }: BlogContentProps) {
-  const { content } = useI18n();
-  const { blog } = content;
+  const { locale } = useI18n();
+  const t = copy[locale] || copy.en;
 
   return (
-    <Column maxWidth="m" paddingTop="24">
-      {/* Page header */}
-      <div className="mb-12 px-1">
-        <h1 className="text-3xl font-bold tracking-tight text-[#1C1917] md:text-4xl">
-          {blog.title}
-        </h1>
-        {blog.description && (
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#57534E]">
-            {blog.description}
-          </p>
-        )}
-      </div>
+    <section className="sec briefs briefs--page" data-theme-trigger="bone">
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            {t.stamp}
+          </span>
+          <h1 className="sec-head__title">
+            <span data-redact>{t.title}</span>
+          </h1>
+        </div>
+        <p className="sec-head__field">{t.field}</p>
+      </header>
 
-      {/* Featured post */}
-      <div className="mb-8">
-        {postsFirst}
-      </div>
+      <div className="briefs__list-wrap">
+        <div className="briefs__list">
+          {postsFirst}
+          {postsMiddle}
+        </div>
 
-      {/* Middle posts */}
-      <div className="mb-12">
-        {postsMiddle}
+        <div className="briefs__earlier">
+          <p className="briefs__earlier-label font-mono">{t.earlier}</p>
+          <div className="briefs__list">{postsLater}</div>
+        </div>
       </div>
-
-      {/* Earlier posts */}
-      <div className="mb-16">
-        <h2 className="mb-6 px-1 text-xl font-semibold tracking-tight text-[#1C1917]">
-          {content.ui.earlier_posts}
-        </h2>
-        {postsLater}
-      </div>
-
-      <Mailchimp marginBottom="l" />
-    </Column>
+    </section>
   );
 }

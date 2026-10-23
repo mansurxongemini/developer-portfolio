@@ -1,9 +1,5 @@
 "use client";
 
-import { MotionEngine } from "@/components/dossier/MotionEngine";
-import { DossierCursor } from "@/components/dossier/DossierCursor";
-import { DossierHeader } from "@/components/dossier/DossierHeader";
-import { DossierMenu } from "@/components/dossier/DossierMenu";
 import { CaseFileDock } from "@/components/dossier/CaseFileDock";
 import { DossierHero } from "@/components/dossier/DossierHero";
 import { DossierAbout } from "@/components/dossier/DossierAbout";
@@ -15,19 +11,8 @@ import { DossierContact } from "@/components/dossier/DossierContact";
 
 export function HomeContent() {
   return (
-    <div className="relative w-full overflow-x-hidden bg-[#0b0a06]">
-      {/* 00: Scroll motion engine (Lenis, GSAP ScrollTrigger, Scatter, Torch, etc.) */}
-      <MotionEngine />
-
-      {/* 00: Custom Magnetic & Blend Mode Cursor */}
-      <DossierCursor />
-
-      {/* 00: Top Dossier Header with Live Tashkent Clock & Brand */}
-      <DossierHeader />
-
-      {/* 00: Fullscreen Dossier Sheet Menu */}
-      <DossierMenu />
-
+    <div className="relative w-full overflow-x-hidden">
+      {/* Site chrome (MotionEngine, cursor, header, menu, footer) lives in SiteShell. */}
       {/* Floating Right-Edge Case File Index Dock with ScrollSpy */}
       <CaseFileDock />
 

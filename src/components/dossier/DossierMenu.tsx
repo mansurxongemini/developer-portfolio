@@ -1,48 +1,57 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useI18n } from "@/components/I18nProvider";
+
+const HOME_RE = /^\/(uz|en|ru)?\/?$/;
 
 export function DossierMenu() {
   const { locale, setLocale } = useI18n();
+  const pathname = usePathname() ?? "/";
+  const isHome = HOME_RE.test(pathname);
 
   const menuItems = [
     {
       num: "01",
-      id: "about",
-      labels: { uz: "Dosye", en: "About", ru: "Досье" },
-      sub: { uz: "Shaxsiyat va Faktlar", en: "Identity & Foundations", ru: "Личность и Факты" },
+      href: "/",
+      labels: { uz: "Bosh sahifa", en: "Home", ru: "Главная" },
     },
     {
       num: "02",
-      id: "capabilities",
-      labels: { uz: "Usullar", en: "Capabilities", ru: "Методы" },
-      sub: { uz: "Methods", en: "Methods", ru: "Архитектура Систем" },
+      href: "/work",
+      labels: { uz: "Loyihalar", en: "Projects", ru: "Проекты" },
     },
     {
       num: "03",
-      id: "work",
-      labels: { uz: "Dalillar", en: "Evidence", ru: "Улики" },
-      sub: { uz: "Ochiq Manbali Kod", en: "Verifiable Code", ru: "Открытый Код" },
+      href: "/blog",
+      labels: { uz: "Maqolalar", en: "Articles", ru: "Статьи" },
     },
     {
       num: "04",
-      id: "timeline",
-      labels: { uz: "Yozuv", en: "Record", ru: "Запись" },
-      sub: { uz: "TDYU va AI Xronologiyasi", en: "Statutory & AI Timeline", ru: "Хронология ТГЮУ и ИИ" },
+      href: "/about",
+      labels: { uz: "Men haqimda", en: "About", ru: "Обо мне" },
     },
     {
       num: "05",
-      id: "briefs",
-      labels: { uz: "Xulosalar", en: "Briefs", ru: "Выводы" },
-      sub: { uz: "Rasmiy Tahlilnomalar", en: "Analytical Dispatches", ru: "Правовая Аналитика" },
-    },
-    {
-      num: "06",
-      id: "contact",
-      labels: { uz: "Murojaat", en: "Vault", ru: "Связь" },
-      sub: { uz: "To'g'ridan-to'g'ri Aloqa", en: "Direct Dialogue", ru: "Прямой Диалог" },
+      // On home this stays a same-page anchor (smooth scroll);
+      // from inner pages it navigates home first.
+      href: isHome ? "#contact" : "/#contact",
+      labels: { uz: "Aloqa", en: "Contact", ru: "Контакты" },
     },
   ];
+
+  const closeLabel =
+    locale === "ru" ? "Закрыть" : locale === "uz" ? "Yopish" : "Close";
+  const navLabel =
+    locale === "ru" ? "Меню" : locale === "uz" ? "Menyu" : "Menu";
+  const langLabel =
+    locale === "ru" ? "Язык:" : locale === "uz" ? "Til:" : "Language:";
+  const fileLine =
+    locale === "ru"
+      ? "Мансурхон Рустамов · Меню"
+      : locale === "uz"
+        ? "Mansurxon Rustamov · Menyu"
+        : "Mansurxon Rustamov · Menu";
 
   return (
     <div className="menu" id="menu" data-menu aria-hidden="true" data-lenis-prevent>
@@ -50,10 +59,10 @@ export function DossierMenu() {
         className="menu__close"
         data-menu-close
         type="button"
-        aria-label="Close menu"
-        data-cursor="Close"
+        aria-label={closeLabel}
+        data-cursor={closeLabel}
       >
-        <span className="menu__close-label font-mono text-xs">Yopish</span>
+        <span className="menu__close-label font-mono text-xs">{closeLabel}</span>
         <span className="menu__close-x" aria-hidden="true">
           <i />
           <i />
@@ -61,14 +70,14 @@ export function DossierMenu() {
       </button>
 
       <p className="menu__file font-mono" aria-hidden="true">
-        Ish hujjati — Mansurxon Rustamov · Indeks
+        {fileLine}
       </p>
 
-      <nav className="menu__nav" aria-label="Menu Navigation">
+      <nav className="menu__nav" aria-label={navLabel}>
         {menuItems.map((item) => (
           <a
-            key={item.id}
-            href={`#${item.id}`}
+            key={item.num}
+            href={item.href}
             className="menu__link group"
             data-menu-link
           >
@@ -76,14 +85,13 @@ export function DossierMenu() {
             <span className="menu__word font-display font-medium">
               {item.labels[locale]}
             </span>
-            <em className="font-serif italic">{item.sub[locale]}</em>
           </a>
         ))}
       </nav>
 
       {/* Language Switcher in Menu */}
       <div className="my-6 flex items-center gap-3 border-t border-[rgba(19,17,8,0.15)] pt-6 font-mono text-xs uppercase tracking-widest text-[#131108]/70">
-        <span>Til:</span>
+        <span>{langLabel}</span>
         {(["uz", "en", "ru"] as const).map((lang) => (
           <button
             key={lang}
@@ -100,18 +108,18 @@ export function DossierMenu() {
       </div>
 
       <div className="menu__foot">
-        <a href="mailto:mansurxon.rustamov@gmail.com" className="menu__mail">
-          mansurxon.rustamov@gmail.com
+        <a href="mailto:r.mansurxon01@gmail.com" className="menu__mail">
+          r.mansurxon01@gmail.com
         </a>
 
         <div className="menu__socials font-mono">
           <a
-            href="https://t.me/mansurxongemini"
+            href="https://t.me/mansurxonrustamov"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#c53a00]"
           >
-            Telegram Tahlil
+            Telegram
           </a>
           <a
             href="https://github.com/mansurxongemini"

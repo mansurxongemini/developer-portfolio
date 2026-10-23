@@ -3,8 +3,6 @@ import { CustomMDX, ScrollToHash } from "@/components";
 import {
   Meta,
   Schema,
-  Row,
-  Column,
 } from "@once-ui-system/core";
 import { baseURL, about, blog, person } from "@/resources";
 import { getPublishedArticles, getArticleBySlug } from "@/lib/firestore-server";
@@ -88,46 +86,33 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
   const post = toPostShape(article);
 
   return (
-    <Row fillWidth>
-      <Row maxWidth={12} m={{ hide: true }} />
-      <Row fillWidth horizontal="center">
-        <Schema
-          as="blogPosting"
-          baseURL={baseURL}
-          path={`${blog.path}/${post.slug}`}
-          title={post.metadata.title}
-          description={post.metadata.summary}
-          datePublished={post.metadata.publishedAt}
-          dateModified={post.metadata.publishedAt}
-          image={
-            post.metadata.image ||
-            `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
-          }
-          author={{
-            name: person.name,
-            url: `${baseURL}${about.path}`,
-            image: `${baseURL}${person.avatar}`,
-          }}
-        />
-        <BlogPostContent
-          post={post}
-          article={<CustomMDX source={post.content} />}
-          recentPosts={
-            <Posts exclude={[post.slug]} range={[1, 2]} columns="2" thumbnail direction="column" />
-          }
-        />
-        <ScrollToHash />
-      </Row>
-      <Column
-        maxWidth={12}
-        paddingLeft="40"
-        fitHeight
-        position="sticky"
-        top="80"
-        gap="16"
-        m={{ hide: true }}
-      >
-      </Column>
-    </Row>
+    <>
+      <Schema
+        as="blogPosting"
+        baseURL={baseURL}
+        path={`${blog.path}/${post.slug}`}
+        title={post.metadata.title}
+        description={post.metadata.summary}
+        datePublished={post.metadata.publishedAt}
+        dateModified={post.metadata.publishedAt}
+        image={
+          post.metadata.image ||
+          `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
+        }
+        author={{
+          name: person.name,
+          url: `${baseURL}${about.path}`,
+          image: `${baseURL}${person.avatar}`,
+        }}
+      />
+      <BlogPostContent
+        post={post}
+        article={<CustomMDX source={post.content} />}
+        recentPosts={
+          <Posts exclude={[post.slug]} range={[1, 2]} />
+        }
+      />
+      <ScrollToHash />
+    </>
   );
 }

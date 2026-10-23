@@ -11,7 +11,7 @@ const personBase: Person = {
   firstName: "Mansurxon",
   lastName: "Rustamov",
   name: "Mansurxon Rustamov",
-  role: "Law Student, AI Developer & Independent Analyst",
+  role: "Law Student at TSUL, Full-Stack and AI Developer",
   avatar: "/images/avatar.jpg",
   email: "r.mansurxon01@gmail.com",
   location: "Asia/Tashkent",
@@ -21,15 +21,15 @@ const personBase: Person = {
 const personByLocale: Record<Locale, Person> = {
   uz: {
     ...personBase,
-    role: "TDYU Huquqshunoslik talabasi & AI Dasturchi",
+    role: "TDYU huquqshunoslik talabasi, Full-Stack va AI dasturchi",
   },
   en: {
     ...personBase,
-    role: "TSUL Law Student & AI Developer",
+    role: "TSUL law student, Full-Stack and AI developer",
   },
   ru: {
     ...personBase,
-    role: "Студент-юрист ТГЮУ и AI-разработчик",
+    role: "Студент-юрист ТГЮУ, Full-Stack и AI-разработчик",
   },
 };
 
@@ -51,7 +51,7 @@ const socialLinks: Social = [
   {
     name: "Telegram",
     icon: "telegram",
-    link: "https://t.me/rustamovmansurxon",
+    link: "https://t.me/mansurxonrustamov",
     essential: true,
   },
   {
@@ -96,7 +96,7 @@ const homeByLocale: Record<Locale, Home> = {
     image: "/og-image.jpg",
     label: "Bosh sahifa",
     title: "Mansurxon Rustamov",
-    description: "Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasidagi amaliy tahlillar va LegalTech loyihalar.",
+    description: "Mansurxon Rustamov — TDYU huquqshunoslik talabasi, Full-Stack va AI dasturchi. HuquqPlus.uz volontyori, Alloma AI va KitobPlus loyihalari ustida ishlaydi.",
     headline: <>Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida amaliy ko'prik</>,
     featured: {
       display: true,
@@ -123,7 +123,7 @@ const homeByLocale: Record<Locale, Home> = {
     image: "/og-image.jpg",
     label: "Home",
     title: "Mansurxon Rustamov",
-    description: "Practical analyses and LegalTech projects bridging Jurisprudence, Artificial Intelligence, and Society.",
+    description: "Mansurxon Rustamov — TSUL law student, Full-Stack and AI developer. HuquqPlus.uz volunteer, working on Alloma AI and KitobPlus.",
     headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
     featured: {
       display: true,
@@ -150,7 +150,7 @@ const homeByLocale: Record<Locale, Home> = {
     image: "/og-image.jpg",
     label: "Главная",
     title: "Mansurxon Rustamov",
-    description: "Правовой анализ и прикладные LegalTech-проекты на стыке юриспруденции, искусственного интеллекта и общества.",
+    description: "Мансурхон Рустамов — студент ТГЮУ, Full-Stack и AI-разработчик. Волонтёр HuquqPlus.uz, работает над Alloma AI и KitobPlus.",
     headline: <>Связывая Юриспруденцию, Искусственный Интеллект и Общество</>,
     featured: {
       display: true,
@@ -184,15 +184,14 @@ const aboutByLocale: Record<Locale, About> = {
     description: `${personBase.name} — TDYU talabasi, AI dasturchi va LegalTech tadqiqotchisi`,
     tableOfContent: { display: true, subItems: false },
     avatar: { display: true },
-    calendar: { display: true, link: "https://t.me/rustamovmansurxon" },
+    calendar: { display: true, link: "https://t.me/mansurxonrustamov" },
     intro: {
       display: true,
       title: "Profil",
       description: (
         <>
-          Men Toshkent davlat yuridik universiteti birinchi kurs talabasi va dasturchiman.
-          Qonunchilik tahlili va zamonaviy hisoblash arxitekturalari (Hybrid RAG, kognitiv mentor tizimlari, ochiq ma'lumotlar platformalari) ustida amaliy ishlayman.
-          Maqsadim — huquqiy tafakkur va sun'iy intellekt texnologiyalarini birlashtirib, jamiyat uchun ishonchli va adolatli tizimlar yaratishdir.
+          Men Toshkent davlat yuridik universitetining Jinoiy odil sudlov fakulteti 2-kurs talabasiman, Full-Stack va AI dasturchiman.
+          2026-yil martidan HuquqPlus.uz portalida nogironligi bo'lgan shaxslarning huquqiy savollariga javob tayyorlashda volontyorlik qilaman.
         </>
       ),
     },
@@ -201,22 +200,32 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Amaliy va muhandislik tajribasi",
       experiences: [
         {
-          company: "LegalTech va AI Tadqiqotlari",
-          timeframe: "2024 - Hozir",
-          role: "AI Dasturchi & Tadqiqotchi",
+          company: "HuquqPlus.uz (\"SHAROIT PLYUS\" NNT)",
+          timeframe: "2026 - Hozir",
+          role: "Huquqshunos volontyor",
           achievements: [
-            "Inclusive Legal RAG platformasi ishlab chiqildi: LanceDB, SQLite FTS5 va BMT Konvensiyasi ontologiyasi orqali inklyuziv qonunchilik tahlil qilindi.",
-            "Alloma AI loyihasi arxitekturasi: talabalar uchun shaxsiy kognitiv mentor va huquqiy tahlil tizimi yo'lga qo'yildi.",
+            "Nogironligi bo'lgan shaxslarning huquqiy savollariga huquqiy asoslangan javoblar tayyorlaydi.",
+            "SMM va kontent-menejerga yordamchi sifatida ko'ngilli yordam beradi.",
           ],
           images: [],
         },
         {
-          company: "Fuqarolik va Veb Loyihalari",
-          timeframe: "2023 - 2024",
-          role: "Full-Stack Dasturchi",
+          company: "TDYU IT Club",
+          timeframe: "2026 - Hozir",
+          role: "Tashkilotchi",
           achievements: [
-            "Mahalla boshqaruvi va fuqarolar murojaatlarini avtomatlashtirish tizimi yaratildi.",
-            "Next.js, TypeScript va Python asosida yuqori tezlikdagi, xavfsiz va qulay veb-ilovalar ishlab chiqildi.",
+            "Talabalar uchun kompyuter savodxonligi va sun'iy intellekt kursini tashkil etadi.",
+            "Jamoaga qabul va yillik ish rejasini yuritadi.",
+          ],
+          images: [],
+        },
+        {
+          company: "Mustaqil dasturchi",
+          timeframe: "2023 - Hozir",
+          role: "Full-Stack va AI dasturchi",
+          achievements: [
+            "React, Next.js, Python va Django bilan veb-ilovalar yaratadi.",
+            "Alloma AI: talabalar uchun shaxsiy AI-mentor loyihasi ustida ishlaydi.",
           ],
           images: [],
         },
@@ -227,16 +236,16 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Ta'lim",
       institutions: [
         {
-          name: "Toshkent Davlat Yuridik Universiteti (TDYU)",
-          description: <>Birinchi kurs huquq talabasi, huquqiy tafakkur va analitik yondashuvga ixtisoslashgan.</>,
+          name: "Toshkent davlat yuridik universiteti (TDYU)",
+          description: <>Jinoiy odil sudlov fakulteti, 2025–2029.</>,
         },
         {
-          name: "Ixtisoslashtirilgan maktab",
-          description: <>2021 - 2024 yillarda formal ta'limni tamomlagan.</>,
+          name: "IT Park",
+          description: <>Python va Frontend dasturlash kurslari.</>,
         },
         {
-          name: "IT PARK dasturlash ta'limi",
-          description: <>2022 - 2023 yillarda dasturlash bo'yicha amaliy kurslarni tamomlagan.</>,
+          name: "Oqdaryo tuman ixtisoslashtirilgan maktabi (IMA tizimi)",
+          description: <>2021–2024. Informatika olimpiadasi va Robo Coding jamoasi.</>,
         },
       ],
     },
@@ -264,7 +273,7 @@ const aboutByLocale: Record<Locale, About> = {
         },
         {
           title: "Yutuqlar",
-          description: <>Turin University Hackathon, TATU University 1-o'rin, Robo Contest Uzbekistan Top natijalar.</>,
+          description: <>Informatika olimpiadasi (IMA tizimi) viloyat bosqichida 1-o'rin, TATU sport dasturlash musobaqasida respublika bosqichida 1-o'rin, Turin politexnika hackathoni respublika bosqichi ishtirokchisi.</>,
           tags: [{ name: "Hackathon" }, { name: "Contest" }],
           images: [],
         },
@@ -278,14 +287,14 @@ const aboutByLocale: Record<Locale, About> = {
     description: `Meet ${personBase.name} — Junior Programmer, TSUL Law Student, and builder`,
     tableOfContent: { display: true, subItems: false },
     avatar: { display: true },
-    calendar: { display: true, link: "https://t.me/rustamovmansurxon" },
+    calendar: { display: true, link: "https://t.me/mansurxonrustamov" },
     intro: {
       display: true,
       title: "Profile",
       description: (
         <>
-          I am a first-year Law student at Tashkent State University of Law and an AI Developer.
-          My work centers on the intersection of statutory jurisprudence and modern machine intelligence — developing specialized LegalTech systems, hybrid RAG engines, and civic automation tools.
+          I am a second-year student at the Criminal Justice Faculty of Tashkent State University of Law, and a Full-Stack and AI developer.
+          Since March 2026 I volunteer at HuquqPlus.uz, preparing legal answers for persons with disabilities.
         </>
       ),
     },
@@ -294,22 +303,32 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Work & Engineering Experience",
       experiences: [
         {
-          company: "LegalTech & AI Research",
-          timeframe: "2024 - Present",
-          role: "AI Developer & LegalTech Researcher",
+          company: "HuquqPlus.uz (NGO \"SHAROIT PLYUS\")",
+          timeframe: "2026 - Present",
+          role: "Legal volunteer",
           achievements: [
-            "Developed Inclusive Legal RAG: a hybrid statutory retrieval engine combining LanceDB, SQLite FTS5, and UN CRPD ontology for disability rights legislation in Uzbekistan.",
-            "Architected Alloma AI cognitive mentor engine with adaptive learning workflows and legal statutory reasoning modules.",
+            "Prepares legally grounded answers to questions from persons with disabilities.",
+            "Assists the SMM and content manager on a volunteer basis.",
           ],
           images: [],
         },
         {
-          company: "Civic & Web Engineering",
-          timeframe: "2023 - 2024",
-          role: "Full-Stack Developer",
+          company: "TSUL IT Club",
+          timeframe: "2026 - Present",
+          role: "Organizer",
           achievements: [
-            "Engineered Mahalla Management & Civic Automation Suite for community administration and citizen registry tracking.",
-            "Built high-performance, accessible web platforms using Next.js, TypeScript, Python, and modern relational databases.",
+            "Runs a computer literacy and artificial intelligence course for students.",
+            "Handles team recruitment and the club's yearly work plan.",
+          ],
+          images: [],
+        },
+        {
+          company: "Independent developer",
+          timeframe: "2023 - Present",
+          role: "Full-Stack and AI developer",
+          achievements: [
+            "Builds web applications with React, Next.js, Python and Django.",
+            "Alloma AI: working on a personal AI mentor project for students.",
           ],
           images: [],
         },
@@ -321,15 +340,15 @@ const aboutByLocale: Record<Locale, About> = {
       institutions: [
         {
           name: "Tashkent State University of Law (TSUL)",
-          description: <>First-year Law student focused on legal structure and analytical reasoning.</>,
+          description: <>Criminal Justice Faculty, 2025–2029.</>,
         },
         {
-          name: "Specialized School",
-          description: <>Formal secondary/specialized education completed (2021 - 2024).</>,
+          name: "IT Park",
+          description: <>Python and Frontend programming courses.</>,
         },
         {
-          name: "Programming Learning IT PARK",
-          description: <>Practical programming education track completed (2022 - 2023).</>,
+          name: "Oqdaryo District Specialized School (IMA system)",
+          description: <>2021–2024. Informatics olympiad and the Robo Coding team.</>,
         },
       ],
     },
@@ -357,7 +376,7 @@ const aboutByLocale: Record<Locale, About> = {
         },
         {
           title: "Achievements",
-          description: <>Turin University Hackathon, TATU University 1st place, and Robo Contest Uzbekistan top results.</>,
+          description: <>1st place at the regional stage of the informatics olympiad (IMA system), 1st place at the TUIT competitive programming contest (republic stage), participant of the Turin Polytechnic hackathon (republic stage).</>,
           tags: [{ name: "Hackathon" }, { name: "Contest" }],
           images: [],
         },
@@ -371,14 +390,14 @@ const aboutByLocale: Record<Locale, About> = {
     description: `${personBase.name} — студент ТГЮУ, разработчик AI и исследователь LegalTech`,
     tableOfContent: { display: true, subItems: false },
     avatar: { display: true },
-    calendar: { display: true, link: "https://t.me/rustamovmansurxon" },
+    calendar: { display: true, link: "https://t.me/mansurxonrustamov" },
     intro: {
       display: true,
       title: "Профиль",
       description: (
         <>
-          Студент первого курса Ташкентского государственного юридического университета и AI-разработчик.
-          Занимаюсь практическими исследованиями на стыке юриспруденции и машинного интеллекта: разрабатываю системы гибридного RAG, когнитивные движки и решения для гражданской автоматизации.
+          Я студент 2-го курса факультета уголовного правосудия Ташкентского государственного юридического университета, Full-Stack и AI-разработчик.
+          С марта 2026 года я волонтёр портала HuquqPlus.uz: готовлю ответы на правовые вопросы лиц с инвалидностью.
         </>
       ),
     },
@@ -387,22 +406,32 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Практический и инженерный опыт",
       experiences: [
         {
-          company: "LegalTech и AI исследования",
-          timeframe: "2024 - Настоящее время",
-          role: "AI-разработчик и исследователь",
+          company: "HuquqPlus.uz (ННО «SHAROIT PLYUS»)",
+          timeframe: "2026 - наст. время",
+          role: "Волонтёр-юрист",
           achievements: [
-            "Разработал платформу Inclusive Legal RAG: гибридный поисковый движок на LanceDB, SQLite FTS5 и онтологии Конвенции ООН о правах инвалидов.",
-            "Спроектировал когнитивный ментор Alloma AI с долговременной памятью и модулями правового анализа.",
+            "Готовит юридически обоснованные ответы на вопросы лиц с инвалидностью.",
+            "На волонтёрской основе помогает SMM и контент-менеджеру.",
           ],
           images: [],
         },
         {
-          company: "Гражданские и веб-проекты",
-          timeframe: "2023 - 2024",
-          role: "Full-Stack разработчик",
+          company: "IT Club ТГЮУ",
+          timeframe: "2026 - наст. время",
+          role: "Организатор",
           achievements: [
-            "Создал систему автоматизации документооборота и обработки обращений граждан для местного самоуправления (махалли).",
-            "Разрабатывал высокопроизводительные веб-приложения на Next.js, TypeScript, Python и реляционных базах данных.",
+            "Организует для студентов курс компьютерной грамотности и искусственного интеллекта.",
+            "Ведёт набор в команду и годовой план работы клуба.",
+          ],
+          images: [],
+        },
+        {
+          company: "Независимый разработчик",
+          timeframe: "2023 - наст. время",
+          role: "Full-Stack и AI-разработчик",
+          achievements: [
+            "Создаёт веб-приложения на React, Next.js, Python и Django.",
+            "Alloma AI: работает над проектом персонального ИИ-ментора для студентов.",
           ],
           images: [],
         },
@@ -413,16 +442,16 @@ const aboutByLocale: Record<Locale, About> = {
       title: "Образование",
       institutions: [
         {
-          name: "Ташкентский Государственный Юридический Университет (ТГЮУ)",
-          description: <>Студент 1 курса юриспруденции, фокус на правовой структуре и аналитическом мышлении.</>,
+          name: "Ташкентский государственный юридический университет (ТГЮУ)",
+          description: <>Факультет уголовного правосудия, 2025–2029.</>,
         },
         {
-          name: "Специализированная школа",
-          description: <>Завершенное среднее/профильное образование (2021 - 2024).</>,
+          name: "IT Park",
+          description: <>Курсы программирования Python и Frontend.</>,
         },
         {
-          name: "Программирование в IT PARK",
-          description: <>Практическая программа по программированию (2022 - 2023).</>,
+          name: "Окдарьинская районная специализированная школа",
+          description: <>2021–2024. Олимпиада по информатике и команда Robo Coding.</>,
         },
       ],
     },
@@ -450,7 +479,7 @@ const aboutByLocale: Record<Locale, About> = {
         },
         {
           title: "Достижения",
-          description: <>Turin University Hackathon, 1-е место в TATU University, топ результат Robo Contest Uzbekistan.</>,
+          description: <>1 место на региональном этапе олимпиады по информатике (система АСУЗ), 1 место на соревновании ТУИТ по спортивному программированию (республиканский этап), участник хакатона Туринского политехнического (республиканский этап).</>,
           tags: [{ name: "Hackathon" }, { name: "Contest" }],
           images: [],
         },

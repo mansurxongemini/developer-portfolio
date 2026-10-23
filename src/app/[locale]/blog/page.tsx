@@ -47,26 +47,33 @@ export default async function BlogListPage({
   const labels = blogLabels[locale];
 
   const postsFirst = firstArticle ? (
-    <ArticleCard article={firstArticle} locale={locale} />
+    <ArticleCard article={firstArticle} locale={locale} index={0} />
   ) : (
-    <p className="text-center text-white/40">{labels.noArticles}</p>
+    <p className="marginalia">{labels.noArticles}</p>
   );
 
-  const postsMiddle = middleArticles.length > 0 ? (
-    <div className="grid gap-6 sm:grid-cols-2">
-      {middleArticles.map((article) => (
-        <ArticleCard key={article.slug} article={article} locale={locale} />
-      ))}
-    </div>
-  ) : null;
+  const postsMiddle =
+    middleArticles.length > 0 ? (
+      <>
+        {middleArticles.map((article, i) => (
+          <ArticleCard key={article.slug} article={article} locale={locale} index={i + 1} />
+        ))}
+      </>
+    ) : null;
 
-  const postsLater = laterArticles.length > 0 ? (
-    <div className="grid gap-6 sm:grid-cols-2">
-      {laterArticles.map((article) => (
-        <ArticleCard key={article.slug} article={article} locale={locale} />
-      ))}
-    </div>
-  ) : null;
+  const postsLater =
+    laterArticles.length > 0 ? (
+      <>
+        {laterArticles.map((article, i) => (
+          <ArticleCard
+            key={article.slug}
+            article={article}
+            locale={locale}
+            index={i + 3}
+          />
+        ))}
+      </>
+    ) : null;
 
   return (
     <BlogContent

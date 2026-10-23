@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { useI18n, type Locale } from "@/components/I18nProvider";
-import { ArticleCard } from "@/components/blog-public";
 import type { PublicArticle } from "@/lib/blog-types";
 
 interface BlogListClientProps {
@@ -15,6 +15,19 @@ interface BlogListClientProps {
   locale: Locale;
 }
 
+function formatShortDate(iso: string, locale: Locale): string {
+  const tag = locale === "uz" ? "uz-UZ" : locale === "ru" ? "ru-RU" : "en-US";
+  try {
+    return new Date(iso).toLocaleDateString(tag, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  } catch {
+    return iso;
+  }
+}
+
 export function BlogListClient({ articles, labels, locale }: BlogListClientProps) {
   const { locale: cookieLocale, setLocale } = useI18n();
 
@@ -23,23 +36,56 @@ export function BlogListClient({ articles, labels, locale }: BlogListClientProps
   }, [locale, cookieLocale, setLocale]);
 
   return (
-    <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mb-12 text-center">
-        <h1 className="mb-3 text-4xl font-bold tracking-tight text-white/95 sm:text-5xl">
-          {labels.title}
-        </h1>
-        <p className="text-lg text-white/50">{labels.subtitle}</p>
-      </div>
-
-      {articles.length > 0 ? (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {articles.map((article) => (
-            <ArticleCard key={article.slug} article={article} locale={locale} />
-          ))}
+    <section className="sec briefs briefs--page" data-theme-trigger="bone">
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            № 05
+          </span>
+          <h1 className="sec-head__title">
+            <span data-redact>{labels.title}</span>
+          </h1>
         </div>
-      ) : (
-        <p className="text-center text-white/40">{labels.noArticles}</p>
-      )}
+        <p className="sec-head__field">{labels.subtitle}</p>
+      </header>
+
+      <div className="briefs__list-wrap">
+        {articles.length > 0 ? (
+          <div className="briefs__list">
+            {articles.map((article, i) => (
+              <Link
+                key={article.slug}
+                href={`/${locale}/blog/${article.slug}`}
+                className="brief-row"
+                data-preview={article.image || undefined}
+                data-cursor="O'qish"
+                aria-label={article.title}
+              >
+                <span className="brief-row__index font-mono">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="brief-row__title font-display">
+                  {article.title}
+                  {article.category ? (
+                    <span className="brief-row__tag font-mono">
+                      {" "}
+                      · {article.category}
+                    </span>
+                  ) : null}
+                </span>
+                <span className="brief-row__date font-mono">
+                  {formatShortDate(article.publishedAt, locale)}
+                </span>
+                <span className="brief-row__arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="marginalia">{labels.noArticles}</p>
+        )}
+      </div>
     </section>
   );
 }

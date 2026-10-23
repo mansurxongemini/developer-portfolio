@@ -2,29 +2,29 @@ import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import React, { ReactNode } from "react";
 import { slugify as transliterate } from "transliteration";
 
+// Once UI components stay available for MDX bodies that explicitly
+// reference them by name (legacy demo posts). Default HTML tags below
+// render as plain dossier prose — no Once UI chrome on public pages.
 import {
-  Heading,
-  HeadingLink,
-  Text,
-  InlineCode,
-  CodeBlock,
-  TextProps,
-  MediaProps,
   Accordion,
   AccordionGroup,
-  Table,
-  Feedback,
   Button,
   Card,
-  Grid,
-  Row,
+  CodeBlock,
   Column,
+  Feedback,
+  Grid,
+  Heading,
   Icon,
-  Media,
-  SmartLink,
+  InlineCode,
+  Line,
   List,
   ListItem,
-  Line,
+  Media,
+  Row,
+  SmartLink,
+  Table,
+  Text,
 } from "@once-ui-system/core";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -33,15 +33,15 @@ type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 function CustomLink({ href, children, ...props }: CustomLinkProps) {
-  if (href.startsWith("/")) {
+  if (href.startsWith("#")) {
     return (
-      <SmartLink href={href} {...props}>
+      <a href={href} {...props}>
         {children}
-      </SmartLink>
+      </a>
     );
   }
 
-  if (href.startsWith("#")) {
+  if (href.startsWith("/")) {
     return (
       <a href={href} {...props}>
         {children}
@@ -56,24 +56,15 @@ function CustomLink({ href, children, ...props }: CustomLinkProps) {
   );
 }
 
-function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
+function createImage({ alt, src, ...props }: { alt?: string; src: string }) {
   if (!src) {
     console.error("Media requires a valid 'src' property.");
     return null;
   }
 
   return (
-    <Media
-      marginTop="8"
-      marginBottom="16"
-      enlarge
-      radius="m"
-      border="neutral-alpha-medium"
-      sizes="(max-width: 960px) 100vw, 960px"
-      alt={alt}
-      src={src}
-      {...props}
-    />
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt || ""} loading="lazy" {...props} />
   );
 }
 
@@ -85,16 +76,24 @@ function slugify(str: string): string {
   }).replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
+function textOf(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(textOf).join("");
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: ReactNode };
+    return textOf(props.children);
+  }
+  return "";
+}
+
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
-  const CustomHeading = ({
-    children,
-    ...props
-  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
-    const slug = slugify(children as string);
+  const CustomHeading = ({ children, ...props }: { children?: ReactNode }) => {
+    const slug = slugify(textOf(children));
+    const Tag = as as "h1";
     return (
-      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
+      <Tag id={slug || undefined} {...(props as object)}>
         {children}
-      </HeadingLink>
+      </Tag>
     );
   };
 
@@ -103,46 +102,25 @@ function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   return CustomHeading;
 }
 
-function createParagraph({ children }: TextProps) {
-  return (
-    <Text
-      style={{ lineHeight: "175%" }}
-      variant="body-default-m"
-      onBackground="neutral-medium"
-      marginTop="8"
-      marginBottom="12"
-    >
-      {children}
-    </Text>
-  );
+function createParagraph({ children }: { children?: ReactNode }) {
+  return <p>{children}</p>;
 }
 
 function createInlineCode({ children }: { children: ReactNode }) {
-  return <InlineCode>{children}</InlineCode>;
+  return <code>{children}</code>;
 }
 
 function createCodeBlock(props: any) {
-  // For pre tags that contain code blocks
+  // For pre tags that contain code blocks — plain carbon block,
+  // styled by .dossier-prose pre/code. Language kept as data attr only.
   if (props.children && props.children.props && props.children.props.className) {
     const { className, children } = props.children.props;
-
-    // Extract language from className (format: language-xxx)
-    const language = className.replace("language-", "");
-    const label = language.charAt(0).toUpperCase() + language.slice(1);
+    const language = String(className).replace("language-", "");
 
     return (
-      <CodeBlock
-        marginTop="8"
-        marginBottom="16"
-        codes={[
-          {
-            code: children,
-            language,
-            label,
-          },
-        ]}
-        copyButton={true}
-      />
+      <pre data-language={language}>
+        <code>{children}</code>
+      </pre>
     );
   }
 
@@ -151,23 +129,20 @@ function createCodeBlock(props: any) {
 }
 
 function createList(as: "ul" | "ol") {
-  return ({ children }: { children: ReactNode }) => <List as={as}>{children}</List>;
+  const Cmp = ({ children }: { children: ReactNode }) => {
+    const Tag = as as "ul";
+    return <Tag>{children}</Tag>;
+  };
+  Cmp.displayName = `Dossier${as === "ul" ? "Ul" : "Ol"}`;
+  return Cmp;
 }
 
 function createListItem({ children }: { children: ReactNode }) {
-  return (
-    <ListItem marginTop="4" marginBottom="8" style={{ lineHeight: "175%" }}>
-      {children}
-    </ListItem>
-  );
+  return <li>{children}</li>;
 }
 
 function createHR() {
-  return (
-    <Row fillWidth horizontal="center">
-      <Line maxWidth="40" />
-    </Row>
-  );
+  return <hr />;
 }
 
 const components = {
@@ -202,12 +177,46 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  List,
+  ListItem,
+  Line,
 };
 
 type CustomMDXProps = MDXRemoteProps & {
   components?: typeof components;
 };
 
+/**
+ * Stored article/project bodies are authored as HTML-flavoured MDX and
+ * sometimes carry plain `class=` / `for=` attributes, which React reports as
+ * "Invalid DOM property `class`". Convert those attributes to their JSX
+ * equivalents inside real tags only — fenced code samples stay byte-identical
+ * so displayed code is never corrupted. (Data files themselves untouched.)
+ */
+function sanitizeJsxAttrs(source: string): string {
+  return source
+    .split(/(```[\s\S]*?```)/g)
+    .map((part, i) => {
+      if (i % 2 === 1) return part;
+      return part
+        .replace(/<([a-zA-Z][^<>]*?)\sclass=/g, "<$1 className=")
+        .replace(/<([a-zA-Z][^<>]*?)\sfor=/g, "<$1 htmlFor=");
+    })
+    .join("");
+}
+
 export function CustomMDX(props: CustomMDXProps) {
-  return <MDXRemote options={{ blockJS: false }} {...props} components={{ ...components, ...(props.components || {}) }} />;
+  const { source, ...rest } = props as CustomMDXProps & { source: string };
+  const safeSource =
+    typeof source === "string" ? sanitizeJsxAttrs(source) : source;
+  return (
+    <div className="dossier-prose">
+      <MDXRemote
+        options={{ blockJS: false }}
+        {...rest}
+        source={safeSource}
+        components={{ ...components, ...(props.components || {}) }}
+      />
+    </div>
+  );
 }

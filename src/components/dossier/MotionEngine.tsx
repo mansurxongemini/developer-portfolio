@@ -13,6 +13,23 @@ export function MotionEngine() {
     const root = doc.documentElement;
     const body = doc.body;
 
+    // Every global listener goes through here so it can be removed when the engine unmounts;
+    // otherwise a left-over handler keeps repainting the next page (e.g. the old theme sync).
+    const disposers: Array<() => void> = [];
+    const listen = (
+      target: EventTarget,
+      type: string,
+      fn: (e: any) => void,
+      opts?: boolean | AddEventListenerOptions,
+    ) => {
+      target.addEventListener(type, fn, opts);
+      disposers.push(() => target.removeEventListener(type, fn, opts));
+    };
+    const listenST = (ev: string, fn: () => void) => {
+      ScrollTrigger.addEventListener(ev as any, fn);
+      disposers.push(() => ScrollTrigger.removeEventListener(ev as any, fn));
+    };
+
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
@@ -264,7 +281,7 @@ export function MotionEngine() {
         }
         sizeOdometers();
         if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(sizeOdometers);
-        window.addEventListener("resize", debounce(sizeOdometers, 200));
+        listen(window, "resize", debounce(sizeOdometers, 200));
 
         // 2. Lenis Smooth Scroll
         lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
@@ -341,7 +358,7 @@ export function MotionEngine() {
           });
         });
         syncTheme();
-        ScrollTrigger.addEventListener("refresh", syncTheme);
+        listenST("refresh", syncTheme);
 
         // 4. Header Hide / Show on Scroll
         const header = $("[data-header]") as HTMLElement;
@@ -362,7 +379,9 @@ export function MotionEngine() {
         // 5. Menu Open / Close
         const menu = $("[data-menu]") as HTMLElement;
         const menuToggle = $("[data-menu-toggle]") as HTMLElement;
-        let menuOpen = false;
+        // The header and menu live outside the keyed page content, so a re-initialised engine
+        // must pick the state up from the DOM and replace (not stack) the old handlers.
+        let menuOpen = !!menu && menu.classList.contains("is-open");
 
         function openMenu() {
           if (!menu || menuOpen) return;
@@ -400,15 +419,17 @@ export function MotionEngine() {
         }
 
         if (menu && menuToggle) {
-          menuToggle.addEventListener("click", () => {
+          menuToggle.onclick = () => {
             menuOpen ? closeMenu() : openMenu();
+          };
+          $$("[data-menu-close]", menu).forEach((b) => {
+            b.onclick = () => closeMenu();
           });
-          $$("[data-menu-close]", menu).forEach((b) => b.addEventListener("click", closeMenu));
           menu.addEventListener("keydown", (e) => {
             if (menuOpen) trapFocus(menu, e);
           });
           $$("[data-menu-link]", menu).forEach((a) => {
-            a.addEventListener("click", () => closeMenu());
+            a.onclick = () => closeMenu();
           });
         }
 
@@ -912,13 +933,13 @@ export function MotionEngine() {
             }, 750);
           });
 
-          window.addEventListener(
+          listen(window, 
             "resize",
             debounce(() => {
               if (!displaced) measured = false;
             }, 200),
           );
-          ScrollTrigger.addEventListener("refresh", () => {
+          listenST("refresh", () => {
             if (!displaced) measured = false;
           });
         }
@@ -1011,13 +1032,13 @@ export function MotionEngine() {
               state.forEach((s) => s.to(restFor(s)));
             });
 
-            window.addEventListener(
+            listen(window, 
               "resize",
               debounce(() => {
                 measured = false;
               }, 200),
             );
-            ScrollTrigger.addEventListener("refresh", () => {
+            listenST("refresh", () => {
               measured = false;
             });
           } else {
@@ -1043,7 +1064,9 @@ export function MotionEngine() {
         $$("[data-cap]").forEach((cap) => {
           const head = $(".cap__head", cap) as HTMLElement;
           if (!head) return;
-          head.addEventListener("click", () => {
+          // onclick (not addEventListener): the engine can initialise twice (Strict Mode, locale
+          // remounts) and two listeners would toggle the row open and straight back shut.
+          head.onclick = () => {
             const isOpen = cap.classList.contains("is-open");
             $$("[data-cap].is-open").forEach((other) => {
               other.classList.remove("is-open");
@@ -1056,7 +1079,7 @@ export function MotionEngine() {
             setTimeout(() => {
               ScrollTrigger.refresh();
             }, 620);
-          });
+          };
         });
 
         // 15. Dalil Ko'rgichi (Work Evidence Viewer)
@@ -1154,10 +1177,9 @@ export function MotionEngine() {
 
           if (vCaption) {
             vCaption.textContent =
-              `Exhibit ${pad2(i + 1)} — ` +
               ($(".ex-row__title", row)?.textContent?.trim() || "") +
               " · " +
-              ($(".ex-row__cat", row)?.textContent?.trim() || "");
+              ($(".ex-row__year", row)?.textContent?.trim() || "");
             if (!immediate) {
               gsap.fromTo(
                 vCaption,
@@ -1275,7 +1297,7 @@ export function MotionEngine() {
             gsap.set(flipClone, { left: A.left, top: A.top, width: A.width, height: A.height });
             body.appendChild(flipClone);
 
-            gsap.set(casePanel, { yPercent: 100 });
+            gsap.set(casePanel, { y: 0, yPercent: 100 });
             gsap
               .timeline({ defaults: { duration: 0.7, ease: "expo.inOut" } })
               .to(casePanel, { yPercent: 0 }, 0)
@@ -1295,8 +1317,8 @@ export function MotionEngine() {
           } else {
             gsap.fromTo(
               casePanel,
-              { yPercent: 100 },
-              { yPercent: 0, duration: 0.7, ease: "expo.inOut" },
+              { y: 0, yPercent: 100 },
+              { y: 0, yPercent: 0, duration: 0.7, ease: "expo.inOut" },
             );
           }
 
@@ -1312,6 +1334,7 @@ export function MotionEngine() {
           caseOpen = false;
           dropClone();
           gsap.to(casePanel, {
+            y: 0,
             yPercent: 100,
             duration: 0.55,
             ease: "expo.inOut",
@@ -1328,7 +1351,7 @@ export function MotionEngine() {
           row.addEventListener("click", () => openCase(row));
         });
         $$("[data-case-close]").forEach((el) => el.addEventListener("click", closeCase));
-        doc.addEventListener("keydown", (e) => {
+        listen(doc, "keydown", (e) => {
           if (e.key === "Escape") {
             closeMenu();
             closeCase();
@@ -1441,7 +1464,7 @@ export function MotionEngine() {
           const cx = gsap.quickTo(cursor, "x", { duration: 0.12, ease: "power2.out" });
           const cy = gsap.quickTo(cursor, "y", { duration: 0.12, ease: "power2.out" });
 
-          window.addEventListener("pointermove", (e: PointerEvent) => {
+          listen(window, "pointermove", (e: PointerEvent) => {
             cx(e.clientX);
             cy(e.clientY);
           });
@@ -1469,11 +1492,11 @@ export function MotionEngine() {
             }
           }
 
-          doc.addEventListener("pointerover", (e: PointerEvent) => {
+          listen(doc, "pointerover", (e: PointerEvent) => {
             setCursorState(e.target as HTMLElement);
           });
-          doc.addEventListener("pointerdown", () => cursor.classList.add("is-press"));
-          doc.addEventListener("pointerup", () => cursor.classList.remove("is-press"));
+          listen(doc, "pointerdown", () => cursor.classList.add("is-press"));
+          listen(doc, "pointerup", () => cursor.classList.remove("is-press"));
           root.addEventListener("mouseleave", () => body.classList.add("has-cursor-hidden"));
           root.addEventListener("mouseenter", () => body.classList.remove("has-cursor-hidden"));
         }
@@ -1521,8 +1544,8 @@ export function MotionEngine() {
           });
         }
 
-        window.addEventListener("load", () => setTimeout(rescueReveals, 1800));
-        window.addEventListener("scroll", debounce(rescueReveals, 500), { passive: true });
+        listen(window, "load", () => setTimeout(rescueReveals, 1800));
+        listen(window, "scroll", debounce(rescueReveals, 500), { passive: true });
 
         // Start clock
         startClock();
@@ -1534,6 +1557,7 @@ export function MotionEngine() {
 
     // Cleanup on component unmount
     return () => {
+      disposers.forEach((d) => d());
       clearInterval(clockInterval);
       if (ctx) ctx.revert();
       if (lenis) lenis.destroy();

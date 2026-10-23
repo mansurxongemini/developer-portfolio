@@ -21,19 +21,6 @@ const projectsJsonLd = {
       description:
         "Alloma AI is a personalized AI mentor project focused on education, legal reasoning support, and practical learning workflows.",
     },
-    {
-      "@type": "CreativeWork",
-      name: "Tahlil",
-      creator: {
-        "@type": "Person",
-        name: "Mansurxon Rustamov",
-        url: `${baseURL}/about`,
-      },
-      url: "https://t.me/tahlil",
-      inLanguage: ["uz", "en", "ru"],
-      description:
-        "Tahlil is an analytical content initiative focused on law, policy, economics, and social impact.",
-    },
   ],
 };
 

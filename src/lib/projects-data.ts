@@ -33,7 +33,7 @@ export const staticProjectsData: LocalizedProjectData[] = [
     link: "https://github.com/mansurxongemini/inclusive-legal-rag",
     githubUrl: "https://github.com/mansurxongemini/inclusive-legal-rag",
     tags: ["Legal-AI", "RAG", "FastAPI", "LanceDB", "Python"],
-    publishedAt: new Date("2025-11-15"),
+    publishedAt: new Date("2026-09-29"),
     translations: {
       uz: {
         title: "Inclusive Legal AI & Statutory RAG Platform",
@@ -97,7 +97,7 @@ Enables legal researchers, human rights advocates, and policymakers to query com
     link: "https://github.com/mansurxongemini/alloma-cognitive-engine",
     githubUrl: "https://github.com/mansurxongemini/alloma-cognitive-engine",
     tags: ["Cognitive-AI", "Vector-DB", "OpenRouter", "TypeScript", "Next.js"],
-    publishedAt: new Date("2025-10-20"),
+    publishedAt: new Date("2026-07-18"),
     translations: {
       uz: {
         title: "Alloma AI Cognitive Engine & Knowledge Memory",
@@ -144,7 +144,7 @@ Alloma AI is an agentic cognitive platform designed for intelligent learning wor
     link: "https://github.com/mansurxongemini/multi-agent-roundtable-system",
     githubUrl: "https://github.com/mansurxongemini/multi-agent-roundtable-system",
     tags: ["Multi-Agent", "Consensus", "FastAPI", "Docker", "Python"],
-    publishedAt: new Date("2025-09-10"),
+    publishedAt: new Date("2026-06-15"),
     translations: {
       uz: {
         title: "Multi-Agent AI Roundtable Orchestration Platform",
@@ -186,7 +186,7 @@ A framework inspired by the LLM Council paradigm where independent specialized a
     link: "https://github.com/mansurxongemini/Huquqplus.uz",
     githubUrl: "https://github.com/mansurxongemini/Huquqplus.uz",
     tags: ["LegalTech", "FastAPI", "Aiogram 3", "Redis", "Celery", "SQLModel"],
-    publishedAt: new Date("2025-08-01"),
+    publishedAt: new Date("2026-09-16"),
     translations: {
       uz: {
         title: "Huquqplus.uz — Ochiq Huquqiy Axborot Portali",
@@ -229,7 +229,7 @@ A public civic-tech platform empowering citizens with verified legal guidance, a
     link: "https://github.com/mansurxongemini/mahalla-management-system",
     githubUrl: "https://github.com/mansurxongemini/mahalla-management-system",
     tags: ["GovTech", "Civic-Tech", "Automation", "Playwright", "Python"],
-    publishedAt: new Date("2025-06-15"),
+    publishedAt: new Date("2026-06-13"),
     translations: {
       uz: {
         title: "Mahalla Boshqaruvi va Ijro Intizomi Avtomatizatsiyasi",
@@ -268,7 +268,7 @@ A municipal GovTech tool modernizing local community governance through automate
     link: "https://github.com/mansurxongemini/kitobplus-app",
     githubUrl: "https://github.com/mansurxongemini/kitobplus-app",
     tags: ["Mobile", "Audiobook", "Education", "JavaScript"],
-    publishedAt: new Date("2025-04-10"),
+    publishedAt: new Date("2026-10-17"),
     translations: {
       uz: {
         title: "KitobPlus & Mutolaa — Audiokitoblar va Ma'rifat Ekotizimi",
@@ -305,7 +305,7 @@ A dedicated mobile and digital reading platform focused on accessible audiobooks
     link: "https://github.com/mansurxongemini/uzbekistan-map-puzzle",
     githubUrl: "https://github.com/mansurxongemini/uzbekistan-map-puzzle",
     tags: ["Interactive-Web", "Educational-Game", "Geography", "JavaScript"],
-    publishedAt: new Date("2025-02-01"),
+    publishedAt: new Date("2026-02-19"),
     translations: {
       uz: {
         title: "O'zbekiston Xaritasi — Interaktiv Geografik Boshqotirma",

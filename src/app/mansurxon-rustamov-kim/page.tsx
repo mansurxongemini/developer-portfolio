@@ -16,7 +16,7 @@ const faqJsonLd = {
       name: "Mansurxon Rustamov kim?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mansurxon Rustamov - Law Student, AI Developer va Independent Analyst. U huquq, sun'iy intellekt va texnologik tahlil yo'nalishida ishlaydi.",
+        text: "Mansurxon Rustamov — Toshkent davlat yuridik universiteti (TDYU) Jinoiy odil sudlov fakulteti talabasi, Full-Stack va AI dasturchi. HuquqPlus.uz portalida volontyor.",
       },
     },
     {
@@ -24,7 +24,7 @@ const faqJsonLd = {
       name: "Mansurxon Rustamovning loyihalari qayerda?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Loyihalar rasmiy ravishda /work sahifasida berilgan. Eng asosiy yo'nalishlar: Alloma AI va Tahlil.",
+        text: "Loyihalar /work sahifasida berilgan: Inclusive Legal RAG, Alloma AI, HuquqPlus, KitobPlus va boshqalar.",
       },
     },
     {
@@ -50,46 +50,65 @@ export async function generateMetadata() {
 
 export default function WhoIsMansurxonPage() {
   return (
-    <section style={{ width: "100%", maxWidth: 900, margin: "0 auto", padding: "2rem 1rem 3rem" }}>
+    <section className="sec whois" data-theme-trigger="bone">
       <Script id="who-is-faq-jsonld" type="application/ld+json">
         {JSON.stringify(faqJsonLd)}
       </Script>
 
-      <header style={{ marginBottom: "1.5rem" }}>
-        <p style={{ opacity: 0.75, margin: 0 }}>Official Profile</p>
-        <h1 style={{ margin: "0.5rem 0 0" }}>{pageTitle}</h1>
-        <p style={{ marginTop: "0.75rem", lineHeight: 1.6 }}>{pageDescription}</p>
+      <header className="sec-head">
+        <div className="sec-head__left">
+          <span className="stamp stamp--index" data-stamp aria-hidden="true">
+            № 00
+          </span>
+          <h1 className="sec-head__title">
+            <span data-redact>Mansurxon kim?</span>
+          </h1>
+        </div>
+        <p className="sec-head__field"></p>
       </header>
 
-      <article style={{ display: "grid", gap: "1.25rem" }}>
-        <section>
-          <h2>Qisqacha ma'lumot</h2>
-          <p>
-            Mansurxon Rustamov - huquq sohasida ta'lim olayotgan, bir vaqtning o'zida AI
-            va analitik yo'nalishda amaliy loyihalar yuritayotgan mutaxassis.
-          </p>
-        </section>
+      <p className="manifesto whois__body" data-redact data-redact-mode="scrub">
+        Huquq talabasi. Full-Stack va AI dasturchi.
+      </p>
 
-        <section>
-          <h2>Asosiy yo'nalishlar</h2>
-          <ul>
-            <li>Huquq va texnologiya kesishmasi</li>
-            <li>AI mahsulotlari va tahliliy workflow</li>
-            <li>Next.js va Python asosidagi amaliy loyihalar</li>
-            <li>Kiberxavfsizlik va mnemonika bo'yicha izlanishlar</li>
-          </ul>
-        </section>
+      <dl className="field whois__field">
+        <div>
+          <dt>Ism</dt>
+          <dd>Mansurxon Rustamov</dd>
+        </div>
+        <div>
+          <dt>Soha</dt>
+          <dd>Huquq · AI · Veb</dd>
+        </div>
+        <div>
+          <dt>O&apos;qish</dt>
+          <dd>TDYU · 2025—2029</dd>
+        </div>
+        <div>
+          <dt>Aloqa</dt>
+          <dd>
+            <a href="/#contact">Aloqa →</a>
+          </dd>
+        </div>
+      </dl>
 
-        <section>
-          <h2>Muhim havolalar</h2>
-          <ul>
-            <li><a href="/about">About / Biografiya</a></li>
-            <li><a href="/work">Loyihalar</a></li>
-            <li><a href="/gallery">Rasmlar</a></li>
-            <li><a href="/blog">Maqolalar</a></li>
-          </ul>
-        </section>
-      </article>
+      <nav className="whois__links" aria-label="Profil havolalari">
+        <a href="/about" className="brief-row" data-cursor="Ochish">
+          <span className="brief-row__index font-mono">01</span>
+          <span className="brief-row__title font-display">Men haqimda</span>
+          <span className="brief-row__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/work" className="brief-row" data-cursor="Ochish">
+          <span className="brief-row__index font-mono">02</span>
+          <span className="brief-row__title font-display">Loyihalar</span>
+          <span className="brief-row__arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/blog" className="brief-row" data-cursor="Ochish">
+          <span className="brief-row__index font-mono">03</span>
+          <span className="brief-row__title font-display">Maqolalar</span>
+          <span className="brief-row__arrow" aria-hidden="true">→</span>
+        </a>
+      </nav>
     </section>
   );
 }

@@ -4,37 +4,37 @@ import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
 
 export function DossierHeader() {
-  const { locale, setLocale } = useI18n();
+  const { locale } = useI18n();
 
   const labels = {
     uz: {
-      about: "Dosye",
-      work: "Dalillar",
-      record: "Yozuv",
-      contact: "Murojaat",
+      about: "Men haqimda",
+      work: "Loyihalar",
+      record: "Yo'l",
+      contact: "Aloqa",
       menu: "Menyu",
       backTop: "Mansurxon — boshiga qaytish",
     },
     en: {
       about: "About",
-      work: "Evidence",
-      record: "Record",
+      work: "Projects",
+      record: "Path",
       contact: "Contact",
       menu: "Menu",
       backTop: "Mansurxon — back to top",
     },
     ru: {
-      about: "Досье",
-      work: "Улики",
-      record: "Запись",
-      contact: "Связь",
+      about: "Обо мне",
+      work: "Проекты",
+      record: "Путь",
+      contact: "Контакты",
       menu: "Меню",
       backTop: "Мансурхон — наверх",
     },
   }[locale] || {
     about: "About",
-    work: "Evidence",
-    record: "Record",
+    work: "Projects",
+    record: "Path",
     contact: "Contact",
     menu: "Menu",
     backTop: "Mansurxon — back to top",
@@ -44,7 +44,7 @@ export function DossierHeader() {
     <header className="site-head" data-header>
       <a
         className="site-head__brand"
-        href="#hero"
+        href="/"
         data-magnetic
         aria-label={labels.backTop}
       >
@@ -78,30 +78,6 @@ export function DossierHeader() {
           00:00:00
         </span>
       </p>
-
-      {/* Language Toggle in Header */}
-      <div className="hidden sm:flex items-center gap-1 font-mono text-[11px] uppercase tracking-wider opacity-80">
-        {(["uz", "en", "ru"] as const).map((lang) => (
-          <button
-            key={lang}
-            onClick={() => setLocale(lang)}
-            className={`px-1.5 py-0.5 rounded transition-colors ${
-              locale === lang
-                ? "bg-white/20 text-[#ff5100] font-bold"
-                : "hover:text-[#ff5100] text-white/70"
-            }`}
-          >
-            {lang}
-          </button>
-        ))}
-      </div>
-
-      <nav className="site-head__nav" aria-label="Primary">
-        <a href="#about">{labels.about}</a>
-        <a href="#work">{labels.work}</a>
-        <a href="#timeline">{labels.record}</a>
-        <a href="#contact">{labels.contact}</a>
-      </nav>
 
       <button
         className="menu-toggle"

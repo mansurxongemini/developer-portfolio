@@ -6,8 +6,49 @@ import Link from "next/link";
 import { useI18n } from "@/components/I18nProvider";
 import { staticProjectsData, LocalizedProjectData } from "@/lib/projects-data";
 
-export function CaseFileModal() {
+const modalLabels = {
+  uz: {
+    field: "Yo'nalish",
+    stack: "Texnologiya",
+    year: "Yil",
+    link: "Havola",
+    close: "Yopish ✕",
+    full: "Batafsil →",
+    next: "Keyingi loyiha:",
+    project: "loyiha",
+    openCode: "GitHub · Ochiq kod",
+  },
+  en: {
+    field: "Field",
+    stack: "Stack",
+    year: "Year",
+    link: "Link",
+    close: "Close ✕",
+    full: "Details →",
+    next: "Next project:",
+    project: "project",
+    openCode: "GitHub · Open source",
+  },
+  ru: {
+    field: "Область",
+    stack: "Стек",
+    year: "Год",
+    link: "Ссылка",
+    close: "Закрыть ✕",
+    full: "Подробнее →",
+    next: "Следующий проект:",
+    project: "проект",
+    openCode: "GitHub · Открытый код",
+  },
+};
+
+export function CaseFileModal({
+  shortTitles,
+}: {
+  shortTitles: Record<string, string>;
+}) {
   const { locale } = useI18n();
+  const labels = modalLabels[locale] || modalLabels.en;
   const [currentProject, setCurrentProject] = useState<LocalizedProjectData>(
     staticProjectsData[0],
   );
@@ -25,9 +66,11 @@ export function CaseFileModal() {
   }, []);
 
   const t = currentProject.translations[locale] || currentProject.translations.en;
+  const short = shortTitles[currentProject.slug] || currentProject.slug;
   const currentIndex = staticProjectsData.findIndex((p) => p.slug === currentProject.slug);
   const nextProject = staticProjectsData[(currentIndex + 1) % staticProjectsData.length];
-  const nextT = nextProject.translations[locale] || nextProject.translations.en;
+  const nextShort = shortTitles[nextProject.slug] || nextProject.slug;
+  const year = currentProject.publishedAt.getFullYear();
 
   const handleNext = () => {
     setCurrentProject(nextProject);
@@ -42,60 +85,55 @@ export function CaseFileModal() {
       aria-hidden="true"
       role="dialog"
       aria-modal="true"
-      aria-label={`${t.title} — case study`}
+      aria-label={`${short} — ${labels.project}`}
     >
       <div className="case__backdrop" data-case-close />
 
       <div className="case__panel" data-case-panel>
         {/* Sticky Top Bar */}
         <div className="case__bar">
-          <p className="case__bar-file font-mono">
-            № 0{currentIndex + 1} · {currentProject.slug}
-          </p>
+          <p className="case__bar-file">{short}</p>
           <button
-            className="stamp stamp--close font-mono"
+            className="stamp stamp--close"
             type="button"
             data-case-close
-            aria-label="Ishni yopish"
-            data-cursor="Yopish"
+            aria-label={labels.close}
+            data-cursor="Close"
           >
-            Yopish ✕
+            {labels.close}
           </button>
         </div>
 
         {/* Content Container */}
         <article className="case__content">
-          <p className="case__file font-mono">
-            <span>ISh VARAG'I — 0{currentIndex + 1}</span>
+          <p className="case__file">
             <span
-              className="stamp stamp--opened font-mono"
+              className="stamp stamp--opened"
               data-stamp-opened
               aria-hidden="true"
             >
-              OCHILDI
+              {year}
             </span>
           </p>
 
-          <h2 className="case__title font-display text-4xl sm:text-5xl font-black uppercase text-[#131108]">
-            {t.title}
-          </h2>
+          <h2 className="case__title">{short}</h2>
 
-          <dl className="case__meta font-mono">
+          <dl className="case__meta">
             <div>
-              <dt>Yo'nalish</dt>
-              <dd className="font-semibold text-[#131108]">{currentProject.tags[0]}</dd>
+              <dt>{labels.field}</dt>
+              <dd>{currentProject.tags[0]}</dd>
             </div>
             <div>
-              <dt>Stack</dt>
+              <dt>{labels.stack}</dt>
               <dd>{currentProject.tags.slice(1, 4).join(" · ")}</dd>
             </div>
             <div>
-              <dt>Yil</dt>
-              <dd>2025—2026</dd>
+              <dt>{labels.year}</dt>
+              <dd>{year}</dd>
             </div>
             <div>
-              <dt>Holat</dt>
-              <dd className="text-[#c53a00] font-bold">Ochiq Manbali Kod</dd>
+              <dt>{labels.link}</dt>
+              <dd>{labels.openCode}</dd>
             </div>
           </dl>
 
@@ -103,19 +141,13 @@ export function CaseFileModal() {
           <div className="case__key frame__mat" data-case-key>
             <Image
               src={currentProject.image}
-              alt={t.title}
+              alt={short}
               fill
               className="object-contain p-6 bg-[#FAF8F5]"
             />
           </div>
 
-          <p className="text-lg leading-relaxed text-[#131108]/90 font-serif italic border-l-2 border-[#ff5100] pl-4 my-6">
-            {t.description}
-          </p>
-
-          <div className="prose prose-stone max-w-none text-base leading-relaxed text-[#131108]/90 whitespace-pre-line font-body">
-            {t.content}
-          </div>
+          <p className="case__lede">{t.description}</p>
 
           {/* Action CTAs */}
           <div className="case__cta">
@@ -123,35 +155,31 @@ export function CaseFileModal() {
               href={currentProject.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn--solid font-mono text-xs"
+              className="btn btn--solid"
               data-magnetic
             >
-              <span>GitHub Repozitoriyasini Ochish</span>
-              <span className="icon-arrow">↗</span>
+              <span>GitHub ↗</span>
             </a>
             <Link
               href={`/work/${currentProject.slug}`}
-              className="btn btn--ghost font-mono text-xs text-[#131108]"
+              className="btn btn--ghost"
               data-magnetic
             >
-              <span>To'liq Spetsifikatsiyani Ko'rish</span>
-              <span className="icon-arrow">→</span>
+              <span>{labels.full}</span>
             </Link>
           </div>
         </article>
 
-        {/* Next Case Study Navigation */}
-        <div className="case__next border-t border-[#131108]/15 pt-8 mt-12">
-          <p className="font-mono text-xs uppercase tracking-wider text-[#131108]/60 mb-3">
-            Keyingi Hujjat:
-          </p>
+        {/* Next Project Navigation */}
+        <div className="case__next">
+          <p className="case__next-label">{labels.next}</p>
           <button
             type="button"
             onClick={handleNext}
-            className="btn btn--ghost font-display text-lg text-left py-3 px-6 hover:text-[#c53a00]"
+            className="btn btn--ghost"
           >
-            <span>№ 0{((currentIndex + 1) % staticProjectsData.length) + 1} — {nextT.title}</span>
-            <span className="icon-arrow ml-2">→</span>
+            <span>№ 0{((currentIndex + 1) % staticProjectsData.length) + 1} — {nextShort}</span>
+            <span aria-hidden="true">→</span>
           </button>
         </div>
       </div>

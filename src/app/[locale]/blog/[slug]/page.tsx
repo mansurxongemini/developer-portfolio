@@ -140,15 +140,16 @@ export default async function ArticlePage({
 
   const labels = blogLabels[locale];
 
-  const recentPosts = related.length > 0 ? (
-    <div className="grid w-full gap-6 sm:grid-cols-2">
-      {related.map((a) => (
-        <ArticleCard key={a.slug} article={a} locale={locale} />
-      ))}
-    </div>
-  ) : (
-    <p className="text-center text-white/40">{labels.noArticles}</p>
-  );
+  const recentPosts =
+    related.length > 0 ? (
+      <>
+        {related.map((a, i) => (
+          <ArticleCard key={a.slug} article={a} locale={locale} index={i} />
+        ))}
+      </>
+    ) : (
+      <p className="marginalia">{labels.noArticles}</p>
+    );
 
   return (
     <BlogPostContent

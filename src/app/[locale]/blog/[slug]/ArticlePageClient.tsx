@@ -2,15 +2,10 @@
 
 import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useI18n, type Locale } from "@/components/I18nProvider";
-import {
-  MarkdownRenderer,
-  ArticleShareSection,
-  BackToBlogButton,
-  ArticleCard,
-} from "@/components/blog-public";
+import { MarkdownRenderer, ArticleCard, ArticleShareSection } from "@/components/blog-public";
 import type { PublicArticle } from "@/lib/blog-types";
-import { Calendar, Clock, User } from "lucide-react";
 
 interface ArticlePageClientProps {
   article: PublicArticle;
@@ -23,6 +18,19 @@ interface ArticlePageClientProps {
   slug: string;
 }
 
+function formatLongDate(iso: string, locale: Locale): string {
+  const tag = locale === "uz" ? "uz-UZ" : locale === "ru" ? "ru-RU" : "en-US";
+  try {
+    return new Date(iso).toLocaleDateString(tag, {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } catch {
+    return iso;
+  }
+}
+
 export function ArticlePageClient({ article, related, labels, locale, slug }: ArticlePageClientProps) {
   const { locale: cookieLocale, setLocale } = useI18n();
 
@@ -30,69 +38,61 @@ export function ArticlePageClient({ article, related, labels, locale, slug }: Ar
     if (locale !== cookieLocale) setLocale(locale);
   }, [locale, cookieLocale, setLocale]);
 
-  return (
-    <>
-      <div className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6">
-        <span
-          className="mb-4 inline-block rounded-full bg-cyan-400/10 px-3 py-1
-                     text-xs font-semibold tracking-wide text-cyan-300"
-        >
-          {article.category}
-        </span>
+  const backLabel = locale === "ru" ? "← Назад" : locale === "uz" ? "← Orqaga" : "← Back";
 
-        <h1 className="mb-4 text-3xl font-bold leading-tight text-white/95 sm:text-4xl lg:text-5xl">
-          {article.title}
+  return (
+    <article className="sec post-page" data-theme-trigger="bone">
+      <div className="post__col">
+        <Link href={`/${locale}/blog`} className="case__back font-mono">
+          {backLabel}
+        </Link>
+
+        <p className="case__file">
+          {article.category} · {formatLongDate(article.publishedAt, locale)}
+        </p>
+
+        <h1 className="case__title case__title--post">
+          <span data-redact data-redact-mode="title">
+            {article.title}
+          </span>
         </h1>
 
-        <div className="mb-8 flex flex-wrap items-center gap-5 text-sm text-white/45">
-          <span className="flex items-center gap-1.5">
-            <User size={14} />
-            {article.author}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Calendar size={14} />
-            {new Date(article.publishedAt).toLocaleDateString(
-              locale === "uz" ? "uz-UZ" : locale === "ru" ? "ru-RU" : "en-US",
-              { year: "numeric", month: "long", day: "numeric" },
-            )}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock size={14} />
-            {article.readingTime} {labels.minRead}
-          </span>
-        </div>
+        <p className="post__byline font-mono">
+          {article.author} · {formatLongDate(article.publishedAt, locale)} ·{" "}
+          {article.readingTime} {labels.minRead}
+        </p>
 
-        {article.image && (
-          <div className="relative mb-10 aspect-video overflow-hidden rounded-2xl">
+        {article.image ? (
+          <figure className="case__key frame" data-img-reveal>
             <Image
               src={article.image}
               alt={article.title}
-              fill
-              quality={95}
+              width={1200}
+              height={675}
               priority
-              sizes="(min-width: 1024px) 896px, (min-width: 768px) 90vw, 100vw"
-              className="object-cover"
+              sizes="(max-width: 900px) 92vw, 44rem"
             />
-          </div>
-        )}
+          </figure>
+        ) : null}
 
         <MarkdownRenderer content={article.content} />
 
         <ArticleShareSection title={article.title} locale={locale} slug={slug} />
-      </div>
 
-      {related.length > 0 && (
-        <section className="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
-          <h2 className="mb-6 text-xl font-semibold text-white/70">{labels.relatedArticles}</h2>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {related.map((a) => (
-              <ArticleCard key={a.slug} article={a} locale={locale} />
-            ))}
+        {related.length > 0 ? (
+          <div className="post__next">
+            <p className="case__next-label">{labels.relatedArticles}</p>
+            <div className="briefs__list">
+              {related.map((a) => (
+                <ArticleCard key={a.slug} article={a} locale={locale} />
+              ))}
+            </div>
+            <Link href={`/${locale}/blog`} className="briefs__all">
+              {backLabel} →
+            </Link>
           </div>
-        </section>
-      )}
-
-      <BackToBlogButton locale={locale} />
-    </>
+        ) : null}
+      </div>
+    </article>
   );
 }

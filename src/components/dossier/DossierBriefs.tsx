@@ -7,36 +7,21 @@ import { getArticles } from "@/lib/mock-articles";
 const briefsCopy = {
   uz: {
     stamp: "№ 05",
-    title: "Xulosalar",
-    subtitle: "The Briefs",
-    field: "Rasmiy Tahlillar · 2024—2026",
-    dispatchPrefix: "TAHLIL",
-    readAction: "Xulosani o'qish",
-    allBriefsBtn: "Barcha tahliliy maqolalar blogini ochish",
-    minRead: "daqiqa",
-    marginalia: "Har bir maqola yuridik normalar va sun'iy intellekt arxitekturalarining amaliy tahliliga bag'ishlangan.",
+    title: "Maqolalar",
+    field: "01",
+    allBriefs: "Barcha maqolalar →",
   },
   en: {
     stamp: "№ 05",
-    title: "Briefs",
-    subtitle: "The Briefs",
-    field: "Public Dispatches · 2024—2026",
-    dispatchPrefix: "BRIEF",
-    readAction: "Read Analysis",
-    allBriefsBtn: "Explore All Analytical Briefs",
-    minRead: "min",
-    marginalia: "Each dispatch evaluates statutory jurisprudence and neural systems architecture.",
+    title: "Articles",
+    field: "01",
+    allBriefs: "All articles →",
   },
   ru: {
     stamp: "№ 05",
-    title: "Выводы",
-    subtitle: "The Briefs",
-    field: "Аналитика · 2024—2026",
-    dispatchPrefix: "ОБЗОР",
-    readAction: "Читать заключение",
-    allBriefsBtn: "Открыть полный каталог аналитики",
-    minRead: "мин",
-    marginalia: "Каждый обзор посвящен практическому анализу правовых норм и архитектур ИИ.",
+    title: "Статьи",
+    field: "01",
+    allBriefs: "Все статьи →",
   },
 };
 
@@ -58,69 +43,40 @@ export function DossierBriefs() {
             {t.stamp}
           </span>
           <h2 className="sec-head__title">
-            <span data-redact>{t.title}</span> <em>{t.subtitle}</em>
+            <span data-redact>{t.title}</span>
           </h2>
         </div>
-        <p className="sec-head__field font-mono">{t.field}</p>
+        <p className="sec-head__field">{t.field}</p>
       </header>
 
-      {/* Grid of 3 Analytical Briefs */}
-      <div className="briefs__grid">
-        {articles.map((item, idx) => (
-          <Link
-            key={item.slug}
-            href={`/blog/${item.slug}`}
-            className="brief-card group"
-            data-clip
-            data-cursor="O'qish"
-          >
-            <div>
-              <div className="mb-4 flex items-center justify-between border-b border-[#131108]/15 pb-3 font-mono text-xs text-[#131108]/70">
-                <span className="font-bold text-[#c53a00]">
-                  {t.dispatchPrefix} № 0{idx + 1}
+      {/* 3 latest briefs as rows */}
+      <div className="briefs__list-wrap">
+        <ul className="briefs__list" role="list">
+          {articles.map((item, idx) => (
+            <li key={item.slug}>
+              <Link
+                href={`/blog/${item.slug}`}
+                className="brief-row"
+                data-preview={(item as { image?: string }).image || undefined}
+                data-cursor="Read"
+                aria-label={`${item.title} — ${item.publishedAt}`}
+              >
+                <span className="brief-row__index">[0{idx + 1}]</span>
+                <span className="brief-row__title">{item.title}</span>
+                <span className="brief-row__date">{item.publishedAt}</span>
+                <span className="brief-row__arrow" aria-hidden="true">
+                  →
                 </span>
-                <span>
-                  {item.readingTime} {t.minRead}
-                </span>
-              </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-              <div className="mb-2 font-mono text-[11px] font-bold uppercase tracking-wider text-[#131108]/60">
-                {item.category}
-              </div>
-
-              <h3 className="font-display text-xl font-bold uppercase leading-snug tracking-tight text-[#131108] transition-colors group-hover:text-[#c53a00]">
-                {item.title}
-              </h3>
-
-              <p className="mt-3 font-serif text-sm italic leading-relaxed text-[#131108]/80 line-clamp-3">
-                {item.excerpt}
-              </p>
-            </div>
-
-            <div className="mt-6 flex items-center justify-between border-t border-[#131108]/15 pt-4 font-mono text-xs font-bold uppercase tracking-wider text-[#131108]">
-              <span>{t.readAction}</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1 font-sans">
-                →
-              </span>
-            </div>
+        <div className="briefs__foot">
+          <Link href="/blog" className="briefs__all" data-magnetic>
+            {t.allBriefs}
           </Link>
-        ))}
-      </div>
-
-      <div className="col-span-12 mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-[#131108]/15 pt-8">
-        <p className="marginalia font-serif">
-          <span className="marginalia__ast mr-1">*</span>
-          {t.marginalia}
-        </p>
-
-        <Link
-          href="/blog"
-          className="btn btn--solid font-mono text-xs uppercase"
-          data-magnetic
-        >
-          <span>{t.allBriefsBtn}</span>
-          <span className="icon-arrow ml-1">↗</span>
-        </Link>
+        </div>
       </div>
     </section>
   );

@@ -35,14 +35,12 @@ function setCookie(name: string, value: string, days = 365) {
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(defaultLocale);
-  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const saved = getCookie("locale") as Locale | undefined;
     if (saved && locales.includes(saved)) {
       setLocaleState(saved);
     }
-    setReady(true);
     // Update html lang attribute
     const loc = saved && locales.includes(saved) ? saved : defaultLocale;
     document.documentElement.setAttribute("lang", loc);
@@ -56,10 +54,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   const content = useMemo(() => getContentByLocale(locale), [locale]);
 
-  if (!ready) {
-    return <>{children}</>;
-  }
-
+  // The Provider must wrap the tree from the very first render: switching between a bare
+  // fragment and a Provider after mount makes React rebuild every child, discarding the
+  // DOM the motion engine has already prepared.
   return (
     <I18nContext.Provider value={{ locale, setLocale, content }}>
       {children}
