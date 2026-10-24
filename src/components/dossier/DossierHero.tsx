@@ -6,32 +6,29 @@ import { useI18n } from "@/components/I18nProvider";
 const heroContent = {
   uz: {
     subjectName: "Mansurxon Rustamov",
-    statusVal: "Loyihalar uchun ochiq",
     headlineLine1: "HUQUQ",
     headlineLine2: "VA KOD",
     footnoteAst: "*",
-    footnote: "TDYU huquqshunosligi talabasi, Full-Stack va AI dasturchi.",
-    badgeText: "TDYU HUQUQSHUNOSLIK • FULL-STACK & AI • 2026 • ",
+    footnote: "TDYU huquqshunosligi talabasi, Full-Stack dasturchi.",
+    badgeText: "TDYU HUQUQSHUNOSLIK • FULL-STACK DASTURCHI • 2026 • ",
     badgeLabel: "Ishni ko'rish",
   },
   en: {
     subjectName: "Mansurxon Rustamov",
-    statusVal: "Open for projects",
     headlineLine1: "LAW AND",
     headlineLine2: "CODE",
     footnoteAst: "*",
-    footnote: "Law student at TSUL, Full-Stack and AI developer.",
-    badgeText: "TSUL LAW STUDENT • FULL-STACK & AI • 2026 • ",
+    footnote: "Law student at TSUL, Full-Stack developer.",
+    badgeText: "TSUL LAW STUDENT • FULL-STACK DEVELOPER • 2026 • ",
     badgeLabel: "Explore file",
   },
   ru: {
     subjectName: "Мансурхон Рустамов",
-    statusVal: "Открыт к проектам",
     headlineLine1: "ПРАВО",
     headlineLine2: "И КОД",
     footnoteAst: "*",
-    footnote: "Студент-юрист ТГЮУ, Full-Stack и AI-разработчик.",
-    badgeText: "ТГЮУ ЮРИСПРУДЕНЦИЯ • FULL-STACK И AI • 2026 • ",
+    footnote: "Студент-юрист ТГЮУ, Full-Stack разработчик.",
+    badgeText: "ТГЮУ ЮРИСПРУДЕНЦИЯ • FULL-STACK РАЗРАБОТЧИК • 2026 • ",
     badgeLabel: "Открыть дело",
   },
 };
@@ -126,11 +123,6 @@ export function DossierHero() {
 
       {/* Layer 3: Foreground UI Paperwork */}
       <div className="hero__ui">
-        <p className="field hero__field" data-clip>
-          <span className="field__dot" aria-hidden="true" />
-          {t.statusVal}
-        </p>
-
         <div className="hero__aside">
           <p className="marginalia hero__margin" data-clip>
             <span className="marginalia__ast mr-1" aria-hidden="true">

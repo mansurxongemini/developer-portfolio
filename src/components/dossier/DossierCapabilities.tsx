@@ -41,9 +41,9 @@ const capabilities: CapabilityItem[] = [
     num: "04",
     titles: { uz: "Huquqiy portallar", en: "Legal portals", ru: "Правовые порталы" },
     descs: {
-      uz: "HuquqPlus.uz: nogironligi bo'lgan shaxslar uchun bepul huquqiy axborot.",
-      en: "HuquqPlus.uz: free legal information for persons with disabilities.",
-      ru: "HuquqPlus.uz: бесплатная правовая информация для лиц с инвалидностью.",
+      uz: "HuquqPlus: nogironligi bo'lgan shaxslar uchun bepul huquqiy axborot.",
+      en: "HuquqPlus: free legal information for persons with disabilities.",
+      ru: "HuquqPlus: бесплатная правовая информация для лиц с инвалидностью.",
     },
   },
   {
@@ -99,29 +99,29 @@ export function DossierCapabilities() {
       </header>
 
       <figure className="caps__rail frame frame--hung" data-frame data-tilt="1.6" aria-hidden="true">
-          <span className="frame__clip" aria-hidden="true">
-            <svg viewBox="0 0 18 34" width="18" height="34" focusable="false">
-              <path
-                d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </span>
-          <div className="frame__mat" data-img-reveal>
-            <div className="relative aspect-[4/5] w-full overflow-hidden shot">
-              <Image
-                src="/images/site/texture-books.jpg"
-                alt=""
-                fill
-                sizes="(max-width: 899px) 40vw, 16vw"
-                className="object-cover"
-                style={{ objectPosition: "32% 50%" }}
-              />
-            </div>
+        <span className="frame__clip" aria-hidden="true">
+          <svg viewBox="0 0 18 34" width="18" height="34" focusable="false">
+            <path
+              d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </span>
+        <div className="frame__mat" data-img-reveal>
+          <div className="relative aspect-[4/5] w-full overflow-hidden shot">
+            <Image
+              src="/images/site/texture-books.jpg"
+              alt=""
+              fill
+              sizes="(max-width: 899px) 40vw, 16vw"
+              className="object-cover"
+              style={{ objectPosition: "32% 50%" }}
+            />
           </div>
-        </figure>
+        </div>
+      </figure>
 
       {/* Accordion Body with Weight Lens */}
       <div className="caps__body" data-lens>

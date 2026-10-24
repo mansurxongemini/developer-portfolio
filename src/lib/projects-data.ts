@@ -181,49 +181,6 @@ A framework inspired by the LLM Council paradigm where independent specialized a
     },
   },
   {
-    slug: "huquqplus-uz",
-    image: "/images/projects/huquqplus.svg",
-    link: "https://github.com/mansurxongemini/Huquqplus.uz",
-    githubUrl: "https://github.com/mansurxongemini/Huquqplus.uz",
-    tags: ["LegalTech", "FastAPI", "Aiogram 3", "Redis", "Celery", "SQLModel"],
-    publishedAt: new Date("2026-09-16"),
-    translations: {
-      uz: {
-        title: "Huquqplus.uz — Ochiq Huquqiy Axborot Portali",
-        description:
-          "Fuqarolar uchun huquqiy maslahat, normativ tahlil va advokatlar bilan tezkor bog'lanish imkonini beruvchi ochiq platforma.",
-        content: `
-## Loyiha Maqsadi
-O'zbekistonda aholining huquqiy savodxonligini oshirish, keng tarqalgan yuridik savollarga avtomatlashtirilgan aniq javoblar berish va advokatlar bilan fuqarolar o'rtasidagi ko'prikni yaratish.
-
-## Stack
-- **FastAPI:** Yuqori unumdor REST API
-- **Aiogram 3:** Telegram bot orqali interaktiv konsultatsiya qabul qilish
-- **Redis & Celery:** Navbatlar va asinxron xabarnomalar boshqaruvi
-- **SQLModel & PostgreSQL:** Xavfsiz va normallashgan ma'lumotlar bazasi
-`,
-      },
-      en: {
-        title: "Huquqplus.uz — Citizen Legal Intelligence Platform",
-        description:
-          "Open-source legal advisory, statutory assistance, and citizen consultation portal built for Uzbekistan.",
-        content: `
-## Overview
-A public civic-tech platform empowering citizens with verified legal guidance, automated statutory Q&A, and direct dispatch to legal aid practitioners.
-`,
-      },
-      ru: {
-        title: "Huquqplus.uz — Правовой портал для граждан",
-        description:
-          "Открытая платформа правовой поддержки, консультаций и навигации по законодательству Узбекистана.",
-        content: `
-## О проекте
-Платформа для повышения правовой грамотности и автоматизированного юридического сопровождения граждан с интеграцией через Telegram и веб-сервисы.
-`,
-      },
-    },
-  },
-  {
     slug: "mahalla-management-system",
     image: "/images/projects/mahalla-management.svg",
     link: "https://github.com/mansurxongemini/mahalla-management-system",
@@ -258,43 +215,6 @@ A municipal GovTech tool modernizing local community governance through automate
         content: `
 ## О проекте
 Инструмент для снижения бюрократической нагрузки и прозрачного управления задачами местных сообществ.
-`,
-      },
-    },
-  },
-  {
-    slug: "kitobplus-app",
-    image: "/images/projects/kitobplus.svg",
-    link: "https://github.com/mansurxongemini/kitobplus-app",
-    githubUrl: "https://github.com/mansurxongemini/kitobplus-app",
-    tags: ["Mobile", "Audiobook", "Education", "JavaScript"],
-    publishedAt: new Date("2026-10-17"),
-    translations: {
-      uz: {
-        title: "KitobPlus & Mutolaa — Audiokitoblar va Ma'rifat Ekotizimi",
-        description:
-          "O'zbek tilidagi nodir adabiy va ilmiy kitoblarni qulay audio formatda tinglash hamda o'qish imkonini beruvchi mobil platforma.",
-        content: `
-## Loyiha Maqsadi
-Kitobxonlik madaniyatini rivojlantirish va yoshlarga audio formatdagi sifatli ma'rifiy asarlardan erkin foydalanish imkoniyatini taqdim etish.
-`,
-      },
-      en: {
-        title: "KitobPlus & Mutolaa — Digital Audiobook Ecosystem",
-        description:
-          "Interactive audiobook streaming and digital reading application preserving national and world literature.",
-        content: `
-## Overview
-A dedicated mobile and digital reading platform focused on accessible audiobooks and curated educational literature.
-`,
-      },
-      ru: {
-        title: "KitobPlus & Mutolaa — Аудиокниги и цифровая библиотека",
-        description:
-          "Мобильная платформа для прослушивания аудиокниг и популяризации чтения качественной литературы.",
-        content: `
-## О проекте
-Культурно-образовательный проект, создающий удобный доступ к аудиокнигам и мировому литературному наследию.
 `,
       },
     },

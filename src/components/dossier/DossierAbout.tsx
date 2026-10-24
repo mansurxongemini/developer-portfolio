@@ -9,13 +9,12 @@ const aboutContent = {
     title: "Men haqimda",
     field: "",
     facts: [
-      { odo: "7", pad: 2, suffix: "", label: "Loyiha" },
+      { odo: "5", pad: 2, suffix: "", label: "Loyiha" },
       { odo: "24", pad: 2, suffix: "", label: "Repozitoriy" },
-      { odo: "2026", pad: 4, suffix: "", label: "HuquqPlus.uz volontyori" },
       { odo: "2029", pad: 4, suffix: "", label: "TDYU bitiruvi" },
     ],
     manifesto:
-      "TDYU huquqshunosligi talabasi. Dasturlayman, HuquqPlus.uz'da volontyorlik qilaman, IT Club'ni tashkil etaman.",
+      "TDYU huquqshunosligi talabasi. Dasturchiman, HuquqPlusda volontyorlik qilaman, IT Club tashkilotchisiman.",
     exhibitStamp: "TDYU",
   },
   en: {
@@ -23,9 +22,8 @@ const aboutContent = {
     title: "About",
     field: "",
     facts: [
-      { odo: "7", pad: 2, suffix: "", label: "Projects" },
+      { odo: "5", pad: 2, suffix: "", label: "Projects" },
       { odo: "24", pad: 2, suffix: "", label: "Repositories" },
-      { odo: "2026", pad: 4, suffix: "", label: "HuquqPlus.uz volunteer" },
       { odo: "2029", pad: 4, suffix: "", label: "TSUL graduation" },
     ],
     manifesto:
@@ -37,9 +35,8 @@ const aboutContent = {
     title: "Обо мне",
     field: "",
     facts: [
-      { odo: "7", pad: 2, suffix: "", label: "Проекты" },
+      { odo: "5", pad: 2, suffix: "", label: "Проекты" },
       { odo: "24", pad: 2, suffix: "", label: "Репозитории" },
-      { odo: "2026", pad: 4, suffix: "", label: "Волонтёр HuquqPlus.uz" },
       { odo: "2029", pad: 4, suffix: "", label: "Выпуск ТГЮУ" },
     ],
     manifesto:

@@ -96,7 +96,7 @@ const homeByLocale: Record<Locale, Home> = {
     image: "/og-image.jpg",
     label: "Bosh sahifa",
     title: "Mansurxon Rustamov",
-    description: "Mansurxon Rustamov — TDYU huquqshunoslik talabasi, Full-Stack va AI dasturchi. HuquqPlus.uz volontyori, Alloma AI va KitobPlus loyihalari ustida ishlaydi.",
+    description: "Mansurxon Rustamov — TDYU huquqshunoslik talabasi, Full-Stack dasturchi.",
     headline: <>Huquqshunoslik, Sun'iy Intellekt va Jamiyat o'rtasida amaliy ko'prik</>,
     featured: {
       display: true,
@@ -123,7 +123,7 @@ const homeByLocale: Record<Locale, Home> = {
     image: "/og-image.jpg",
     label: "Home",
     title: "Mansurxon Rustamov",
-    description: "Mansurxon Rustamov — TSUL law student, Full-Stack and AI developer. HuquqPlus.uz volunteer, working on Alloma AI and KitobPlus.",
+    description: "Mansurxon Rustamov — TSUL law student, Full-Stack developer. HuquqPlus.uz volunteer, working on Alloma AI.",
     headline: <>Bridging Jurisprudence, Artificial Intelligence, and Society</>,
     featured: {
       display: true,
@@ -150,7 +150,7 @@ const homeByLocale: Record<Locale, Home> = {
     image: "/og-image.jpg",
     label: "Главная",
     title: "Mansurxon Rustamov",
-    description: "Мансурхон Рустамов — студент ТГЮУ, Full-Stack и AI-разработчик. Волонтёр HuquqPlus.uz, работает над Alloma AI и KitobPlus.",
+    description: "Мансурхон Рустамов — студент ТГЮУ, Full-Stack разработчик. Волонтёр HuquqPlus, работает над Alloma AI.",
     headline: <>Связывая Юриспруденцию, Искусственный Интеллект и Общество</>,
     featured: {
       display: true,

@@ -6,9 +6,7 @@ const shortTitles: Record<string, string> = {
   "inclusive-legal-rag": "Inclusive Legal RAG",
   "alloma-cognitive-engine": "Alloma AI",
   "multi-agent-roundtable-system": "Roundtable",
-  "huquqplus-uz": "HuquqPlus",
   "mahalla-management-system": "Mahalla",
-  "kitobplus-app": "KitobPlus",
   "uzbekistan-map-puzzle": "Map Puzzle",
 };
 

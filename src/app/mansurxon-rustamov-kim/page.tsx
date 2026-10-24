@@ -16,7 +16,7 @@ const faqJsonLd = {
       name: "Mansurxon Rustamov kim?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Mansurxon Rustamov — Toshkent davlat yuridik universiteti (TDYU) Jinoiy odil sudlov fakulteti talabasi, Full-Stack va AI dasturchi. HuquqPlus.uz portalida volontyor.",
+        text: "Mansurxon Rustamov — Toshkent davlat yuridik universiteti (TDYU) Jinoiy odil sudlov fakulteti talabasi, Full-Stack dasturchi. HuquqPlus volontyori.",
       },
     },
     {
@@ -24,7 +24,7 @@ const faqJsonLd = {
       name: "Mansurxon Rustamovning loyihalari qayerda?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Loyihalar /work sahifasida berilgan: Inclusive Legal RAG, Alloma AI, HuquqPlus, KitobPlus va boshqalar.",
+        text: "Loyihalar /work sahifasida ko'rsatilgan: Inclusive Legal RAG va boshqalar.",
       },
     },
     {

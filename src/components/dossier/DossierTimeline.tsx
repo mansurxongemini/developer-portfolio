@@ -73,7 +73,7 @@ const names = {
     alloma: "Alloma AI — personal AI mentor",
     rag: "Inclusive Legal RAG",
     club: "TSUL IT Club — organizer",
-    huquqplus: "HuquqPlus.uz — legal volunteer",
+    huquqplus: "HuquqPlus — legal volunteer",
     iymc: "International Youth Math Challenge, qualification round",
     tdyu: "TSUL, Criminal Justice Faculty",
     dev: "Independent Full-Stack developer",

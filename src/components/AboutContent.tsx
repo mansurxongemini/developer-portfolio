@@ -9,24 +9,22 @@ const copy = {
     title: "Men haqimda",
     field: "",
     facts: [
-      { num: "07", label: "Loyiha" },
+      { num: "05", label: "Loyiha" },
       { num: "24", label: "Repozitoriy" },
-      { num: "2026", label: "HuquqPlus.uz volontyori" },
       { num: "2029", label: "TDYU bitiruvi" },
     ],
     record: "Qisqacha",
     more: "Barcha loyihalar →",
     manifesto:
-      "TDYU huquqshunosligi talabasi. Dasturlayman, HuquqPlus.uz'da volontyorlik qilaman, IT Club'ni tashkil etaman.",
+      "TDYU huquqshunosligi talabasi. Dasturchi, HuquqPlus volontyori, IT Club tashkilotchisiman.",
   },
   en: {
     stamp: "№ 01",
     title: "About",
     field: "",
     facts: [
-      { num: "07", label: "Projects" },
+      { num: "05", label: "Projects" },
       { num: "24", label: "Repositories" },
-      { num: "2026", label: "HuquqPlus.uz volunteer" },
       { num: "2029", label: "TSUL graduation" },
     ],
     record: "Short bio",
@@ -39,15 +37,14 @@ const copy = {
     title: "Обо мне",
     field: "",
     facts: [
-      { num: "07", label: "Проекты" },
+      { num: "05", label: "Проекты" },
       { num: "24", label: "Репозитории" },
-      { num: "2026", label: "Волонтёр HuquqPlus.uz" },
       { num: "2029", label: "Выпуск ТГЮУ" },
     ],
     record: "Кратко",
     more: "Все проекты →",
     manifesto:
-      "Студент-юрист ТГЮУ. Программирую, волонтёрю на HuquqPlus.uz и организую IT Club.",
+      "Студент-юрист ТГЮУ. Программирую, волонтёрю на HuquqPlus и организую IT Club.",
   },
 };
 
@@ -149,15 +146,15 @@ export function AboutContent() {
         ].map((item) => (
           <figure key={item.src} className="frame frame--hung" data-frame data-tilt={item.tilt}>
             <span className="frame__clip" aria-hidden="true">
-            <svg viewBox="0 0 18 34" width="18" height="34" focusable="false">
-              <path
-                d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              />
-            </svg>
-          </span>
+              <svg viewBox="0 0 18 34" width="18" height="34" focusable="false">
+                <path
+                  d="M4 1h10a3 3 0 0 1 3 3v22a8 8 0 0 1-16 0V4a3 3 0 0 1 3-3Zm2 5v18a3 3 0 0 0 6 0V6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                />
+              </svg>
+            </span>
             <div className="frame__mat" data-img-reveal>
               <div className="relative aspect-[3/2] w-full overflow-hidden shot">
                 <Image
